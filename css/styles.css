@@ -32,11 +32,11 @@ header {
     text-align: center;
 }
 
-.contender-produtos {
+.contender {
     flex-grow: 1;
 }
 
-.divisoria-produtos {
+.divisoria {
     padding: 20px;
     max-width: 1200px;
     margin: 20px auto;
