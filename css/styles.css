@@ -38,15 +38,12 @@ header {
     text-align: center;
 }
 
-.contender {
-    flex-grow: 1;
-}
-
 .divisoria {
     padding: 20px;
     max-width: 1200px;
     margin: 20px auto;
     text-align: center;
+    flex-grow: 1;
 }
 
 .produtos {
@@ -192,8 +189,7 @@ header {
 
 .divisoria form textarea {
     resize: vertical;
-    max-width: 100%;
-    min-width: 100%;
+    width: 99%;
 }
 
 .divisoria form button {
