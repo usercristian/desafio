@@ -162,3 +162,41 @@ header {
     color: white;
     padding: 1px;
 }
+
+table {
+    margin: 20px 0px 20px 0px;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+thead,
+tfoot {
+    background-color: var(--cor-barras);
+    color: var(--cor-azulado);
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+tbody {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+/* Alinha a esquerda o texto da primeira coluna da tabela */
+tbody td:first-child {
+    text-align: left;
+}
+
+/* Define a cor de fundo das linhas ímpares da tabela */ 
+tbody tr:nth-child(even) {
+    background-color: var(--cor-azulado);
+}
+
+/* Define a cor de fundo das linhas pares da tabela */
+tbody tr:nth-child(odd) {
+    background-color: var(--cor-branca);
+}
