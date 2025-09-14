@@ -188,7 +188,7 @@ table {
 }
 
 thead,
-tfoot{
+tfoot {
     background-color: var(--cor-rosa);
     color: var(--cor-misturada);
     font-weight: bold;
@@ -209,12 +209,11 @@ tbody td:first-child {
     text-align: left;
 }
 
-/* Define a cor de fundo das linhas ímpares da tabela */ 
+/* Define a cor de fundo das linhas ímpares e pares da tabela */ 
 tbody tr:nth-child(even) {
     background-color: var(--cor-misturada);
 }
 
-/* Define a cor de fundo das linhas pares da tabela */
 tbody tr:nth-child(odd) {
     background-color: var(--cor-branca);
 }
