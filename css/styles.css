@@ -9,12 +9,18 @@ body {
     flex-direction: column;
 }
 
+/* Padronização de cores para nosso site */
+
 :root {
-    --cor-chat: #05d9e8;
-    --cor-barras: #ff2a6d;
+    --cor-azul: #05d9e8;
+    --cor-rosa: #ff2a6d;
     --cor-branca: #ffffff;
-    --cor-azulado: #d1f7ff;
+    --cor-misturada: #d1f7ff;
 }
+
+/* ---------------------------------------------- */
+
+
 .img-prod {
     margin-top: 30px;
     width: 100%;
@@ -26,14 +32,10 @@ body {
 }
 
 header {
-    background-color: var(--cor-barras);
-    color: white;
+    background-color: var(--cor-rosa);
+    color: var(--cor-branca);
     padding: 10px 0;
     text-align: center;
-}
-
-.contender {
-    flex-grow: 1;
 }
 
 .divisoria {
@@ -41,6 +43,7 @@ header {
     max-width: 1200px;
     margin: 20px auto;
     text-align: center;
+    flex-grow: 1;
 }
 
 .produtos {
@@ -56,9 +59,9 @@ header {
 }
 
 .produto-item {
-    background-color: white;
+    background-color: var(--cor-branca);
     padding: 15px;
-    border: 2px solid var(--cor-azulado);
+    border: 2px solid var(--cor-misturada);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 20px;
 }
@@ -73,6 +76,8 @@ header {
     border-radius: 4px;
 }
 
+/* Estilização Menu */
+
 .menu ul {
     list-style: none;
     padding: 0;
@@ -85,10 +90,21 @@ header {
 }
 
 .menu ul li a {
-    color: var(--cor-azulado);
+    color: var(--cor-misturada);
     text-decoration: none;
     font-weight: bold;
 }
+
+/* Estilização Rodape do site com nossos nomes  */
+
+.rodape {
+    text-align: center;
+    background-color: var(--cor-rosa);
+    color: var(--cor-branca);
+    padding: 1px;
+}
+
+/* Estilização do chat  */
 
 .chatbot {
     position: fixed;
@@ -96,7 +112,7 @@ header {
     right: 20px;
     width: 300px;
     max-width: 90%;
-    background-color: white;
+    background-color: var(--cor-branca);
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     display: flex;
@@ -106,8 +122,8 @@ header {
 }
 
 .chatbot-titulo {
-    background-color: var(--cor-chat);
-    color: white;
+    background-color: var(--cor-azul);
+    color: var(--cor-branca);
     padding: 10px;
     font-weight: bold;
     text-align: center;
@@ -146,16 +162,17 @@ header {
 
 .chatbot-input-area button {
     padding: 8px 15px;
-    background-color: var(--cor-chat);
-    color: white;
+    background-color: var(--cor-azul);
+    color: var(--cor-branca);
     border: none;
     border-radius: 4px;
 }
 
 .chatbot-input-area button:hover {
-    background-color: var(--cor-chat);
+    background-color: var(--cor-azul);
 }
 
+<<<<<<< HEAD
 .rodape {
     text-align: center;
     background-color: var(--cor-barras);
@@ -199,4 +216,42 @@ tbody tr:nth-child(even) {
 /* Define a cor de fundo das linhas pares da tabela */
 tbody tr:nth-child(odd) {
     background-color: var(--cor-branca);
+=======
+/* Estilização do forumulario */
+
+.divisoria form {
+    width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--cor-branca);
+    border: 2px solid var(--cor-misturada);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.divisoria form textarea {
+    resize: vertical;
+    width: 99%;
+}
+
+.divisoria form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--cor-azul);
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.divisoria form button:hover {
+    background-color: var(--cor-misturada);
+>>>>>>> 5d6ae2281c36c3360398cc53f439ed79ccf8ddfe
 }
