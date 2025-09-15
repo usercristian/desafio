@@ -1,6 +1,7 @@
 const chatInput = document.querySelector('.chatbot-input-area input');
 const sendButton = document.querySelector('.chatbot-input-area button');
 const messagesContainer = document.querySelector('.chatbot-mensagens');
+const userMessageElement = document.querySelector('chatbot-mensagemusario')
 
 let conversationState = 0;
 
@@ -23,7 +24,8 @@ function sendMessage() {
 
     const userMessageElement = document.createElement('p');
     userMessageElement.textContent = messageText;
-    userMessageElement.style.backgroundColor = '#dcf8c6';
+    userMessageElement.style.backgroundColor = '#d1f7ff';
+    userMessageElement.style.color = "#000000ff"
     userMessageElement.style.alignSelf = 'flex-end';
     messagesContainer.appendChild(userMessageElement);
 
@@ -32,7 +34,7 @@ function sendMessage() {
 
     setTimeout(() => {
         if (conversationState === 0) {
-            addBotMessage("Olá! Qual item você deseja?");
+            addBotMessage("Poderia descrever o item para que eu possa auxiliar?");
             conversationState = 1;
         } else if (conversationState === 1) {
             const produtos = document.querySelectorAll('.produto-item');
@@ -42,7 +44,7 @@ function sendMessage() {
             const precoProduto = terceiroProduto.querySelector('p').textContent;
 
             const botResponseHTML = `
-                Encontrei este item para você: <strong>${nomeProduto}</strong> por <strong>${precoProduto}</strong>.
+                Encontrei! <strong>${nomeProduto}</strong> por <strong>${precoProduto}</strong>.
                 <br><br>
                 <button class="comprar-btn" onclick="handlePurchase()">Comprar</button>
             `;

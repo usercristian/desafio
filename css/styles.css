@@ -124,7 +124,8 @@ header {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 300px;
+    width: 400px;
+    height: 300px;
     max-width: 90%;
     background-color: var(--cor-branca);
     border-radius: 8px;
@@ -153,7 +154,6 @@ header {
 .chatbot-mensagens p {
     margin: 0 0 10px 0;
     padding: 8px 12px;
-    background-color: #e9ecef;
     border-radius: 5px;
     max-width: 80%;
     word-wrap: break-word;
@@ -193,6 +193,8 @@ header {
     padding: 1px;
 }
 
+/* Estilização da tabela na pagina informacoes */
+
 table {
     height: 300px;
     width: max-content;
@@ -218,12 +220,9 @@ tbody td {
     border-collapse: collapse;
 }
 
-/* Alinha a esquerda o texto da primeira coluna da tabela */
 tbody td:first-child {
     text-align: left;
 }
-
-/* Define a cor de fundo das linhas ímpares e pares da tabela */ 
 tbody tr:nth-child(even) {
     background-color: var(--cor-misturada);
 }
