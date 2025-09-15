@@ -124,8 +124,8 @@ header {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 400px;
-    height: 300px;
+    width: 22%;
+    height: 32%;
     max-width: 90%;
     background-color: var(--cor-branca);
     border-radius: 8px;
@@ -231,7 +231,7 @@ tbody tr:nth-child(odd) {
     background-color: var(--cor-branca);
 }
 
-/* Estilização do forumulario */
+/* Estilização do formulário */
 .divisoria form {
     width: 500px;
     margin: 30px auto;
@@ -245,19 +245,23 @@ tbody tr:nth-child(odd) {
     flex-direction: column;
 }
 
+.divisoria form input,
 .divisoria form textarea {
     resize: vertical;
     width: 99%;
+    border: 1px solid #05d9e8;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .divisoria form button {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: var(--cor-azul);
+    background-color: var(--cor-rosa);
     color: var(--cor-branca);
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1.1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -266,4 +270,5 @@ tbody tr:nth-child(odd) {
 
 .divisoria form button:hover {
     background-color: var(--cor-misturada);
+    border-radius: 10px;
 }
