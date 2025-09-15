@@ -76,6 +76,20 @@ header {
     border-radius: 4px;
 }
 
+.feedback {
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:var(--cor-azul);
+    color:var(--cor-branca);
+    cursor:pointer;
+}
+
+.feedback h2 {
+    color:var(--cor-azul);
+}
+
 /* Estilização Menu */
 
 .menu ul {
