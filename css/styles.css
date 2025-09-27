@@ -1,139 +1,110 @@
-body {
-    font-family: sans-serif;
+/* Estrutura geral */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    background-color: var(--cor-branca);
-    color: #333;
-    display: flex;
-    flex-direction: column;
 }
 
-/* Padronização de cores para nosso site */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    color: #333;
+}
 
+/* Conteúdo principal */
+main {
+    flex: 1;
+}
+
+/* Paleta */
 :root {
     --cor-azul: #05d9e8;
     --cor-rosa: #ff2a6d;
     --cor-branca: #ffffff;
-    --cor-misturada: #d1f7ff;
+    --cor-detalhe: #d1f7ff;
 }
 
-/* ---------------------------------------------- */
-
-
-.img-prod {
-    margin-top: 30px;
-    width: 100%;
-    max-width: 150px;
-    object-fit: contain;
-    display: block;
-    min-height: 100%;
-    max-height: 150px;
-}
-
-header {
-    background-color: var(--cor-rosa);
-    color: var(--cor-branca);
-    padding: 10px 0;
-    text-align: center;
-}
-
-.divisoria {
-    padding: 20px;
-    max-width: 1300px;
-    margin: auto;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.produto-item p {
-    align-content: end;
-    margin: 0px;
-}
-
-.produto-item {
-    background-color: var(--cor-branca);
-    padding: 15px;
-    border: 2px solid var(--cor-misturada);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 20px;
-}
-
-.produto-imagem {
-    max-width: 100px;
-    max-height: 100px;
-    text-align: center;
-    display: flex;
-    margin: 0px auto;
-    margin-bottom: 10px;
-    border-radius: 4px;
-}
-
-.feedback {
-    margin-top:20px;
-    padding:10px 20px;
-    border:none;
-    border-radius:6px;
-    background:var(--cor-azul);
-    color:var(--cor-branca);
-    cursor:pointer;
-}
-
-.feedback h2 {
-    color:var(--cor-azul);
-}
-
-/* Estilização Menu */
-
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-.menu ul li a {
-    color: var(--cor-misturada);
-    text-decoration: none;
+/* Navbar */
+.navbar-brand {
     font-weight: bold;
 }
 
-/* Estilização Rodape do site com nossos nomes  */
-
-.rodape {
-    text-align: center;
+.custom-navbar {
     background-color: var(--cor-rosa);
-    color: var(--cor-branca);
-    padding: 1px;
 }
 
-/* Estilização do chat  */
+/* Categorias */
+main h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--cor-rosa);
+}
 
+/* Caixa arredondada em volta das linhas de produtos */
+.row.mb-4 {
+    padding: 15px;
+    border: 1px dashed #ccc;
+    border-radius: 25px;
+    background-color: #fafafa;
+}
+
+/* Produto */
+.img-prod {
+    width: 100%;
+    max-width: 100px;
+    object-fit: contain;
+    margin: 10px auto;
+}
+
+.produto-item {
+    border: 1px solid var(--cor-detalhe);
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.produto-item:hover {
+    transform: translateY(-3px);
+}
+
+.produto-item h5 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.produto-item p {
+    margin: 0;
+}
+
+/* Botão comprar */
+.comprar-btn {
+    background-color: var(--cor-azul);
+    border: none;
+}
+
+.comprar-btn:hover {
+    background-color: #04c0cc;
+}
+
+/* Chatbot */
 .chatbot {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 22%;
-    height: 32%;
+    width: 300px;
     max-width: 90%;
+    height: 350px;
     background-color: var(--cor-branca);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .chatbot-titulo {
@@ -146,129 +117,122 @@ header {
 
 .chatbot-mensagens {
     padding: 10px;
-    height: 150px;
-    overflow: auto;
     flex-grow: 1;
+    overflow-y: auto;
+    background-color: #f5f5f5;
 }
 
 .chatbot-mensagens p {
-    margin: 0 0 10px 0;
-    padding: 8px 12px;
-    border-radius: 5px;
-    max-width: 80%;
-    word-wrap: break-word;
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: var(--cor-branca);
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
 }
 
 .chatbot-input-area {
     display: flex;
-    padding: 10px;
-    border-top: 1px solid #eee;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
 }
 
 .chatbot-input-area input {
     flex-grow: 1;
-    padding: 8px;
+    padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 5px;
-    outline: none;
 }
 
 .chatbot-input-area button {
-    padding: 8px 15px;
+    padding: 6px 12px;
     background-color: var(--cor-azul);
     color: var(--cor-branca);
     border: none;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .chatbot-input-area button:hover {
-    background-color: var(--cor-azul);
+    background-color: #04c0cc;
 }
 
+/* Chat minimizado */
+.chatbot.minimized .chatbot-mensagens,
+.chatbot.minimized .chatbot-input-area {
+    display: none;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Botão de minimizar */
+#toggleChat {
+    font-size: 0.9rem;
+    padding: 2px 6px;
+}
+
+/* Rodapé */
 .rodape {
     text-align: center;
     background-color: var(--cor-rosa);
-    color: white;
-    padding: 1px;
+    color: var(--cor-branca);
+    padding: 10px;
+    margin-top: auto;
 }
 
-/* Estilização da tabela na pagina informacoes */
-
-table {
-    height: 300px;
-    width: max-content;
-    border-collapse: collapse;
-    border: 1px solid #333;
-    font-size: small;
-}
-
-thead,
-tfoot {
-    background-color: var(--cor-rosa);
-    color: var(--cor-misturada);
-    font-weight: bold;
-    text-align: center;
-    border: 1px #333;
-    border-collapse: collapse;
-    width: 100%;
-    height: 30px;
-}
-
-tbody td {
-    border: 1px solid #333;
-    border-collapse: collapse;
-}
-
-tbody td:first-child {
-    text-align: left;
-}
-tbody tr:nth-child(even) {
-    background-color: var(--cor-misturada);
-}
-
-tbody tr:nth-child(odd) {
-    background-color: var(--cor-branca);
-}
-
-/* Estilização do formulário */
+/* Formulário */
 .divisoria form {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     margin: 30px auto;
     padding: 20px;
     background-color: var(--cor-branca);
-    border: 2px solid var(--cor-misturada);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 20px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
+    border: 1px solid var(--cor-detalhe);
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.divisoria form label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
 }
 
 .divisoria form input,
 .divisoria form textarea {
-    resize: vertical;
-    width: 99%;
-    border: 1px solid #05d9e8;
-    border-radius: 8px;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
     margin-bottom: 10px;
+    border: 1px solid var(--cor-azul);
+    border-radius: 6px;
 }
 
-.divisoria form button {
-    display: block;
+/* Tabelas */
+table {
+    border-collapse: collapse;
     width: 100%;
-    padding: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+thead {
     background-color: var(--cor-rosa);
     color: var(--cor-branca);
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
 
-.divisoria form button:hover {
-    background-color: var(--cor-misturada);
-    border-radius: 10px;
+tbody tr:nth-child(even) {
+    background-color: var(--cor-detalhe);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .chatbot {
+        width: 90%;
+        height: 300px;
+    }
 }

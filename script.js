@@ -1,71 +1,98 @@
+// ------------------------
+// Chatbot
+// ------------------------
 const chatInput = document.querySelector('.chatbot-input-area input');
 const sendButton = document.querySelector('.chatbot-input-area button');
 const messagesContainer = document.querySelector('.chatbot-mensagens');
-const userMessageElement = document.querySelector('chatbot-mensagemusario')
+const chatbot = document.querySelector('.chatbot');
+const toggleChatBtn = document.getElementById('toggleChat');
 
-let conversationState = 0;
+// Estado da conversa
+let conversationStep = 0;
 
+// Evento: enviar mensagem pelo botão
 sendButton.addEventListener('click', () => {
     sendMessage();
 });
 
+// Evento: enviar mensagem com Enter
 chatInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         sendMessage();
     }
 });
 
+// Função: enviar mensagem
 function sendMessage() {
     const messageText = chatInput.value.trim();
+    if (messageText === '') return;
 
-    if (messageText === '') {
-        return;
-    }
-
+    // Cria mensagem do usuário
     const userMessageElement = document.createElement('p');
     userMessageElement.textContent = messageText;
     userMessageElement.style.backgroundColor = '#d1f7ff';
-    userMessageElement.style.color = "#000000ff"
-    userMessageElement.style.alignSelf = 'flex-end';
+    userMessageElement.style.textAlign = 'right';
     messagesContainer.appendChild(userMessageElement);
 
     chatInput.value = '';
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
+    // Resposta automática do bot
     setTimeout(() => {
-        if (conversationState === 0) {
-            addBotMessage("Poderia descrever o item para que eu possa auxiliar?");
-            conversationState = 1;
-        } else if (conversationState === 1) {
-            const produtos = document.querySelectorAll('.produto-item');
-            const terceiroProduto = produtos[2];
-
-            const nomeProduto = terceiroProduto.querySelector('h3').textContent;
-            const precoProduto = terceiroProduto.querySelector('p').textContent;
-
-            const botResponseHTML = `
-                Encontrei! <strong>${nomeProduto}</strong> por <strong>${precoProduto}</strong>.
-                <br><br>
-                <button class="comprar-btn" onclick="handlePurchase()">Comprar</button>
-            `;
-            addBotMessage(botResponseHTML);
-            conversationState = 2;
-        }
+        handleBotResponse(messageText);
     }, 500);
 }
 
-function addBotMessage(htmlContent) {
+// Função: lógica de resposta do bot
+function handleBotResponse(userMessage) {
+    if (conversationStep === 0) {
+        addBotMessage("Certo, me diga qual categoria você procura: Teclados, Cadeiras ou Mesas?");
+        conversationStep = 1;
+    } else if (conversationStep === 1) {
+        if (userMessage.toLowerCase().includes("teclado")) {
+            addBotMessage("Encontrei alguns teclados disponíveis na seção Teclados.");
+        } else if (userMessage.toLowerCase().includes("cadeira")) {
+            addBotMessage("Veja nossas opções de cadeiras na seção Cadeiras.");
+        } else if (userMessage.toLowerCase().includes("mesa")) {
+            addBotMessage("Temos mesas disponíveis na seção Mesas.");
+        } else {
+            addBotMessage("Não entendi bem. Você pode repetir usando Teclados, Cadeiras ou Mesas?");
+        }
+        conversationStep = 0; // reseta a conversa
+    }
+}
+
+// Função: adicionar mensagem do bot
+function addBotMessage(text) {
     const botMessageElement = document.createElement('p');
-    botMessageElement.innerHTML = htmlContent;
+    botMessageElement.textContent = text;
+    botMessageElement.style.backgroundColor = '#ffffff';
+    botMessageElement.style.border = "1px solid #ddd";
+    botMessageElement.style.textAlign = 'left';
     messagesContainer.appendChild(botMessageElement);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-function handlePurchase() {
-    addBotMessage("Obrigado pela sua compra!");
-    conversationState = 0; 
-}
+// ------------------------
+// Modal de compra
+// ------------------------
+const comprarButtons = document.querySelectorAll('.comprar-btn');
+const modalCompra = new bootstrap.Modal(document.getElementById('modalCompra'));
 
-window.onload = () => {
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-};
+comprarButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        modalCompra.show();
+    });
+});
+
+// ------------------------
+// Minimizar chat
+// ------------------------
+toggleChatBtn.addEventListener('click', () => {
+    chatbot.classList.toggle('minimized');
+});
+
+// No mobile, começa minimizado
+if (window.innerWidth <= 768) {
+    chatbot.classList.add('minimized');
+}
