@@ -77,8 +77,6 @@ main h3 {
 .produto-item h5 {
     font-size: 0.95rem;
     margin-bottom: 8px;
-    /* Força altura para padronizar títulos */
-    min-height: 38px; 
 }
 
 .produto-item p {
