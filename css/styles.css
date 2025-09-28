@@ -252,16 +252,35 @@ table {
     max-width: 800px;
     margin: 20px auto;
     font-size: 0.9rem;
-    text-align: center;
+    text-align: right;
 }
+
+table td:first-child,
+table th:first-child {
+    text-align: left;
+}
+
 
 thead {
     background-color: var(--cor-rosa);
-    color: var(--cor-branca);
+    color: var(--cor-detalhe);
 }
 
-tbody tr:nth-child(even) {
+table tr {
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #333;
+}
+
+tfoot tr {
+    border-top: 2.5px solid #333;
+}
+
+tfoot, tbody tr:nth-child(odd) {
     background-color: var(--cor-detalhe);
+}
+
+table tfoot td {
+    font-weight: bold;
 }
 
 /* Responsividade */
