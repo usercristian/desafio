@@ -59,7 +59,7 @@ nav.custom-navbar {
     font-weight: bold;
     color: var(--cor-rosa);
     background-color: #f8f9fa;
-    padding: 10px 15px;
+    padding: 15px 15px;
     border-radius: 10px;
     border-left: 5px solid var(--cor-rosa);
 }
@@ -260,7 +260,7 @@ nav.custom-navbar {
 /* --- ESTILOS RESTAURADOS PARA A PÁGINA DE INFORMAÇÕES --- */
 body.body-info {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--cor-fundo);
+    background-color: #ffffff;
     color: #ffffff;
     display: flex;
     flex-direction: column;
