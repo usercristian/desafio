@@ -25,8 +25,25 @@ main {
     flex: 1;
 }
 
+/* --- Estilo para a Logo na Navbar --- */
 .navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: var(--cor-branca);
+    border-radius: 20px;
+}
+
+.navbar-brand img {
+    height: 35px;
+}
+
+.navbar-brand .logo-text {
+    color: var(--cor-azul);
     font-weight: bold;
+    font-size: 1.1rem;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 nav.custom-navbar {
@@ -34,25 +51,32 @@ nav.custom-navbar {
     color: var(--cor-branca);
 }
 
-main h3 {
+/* --- Estilo do Título da Categoria --- */
+.titulo-categoria {
     margin-top: 30px;
     margin-bottom: 15px;
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--cor-rosa);
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border-left: 5px solid var(--cor-rosa);
 }
 
+/* --- Estilo da Seção de Produtos --- */
 .row.mb-4 {
     padding: 15px;
-    border: 1px dashed #ccc;
     border-radius: 25px;
     background-color: #fafafa;
+    border: none;
+    box-shadow: 0 0 15px rgba(5, 217, 232, 0.5);
 }
 
 .img-prod {
     width: 110px;       
     height: 110px;     
-    object-fit: contain; /* ALTERADO DE 'cover' PARA 'contain' */
+    object-fit: contain;
     margin: 10px auto;  
     display: block;
     border-radius: 8px; 
@@ -61,12 +85,13 @@ main h3 {
 .produto-item {
     border: 1px solid var(--cor-detalhe);
     border-radius: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(5, 217, 232, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .produto-item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(5, 217, 232, 0.6);
 }
 
 .produto-item h5 {
@@ -79,20 +104,21 @@ main h3 {
 }
 
 .comprar-btn {
-    background-color: #05d9e8; /* O azul exato que você pediu */
-    border-color: #05d9e8;
-    color: #1c1c1c; /* Cor do texto para um bom contraste */
+    background-color: #05d9e8 !important;
+    border-color: #05d9e8 !important;
+    color: #1c1c1c !important;
     font-weight: bold;
-    border-radius: 5px; /* Bordas um pouco arredondadas */
+    border-radius: 5px;
     transition: background-color 0.2s ease;
 }
 
 .comprar-btn:hover {
-    background-color: #04c0cc; /* Um tom de azul um pouco mais escuro para o hover */
-    border-color: #04c0cc;
-    color: #1c1c1c;
+    background-color: #04c0cc !important;
+    border-color: #04c0cc !important;
+    color: #1c1c1c !important;
 }
 
+/* --- Estilos do Chatbot --- */
 .chatbot {
     position: fixed;
     bottom: 20px;
@@ -180,29 +206,25 @@ main h3 {
     height: auto;
 }
 
-
 #toggleChat {
     font-size: 0.9rem;
     padding: 2px 6px;
 }
 
+/* --- Estilo do Rodapé --- */
 .rodape {
     text-align: center;
     background-color: var(--cor-rosa);
     color: var(--cor-branca);
-    padding: 10px;
+    padding: 8px;
     margin-top: auto;
 }
 
-@media (max-width: 768px) {
-    .chatbot {
-        width: 90%;
-        height: 300px;
-    }
+.rodape p {
+    margin-bottom: 0;
 }
 
-/* Página contato */
-
+/* --- ESTILOS RESTAURADOS PARA A PÁGINA DE CONTATO --- */
 .divisoria form {
     width: 100%;
     max-width: 500px;
@@ -230,7 +252,8 @@ main h3 {
     border-radius: 6px;
 }
 
-.divisoria form button[type="submit"] {
+.divisoria form button[type="submit"],
+.divisoria form button[type="button"] { /* Aplicado ao botão do formulário também */
     display: block;
     width: 100%;
     padding: 10px;
@@ -244,48 +267,13 @@ main h3 {
     transition: background-color 0.2s;
 }
 
-.divisoria form button[type="submit"]:hover {
+.divisoria form button[type="submit"]:hover,
+.divisoria form button[type="button"]:hover {
     background-color: #e02460; 
 }
 
-/* Página informações */
-/* table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    font-size: 0.9rem;
-    text-align: right;
-}
 
-table td:first-child,
-table th:first-child {
-    text-align: left;
-}
-
-
-thead {
-    background-color: var(--cor-rosa);
-    color: var(--cor-detalhe);
-}
-
-table tr {
-    border-bottom: 1px solid #333;
-    border-top: 1px solid #333;
-}
-
-tfoot tr {
-    border-top: 2.5px solid #333;
-}
-
-tfoot, tbody tr:nth-child(odd) {
-    background-color: var(--cor-detalhe);
-}
-
-table tfoot td {
-    font-weight: bold;
-} */
-
+/* --- ESTILOS RESTAURADOS PARA A PÁGINA DE INFORMAÇÕES --- */
 body.body-info {
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--cor-fundo);
@@ -302,11 +290,11 @@ body.body-info .container {
     padding: 0 1rem;
 }
 
-body.body-info footer {
+body.body-info footer.rodape {
     background-color: #ff2a6d;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 8px;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: auto;
 }
@@ -324,7 +312,6 @@ body.body-info .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .card-header .icone-expandir {
@@ -350,19 +337,30 @@ body.body-info .card-body li {
     margin-bottom: 0.5rem;
 }
 
+/* --- Regras de Responsividade --- */
+@media (max-width: 768px) {
+    .chatbot {
+        width: 90%;
+        height: 300px;
+    }
+    .navbar-brand .logo-text {
+        display: none;
+    }
+}
+
 @media (max-width: 576px) {
     body.body-info .container {
-        max-width: 100%; /* Permite usar 100% da largura da tela */
-        padding: 0 0.5rem; /* Reduz o padding para aproveitamento do espaço */
+        max-width: 100%;
+        padding: 0 0.5rem;
     }
 
     body.body-info header .container,
     body.body-info .navbar .container {
-        padding: 0; /* Remove ou ajusta o padding, se necessário */
+        padding: 0;
     }
 
-    body.body-info .card-header h4 {
-        font-size: 1.1rem; /* Ajusta tamanho da fonte, se necessário */
+    body.body-info .card-header h4,
+    body.body-info .card-header p {
+        font-size: 1.1rem;
     }
 }
-
