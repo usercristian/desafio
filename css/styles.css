@@ -4,6 +4,15 @@ html, body {
     padding: 0;
 }
 
+:root {
+    --cor-azul: #05d9e8;
+    --cor-rosa: #ff2a6d;
+    --cor-branca: #ffffff;
+    --cor-detalhe: #d1f7ff;
+    --cor-fundo: #1c1c1c;
+}
+
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -16,55 +25,73 @@ main {
     flex: 1;
 }
 
-:root {
-    --cor-azul: #05d9e8;
-    --cor-rosa: #ff2a6d;
-    --cor-branca: #ffffff;
-    --cor-detalhe: #d1f7ff;
-}
-
+/* --- Estilo para a Logo na Navbar --- */
 .navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: var(--cor-branca);
+    border-radius: 20px;
+}
+
+.navbar-brand img {
+    height: 35px;
+}
+
+.navbar-brand .logo-text {
+    color: var(--cor-azul);
     font-weight: bold;
+    font-size: 1.1rem;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.custom-navbar {
+nav.custom-navbar {
     background-color: var(--cor-rosa);
+    color: var(--cor-branca);
 }
 
-
-main h3 {
+/* --- Estilo do Título da Categoria --- */
+.titulo-categoria {
     margin-top: 30px;
     margin-bottom: 15px;
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--cor-rosa);
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border-left: 5px solid var(--cor-rosa);
 }
 
+/* --- Estilo da Seção de Produtos --- */
 .row.mb-4 {
     padding: 15px;
-    border: 1px dashed #ccc;
     border-radius: 25px;
     background-color: #fafafa;
+    border: none;
+    box-shadow: 0 0 15px rgba(5, 217, 232, 0.5);
 }
 
 .img-prod {
-    width: 100%;
-    max-height: 120px; 
-    max-width: 100px;
+    width: 110px;       
+    height: 110px;     
     object-fit: contain;
-    margin: 10px auto;
+    margin: 10px auto;  
     display: block;
+    border-radius: 8px; 
 }
 
 .produto-item {
     border: 1px solid var(--cor-detalhe);
     border-radius: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(5, 217, 232, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .produto-item:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(5, 217, 232, 0.6);
 }
 
 .produto-item h5 {
@@ -77,14 +104,21 @@ main h3 {
 }
 
 .comprar-btn {
-    background-color: var(--cor-azul);
-    border: none;
+    background-color: #05d9e8 !important;
+    border-color: #05d9e8 !important;
+    color: #1c1c1c !important;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
 }
 
 .comprar-btn:hover {
-    background-color: #04c0cc;
+    background-color: #04c0cc !important;
+    border-color: #04c0cc !important;
+    color: #1c1c1c !important;
 }
 
+/* --- Estilos do Chatbot --- */
 .chatbot {
     position: fixed;
     bottom: 20px;
@@ -114,22 +148,6 @@ main h3 {
     flex-grow: 1;
     overflow-y: auto;
     background-color: #f5f5f5;
-}
-
-.chatbot-mensagens p {
-    margin-bottom: 8px;
-    padding: 6px 10px;
-    border-radius: 6px;
-    background-color: var(--cor-branca);
-    border: 1px solid #ddd;
-    font-size: 0.9rem;
-    text-align: left; 
-}
-
-.chatbot-mensagens p.user-message {
-    background-color: var(--cor-detalhe); 
-    text-align: right; 
-    border: 1px solid var(--cor-azul); 
 }
 
 .chatbot-input-area {
@@ -172,20 +190,25 @@ main h3 {
     height: auto;
 }
 
-
 #toggleChat {
     font-size: 0.9rem;
     padding: 2px 6px;
 }
 
+/* --- Estilo do Rodapé --- */
 .rodape {
     text-align: center;
     background-color: var(--cor-rosa);
     color: var(--cor-branca);
-    padding: 10px;
+    padding: 8px;
     margin-top: auto;
 }
 
+.rodape p {
+    margin-bottom: 0;
+}
+
+/* --- ESTILOS RESTAURADOS PARA A PÁGINA DE CONTATO --- */
 .divisoria form {
     width: 100%;
     max-width: 500px;
@@ -213,7 +236,8 @@ main h3 {
     border-radius: 6px;
 }
 
-.divisoria form button[type="submit"] {
+.divisoria form button[type="submit"],
+.divisoria form button[type="button"] { /* Aplicado ao botão do formulário também */
     display: block;
     width: 100%;
     padding: 10px;
@@ -227,50 +251,211 @@ main h3 {
     transition: background-color 0.2s;
 }
 
-.divisoria form button[type="submit"]:hover {
+.divisoria form button[type="submit"]:hover,
+.divisoria form button[type="button"]:hover {
     background-color: #e02460; 
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    font-size: 0.9rem;
-    text-align: right;
+
+/* --- ESTILOS RESTAURADOS PARA A PÁGINA DE INFORMAÇÕES --- */
+body.body-info {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--cor-fundo);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: large;
 }
 
-table td:first-child,
-table th:first-child {
-    text-align: left;
+body.body-info .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-
-thead {
-    background-color: var(--cor-rosa);
-    color: var(--cor-detalhe);
+body.body-info footer.rodape {
+    background-color: #ff2a6d;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: auto;
 }
 
-table tr {
-    border-bottom: 1px solid #333;
-    border-top: 1px solid #333;
+body.body-info .card {
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-azul);
 }
 
-tfoot tr {
-    border-top: 2.5px solid #333;
-}
-
-tfoot, tbody tr:nth-child(odd) {
-    background-color: var(--cor-detalhe);
-}
-
-table tfoot td {
+body.body-info .card-header {
+    background-color: var(--cor-azul);
+    color: var(--cor-fundo);
     font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.card-header .icone-expandir {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--cor-azul);
+    color: var(--cor-fundo);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+}
+
+body.body-info .card-body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-detalhe);
+    text-align: justify;
+    line-height: 2;
+}
+
+body.body-info .card-body li {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Regras de Responsividade --- */
 @media (max-width: 768px) {
     .chatbot {
         width: 90%;
         height: 300px;
     }
+    .navbar-brand .logo-text {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    body.body-info .container {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    body.body-info header .container,
+    body.body-info .navbar .container {
+        padding: 0;
+    }
+
+    body.body-info .card-header h4,
+    body.body-info .card-header p {
+        font-size: 1.1rem;
+    }
+}
+/* card de produto no Chatbot --- */
+.chatbot-product-card {
+    background-color: var(--cor-branca);
+    border: 1px solid var(--cor-detalhe);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.chatbot-product-card img {
+    max-width: 80px;  /* Tamanho menor para a imagem caber no chat */
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.chatbot-product-card p {
+    margin-bottom: 10px !important;
+    font-size: 0.9rem !important;
+}
+
+.chatbot-confirmation-buttons button {
+    padding: 5px 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-confirm-yes {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-confirm-no {
+    background-color: #dc3545;
+    color: white;
+}
+
+.chatbot-mensagens {
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+.bot-message, .user-message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    max-width: 85%;
+    line-height: 1.4;
+}
+
+.bot-message p, .user-message p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Mensagens do BOT  */
+.bot-message {
+    background-color: #e9e9eb;
+    border: 1px solid #ddd;
+    align-self: flex-start; /* Alinha à esquerda */
+    border-top-left-radius: 0; /* Efeito de "cauda" na bolha */
+}
+
+/* Mensagens do USUÁRIO  */
+.user-message {
+    background-color: var(--cor-detalhe);
+    border: 1px solid var(--cor-azul);
+    align-self: flex-end; /* Alinha à direita */
+    border-top-right-radius: 0; /* Efeito de "cauda" na bolha */
+}
+
+/* --- ESTILO PARA A BARRA DE BUSCA --- */
+.search-bar-container {
+    max-width: 600px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-bar-container .form-control {
+    border-radius: 50px 0 0 50px; 
+    border: 1px solid #ced4da;
+    border-right: none;
+    padding-left: 20px;
+    font-size: 0.9rem;
+}
+
+.search-bar-container .form-control:focus {
+    border-color: var(--cor-azul); 
+    box-shadow: 0 0 0 0.25rem rgba(5, 217, 232, 0.25); 
+}
+
+.search-bar-container .btn-search {
+    background-color: var(--cor-rosa);
+    color: var(--cor-branca);
+    border-radius: 0 50px 50px 0; 
+    border: 1px solid var(--cor-rosa);
+    padding: 0.5rem 1.2rem;
+    transition: background-color 0.2s ease;
+}
+
+.search-bar-container .btn-search:hover {
+    background-color: #d6225a; 
+    color: var(--cor-branca);
 }
