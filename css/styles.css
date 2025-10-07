@@ -282,7 +282,7 @@ table tfoot td {
 
 body.body-info {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--cor-fundo);
+    background-color: white;
     color: #ffffff;
     display: flex;
     flex-direction: column;
