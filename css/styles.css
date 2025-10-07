@@ -283,12 +283,12 @@ body.body-info footer.rodape {
     margin-top: auto;
 }
 
-body.body-info .card {
+.cards-info .card {
     background-color: var(--cor-fundo);
     border: 1px solid var(--cor-azul);
 }
 
-body.body-info .card-header {
+.cards-info .card-header {
     background-color: var(--cor-azul);
     color: var(--cor-fundo);
     font-weight: bold;
@@ -310,14 +310,14 @@ body.body-info .card-header {
     transition: transform 0.2s ease;
 }
 
-body.body-info .card-body {
+.cards-info .card-body {
     background-color: var(--cor-fundo);
     color: var(--cor-detalhe);
     text-align: justify;
     line-height: 2;
 }
 
-body.body-info .card-body li {
+.cards-info .card-body li {
     margin-bottom: 0.5rem;
 }
 
@@ -333,18 +333,18 @@ body.body-info .card-body li {
 }
 
 @media (max-width: 576px) {
-    body.body-info .container {
+    .cards-info .container {
         max-width: 100%;
         padding: 0 0.5rem;
     }
 
-    body.body-info header .container,
-    body.body-info .navbar .container {
+    .cards-info header .container,
+    .cards-info .navbar .container {
         padding: 0;
     }
 
-    body.body-info .card-header h4,
-    body.body-info .card-header p {
+    .cards-info .card-header h4,
+    .cards-info .card-header p {
         font-size: 1.1rem;
     }
 }
