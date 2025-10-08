@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -31,7 +32,7 @@ main {
     align-items: center;
     padding: 5px;
     background-color: var(--cor-branca);
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .navbar-brand img {
@@ -74,12 +75,12 @@ nav.custom-navbar {
 }
 
 .img-prod {
-    width: 110px;       
-    height: 110px;     
+    width: 110px;
+    height: 110px;
     object-fit: contain;
-    margin: 10px auto;  
+    margin: 10px auto;
     display: block;
-    border-radius: 8px; 
+    border-radius: 8px;
 }
 
 .produto-item {
@@ -128,7 +129,7 @@ nav.custom-navbar {
     height: 350px;
     background-color: var(--cor-branca);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -217,7 +218,7 @@ nav.custom-navbar {
     background-color: var(--cor-branca);
     border: 1px solid var(--cor-detalhe);
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .divisoria form label {
@@ -237,7 +238,8 @@ nav.custom-navbar {
 }
 
 .divisoria form button[type="submit"],
-.divisoria form button[type="button"] { /* Aplicado ao botão do formulário também */
+.divisoria form button[type="button"] {
+    /* Aplicado ao botão do formulário também */
     display: block;
     width: 100%;
     padding: 10px;
@@ -253,7 +255,7 @@ nav.custom-navbar {
 
 .divisoria form button[type="submit"]:hover,
 .divisoria form button[type="button"]:hover {
-    background-color: #e02460; 
+    background-color: #e02460;
 }
 
 
@@ -289,13 +291,15 @@ body.body-info footer.rodape {
 }
 
 .cards-info .card-header {
-    background-color: var(--cor-azul);
+    background-color: white;
+    border-color: var(--cor-azul);
     color: var(--cor-fundo);
     font-weight: bold;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 6px 16px rgba(5, 217, 232, 0.6);
 }
 
 .card-header .icone-expandir {
@@ -303,7 +307,6 @@ body.body-info footer.rodape {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: var(--cor-azul);
     color: var(--cor-fundo);
     padding: 0.25rem 0.5rem;
     font-size: 0.9rem;
@@ -311,8 +314,8 @@ body.body-info footer.rodape {
 }
 
 .cards-info .card-body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-detalhe);
+    background-color: var(--cor-branca);
+    color: cor var(--cor-fundo);
     text-align: justify;
     line-height: 2;
 }
@@ -327,6 +330,7 @@ body.body-info footer.rodape {
         width: 90%;
         height: 300px;
     }
+
     .navbar-brand .logo-text {
         display: none;
     }
@@ -348,6 +352,7 @@ body.body-info footer.rodape {
         font-size: 1.1rem;
     }
 }
+
 /* card de produto no Chatbot --- */
 .chatbot-product-card {
     background-color: var(--cor-branca);
@@ -359,7 +364,8 @@ body.body-info footer.rodape {
 }
 
 .chatbot-product-card img {
-    max-width: 80px;  /* Tamanho menor para a imagem caber no chat */
+    max-width: 80px;
+    /* Tamanho menor para a imagem caber no chat */
     border-radius: 6px;
     margin-bottom: 8px;
 }
@@ -397,7 +403,8 @@ body.body-info footer.rodape {
     flex-direction: column;
 }
 
-.bot-message, .user-message {
+.bot-message,
+.user-message {
     padding: 8px 12px;
     border-radius: 15px;
     margin-bottom: 8px;
@@ -405,7 +412,8 @@ body.body-info footer.rodape {
     line-height: 1.4;
 }
 
-.bot-message p, .user-message p {
+.bot-message p,
+.user-message p {
     margin: 0;
     font-size: 0.9rem;
 }
@@ -414,27 +422,31 @@ body.body-info footer.rodape {
 .bot-message {
     background-color: #e9e9eb;
     border: 1px solid #ddd;
-    align-self: flex-start; /* Alinha à esquerda */
-    border-top-left-radius: 0; /* Efeito de "cauda" na bolha */
+    align-self: flex-start;
+    /* Alinha à esquerda */
+    border-top-left-radius: 0;
+    /* Efeito de "cauda" na bolha */
 }
 
 /* Mensagens do USUÁRIO  */
 .user-message {
     background-color: var(--cor-detalhe);
     border: 1px solid var(--cor-azul);
-    align-self: flex-end; /* Alinha à direita */
-    border-top-right-radius: 0; /* Efeito de "cauda" na bolha */
+    align-self: flex-end;
+    /* Alinha à direita */
+    border-top-right-radius: 0;
+    /* Efeito de "cauda" na bolha */
 }
 
 /* --- ESTILO PARA A BARRA DE BUSCA --- */
 .search-bar-container {
-    max-width: 600px; 
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .search-bar-container .form-control {
-    border-radius: 50px 0 0 50px; 
+    border-radius: 50px 0 0 50px;
     border: 1px solid #ced4da;
     border-right: none;
     padding-left: 20px;
@@ -442,20 +454,20 @@ body.body-info footer.rodape {
 }
 
 .search-bar-container .form-control:focus {
-    border-color: var(--cor-azul); 
-    box-shadow: 0 0 0 0.25rem rgba(5, 217, 232, 0.25); 
+    border-color: var(--cor-azul);
+    box-shadow: 0 0 0 0.25rem rgba(5, 217, 232, 0.25);
 }
 
 .search-bar-container .btn-search {
     background-color: var(--cor-rosa);
     color: var(--cor-branca);
-    border-radius: 0 50px 50px 0; 
+    border-radius: 0 50px 50px 0;
     border: 1px solid var(--cor-rosa);
     padding: 0.5rem 1.2rem;
     transition: background-color 0.2s ease;
 }
 
 .search-bar-container .btn-search:hover {
-    background-color: #d6225a; 
+    background-color: #d6225a;
     color: var(--cor-branca);
 }
