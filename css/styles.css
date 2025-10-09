@@ -83,6 +83,17 @@ nav.custom-navbar {
     border-radius: 8px;
 }
 
+.img-logo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 5px 10px rgba(5, 217, 232, 0.5);
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
 .produto-item {
     border: 1px solid var(--cor-detalhe);
     border-radius: 15px;
@@ -299,7 +310,7 @@ body.body-info footer.rodape {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 6px 16px rgba(5, 217, 232, 0.6);
+    box-shadow: 0 5px 10px rgba(5, 217, 232, 0.6);
 }
 
 .card-header .icone-expandir {
