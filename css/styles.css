@@ -482,3 +482,8 @@ body.body-info footer.rodape {
     background-color: #d6225a;
     color: var(--cor-branca);
 }
+
+
+.price-text {
+    color: var(--cor-rosa);
+}
