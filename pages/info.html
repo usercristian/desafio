@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body class="body-info d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 body-info">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
             <div class="container">
@@ -32,60 +32,85 @@
         </nav>
     </header>
 
-    <div class="container my-5">
-        <div class="accordion" id="infoAccordion">
+    <main class="container my-5">
+        <div class="text-center mb-4">
+            <img src="../images/logo.png" alt="Logo Happy Game" class="img-logo">
+        </div>
 
-            <div class="card mb-3">
-                <div class="card-header" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                    <p class="mb-0">Agente de IA para E-commerce Gamer</p>
-                    <span class="icone-expandir">▼</span>
-                </div>
-                <div id="collapseOne" class="collapse show" data-bs-parent="#infoAccordion">
-                    <div class="card-body">
-                        <p>O projeto consiste na criação de um <strong>e-commerce gamer integrado a inteligência artificial</strong>, com foco em oferecer suporte e recomendações personalizadas. O diferencial está em um chatbot interativo que atua como guia, recomendando produtos e respondendo dúvidas.</p>
-                        <strong>Funcionalidades:</strong>
-                        <ul>
-                            <li><strong>Chatbot Inteligente:</strong> Interação natural com recomendações personalizadas.</li>
-                            <li><strong>Visualização de Produtos:</strong> Interface clara com fotos e preços.</li>
-                            <li><strong>Navegação Estruturada:</strong> Menus organizados para explorar categorias.</li>
-                        </ul>
+        <div class="cards-info">
+            <div class="accordion" id="infoAccordion">
+
+                <div class="card mb-3">
+                    <div class="card-header" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                        <p class="mb-0">Assistente de IA para E-commerce Gamer</p>
+                        <span class="icone-expandir">▼</span>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-bs-parent="#infoAccordion">
+                        <div class="card-body">
+                            <p>O projeto consiste na criação de um <strong>e-commerce gamer integrado a inteligência artificial</strong>, com foco em oferecer suporte e recomendações personalizadas. A proposta é utilizar a ascensão da IA generativa para transformar a experiência de compra em algo simples e eficiente, eliminando atritos na jornada do consumidor.</p>
+                            <p><strong>Funcionalidades:</strong></p>
+                            <ul>
+                                <li><strong>Chatbot de IA Generativa:</strong> Interação natural com recomendações personalizadas.</li>
+                                <li><strong>Visualização de Produtos:</strong> Interface clara com fotos, preços e detalhes.</li>
+                                <li><strong>Navegação Estruturada:</strong> Menus organizados para explorar categorias com fluidez.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card mb-3">
-                <div class="card-header" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                    <p class="mb-0">Mercado e Receita</p>
-                    <span class="icone-expandir">▼</span>
-                </div>
-                <div id="collapseTwo" class="collapse" data-bs-parent="#infoAccordion">
-                    <div class="card-body">
-                        <p>O mercado de acessórios gamer apresentou forte expansão: a receita total subiu de <strong>R$ 175 milhões para R$ 261,8 milhões</strong> entre 2022 e 2025. Mouses cresceram de R$ 52 mi para R$ 73 mi e teclados de R$ 42 mi para R$ 60,8 mi, confirmando a consolidação do setor.</p>
+                <div class="card mb-3">
+                    <div class="card-header collapsed" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false">
+                        <p class="mb-0">Receita do Mercado</p>
+                        <span class="icone-expandir">▼</span>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-bs-parent="#infoAccordion">
+                        <div class="card-body">
+                            <p>O mercado é promissor, movimentando mais de R$ 200 milhões ao ano. De <strong>2022 a 2025</strong>, o setor de acessórios gamer apresentou forte expansão: a receita total subiu de <strong>R$ 175 milhões para R$ 261,8 milhões</strong>. Mouses e teclados lideraram o crescimento, confirmando a consolidação do setor no Brasil.</p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered mt-3">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Ano</th>
+                                            <th>Vendas (R$ Milhões)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>2022</td><td>R$ 175 mi</td></tr>
+                                        <tr><td>2023</td><td>R$ 188 mi</td></tr>
+                                        <tr><td>2024</td><td>R$ 215 mi</td></tr>
+                                        <tr><td>2025</td><td>R$ 262 mi</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="card mb-3">
-                <div class="card-header" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                    <p class="mb-0">Design e Tecnologia</p>
-                    <span class="icone-expandir">▼</span>
-                </div>
-                <div id="collapseThree" class="collapse" data-bs-parent="#infoAccordion">
-                    <div class="card-body">
-                        <p>O website foi desenvolvido com uma identidade vibrante, alinhada ao universo gamer. A paleta de cores utiliza <strong>Azul (#05d9e8)</strong> e <strong>Rosa (#ff2a6d)</strong> para garantir consistência. A estrutura responsiva foi criada com <strong>Bootstrap</strong>, utilizando seu Grid System e componentes como cards e modais, enquanto o dinamismo é adicionado com <strong>JavaScript</strong>.</p>
+                <div class="card mb-3">
+                    <div class="card-header collapsed" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false">
+                        <p class="mb-0">Design e Tecnologia</p>
+                        <span class="icone-expandir">▼</span>
+                    </div>
+                    <div id="collapseThree" class="collapse" data-bs-parent="#infoAccordion">
+                        <div class="card-body">
+                            <h5>Logo</h5>
+                            <p>A logo une o carrinho de compras e o balão de chat, refletindo a experiência de compra via conversa. As cores, azul e rosa, inspiradas no universo gamer, adicionam um toque moderno.</p>
+                            <h5>Website</h5>
+                            <p>O site foi desenvolvido com uma identidade vibrante. A paleta de cores, definida em variáveis CSS, utiliza <strong>Azul (#05d9e8)</strong> e <strong>Rosa (#ff2a6d)</strong>. A estrutura responsiva foi criada com <strong>Bootstrap</strong>, utilizando seu Grid System, e o dinamismo é adicionado com <strong>JavaScript</strong>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer class="rodape mt-auto">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <div class="col-lg-6 text-center text-lg-start mb-2 mb-lg-0">
                     <p class="mb-0">&copy; 2025 Cristian Gadelha, João Beraldo, Pedro Henrique</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
+                <div class="col-lg-6 text-center text-lg-end">
                     <h5 class="sitemap-title">Mapa do Site</h5>
                     <ul class="sitemap-list">
                         <li><a href="../index.html">Início</a></li>
@@ -98,5 +123,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../script.js"></script> </body>
+    <script src="../script.js"></script>
+</body>
 </html>
