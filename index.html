@@ -2,17 +2,21 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <!-- Configura responsividade para dispositivos móveis -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Game</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fonte Roboto Slab -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  <!-- Estilos personalizados do projeto -->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Importa CSS do Bootstrap para layout e estilização -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-<body class="d-flex flex-column min-vh-100">
 
+<body class="d-flex flex-column min-vh-100">
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div class="container">
@@ -23,6 +27,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Abrir navegação">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- Links de navegação -->
         <div class="collapse navbar-collapse" id="menuNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
@@ -34,10 +39,12 @@
     </nav>
   </header>
 
+  <!-- Lojinha -->
   <main class="container my-4 flex-grow-1">
-
+    <!-- Seção de Teclados -->
     <h3 class="titulo-categoria">Teclados</h3>
     <div class="row g-4 mb-4 justify-content-center">
+      <!-- Produto: Teclado Mecânico -->
       <div class="col-6 col-md-4 col-lg-3">
         <div class="card produto-item h-100">
           <img src="images/teclado.webp" class="card-img-top img-prod" alt="Teclado Mecânico">
@@ -48,6 +55,7 @@
           </div>
         </div>
       </div>
+      <!-- Produto: Teclado Gamer RGB -->
       <div class="col-6 col-md-4 col-lg-3">
         <div class="card produto-item h-100">
           <img src="images/Teclado.2.png" class="card-img-top img-prod" alt="Teclado Gamer RGB">
@@ -58,6 +66,7 @@
           </div>
         </div>
       </div>
+      <!-- Produto: Teclado Compacto -->
       <div class="col-6 col-md-4 col-lg-3">
         <div class="card produto-item h-100">
           <img src="images/Teclado.3.png" class="card-img-top img-prod" alt="Teclado Compacto">
@@ -70,8 +79,10 @@
       </div>
     </div>
 
+    <!-- Seção de Cadeiras -->
     <h3 class="titulo-categoria">Cadeiras</h3>
     <div class="row g-4 mb-4 justify-content-center">
+      <!-- Produto: Cadeira Gamer Rosa -->
       <div class="col-6 col-md-4 col-lg-3">
         <div class="card produto-item h-100">
           <img src="images/cadeira.jpg" class="card-img-top img-prod" alt="Cadeira Gamer Rosa">
@@ -82,6 +93,7 @@
           </div>
         </div>
       </div>
+      <!-- Produto: Cadeira Fortrek -->
       <div class="col-6 col-md-4 col-lg-3">
         <div class="card produto-item h-100">
           <img src="images/Cadeira.2.png" class="card-img-top img-prod" alt="Cadeira Fortrek">
@@ -92,6 +104,7 @@
           </div>
         </div>
       </div>
+      <!-- Produto: Cadeira Preta -->
       <div class="col-6 col-md-4 col-lg-3">
         <div class="card produto-item h-100">
           <img src="images/Cadeira.3.png" class="card-img-top img-prod" alt="Cadeira Preta">
@@ -104,229 +117,260 @@
       </div>
     </div>
 
+    <!-- Seção de Mesas -->
     <h3 class="titulo-categoria">Mesas</h3>
     <div class="row g-4 mb-4 justify-content-center">
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/mesagamer.jpg" class="card-img-top img-prod" alt="Mesa Gamer com Prateleiras">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Mesa Gamer com Prateleiras</h5>
-                    <p class="card-text price-text fw-bold">R$ 492,79</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      <!-- Produto: Mesa Gamer com Prateleiras -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/mesagamer.jpg" class="card-img-top img-prod" alt="Mesa Gamer com Prateleiras">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Mesa Gamer com Prateleiras</h5>
+            <p class="card-text price-text fw-bold">R$ 492,79</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/Mesa.2.png" class="card-img-top img-prod" alt="Mesa em L">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Mesa em L</h5>
-                    <p class="card-text price-text fw-bold">R$ 450,00</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Mesa em L -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/Mesa.2.png" class="card-img-top img-prod" alt="Mesa em L">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Mesa em L</h5>
+            <p class="card-text price-text fw-bold">R$ 450,00</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/Mesa.3.png" class="card-img-top img-prod" alt="Mesa de Madeira">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Mesa de Madeira</h5>
-                    <p class="card-text price-text fw-bold">R$ 460,00</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Mesa de Madeira -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/Mesa.3.png" class="card-img-top img-prod" alt="Mesa de Madeira">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Mesa de Madeira</h5>
+            <p class="card-text price-text fw-bold">R$ 460,00</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
+      </div>
     </div>
 
+    <!-- Seção de Mouses -->
     <h3 class="titulo-categoria">Mouses</h3>
     <div class="row g-4 mb-4 justify-content-center">
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/mouse.jpg" class="card-img-top img-prod" alt="Mouse Ultra Light">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Mouse Ultra Light</h5>
-                    <p class="card-text price-text fw-bold">R$ 189,99</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      <!-- Produto: Mouse Ultra Light -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/mouse.jpg" class="card-img-top img-prod" alt="Mouse Ultra Light">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Mouse Ultra Light</h5>
+            <p class="card-text price-text fw-bold">R$ 189,99</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/mouserazer.webp" class="card-img-top img-prod" alt="Mouse Razer Edição Especial">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Mouse Razer Edição</h5>
-                    <p class="card-text price-text fw-bold">R$ 299,90</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Mouse Razer Edição Especial -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/mouserazer.webp" class="card-img-top img-prod" alt="Mouse Razer Edição Especial">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Mouse Razer Edição</h5>
+            <p class="card-text price-text fw-bold">R$ 299,90</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/Mouse.3 (2).png" class="card-img-top img-prod" alt="Mouse Logitech">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Mouse Gamer Logitech</h5>
-                    <p class="card-text price-text fw-bold">R$ 249,90</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Mouse Gamer Logitech -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/Mouse.3 (2).png" class="card-img-top img-prod" alt="Mouse Logitech">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Mouse Gamer Logitech</h5>
+            <p class="card-text price-text fw-bold">R$ 249,90</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
+      </div>
     </div>
 
+    <!-- Seção de Fones (Headsets) -->
     <h3 class="titulo-categoria">Fones (Headsets)</h3>
     <div class="row g-4 mb-4 justify-content-center">
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/fone1.webp" class="card-img-top img-prod" alt="Fone RGB 7.1">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Fone RGB 7.1</h5>
-                    <p class="card-text price-text fw-bold">R$ 359,00</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      <!-- Produto: Fone RGB 7.1 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/fone1.webp" class="card-img-top img-prod" alt="Fone RGB 7.1">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Fone RGB 7.1</h5>
+            <p class="card-text price-text fw-bold">R$ 359,00</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/Fone.2.png" class="card-img-top img-prod" alt="Headset Havit">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Headset Havit</h5>
-                    <p class="card-text price-text fw-bold">R$ 199,90</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Headset Havit -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/Fone.2.png" class="card-img-top img-prod" alt="Headset Havit">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Headset Havit</h5>
+            <p class="card-text price-text fw-bold">R$ 199,90</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/Fone.3.png" class="card-img-top img-prod" alt="Headset JBL">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Headset JBL Quantum</h5>
-                    <p class="card-text price-text fw-bold">R$ 289,90</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Headset JBL Quantum -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/Fone.3.png" class="card-img-top img-prod" alt="Headset JBL">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Headset JBL Quantum</h5>
+            <p class="card-text price-text fw-bold">R$ 289,90</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
+      </div>
     </div>
 
+    <!-- Seção de Monitores -->
     <h3 class="titulo-categoria">Monitores</h3>
     <div class="row g-4 mb-4 justify-content-center">
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/Monitor.png" class="card-img-top img-prod" alt="Monitor 27 Polegadas 144hz">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Monitor 27" 144hz</h5>
-                    <p class="card-text price-text fw-bold">R$ 1.299,00</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      <!-- Produto: Monitor 27 Polegadas 144hz -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/Monitor.png" class="card-img-top img-prod" alt="Monitor 27 Polegadas 144hz">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Monitor 27" 144hz</h5>
+            <p class="card-text price-text fw-bold">R$ 1.299,00</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/Monitor.2.png" class="card-img-top img-prod" alt="Monitor LG UltraGear">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Monitor LG UltraGear 24"</h5>
-                    <p class="card-text price-text fw-bold">R$ 1.459,00</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Monitor LG UltraGear -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/Monitor.2.png" class="card-img-top img-prod" alt="Monitor LG UltraGear">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Monitor LG UltraGear 24"</h5>
+            <p class="card-text price-text fw-bold">R$ 1.459,00</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/Monitor.3.png" class="card-img-top img-prod" alt="Monitor Alltek">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Monitor Alltek 21"</h5>
-                    <p class="card-text price-text fw-bold">R$ 899,00</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Monitor Alltek -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/Monitor.3.png" class="card-img-top img-prod" alt="Monitor Alltek">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Monitor Alltek 21"</h5>
+            <p class="card-text price-text fw-bold">R$ 899,00</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
+      </div>
     </div>
 
+    <!-- Seção de Acessórios -->
     <h3 class="titulo-categoria">Acessórios</h3>
     <div class="row g-4 mb-4 justify-content-center">
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/conjunto.webp" class="card-img-top img-prod" alt="Kit Mousepad Extenso">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Kit Mousepad Extenso</h5>
-                    <p class="card-text price-text fw-bold">R$ 99,90</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      <!-- Produto: Kit Mousepad Extenso -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/conjunto.webp" class="card-img-top img-prod" alt="Kit Mousepad Extenso">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Kit Mousepad Extenso</h5>
+            <p class="card-text price-text fw-bold">R$ 99,90</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/suporte.jpg" class="card-img-top img-prod" alt="Suporte para Monitor">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Suporte Monitor USB</h5>
-                    <p class="card-text price-text fw-bold">R$ 159,00</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Suporte para Monitor -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/suporte.jpg" class="card-img-top img-prod" alt="Suporte para Monitor">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Suporte Monitor USB</h5>
+            <p class="card-text price-text fw-bold">R$ 159,00</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-3">
-            <div class="card produto-item h-100">
-                <img src="images/mousepad.jpg" class="card-img-top img-prod" alt="Mousepad Ergonômico">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="card-title">Mousepad Ergonômico</h5>
-                    <p class="card-text price-text fw-bold">R$ 49,90</p>
-                    <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
-                </div>
-            </div>
+      </div>
+      <!-- Produto: Mousepad Ergonômico -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card produto-item h-100">
+          <img src="images/mousepad.jpg" class="card-img-top img-prod" alt="Mousepad Ergonômico">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title">Mousepad Ergonômico</h5>
+            <p class="card-text price-text fw-bold">R$ 49,90</p>
+            <button class="btn btn-sm comprar-btn mt-auto">Comprar</button>
+          </div>
         </div>
+      </div>
     </div>
-
   </main>
 
+  <!-- Modal do Bootstrap para confirmar adição ao carrinho -->
   <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalCompraLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="modalCompraLabel">GG! Item no carrinho!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-            </div>
-            <div class="modal-body">
-                Seu item foi adicionado com sucesso. Continue explorando ou finalize sua compra!
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar explorando</button>
-            </div>
+      <div class="modal-content">
+        <!-- Cabeçalho do modal com estilo de sucesso -->
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="modalCompraLabel">GG! Item no carrinho!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
+        <!-- Mensagem do modal -->
+        <div class="modal-body">
+          Seu item foi adicionado com sucesso. Continue explorando ou finalize sua compra!
+        </div>
+        <!-- Botão para continuar navegando -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar explorando</button>
+        </div>
+      </div>
     </div>
   </div>
 
+  <!-- Chatbot -->
+
   <div class="chatbot">
+    <!-- Título e botão para minimizar o chatbot -->
     <div class="chatbot-titulo">
       Assistente Happy
       <button id="toggleChat" class="btn btn-sm btn-light float-end">–</button>
     </div>
+    <!-- Área de exibição de mensagens -->
     <div class="chatbot-mensagens">
       <div class="bot-message">
         <p>Olá! Sou o Assistente Happy. Para começar, digite o nome de uma categoria que você procura (ex: Mouses, Teclados, Cadeiras).</p>
       </div>
     </div>
+    <!-- Campo de entrada e botão de envio -->
     <div class="chatbot-input-area">
       <input type="text" placeholder="Digite uma categoria...">
       <button>Enviar</button>
     </div>
   </div>
 
+  <!-- Rodapé com informações de copyright e links de navegação -->
   <footer class="rodape mt-auto">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                <p class="mb-0">&copy; 2025 Cristian Gadelha, João Beraldo, Pedro Henrique</p>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <h5 class="sitemap-title">Mapa do Site</h5>
-                <ul class="sitemap-list">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="pages/info.html">Informações</a></li>
-                    <li><a href="pages/form.html">Contato</a></li>
-                </ul>
-            </div>
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="mb-0">&copy; 2025 Cristian Gadelha, João Beraldo, Pedro Henrique</p>
         </div>
+        <!-- Mapa do site -->
+        <div class="col-md-6 text-center text-md-end">
+          <h5 class="sitemap-title">Mapa do Site</h5>
+          <ul class="sitemap-list">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="pages/info.html">Informações</a></li>
+            <li><a href="pages/form.html">Contato</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- Script's -->
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
