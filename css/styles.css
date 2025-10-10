@@ -30,7 +30,6 @@ body {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
     background-color: var(--cor-branca);
@@ -197,9 +196,6 @@ nav.custom-navbar {
 }
 
 /* --- 5. ESTILOS DA PÁGINA DE INFORMAÇÕES --- */
-body.body-info {
-    font-size: large;
-}
 
 .body-info .img-logo {
     width: 100%;
