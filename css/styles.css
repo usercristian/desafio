@@ -1,10 +1,19 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+/* =================================================================
 
+    organização do código:
+   1. Configurações Globais e Variáveis
+   2. Barra de Navegação (Navbar)
+   3. Estilos da Página Principal (Produtos)
+   4. Estilos do Formulário de Contato
+   5. Estilos da Página de Informações
+   6. Estilos do Chatbot
+   7. Estilos do Rodapé (Footer)
+   8. Regras de Responsividade (Media Queries)
+
+
+
+
+/* --- 1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS --- */
 :root {
     --cor-azul: #05d9e8;
     --cor-rosa: #ff2a6d;
@@ -13,12 +22,18 @@ body {
     --cor-fundo: #1c1c1c;
 }
 
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: var(--cor-branca);
     color: #333;
 }
 
@@ -26,7 +41,12 @@ main {
     flex: 1;
 }
 
-/* --- Estilo para a Logo na Navbar --- */
+/* --- 2. BARRA DE NAVEGAÇÃO (NAVBAR) --- */
+nav.custom-navbar {
+    background-color: var(--cor-rosa);
+    color: var(--cor-branca);
+}
+
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -47,12 +67,7 @@ main {
     margin-right: 10px;
 }
 
-nav.custom-navbar {
-    background-color: var(--cor-rosa);
-    color: var(--cor-branca);
-}
-
-/* --- Estilo do Título da Categoria --- */
+/* --- 3. ESTILOS DA PÁGINA PRINCIPAL (PRODUTOS) --- */
 .titulo-categoria {
     margin-top: 30px;
     margin-bottom: 15px;
@@ -65,22 +80,12 @@ nav.custom-navbar {
     border-left: 5px solid var(--cor-rosa);
 }
 
-/* --- Estilo da Seção de Produtos --- */
 .row.mb-4 {
     padding: 15px;
     border-radius: 25px;
     background-color: #fafafa;
     border: none;
     box-shadow: 0 0 15px rgba(5, 217, 232, 0.5);
-}
-
-.img-prod {
-    width: 110px;
-    height: 110px;
-    object-fit: contain;
-    margin: 10px auto;
-    display: block;
-    border-radius: 8px;
 }
 
 .produto-item {
@@ -95,23 +100,32 @@ nav.custom-navbar {
     box-shadow: 0 6px 16px rgba(5, 217, 232, 0.6);
 }
 
+.img-prod {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    margin: 10px auto;
+    display: block;
+    border-radius: 8px;
+}
+
 .produto-item h5 {
     font-size: 0.95rem;
     margin-bottom: 8px;
-}
-
-.price-text {
-    color: var(--cor-rosa);
 }
 
 .produto-item p {
     margin: 0;
 }
 
+.price-text {
+    color: var(--cor-rosa);
+}
+
 .comprar-btn {
-    background-color: #05d9e8 !important;
-    border-color: #05d9e8 !important;
-    color: #1c1c1c !important;
+    background-color: var(--cor-azul) !important;
+    border-color: var(--cor-azul) !important;
+    color: var(--cor-fundo) !important;
     font-weight: bold;
     border-radius: 5px;
     transition: background-color 0.2s ease;
@@ -120,135 +134,9 @@ nav.custom-navbar {
 .comprar-btn:hover {
     background-color: #04c0cc !important;
     border-color: #04c0cc !important;
-    color: #1c1c1c !important;
 }
 
-/* --- Estilos do Chatbot --- */
-.chatbot {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    max-width: 90%;
-    height: 350px;
-    background-color: var(--cor-branca);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 1000;
-}
-
-.chatbot-titulo {
-    background-color: var(--cor-azul);
-    color: var(--cor-branca);
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.chatbot-input-area {
-    display: flex;
-    padding: 8px;
-    border-top: 1px solid #ddd;
-    background-color: #fafafa;
-}
-
-.chatbot-input-area input {
-    flex-grow: 1;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 5px;
-}
-
-.chatbot-input-area button {
-    padding: 6px 12px;
-    background-color: var(--cor-azul);
-    color: var(--cor-branca);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.chatbot-input-area button:hover {
-    background-color: #04c0cc;
-}
-
-.chatbot.minimized .chatbot-mensagens,
-.chatbot.minimized .chatbot-input-area {
-    display: none;
-    height: 0;
-    overflow: hidden;
-    padding: 0;
-}
-
-.chatbot.minimized {
-    height: auto;
-}
-
-#toggleChat {
-    font-size: 0.9rem;
-    padding: 2px 6px;
-}
-
-/* --- Estilos para o Rodapé e Mapa do Site --- */
-.rodape {
-    background-color: var(--cor-rosa);
-    color: var(--cor-branca);
-    padding: 15px 0;
-    margin-top: auto;
-    font-size: 0.8rem;
-}
-
-.rodape p {
-    margin: 0;
-}
-
-.sitemap-title {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.sitemap-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sitemap-list li {
-    display: inline-block;
-    margin: 0 8px;
-}
-
-.sitemap-list a {
-    color: var(--cor-branca);
-    text-decoration: none;
-    font-size: 0.8rem;
-}
-
-.sitemap-list a:hover {
-    text-decoration: underline;
-}
-
-
-/* --- Estilos para a Validação de Formulário --- */
-.error-message {
-    color: var(--cor-rosa);
-    font-size: 0.8rem;
-    margin-top: -8px;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.divisoria form input.is-invalid,
-.divisoria form textarea.is-invalid {
-    border-color: var(--cor-rosa);
-}
-
+/* --- 4. ESTILOS DO FORMULÁRIO DE CONTATO --- */
 .divisoria form {
     width: 100%;
     max-width: 500px;
@@ -276,8 +164,7 @@ nav.custom-navbar {
     border-radius: 6px;
 }
 
-.divisoria form button[type="submit"],
-.divisoria form button[type="button"] {
+.divisoria form button[type="submit"] {
     display: block;
     width: 100%;
     padding: 10px;
@@ -291,40 +178,45 @@ nav.custom-navbar {
     transition: background-color 0.2s;
 }
 
-.divisoria form button[type="submit"]:hover,
-.divisoria form button[type="button"]:hover {
+.divisoria form button[type="submit"]:hover {
     background-color: #e02460;
 }
 
+/* Validação do formulário */
+.error-message {
+    color: var(--cor-rosa);
+    font-size: 0.8rem;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    display: block;
+}
 
-/* --- ESTILOS ORIGINAIS PARA A PÁGINA DE INFORMAÇÕES --- */
+.divisoria form input.is-invalid,
+.divisoria form textarea.is-invalid {
+    border-color: var(--cor-rosa);
+}
+
+/* --- 5. ESTILOS DA PÁGINA DE INFORMAÇÕES --- */
 body.body-info {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white; /* Alterado de volta para branco */
-    color: #333; /* Cor do texto padrão */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     font-size: large;
 }
 
-body.body-info .img-logo {
+.body-info .img-logo {
     width: 100%;
     max-width: 400px;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 15px;
     box-shadow: 0 5px 10px rgba(5, 217, 232, 0.5);
     border-radius: 15px;
-    margin-bottom: 15px;
 }
 
-body.body-info .card {
-    background-color: #f8f9fa; /* Fundo cinza claro nos cards */
+.body-info .card {
+    background-color: #f8f9fa;
     border: 1px solid var(--cor-detalhe);
 }
 
-body.body-info .card-header {
+.body-info .card-header {
     background-color: var(--cor-azul);
     color: var(--cor-fundo);
     font-weight: bold;
@@ -334,19 +226,43 @@ body.body-info .card-header {
     align-items: center;
 }
 
-body.body-info .card-header .icone-expandir {
+.body-info .card-header .icone-expandir {
     transition: transform 0.2s ease;
 }
 
-body.body-info .card-body {
+.body-info .card-body {
     background-color: var(--cor-branca);
     color: var(--cor-fundo);
     text-align: justify;
     line-height: 1.8;
 }
 
+/* --- 6. ESTILOS DO CHATBOT --- */
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-width: 90%;
+    height: 350px;
+    background-color: var(--cor-branca);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+}
 
-/* --- Estilos para o Chat --- */
+.chatbot-titulo {
+    background-color: var(--cor-azul);
+    color: var(--cor-branca);
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Área de mensagens */
 .chatbot-mensagens {
     padding: 10px;
     flex-grow: 1;
@@ -385,6 +301,7 @@ body.body-info .card-body {
     border-top-right-radius: 0;
 }
 
+/* Card de produto no chat */
 .chatbot-product-card {
     background-color: var(--cor-branca);
     border: 1px solid var(--cor-detalhe);
@@ -424,7 +341,94 @@ body.body-info .card-body {
     color: white;
 }
 
-/* --- Regras de Responsividade --- */
+/* Área de input do chat */
+.chatbot-input-area {
+    display: flex;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
+}
+
+.chatbot-input-area input {
+    flex-grow: 1;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.chatbot-input-area button {
+    padding: 6px 12px;
+    background-color: var(--cor-azul);
+    color: var(--cor-branca);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chatbot-input-area button:hover {
+    background-color: #04c0cc;
+}
+
+/* Chat minimizado */
+.chatbot.minimized {
+    height: auto;
+}
+
+.chatbot.minimized .chatbot-mensagens,
+.chatbot.minimized .chatbot-input-area {
+    display: none;
+}
+
+#toggleChat {
+    font-size: 0.9rem;
+    padding: 2px 6px;
+}
+
+/* --- 7. ESTILOS DO RODAPÉ (FOOTER) --- */
+.rodape {
+    background-color: var(--cor-rosa);
+    color: var(--cor-branca);
+    padding: 20px 0;
+    margin-top: auto;
+    font-size: 0.75rem; /* Tamanho da fonte base reduzido */
+    text-align: center;
+}
+
+.rodape p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.sitemap-title {
+    font-size: 0.8rem; /* Tamanho reduzido */
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.sitemap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sitemap-list li {
+    display: inline-block;
+    margin: 0 8px;
+}
+
+.sitemap-list a {
+    color: var(--cor-branca);
+    text-decoration: none;
+    font-size: 0.75rem; 
+}
+
+.sitemap-list a:hover {
+    text-decoration: underline;
+}
+
+/* --- 8. REGRAS DE RESPONSIVIDADE (MEDIA QUERIES) --- */
 @media (max-width: 768px) {
     .chatbot {
         width: 90%;
@@ -432,16 +436,18 @@ body.body-info .card-body {
     }
 
     .navbar-brand .logo-text {
-        display: none;
+        display: none; /* Oculta o texto do logo em telas menores */
     }
-    
-    .rodape {
-        text-align: center;
-    }
+}
+
+/* Ajustes no rodapé para telas maiores, garantindo centralização e espaçamento */
+@media (min-width: 768px) {
+    .rodape .text-md-start,
     .rodape .text-md-end {
         text-align: center !important;
     }
-    .rodape .text-lg-start {
-        text-align: center !important;
+    
+    .rodape p {
+        margin-bottom: 0;
     }
 }
