@@ -1,6 +1,7 @@
-// ===================================================================================
+
 // BANCO DE DADOS SIMPLIFICADO DE PRODUTOS
-// ===================================================================================
+// -------------------------------------------------
+
 const listaDeProdutos = [
     // Teclados
     { nome: 'Teclado Mecânico', categoria: 'Teclados', image: 'images/teclado.webp', keywords: ['teclado', 'teclados'] },
@@ -32,9 +33,10 @@ const listaDeProdutos = [
     { nome: 'Mousepad Ergonômico', categoria: 'Acessórios', image: 'images/mousepad.jpg', keywords: ['acessorio', 'acessorios', 'mousepad'] },
 ];
 
-// ===================================================================================
+
 // LÓGICA DO CHATBOT (SÓ EXECUTA NA PÁGINA PRINCIPAL)
-// ===================================================================================
+// -------------------------------------------------
+
 const chatInput = document.querySelector('.chatbot-input-area input');
 const sendButton = document.querySelector('.chatbot-input-area button');
 const messagesContainer = document.querySelector('.chatbot-mensagens');
@@ -139,9 +141,13 @@ if (chatInput && sendButton) {
     window.addEventListener('resize', initializeChatbot);
 }
 
+
+
+
 // ===================================================================================
 // CÓDIGO GERAL E PARA PÁGINAS ESPECÍFICAS
 // ===================================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- LÓGICA PARA O MODAL DE COMPRA (só roda na index.html) ---
