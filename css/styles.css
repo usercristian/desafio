@@ -32,7 +32,7 @@ main {
     align-items: center;
     padding: 5px;
     background-color: var(--cor-branca);
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
 .navbar-brand img {
@@ -60,7 +60,7 @@ nav.custom-navbar {
     font-weight: bold;
     color: var(--cor-rosa);
     background-color: #f8f9fa;
-    padding: 15px 15px;
+    padding: 10px 15px;
     border-radius: 10px;
     border-left: 5px solid var(--cor-rosa);
 }
@@ -83,17 +83,6 @@ nav.custom-navbar {
     border-radius: 8px;
 }
 
-.img-logo {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    box-shadow: 0 5px 10px rgba(5, 217, 232, 0.5);
-    border-radius: 15px;
-    margin-bottom: 15px;
-}
-
 .produto-item {
     border: 1px solid var(--cor-detalhe);
     border-radius: 15px;
@@ -109,6 +98,11 @@ nav.custom-navbar {
 .produto-item h5 {
     font-size: 0.95rem;
     margin-bottom: 8px;
+}
+
+/* --- NOVA REGRA: Cor do preço --- */
+.price-text {
+    color: var(--cor-rosa);
 }
 
 .produto-item p {
@@ -153,13 +147,6 @@ nav.custom-navbar {
     padding: 10px;
     font-weight: bold;
     text-align: center;
-}
-
-.chatbot-mensagens {
-    padding: 10px;
-    flex-grow: 1;
-    overflow-y: auto;
-    background-color: #f5f5f5;
 }
 
 .chatbot-input-area {
@@ -207,12 +194,12 @@ nav.custom-navbar {
     padding: 2px 6px;
 }
 
-/* --- Estilo do Rodapé --- */
+/* --- Estilos para o Rodapé e Mapa do Site --- */
 .rodape {
     text-align: center;
     background-color: var(--cor-rosa);
     color: var(--cor-branca);
-    padding: 8px;
+    padding: 20px 0;
     margin-top: auto;
 }
 
@@ -220,7 +207,48 @@ nav.custom-navbar {
     margin-bottom: 0;
 }
 
-/* --- ESTILOS RESTAURADOS PARA A PÁGINA DE CONTATO --- */
+.sitemap-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.sitemap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sitemap-list li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.sitemap-list a {
+    color: var(--cor-branca);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.sitemap-list a:hover {
+    text-decoration: underline;
+}
+
+/* --- Estilos para a Validação de Formulário --- */
+.error-message {
+    color: var(--cor-rosa);
+    font-size: 0.8rem;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.divisoria form input.is-invalid,
+.divisoria form textarea.is-invalid {
+    border-color: var(--cor-rosa);
+}
+
 .divisoria form {
     width: 100%;
     max-width: 500px;
@@ -250,7 +278,6 @@ nav.custom-navbar {
 
 .divisoria form button[type="submit"],
 .divisoria form button[type="button"] {
-    /* Aplicado ao botão do formulário também */
     display: block;
     width: 100%;
     padding: 10px;
@@ -270,10 +297,10 @@ nav.custom-navbar {
 }
 
 
-/* --- ESTILOS RESTAURADOS PARA A PÁGINA DE INFORMAÇÕES --- */
+/* --- Estilos para a Página de Informações --- */
 body.body-info {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
+    background-color: var(--cor-fundo);
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -287,84 +314,76 @@ body.body-info .container {
     padding: 0 1rem;
 }
 
-body.body-info footer.rodape {
-    background-color: #ff2a6d;
-    color: white;
-    text-align: center;
-    padding: 8px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: auto;
-}
-
-.cards-info .card {
+body.body-info .card {
     background-color: var(--cor-fundo);
     border: 1px solid var(--cor-azul);
 }
 
-.cards-info .card-header {
-    background-color: white;
-    border-color: var(--cor-azul);
+body.body-info .card-header {
+    background-color: var(--cor-azul);
     color: var(--cor-fundo);
     font-weight: bold;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 5px 10px rgba(5, 217, 232, 0.6);
 }
 
 .card-header .icone-expandir {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: var(--cor-fundo);
-    padding: 0.25rem 0.5rem;
-    font-size: 0.9rem;
     transition: transform 0.2s ease;
 }
 
-.cards-info .card-body {
-    background-color: var(--cor-branca);
-    color: cor var(--cor-fundo);
+body.body-info .card-body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-detalhe);
     text-align: justify;
     line-height: 2;
 }
 
-.cards-info .card-body li {
+body.body-info .card-body li {
     margin-bottom: 0.5rem;
 }
 
-/* --- Regras de Responsividade --- */
-@media (max-width: 768px) {
-    .chatbot {
-        width: 90%;
-        height: 300px;
-    }
 
-    .navbar-brand .logo-text {
-        display: none;
-    }
+/* --- Estilos para o Chat --- */
+.chatbot-mensagens {
+    padding: 10px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
 }
 
-@media (max-width: 576px) {
-    .cards-info .container {
-        max-width: 100%;
-        padding: 0 0.5rem;
-    }
-
-    .cards-info header .container,
-    .cards-info .navbar .container {
-        padding: 0;
-    }
-
-    .cards-info .card-header h4,
-    .cards-info .card-header p {
-        font-size: 1.1rem;
-    }
+.bot-message,
+.user-message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    max-width: 85%;
+    line-height: 1.4;
 }
 
-/* card de produto no Chatbot --- */
+.bot-message p,
+.user-message p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.bot-message {
+    background-color: #e9e9eb;
+    border: 1px solid #ddd;
+    align-self: flex-start;
+    border-top-left-radius: 0;
+}
+
+.user-message {
+    background-color: var(--cor-detalhe);
+    border: 1px solid var(--cor-azul);
+    align-self: flex-end;
+    border-top-right-radius: 0;
+}
+
 .chatbot-product-card {
     background-color: var(--cor-branca);
     border: 1px solid var(--cor-detalhe);
@@ -376,7 +395,6 @@ body.body-info footer.rodape {
 
 .chatbot-product-card img {
     max-width: 80px;
-    /* Tamanho menor para a imagem caber no chat */
     border-radius: 6px;
     margin-bottom: 8px;
 }
@@ -405,85 +423,14 @@ body.body-info footer.rodape {
     color: white;
 }
 
-.chatbot-mensagens {
-    padding: 10px;
-    flex-grow: 1;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-}
+/* --- Regras de Responsividade --- */
+@media (max-width: 768px) {
+    .chatbot {
+        width: 90%;
+        height: 300px;
+    }
 
-.bot-message,
-.user-message {
-    padding: 8px 12px;
-    border-radius: 15px;
-    margin-bottom: 8px;
-    max-width: 85%;
-    line-height: 1.4;
-}
-
-.bot-message p,
-.user-message p {
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-/* Mensagens do BOT  */
-.bot-message {
-    background-color: #e9e9eb;
-    border: 1px solid #ddd;
-    align-self: flex-start;
-    /* Alinha à esquerda */
-    border-top-left-radius: 0;
-    /* Efeito de "cauda" na bolha */
-}
-
-/* Mensagens do USUÁRIO  */
-.user-message {
-    background-color: var(--cor-detalhe);
-    border: 1px solid var(--cor-azul);
-    align-self: flex-end;
-    /* Alinha à direita */
-    border-top-right-radius: 0;
-    /* Efeito de "cauda" na bolha */
-}
-
-/* --- ESTILO PARA A BARRA DE BUSCA --- */
-.search-bar-container {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.search-bar-container .form-control {
-    border-radius: 50px 0 0 50px;
-    border: 1px solid #ced4da;
-    border-right: none;
-    padding-left: 20px;
-    font-size: 0.9rem;
-}
-
-.search-bar-container .form-control:focus {
-    border-color: var(--cor-azul);
-    box-shadow: 0 0 0 0.25rem rgba(5, 217, 232, 0.25);
-}
-
-.search-bar-container .btn-search {
-    background-color: var(--cor-rosa);
-    color: var(--cor-branca);
-    border-radius: 0 50px 50px 0;
-    border: 1px solid var(--cor-rosa);
-    padding: 0.5rem 1.2rem;
-    transition: background-color 0.2s ease;
-}
-
-.search-bar-container .btn-search:hover {
-    background-color: #d6225a;
-    color: var(--cor-branca);
-}
-
-
-.price-text {
-    color: var(--cor-rosa);
+    .navbar-brand .logo-text {
+        display: none;
+    }
 }
