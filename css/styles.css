@@ -182,6 +182,67 @@ nav.custom-navbar {
     background-color: #e02460;
 }
 
+/* Colocando a checkbox do FORM - solução mais robusta */
+.form-check-input.checkbox-pequeno,
+.checkbox-pequeno {
+    /* Ajustando a check do bootstrap*/
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background-image: none !important;
+    width: 1.05em;
+    height: 1.05em;
+    border: 1.5px solid #bfbfbf;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    position: relative;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: none !important;
+}
+
+.form-check-input.checkbox-pequeno:focus,
+.checkbox-pequeno:focus {
+    outline: 3px solid rgba(5,217,232,0.25);
+    outline-offset: 2px;
+}
+
+.form-check-input.checkbox-pequeno:checked,
+.checkbox-pequeno:checked {
+    background-color: var(--cor-rosa);
+    border-color: var(--cor-rosa);
+}
+
+.form-check-input.checkbox-pequeno:checked::after,
+.checkbox-pequeno:checked::after {
+    /* Removendo o "check" dentro da box */
+    content: none;
+}
+
+
+.form-check-label {
+    cursor: pointer;
+}
+
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-check .form-check-input {
+    margin: 0; 
+    flex: none;
+}
+
+.form-check .form-check-label {
+    margin: 0;
+    line-height: 1.1;
+}
+
 /* Validação do formulário */
 .error-message {
     color: var(--cor-rosa);
@@ -447,4 +508,11 @@ nav.custom-navbar {
     .rodape p {
         margin-bottom: 0;
     }
+}
+.checkbox-pequeno {
+    /* Define a largura e altura do checkbox */
+    width: 1em; 
+    height: 1em;
+    /* Adiciona uma margem à direita para separar do texto */
+    margin-right: 0.5rem !important;
 }

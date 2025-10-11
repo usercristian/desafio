@@ -56,6 +56,11 @@
                     <div class="error-message" id="mensagemError"></div>
                 </div>
 
+     <div class="d-flex align-items-center mb-3 form-check">
+    <input type="checkbox" class="form-check-input checkbox-pequeno" id="optinEmails" name="optinEmails">
+    <label class="form-check-label" for="optinEmails">Deseja Receber e-mails de novidades?</label>
+</div>
+
                 <button type="submit" class="w-100">Enviar Mensagem</button>
             </form>
         </div>
@@ -79,31 +84,22 @@
     </div>
   </footer>
 
-    <div class="modal fade" id="confirmEnviarModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-<<<<<<< HEAD
-            <h5 class="modal-title" id="confirmEnviarLabel" style="color: #05d9e8;">Mensagem Recebida com Sucesso!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-=======
-            <h5 class="modal-title">Mensagem Enviada com Sucesso!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
->>>>>>> 8025c4405635abc0340c63cd43f7704e5b468dae
-          </div>
-          <div class="modal-body">
-            Obrigado por entrar em contato! Responderemos o mais breve possível.
-          </div>
-          <div class="modal-footer">
-<<<<<<< HEAD
-            <button type="button" id="confirmEnviar" class="btn" style="background-color: #ff2a6d; color: white;">Continuar navegando</button>
-=======
-            <button type="button" id="confirmEnviar" class="btn btn-primary">Voltar ao Início</button>
-          </div>
+        <div class="modal fade" id="confirmEnviarModal" tabindex="-1" aria-labelledby="confirmEnviarLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmEnviarLabel" style="color: #05d9e8;">Mensagem Recebida com Sucesso!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Obrigado por entrar em contato! Responderemos o mais breve possível.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="confirmEnviar" class="btn" style="background-color: #ff2a6d; color: white;">Continuar navegando</button>
+                    </div>
+                </div>
+            </div>
         </div>
->>>>>>> 8025c4405635abc0340c63cd43f7704e5b468dae
-      </div>
-    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../script.js"></script>
