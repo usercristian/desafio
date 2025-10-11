@@ -1,40 +1,41 @@
-// ===================================================================================
+
 // BANCO DE DADOS SIMPLIFICADO DE PRODUTOS
-// ===================================================================================
+// -------------------------------------------------
+
 const listaDeProdutos = [
     // Teclados
-    { nome: 'Teclado Mecânico', categoria: 'Teclados', image: 'images/teclado.webp', keywords: ['mecânico', 'teclado mecânico'] },
-    { nome: 'Teclado Gamer RGB', categoria: 'Teclados', image: 'images/Teclado.2.png', keywords: ['rgb', 'luz', 'colorido'] },
-    { nome: 'Teclado Compacto', categoria: 'Teclados', image: 'images/Teclado.3.png', keywords: ['compacto', 'pequeno', 'mini'] },
+    { nome: 'Teclado Mecânico', categoria: 'Teclados', image: 'images/teclado.webp', keywords: ['teclado', 'teclados'] },
+    { nome: 'Teclado Gamer RGB', categoria: 'Teclados', image: 'images/Teclado.2.png', keywords: ['teclado', 'teclados'] },
+    { nome: 'Teclado Compacto', categoria: 'Teclados', image: 'images/Teclado.3.png', keywords: ['teclado', 'teclados'] },
     // Cadeiras
-    { nome: 'Cadeira Gamer Rosa', categoria: 'Cadeiras', image: 'images/cadeira.jpg', keywords: ['rosa', 'cadeira rosa'] },
-    { nome: 'Cadeira Fortrek', categoria: 'Cadeiras', image: 'images/Cadeira.2.png', keywords: ['fortrek'] },
-    { nome: 'Cadeira Preta', categoria: 'Cadeiras', image: 'images/Cadeira.3.png', keywords: ['preta', 'cadeira preta'] },
+    { nome: 'Cadeira Gamer Rosa', categoria: 'Cadeiras', image: 'images/cadeira.jpg', keywords: ['cadeira', 'cadeiras'] },
+    { nome: 'Cadeira Fortrek', categoria: 'Cadeiras', image: 'images/Cadeira.2.png', keywords: ['cadeira', 'cadeiras'] },
+    { nome: 'Cadeira Preta', categoria: 'Cadeiras', image: 'images/Cadeira.3.png', keywords: ['cadeira', 'cadeiras'] },
     // Mesas
-    { nome: 'Mesa Gamer com Prateleiras', categoria: 'Mesas', image: 'images/mesagamer.jpg', keywords: ['prateleira', 'com prateleira'] },
-    { nome: 'Mesa em L', categoria: 'Mesas', image: 'images/Mesa.2.png', keywords: ['mesa l', 'canto'] },
-    { nome: 'Mesa de Madeira', categoria: 'Mesas', image: 'images/Mesa.3.png', keywords: ['madeira'] },
+    { nome: 'Mesa Gamer com Prateleiras', categoria: 'Mesas', image: 'images/mesagamer.jpg', keywords: ['mesa', 'mesas'] },
+    { nome: 'Mesa em L', categoria: 'Mesas', image: 'images/Mesa.2.png', keywords: ['mesa', 'mesas'] },
+    { nome: 'Mesa de Madeira', categoria: 'Mesas', image: 'images/Mesa.3.png', keywords: ['mesa', 'mesas'] },
     // Mouses
-    { nome: 'Mouse Ultra Light', categoria: 'Mouses', image: 'images/mouse.jpg', keywords: ['ultra light', 'leve'] },
-    { nome: 'Mouse Razer Edição', categoria: 'Mouses', image: 'images/mouserazer.webp', keywords: ['razer'] },
-    { nome: 'Mouse Gamer Logitech', categoria: 'Mouses', image: 'images/Mouse.3 (2).png', keywords: ['logitech'] },
+    { nome: 'Mouse Ultra Light', categoria: 'Mouses', image: 'images/mouse.jpg', keywords: ['mouse', 'mouses'] },
+    { nome: 'Mouse Razer Edição', categoria: 'Mouses', image: 'images/mouserazer.webp', keywords: ['mouse', 'mouses'] },
+    { nome: 'Mouse Gamer Logitech', categoria: 'Mouses', image: 'images/Mouse.3 (2).png', keywords: ['mouse', 'mouses'] },
     // Fones
-    { nome: 'Fone RGB 7.1', categoria: 'Fones (Headsets)', image: 'images/fone1.webp', keywords: ['fone rgb', 'headset 7.1'] },
-    { nome: 'Headset Havit', categoria: 'Fones (Headsets)', image: 'images/Fone.2.png', keywords: ['havit'] },
-    { nome: 'Headset JBL Quantum', categoria: 'Fones (Headsets)', image: 'images/Fone.3.png', keywords: ['jbl', 'quantum'] },
+    { nome: 'Fone RGB 7.1', categoria: 'Fones (Headsets)', image: 'images/fone1.webp', keywords: ['fone', 'fones', 'headset', 'headsets'] },
+    { nome: 'Headset Havit', categoria: 'Fones (Headsets)', image: 'images/Fone.2.png', keywords: ['fone', 'fones', 'headset', 'headsets'] },
+    { nome: 'Headset JBL Quantum', categoria: 'Fones (Headsets)', image: 'images/Fone.3.png', keywords: ['fone', 'fones', 'headset', 'headsets'] },
     // Monitores
-    { nome: 'Monitor 27" 144hz', categoria: 'Monitores', image: 'images/Monitor.png', keywords: ['27 polegadas', '144hz', 'monitor grande'] },
-    { nome: 'Monitor LG UltraGear 24"', categoria: 'Monitores', image: 'images/Monitor.2.png', keywords: ['lg', 'ultragear', '24 polegadas'] },
-    { nome: 'Monitor Alltek 21"', categoria: 'Monitores', image: 'images/Monitor.3.png', keywords: ['alltek', '21 polegadas'] },
+    { nome: 'Monitor 27" 144hz', categoria: 'Monitores', image: 'images/Monitor.png', keywords: ['monitor', 'monitores'] },
+    { nome: 'Monitor LG UltraGear 24"', categoria: 'Monitores', image: 'images/Monitor.2.png', keywords: ['monitor', 'monitores'] },
+    { nome: 'Monitor Alltek 21"', categoria: 'Monitores', image: 'images/Monitor.3.png', keywords: ['monitor', 'monitores'] },
     // Acessórios
-    { nome: 'Kit Mousepad Extenso', categoria: 'Acessórios', image: 'images/conjunto.webp', keywords: ['mousepad grande', 'extenso', 'kit mousepad'] },
-    { nome: 'Suporte Monitor USB', categoria: 'Acessórios', image: 'images/suporte.jpg', keywords: ['suporte monitor', 'suporte com usb'] },
-    { nome: 'Mousepad Ergonômico', categoria: 'Acessórios', image: 'images/mousepad.jpg', keywords: ['ergonômico', 'mousepad com apoio'] },
+    { nome: 'Kit Mousepad Extenso', categoria: 'Acessórios', image: 'images/conjunto.webp', keywords: ['acessorio', 'acessorios', 'mousepad'] },
+    { nome: 'Suporte Monitor USB', categoria: 'Acessórios', image: 'images/suporte.jpg', keywords: ['acessorio', 'acessorios', 'suporte'] },
+    { nome: 'Mousepad Ergonômico', categoria: 'Acessórios', image: 'images/mousepad.jpg', keywords: ['acessorio', 'acessorios', 'mousepad'] },
 ];
 
-// ===================================================================================
-// LÓGICA DO CHATBOT
-// ===================================================================================
+
+// LÓGICA DO CHATBOT (SÓ EXECUTA NA PÁGINA PRINCIPAL)
+// -------------------------------------------------
 
 const chatInput = document.querySelector('.chatbot-input-area input');
 const sendButton = document.querySelector('.chatbot-input-area button');
@@ -42,179 +43,198 @@ const messagesContainer = document.querySelector('.chatbot-mensagens');
 const chatbot = document.querySelector('.chatbot');
 const toggleChatBtn = document.getElementById('toggleChat');
 
-const CATEGORIAS_PRODUTOS = [ "Teclados", "Cadeiras", "Mesas", "Mouses", "Fones (Headsets)", "Monitores", "Acessórios" ];
+if (chatInput && sendButton) {
+    let chatState = 'INITIAL'; 
+    let listedProducts = []; 
+    let productInConfirmation = null;
 
-let awaitingConfirmation = false;
-let productInConfirmation = null;
+    sendButton.addEventListener('click', () => sendMessage());
+    chatInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') sendMessage();
+    });
 
-sendButton.addEventListener('click', () => sendMessage());
-chatInput.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') sendMessage();
-});
-
-// --- FUNÇÃO CORRIGIDA ---
-// Agora a função aceita um parâmetro 'text'.
-// Se 'text' for fornecido (vindo de um clique de botão), ele será usado.
-// Se não, ela pega o valor do campo de input, como fazia antes.
-function sendMessage(text = null) {
-    // Usa o texto do parâmetro se ele existir, senão pega o do input.
-    const messageText = text !== null ? text : chatInput.value.trim();
-    
-    if (messageText === '') return;
-
-    // Adiciona a mensagem do usuário na tela (mesmo que venha do botão, mostramos o "Sim" ou "Não")
-    addMessage(messageText, 'user-message');
-    
-    // Limpa o input apenas se o texto veio de lá
-    if (text === null) {
-        chatInput.value = '';
+    function sendMessage(text = null) {
+        const messageText = text !== null ? text : chatInput.value.trim();
+        if (messageText === '') return;
+        addMessage(messageText, 'user-message');
+        if (text === null) {
+            chatInput.value = '';
+        }
+        setTimeout(() => handleBotResponse(messageText), 600);
     }
 
-    // Continua o fluxo normal para a resposta do bot
-    setTimeout(() => handleBotResponse(messageText), 600);
-}
-
-function handleBotResponse(userMessage) {
-    const userMessageLower = userMessage.toLowerCase();
-
-    if (awaitingConfirmation) {
-        if (userMessageLower === 'sim' || userMessageLower === 's') {
-            const modalCompra = new bootstrap.Modal(document.getElementById('modalCompra'));
-            modalCompra.show();
-            addMessage(`Ótimo! Adicionei o ${productInConfirmation.nome} ao seu carrinho.`, 'bot-message');
-        
-        } else if (userMessageLower === 'não' || userMessageLower === 'nao' || userMessageLower === 'n') {
-            addMessage('Ok, sem problemas. Posso te ajudar com mais alguma coisa?', 'bot-message');
-
-        } else {
-            addMessage("Desculpe, não entendi. Por favor, clique ou digite 'Sim' ou 'Não'.", 'bot-message');
+    function handleBotResponse(userMessage) {
+        const userMessageLower = userMessage.toLowerCase();
+        if (chatState === 'AWAITING_PRODUCT_CHOICE') {
+            const productIndex = parseInt(userMessageLower, 10) - 1;
+            if (!isNaN(productIndex) && productIndex >= 0 && productIndex < listedProducts.length) {
+                productInConfirmation = listedProducts[productIndex];
+                addProductCard(productInConfirmation);
+                chatState = 'AWAITING_PURCHASE_CONFIRMATION';
+            } else {
+                addMessage("Número inválido. Por favor, digite um dos números da lista.", 'bot-message');
+            }
             return;
         }
-
-        awaitingConfirmation = false;
-        productInConfirmation = null;
-        return;
-    }
-    
-    let produtoEncontrado = null;
-    for (const produto of listaDeProdutos) {
-        for (const keyword of produto.keywords) {
-            if (userMessageLower.includes(keyword)) {
-                produtoEncontrado = produto;
-                break;
+        if (chatState === 'AWAITING_PURCHASE_CONFIRMATION') {
+            if (userMessageLower === 'sim' || userMessageLower === 's') {
+                const modalCompra = new bootstrap.Modal(document.getElementById('modalCompra'));
+                modalCompra.show();
+                addMessage(`GG! Seu ${productInConfirmation.nome} foi adicionado ao carrinho.`, 'bot-message');
+            } else if (userMessageLower === 'não' || userMessageLower === 'nao' || userMessageLower === 'n') {
+                addMessage('Ok. Se precisar de mais alguma coisa, é só chamar!', 'bot-message');
+            } else {
+                addMessage("Não entendi. Por favor, responda com 'Sim' ou 'Não'.", 'bot-message');
+                return;
+            }
+            chatState = 'INITIAL';
+            listedProducts = [];
+            productInConfirmation = null;
+            return;
+        }
+        if (chatState === 'INITIAL') {
+            const productsInCategory = listaDeProdutos.filter(p => p.keywords.some(k => userMessageLower.includes(k)));
+            if (productsInCategory.length > 0) {
+                let productListMessage = `Encontrei estes itens em "${productsInCategory[0].categoria}". Qual deles te interessa?\n\n`;
+                productsInCategory.forEach((p, i) => { productListMessage += `${i + 1}. ${p.nome}\n`; });
+                productListMessage += `\nDigite o número do item.`;
+                addMessage(productListMessage, 'bot-message');
+                listedProducts = productsInCategory;
+                chatState = 'AWAITING_PRODUCT_CHOICE';
+            } else {
+                addMessage("Não encontrei essa categoria. Tente 'mouses', 'teclados', etc.", 'bot-message');
             }
         }
-        if (produtoEncontrado) break;
     }
 
-    if (produtoEncontrado) {
-        addProductCard(produtoEncontrado);
-        awaitingConfirmation = true;
-        productInConfirmation = produtoEncontrado;
-        return;
+    function addProductCard(produto) {
+        const productCardHTML = `<div class="chatbot-product-card"><img src="${produto.image}" alt="${produto.nome}"><p>Você escolheu: <strong>${produto.nome}</strong></p><p>Deseja adicionar ao carrinho?</p><div class="chatbot-confirmation-buttons"><button class="btn-confirm-yes" onclick="sendConfirmation('sim')">Sim</button><button class="btn-confirm-no" onclick="sendConfirmation('não')">Não</button></div></div>`;
+        addMessage(productCardHTML, 'bot-message', true);
     }
 
-    let categoriaEncontrada = null;
-    for (const categoria of CATEGORIAS_PRODUTOS) {
-        if (userMessageLower.includes(categoria.toLowerCase().split(' ')[0])) {
-            categoriaEncontrada = categoria;
-            break;
+    window.sendConfirmation = (response) => sendMessage(response);
+
+    function addMessage(content, className, isHTML = false) {
+        const wrapper = document.createElement('div');
+        wrapper.className = className;
+        if (isHTML) {
+            wrapper.innerHTML = content;
+        } else {
+            wrapper.innerHTML = `<p>${content.replace(/\n/g, '<br>')}</p>`;
+        }
+        messagesContainer.appendChild(wrapper);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function toggleChatState() {
+        chatbot.classList.toggle('minimized');
+        toggleChatBtn.textContent = chatbot.classList.contains('minimized') ? '+' : '–';
+    }
+    toggleChatBtn.addEventListener('click', toggleChatState);
+
+    function initializeChatbot() {
+        if (window.innerWidth <= 768 && !chatbot.classList.contains('minimized')) {
+            toggleChatState();
         }
     }
-    
-    if (categoriaEncontrada) {
-        addMessage(`Claro! Temos ótimas opções de ${categoriaEncontrada}. Veja a seção correspondente na página.`, 'bot-message');
-        return;
-    }
-
-    const categoriasFormatadas = CATEGORIAS_PRODUTOS.join(", ");
-    addMessage(`Hum... não consegui identificar um produto ou categoria. Você pode perguntar sobre um item como "mouse razer" ou sobre uma categoria como "${categoriasFormatadas}".`, 'bot-message');
+    window.addEventListener('load', initializeChatbot);
+    window.addEventListener('resize', initializeChatbot);
 }
 
-function addProductCard(produto) {
-    const productCardHTML = `
-        <div class="chatbot-product-card">
-            <img src="${produto.image}" alt="${produto.nome}">
-            <p>Encontrei o que você procura: <strong>${produto.nome}</strong></p>
-            <p>Deseja finalizar a compra?</p>
-            <div class="chatbot-confirmation-buttons">
-                <button class="btn-confirm-yes" onclick="sendConfirmation('sim')">Sim</button>
-                <button class="btn-confirm-no" onclick="sendConfirmation('não')">Não</button>
-            </div>
-        </div>
-    `;
-    addMessage(productCardHTML, 'bot-message', true);
-}
 
-// O 'onclick' dos botões chama esta função, que por sua vez chama a sendMessage CORRIGIDA
-function sendConfirmation(response) {
-    sendMessage(response);
-}
-
-// Função otimizada para adicionar mensagens
-function addMessage(content, className, isHTML = false) {
-    const messageWrapper = document.createElement('div');
-    messageWrapper.classList.add(className);
-
-    if (isHTML) {
-        messageWrapper.innerHTML = content;
-    } else {
-        const textElement = document.createElement('p');
-        textElement.textContent = content;
-        messageWrapper.appendChild(textElement);
-    }
-    
-    messagesContainer.appendChild(messageWrapper);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
 
 
 // ===================================================================================
-// CÓDIGO PARA O MODAL DE COMPRA E MINIMIZAÇÃO DO CHAT (sem alterações)
+// CÓDIGO GERAL E PARA PÁGINAS ESPECÍFICAS
 // ===================================================================================
-const comprarButtons = document.querySelectorAll('.comprar-btn');
+
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- LÓGICA PARA O MODAL DE COMPRA (só roda na index.html) ---
+    const comprarButtons = document.querySelectorAll('.comprar-btn');
     const modalElement = document.getElementById('modalCompra');
-    if (modalElement && typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+    if (comprarButtons.length > 0 && modalElement) {
         const modalCompra = new bootstrap.Modal(modalElement);
         comprarButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault();
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
                 modalCompra.show();
                 const originalText = button.textContent;
                 button.textContent = "Adicionado!";
                 button.disabled = true;
+                setTimeout(() => { button.textContent = originalText; button.disabled = false; }, 1500);
+            });
+        });
+    }
+
+    // --- LÓGICA PARA O ACCORDION DA PÁGINA INFO (só roda em info.html) ---
+    const accordionElement = document.getElementById('infoAccordion');
+    if (accordionElement) {
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const icon = this.querySelector('.icone-expandir');
                 setTimeout(() => {
-                    button.textContent = originalText;
-                    button.disabled = false;
-                }, 1500);
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    icon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+                }, 250);
             });
         });
-    } else {
-        comprarButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                alert("Compra confirmada!");
-            });
+    }
+    
+    // --- LÓGICA PARA VALIDAÇÃO DO FORMULÁRIO (só roda em form.html) ---
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (validateForm()) {
+                const myModal = new bootstrap.Modal(document.getElementById('confirmEnviarModal'));
+                myModal.show();
+                document.getElementById('confirmEnviar').addEventListener('click', () => {
+                    window.location.href = '../index.html';
+                });
+            }
         });
+
+        function validateForm() {
+            let isValid = true;
+            const nomeInput = document.getElementById('nome');
+            const emailInput = document.getElementById('email');
+            const mensagemInput = document.getElementById('mensagem');
+
+            if (nomeInput.value.trim() === '') {
+                setError(nomeInput, 'nomeError', 'O campo nome é obrigatório.');
+                isValid = false;
+            } else {
+                clearError(nomeInput, 'nomeError');
+            }
+
+            if (emailInput.value.trim() === '') {
+                setError(emailInput, 'emailError', 'O campo e-mail é obrigatório.');
+                isValid = false;
+            } else if (!/^\S+@\S+\.\S+$/.test(emailInput.value)) {
+                setError(emailInput, 'emailError', 'Por favor, insira um e-mail válido.');
+                isValid = false;
+            } else {
+                clearError(emailInput, 'emailError');
+            }
+
+            if (mensagemInput.value.trim() === '') {
+                setError(mensagemInput, 'mensagemError', 'Por favor, escreva uma mensagem.');
+                isValid = false;
+            } else {
+                clearError(mensagemInput, 'mensagemError');
+            }
+            return isValid;
+        }
+
+        function setError(input, errorId, message) {
+            input.classList.add('is-invalid');
+            document.getElementById(errorId).textContent = message;
+        }
+
+        function clearError(input, errorId) {
+            input.classList.remove('is-invalid');
+            document.getElementById(errorId).textContent = '';
+        }
     }
 });
-
-function toggleChatState() {
-    chatbot.classList.toggle('minimized');
-    if (chatbot.classList.contains('minimized')) {
-        toggleChatBtn.textContent = '+';
-        toggleChatBtn.setAttribute('title', 'Abrir Chat');
-    } else {
-        toggleChatBtn.textContent = '–';
-        toggleChatBtn.setAttribute('title', 'Minimizar Chat');
-    }
-}
-toggleChatBtn.addEventListener('click', toggleChatState);
-
-function initializeChatbot() {
-    if (window.innerWidth <= 768 && !chatbot.classList.contains('minimized')) {
-        toggleChatState();
-    }
-}
-window.addEventListener('load', initializeChatbot);
-window.addEventListener('resize', initializeChatbot);
