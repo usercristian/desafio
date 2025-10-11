@@ -275,7 +275,9 @@ nav.custom-navbar {
 }
 
 .body-info .card-header {
-    background-color: var(--cor-azul);
+    background-color: var(--cor-branca);
+    border: 1px solid var(--cor-detalhe);
+    box-shadow: 0 6px 16px rgba(5, 217, 232, 0.6);
     color: var(--cor-fundo);
     font-weight: bold;
     cursor: pointer;

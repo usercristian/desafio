@@ -169,16 +169,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA PARA O ACCORDION DA PÁGINA INFO (só roda em info.html) ---
     const accordionElement = document.getElementById('infoAccordion');
+
     if (accordionElement) {
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', function() {
-                const icon = this.querySelector('.icone-expandir');
-                setTimeout(() => {
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    icon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
-                }, 250);
-            });
+        let lastOpened = null;
+
+        accordionElement.addEventListener('shown.bs.collapse', (event) => {
+            const currentCard = event.target.closest('.card');
+
+            if (lastOpened && lastOpened !== event.target) {
+                const lastCollapse = bootstrap.Collapse.getInstance(lastOpened);
+                if (lastCollapse) {
+                    lastCollapse.hide();
+                }
+            }
+
+            lastOpened = event.target;
+
+            if (currentCard) {
+                currentCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
+
+        const initiallyOpen = accordionElement.querySelector('.collapse.show');
+        if (initiallyOpen) {
+            lastOpened = initiallyOpen;
+        }
     }
     
     // --- LÓGICA PARA VALIDAÇÃO DO FORMULÁRIO (só roda em form.html) ---
