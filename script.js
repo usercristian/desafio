@@ -39,7 +39,6 @@ const listaDeProdutos = [
 /**
  * Função Matemática para Ranking (Weighted Rating).
  * Justificativa: Para um sistema de estrelas, não basta ordenar pela média.
- * Esta fórmula (baseada na do IMDB) balanceia a média (R) com o número de votos (v).
  * Ela "puxa" a nota de produtos com poucos votos para a média global (C).
  *
  * @param {object} product - O objeto do produto (contém rating, numRatings).
