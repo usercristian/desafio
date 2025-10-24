@@ -1,38 +1,61 @@
 // BANCO DE DADOS SIMPLIFICADO DE PRODUTOS
-// A base de dados foi enriquecida com campos 'views' e 'sales' para fins de cálculo de pontuação.
+// Refatorado para sistema de Avaliação (1-5 estrelas)
+// 'rating' é a média de estrelas (ex: 4.5)
+// 'numRatings' é o número de avaliações (ex: 150)
 // -------------------------------------------------
 
 const listaDeProdutos = [
     // Teclados
-    { nome: 'Teclado Mecânico', categoria: 'Teclados', image: 'images/teclado.webp', keywords: ['teclado', 'teclados'], views: 1500, sales: 35 },
-    { nome: 'Teclado Gamer RGB', categoria: 'Teclados', image: 'images/Teclado.2.png', keywords: ['teclado', 'teclados'], views: 3200, sales: 80 },
-    { nome: 'Teclado Compacto', categoria: 'Teclados', image: 'images/Teclado.3.png', keywords: ['teclado', 'teclados'], views: 800, sales: 15 },
+    { nome: 'Teclado Mecânico', categoria: 'Teclados', image: 'images/teclado.webp', keywords: ['teclado', 'teclados'], rating: 4.2, numRatings: 90 },
+    { nome: 'Teclado Gamer RGB', categoria: 'Teclados', image: 'images/Teclado.2.png', keywords: ['teclado', 'teclados'], rating: 4.8, numRatings: 250 },
+    { nome: 'Teclado Compacto', categoria: 'Teclados', image: 'images/Teclado.3.png', keywords: ['teclado', 'teclados'], rating: 4.0, numRatings: 30 },
     // Cadeiras
-    { nome: 'Cadeira Gamer Rosa', categoria: 'Cadeiras', image: 'images/cadeira.jpg', keywords: ['cadeira', 'cadeiras'], views: 4500, sales: 120 },
-    { nome: 'Cadeira Fortrek', categoria: 'Cadeiras', image: 'images/Cadeira.2.png', keywords: ['cadeira', 'cadeiras'], views: 2100, sales: 60 },
-    { nome: 'Cadeira Preta', categoria: 'Cadeiras', image: 'images/Cadeira.3.png', keywords: ['cadeira', 'cadeiras'], views: 900, sales: 25 },
+    { nome: 'Cadeira Gamer Rosa', categoria: 'Cadeiras', image: 'images/cadeira.jpg', keywords: ['cadeira', 'cadeiras'], rating: 4.6, numRatings: 310 },
+    { nome: 'Cadeira Fortrek', categoria: 'Cadeiras', image: 'images/Cadeira.2.png', keywords: ['cadeira', 'cadeiras'], rating: 4.3, numRatings: 120 },
+    { nome: 'Cadeira Preta', categoria: 'Cadeiras', image: 'images/Cadeira.3.png', keywords: ['cadeira', 'cadeiras'], rating: 4.1, numRatings: 75 },
     // Mesas
-    { nome: 'Mesa Gamer com Prateleiras', categoria: 'Mesas', image: 'images/mesagamer.jpg', keywords: ['mesa', 'mesas'], views: 1800, sales: 40 },
-    { nome: 'Mesa em L', categoria: 'Mesas', image: 'images/Mesa.2.png', keywords: ['mesa', 'mesas'], views: 700, sales: 12 },
-    { nome: 'Mesa de Madeira', categoria: 'Mesas', image: 'images/Mesa.3.png', keywords: ['mesa', 'mesas'], views: 1100, sales: 28 },
+    { nome: 'Mesa Gamer com Prateleiras', categoria: 'Mesas', image: 'images/mesagamer.jpg', keywords: ['mesa', 'mesas'], rating: 4.5, numRatings: 110 },
+    { nome: 'Mesa em L', categoria: 'Mesas', image: 'images/Mesa.2.png', keywords: ['mesa', 'mesas'], rating: 4.0, numRatings: 45 },
+    { nome: 'Mesa de Madeira', categoria: 'Mesas', image: 'images/Mesa.3.png', keywords: ['mesa', 'mesas'], rating: 4.7, numRatings: 60 },
     // Mouses
-    { nome: 'Mouse Ultra Light', categoria: 'Mouses', image: 'images/mouse.jpg', keywords: ['mouse', 'mouses'], views: 6000, sales: 150 },
-    { nome: 'Mouse Razer Edição', categoria: 'Mouses', image: 'images/mouserazer.webp', keywords: ['mouse', 'mouses'], views: 4200, sales: 100 },
-    { nome: 'Mouse Gamer Logitech', categoria: 'Mouses', image: 'images/Mouse.3 (2).png', keywords: ['mouse', 'mouses'], views: 5100, sales: 115 },
+    { nome: 'Mouse Ultra Light', categoria: 'Mouses', image: 'images/mouse.jpg', keywords: ['mouse', 'mouses'], rating: 4.4, numRatings: 450 },
+    { nome: 'Mouse Razer Edição', categoria: 'Mouses', image: 'images/mouserazer.webp', keywords: ['mouse', 'mouses'], rating: 4.9, numRatings: 320 },
+    { nome: 'Mouse Gamer Logitech', categoria: 'Mouses', image: 'images/Mouse.3 (2).png', keywords: ['mouse', 'mouses'], rating: 4.7, numRatings: 510 },
     // Fones
-    { nome: 'Fone RGB 7.1', categoria: 'Fones (Headsets)', image: 'images/fone1.webp', keywords: ['fone', 'fones', 'headset', 'headsets'], views: 3800, sales: 90 },
-    { nome: 'Headset Havit', categoria: 'Fones (Headsets)', image: 'images/Fone.2.png', keywords: ['fone', 'fones', 'headset', 'headsets'], views: 1900, sales: 55 },
-    { nome: 'Headset JBL Quantum', categoria: 'Fones (Headsets)', image: 'images/Fone.3.png', keywords: ['fone', 'fones', 'headset', 'headsets'], views: 2700, sales: 75 },
+    { nome: 'Fone RGB 7.1', categoria: 'Fones (Headsets)', image: 'images/fone1.webp', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 4.3, numRatings: 180 },
+    { nome: 'Headset Havit', categoria: 'Fones (Headsets)', image: 'images/Fone.2.png', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 3.9, numRatings: 210 },
+    { nome: 'Headset JBL Quantum', categoria: 'Fones (Headsets)', image: 'images/Fone.3.png', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 4.6, numRatings: 290 },
     // Monitores
-    { nome: 'Monitor 27" 144hz', categoria: 'Monitores', image: 'images/Monitor.png', keywords: ['monitor', 'monitores'], views: 500, sales: 10 },
-    { nome: 'Monitor LG UltraGear 24"', categoria: 'Monitores', image: 'images/Monitor.2.png', keywords: ['monitor', 'monitores'], views: 1600, sales: 30 },
-    { nome: 'Monitor Alltek 21"', categoria: 'Monitores', image: 'images/Monitor.3.png', keywords: ['monitor', 'monitores'], views: 1300, sales: 22 },
+    { nome: 'Monitor 27" 144hz', categoria: 'Monitores', image: 'images/Monitor.png', keywords: ['monitor', 'monitores'], rating: 4.5, numRatings: 85 },
+    { nome: 'Monitor LG UltraGear 24"', categoria: 'Monitores', image: 'images/Monitor.2.png', keywords: ['monitor', 'monitores'], rating: 4.8, numRatings: 190 },
+    { nome: 'Monitor Alltek 21"', categoria: 'Monitores', image: 'images/Monitor.3.png', keywords: ['monitor', 'monitores'], rating: 3.8, numRatings: 50 },
     // Acessórios
-    { nome: 'Kit Mousepad Extenso', categoria: 'Acessórios', image: 'images/conjunto.webp', keywords: ['acessorio', 'acessorios', 'mousepad'], views: 2400, sales: 70 },
-    { nome: 'Suporte Monitor USB', categoria: 'Acessórios', image: 'images/suporte.jpg', keywords: ['acessorio', 'acessorios', 'suporte'], views: 1700, sales: 45 },
-    { nome: 'Mousepad Ergonômico', categoria: 'Acessórios', image: 'images/mousepad.jpg', keywords: ['acessorio', 'acessorios', 'mousepad'], views: 950, sales: 20 },
+    { nome: 'Kit Mousepad Extenso', categoria: 'Acessórios', image: 'images/conjunto.webp', keywords: ['acessorio', 'acessorios', 'mousepad'], rating: 4.7, numRatings: 130 },
+    { nome: 'Suporte Monitor USB', categoria: 'Acessórios', image: 'images/suporte.jpg', keywords: ['acessorio', 'acessorios', 'suporte'], rating: 4.2, numRatings: 65 },
+    { nome: 'Mousepad Ergonômico', categoria: 'Acessórios', image: 'images/mousepad.jpg', keywords: ['acessorio', 'acessorios', 'mousepad'], rating: 3.5, numRatings: 25 },
 ];
 
+
+/**
+ * Função Matemática para Ranking (Weighted Rating).
+ * Justificativa: Para um sistema de estrelas, não basta ordenar pela média.
+ * Esta fórmula (baseada na do IMDB) balanceia a média (R) com o número de votos (v).
+ * Ela "puxa" a nota de produtos com poucos votos para a média global (C).
+ *
+ * @param {object} product - O objeto do produto (contém rating, numRatings).
+ * @param {number} minNumRatings (m) - O mínimo de votos para "confiar" na nota.
+ * @param {number} avgRatingAll (C) - A média de nota de todos os produtos.
+ * @returns {number} A pontuação de popularidade calculada.
+ */
+function calculateWeightedRating(product, minNumRatings, avgRatingAll) {
+    const v = product.numRatings;
+    const m = minNumRatings;
+    const R = product.rating;
+    const C = avgRatingAll;
+
+    // Fórmula: (v / (v+m)) * R + (m / (v+m)) * C
+    return (v / (v + m)) * R + (m / (v + m)) * C;
+}
 
 
 // LÓGICA DO CHATBOT (Só executa na página principal)
@@ -45,45 +68,38 @@ function handleChatbotLogic() {
     const chatbot = document.querySelector('.chatbot');
     const toggleChatBtn = document.getElementById('toggleChat');
 
-    // Se os elementos não existirem (ex: página de contato), sai da função.
     if (!chatInput || !sendButton) return;
 
     let chatState = 'INITIAL'; 
     let listedProducts = []; 
     let productInConfirmation = null;
 
-    // Funções auxiliares do Chatbot
+    // --- Funções auxiliares do Chatbot ---
 
-    /** Adiciona uma mensagem ao contêiner de mensagens. */
     function addMessage(content, className, isHTML = false) {
         const wrapper = document.createElement('div');
         wrapper.className = className;
         if (isHTML) {
             wrapper.innerHTML = content;
         } else {
-            // Permite quebrar linha com \n
             wrapper.innerHTML = `<p>${content.replace(/\n/g, '<br>')}</p>`;
         }
         messagesContainer.appendChild(wrapper);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
-    /** Gera e exibe o card de produto com botões de confirmação de compra. */
     function addProductCard(produto) {
-        const productCardHTML = `<div class="chatbot-product-card"><img src="${produto.image}" alt="${produto.nome}"><p>Você escolheu: <strong>${produto.nome}</strong></p><p>Deseja adicionar ao carrinho?</p><div class="chatbot-confirmation-buttons"><button class="btn-confirm-yes" onclick="sendConfirmation('sim')">Sim</button><button class="btn-confirm-no" onclick="sendConfirmation('não')">Não</button></div></div>`;
+        const productCardHTML = `<div class="chatbot-product-card"><img src="${produto.image}" alt="${produto.nome}"><p>Você escolheu: <strong>${produto.nome}</strong></p><p>Nota: ${produto.rating.toFixed(1)} (${produto.numRatings} avaliações)</p><p>Deseja adicionar ao carrinho?</p><div class="chatbot-confirmation-buttons"><button class="btn-confirm-yes" onclick="sendConfirmation('sim')">Sim</button><button class="btn-confirm-no" onclick="sendConfirmation('não')">Não</button></div></div>`;
         addMessage(productCardHTML, 'bot-message', true);
     }
     
-    // Torna a função de confirmação acessível globalmente (para o 'onclick' no HTML gerado)
     window.sendConfirmation = (response) => sendMessage(response);
 
-    /** Alterna o estado de minimizado do chatbot. */
     function toggleChatState() {
         chatbot.classList.toggle('minimized');
         toggleChatBtn.textContent = chatbot.classList.contains('minimized') ? '+' : '–';
     }
 
-    /** Inicializa o estado do chatbot (minimizado em telas pequenas). */
     function initializeChatbot() {
         if (window.innerWidth <= 768 && !chatbot.classList.contains('minimized')) {
             toggleChatState();
@@ -94,61 +110,85 @@ function handleChatbotLogic() {
     function handleBotResponse(userMessage) {
         const userMessageLower = userMessage.toLowerCase();
 
-        if (chatState === 'AWAITING_PRODUCT_CHOICE') {
-            const productIndex = parseInt(userMessageLower, 10) - 1;
-            if (!isNaN(productIndex) && productIndex >= 0 && productIndex < listedProducts.length) {
-                productInConfirmation = listedProducts[productIndex];
-                addProductCard(productInConfirmation);
-                chatState = 'AWAITING_PURCHASE_CONFIRMATION';
-            } else {
-                addMessage("Número inválido. Por favor, digite um dos números da lista.", 'bot-message');
-            }
-            return;
-        }
+        // Refatorado para SWITCH CASE (Exigência da Faculdade)
+        switch (chatState) {
+            
+            case 'INITIAL':
+                const productsInCategory = listaDeProdutos.filter(p => p.keywords.some(k => userMessageLower.includes(k)));
+                
+                if (productsInCategory.length > 0) {
+                    let productListMessage = `Encontrei estes itens em "${productsInCategory[0].categoria}". Qual deles te interessa?\n(Ordenado pelos mais bem avaliados)\n\n`;
+                    
+                    // Lógica de Ordenação (Sistema de Avaliação)
+                    const m = 50; // Mínimo de 50 votos para "confiar" na nota
+                    // Calcula a média de todas as notas do site (C)
+                    const totalRating = listaDeProdutos.reduce((acc, p) => acc + p.rating, 0);
+                    const C = totalRating / listaDeProdutos.length;
+                    
+                    // Ordena usando a função de Weighted Rating
+                    productsInCategory.sort((a, b) => 
+                        calculateWeightedRating(b, m, C) - calculateWeightedRating(a, m, C)
+                    );
+                    
+                    listedProducts = productsInCategory;
+                    
+                    // Refatorado para FOR loop (Exigência da Faculdade)
+                    for (let i = 0; i < listedProducts.length; i++) {
+                        const p = listedProducts[i];
+                        productListMessage += `${i + 1}. ${p.nome} (Nota: ${p.rating.toFixed(1)} / 5.0)\n`;
+                    }
+                    productListMessage += `\nDigite o número do item.`;
+                    
+                    addMessage(productListMessage, 'bot-message');
+                    chatState = 'AWAITING_PRODUCT_CHOICE';
+                
+                } else {
+                    addMessage("Não encontrei essa categoria. Tente 'mouses', 'teclados', etc.", 'bot-message');
+                }
+                break;
 
-        if (chatState === 'AWAITING_PURCHASE_CONFIRMATION') {
-            if (userMessageLower === 'sim' || userMessageLower === 's') {
-                const modalCompra = new bootstrap.Modal(document.getElementById('modalCompra'));
-                modalCompra.show();
-                addMessage(`GG! Seu ${productInConfirmation.nome} foi adicionado ao carrinho.`, 'bot-message');
-            } else if (userMessageLower === 'não' || userMessageLower === 'nao' || userMessageLower === 'n') {
-                addMessage('Ok. Se precisar de mais alguma coisa, é só chamar!', 'bot-message');
-            } else {
-                addMessage("Não entendi. Por favor, responda com 'Sim' ou 'Não'.", 'bot-message');
-                return;
-            }
-            chatState = 'INITIAL';
-            listedProducts = [];
-            productInConfirmation = null;
-            return;
-        }
+            case 'AWAITING_PRODUCT_CHOICE':
+                const productIndex = parseInt(userMessageLower, 10) - 1;
+                
+                // Uso de Operadores Relacionais e Lógicos (&&)
+                if (!isNaN(productIndex) && productIndex >= 0 && productIndex < listedProducts.length) {
+                    productInConfirmation = listedProducts[productIndex];
+                    addProductCard(productInConfirmation);
+                    chatState = 'AWAITING_PURCHASE_CONFIRMATION';
+                } else {
+                    addMessage("Número inválido. Por favor, digite um dos números da lista.", 'bot-message');
+                }
+                break;
 
-        if (chatState === 'INITIAL') {
-            const productsInCategory = listaDeProdutos.filter(p => p.keywords.some(k => userMessageLower.includes(k)));
-            if (productsInCategory.length > 0) {
-                let productListMessage = `Encontrei estes itens em "${productsInCategory[0].categoria}". Qual deles te interessa?\n\n`;
+            case 'AWAITING_PURCHASE_CONFIRMATION':
+                // Uso de Operadores Relacionais e Lógicos (||)
+                if (userMessageLower === 'sim' || userMessageLower === 's') {
+                    const modalCompra = new bootstrap.Modal(document.getElementById('modalCompra'));
+                    modalCompra.show();
+                    addMessage(`GG! Seu ${productInConfirmation.nome} foi adicionado ao carrinho.`, 'bot-message');
                 
-                // Aplica a função de 1º grau para ordenar os produtos (ranqueamento)
-                productsInCategory.sort((a, b) => calculateRatingScore(b.views, b.sales) - calculateRatingScore(a.views, a.sales));
+                } else if (userMessageLower === 'não' || userMessageLower === 'nao' || userMessageLower === 'n') {
+                    addMessage('Ok. Se precisar de mais alguma coisa, é só chamar!', 'bot-message');
                 
-                productsInCategory.forEach((p, i) => { 
-                    productListMessage += `${i + 1}. ${p.nome}\n`; 
-                });
-                productListMessage += `\nDigite o número do item.`;
+                } else {
+                    addMessage("Não entendi. Por favor, responda com 'Sim' ou 'Não'.", 'bot-message');
+                    return; // Permanece no mesmo estado
+                }
                 
-                addMessage(productListMessage, 'bot-message');
-                listedProducts = productsInCategory;
-                chatState = 'AWAITING_PRODUCT_CHOICE';
-            } else {
-                addMessage("Não encontrei essa categoria. Tente 'mouses', 'teclados', etc.", 'bot-message');
-            }
+                // Reseta o estado
+                chatState = 'INITIAL';
+                listedProducts = [];
+                productInConfirmation = null;
+                break;
         }
     }
     
     /** Envia a mensagem do usuário (ou uma resposta pré-definida) e chama o processamento do bot. */
     function sendMessage(text = null) {
         const messageText = text !== null ? text : chatInput.value.trim();
+        // Operador relacional
         if (messageText === '') return;
+        
         addMessage(messageText, 'user-message');
         if (text === null) {
             chatInput.value = '';
@@ -181,11 +221,14 @@ function handlePurchaseButtons() {
     if (comprarButtons.length > 0 && modalElement) {
         const modalCompra = new bootstrap.Modal(modalElement);
 
-        comprarButtons.forEach(button => {
+        // Refatorado para FOR loop (Exigência da Faculdade)
+        for (let i = 0; i < comprarButtons.length; i++) {
+            const button = comprarButtons[i];
+            
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 modalCompra.show();
-                // Feedback visual temporário no botão
+                
                 const originalText = button.textContent;
                 button.textContent = "Adicionado!";
                 button.disabled = true;
@@ -194,7 +237,7 @@ function handlePurchaseButtons() {
                     button.disabled = false; 
                 }, 1500);
             });
-        });
+        }
     }
 }
 
@@ -210,17 +253,14 @@ function handleAccordion() {
         accordionElement.addEventListener('shown.bs.collapse', (event) => {
             const currentCard = event.target.closest('.card');
 
-            // Fechar o último painel aberto
             if (lastOpened && lastOpened !== event.target) {
                 const lastCollapse = bootstrap.Collapse.getInstance(lastOpened);
                 if (lastCollapse) {
                     lastCollapse.hide();
                 }
             }
-
             lastOpened = event.target;
 
-            // Scroll para o painel aberto
             if (currentCard) {
                 currentCard.scrollIntoView({
                     behavior: 'smooth',
@@ -244,7 +284,6 @@ function handleContactForm() {
     const form = document.getElementById('contactForm');
     if (!form) return;
 
-    // Funções auxiliares para manipulação de erro no formulário
     function setError(input, errorId, message) {
         input.classList.add('is-invalid');
         document.getElementById(errorId).textContent = message;
@@ -255,14 +294,14 @@ function handleContactForm() {
         document.getElementById(errorId).textContent = '';
     }
 
-    /** Realiza a validação de todos os campos do formulário. */
+    /** Realiza a validação de todos os campos do formulário (IF/ELSE IF/ELSE). */
     function validateForm() {
         let isValid = true;
         const nomeInput = document.getElementById('nome');
         const emailInput = document.getElementById('email');
         const mensagemInput = document.getElementById('mensagem');
 
-        // Validação Nome
+        // Validação Nome (Uso de IF/ELSE)
         if (nomeInput.value.trim() === '') {
             setError(nomeInput, 'nomeError', 'O campo nome é obrigatório.');
             isValid = false;
@@ -270,7 +309,7 @@ function handleContactForm() {
             clearError(nomeInput, 'nomeError');
         }
 
-        // Validação E-mail
+        // Validação E-mail (Uso de IF/ELSE IF/ELSE)
         if (emailInput.value.trim() === '') {
             setError(emailInput, 'emailError', 'O campo e-mail é obrigatório.');
             isValid = false;
@@ -291,13 +330,11 @@ function handleContactForm() {
         return isValid;
     }
 
-    // Event Listener principal do formulário (Submissão)
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         if (validateForm()) {
             const myModal = new bootstrap.Modal(document.getElementById('confirmEnviarModal'));
             myModal.show();
-            // Redireciona para a página inicial ao fechar o modal
             document.getElementById('confirmEnviar').addEventListener('click', () => {
                 window.location.href = '../index.html';
             });
@@ -307,8 +344,7 @@ function handleContactForm() {
 
 
 /**
-
- * Adaptado ao conceito de 'main' ou 'método de inicialização' de uma classe Java.
+ * Função principal que inicializa todas as lógicas da aplicação.
  */
 function init() {
     handleChatbotLogic();
