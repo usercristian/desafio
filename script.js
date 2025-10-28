@@ -211,32 +211,88 @@ function handleChatbotLogic() {
 
 
 /**
- * Inicializa a lógica dos botões de compra na página principal (index.html).
+ * ATUALIZADO:
+ * Lógica dos botões de seleção e do painel de detalhes.
+ * Adiciona animações, botão de fechar e scroll automático no mobile.
  */
-function handlePurchaseButtons() {
-    const comprarButtons = document.querySelectorAll('.comprar-btn');
-    const modalElement = document.getElementById('modalCompra');
-    
-    if (comprarButtons.length > 0 && modalElement) {
-        const modalCompra = new bootstrap.Modal(modalElement);
+function handleProductSelection() {
+    const selecionarButtons = document.querySelectorAll('.comprar-btn');
+    const sidebar = document.getElementById('detalhe-produto-sidebar');
+    const chatbot = document.querySelector('.chatbot');
+    const closeBtn = document.getElementById('fechar-detalhe-btn'); // Botão de fechar
 
-        // Refatorado para FOR loop (Exigência da Faculdade)
-        for (let i = 0; i < comprarButtons.length; i++) {
-            const button = comprarButtons[i];
-            
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                modalCompra.show();
-                
-                const originalText = button.textContent;
-                button.textContent = "Adicionado!";
-                button.disabled = true;
-                setTimeout(() => { 
-                    button.textContent = originalText; 
-                    button.disabled = false; 
-                }, 1500);
-            });
+    // Elementos do painel lateral
+    const detalheImg = document.getElementById('detalhe-img');
+    const detalheNome = document.getElementById('detalhe-nome');
+    const detalheAvaliacao = document.getElementById('detalhe-avaliacao');
+    const detalhePorque = document.getElementById('detalhe-porque');
+    const detalheDescricao = document.getElementById('detalhe-descricao');
+
+    if (selecionarButtons.length === 0 || !sidebar || !chatbot || !closeBtn) return;
+
+    // Função para fechar o painel e mostrar o chatbot
+    function closeDetailsPanel() {
+        sidebar.classList.remove('show');
+        
+        if (chatbot) {
+            chatbot.style.opacity = '1';
+            chatbot.style.transform = 'scale(1)';
+            chatbot.style.pointerEvents = 'auto';
         }
+
+        // Esconde o painel após a animação de saída
+        setTimeout(() => {
+            sidebar.classList.add('d-none');
+            sidebar.classList.remove('d-block'); // ATUALIZADO de d-lg-block para d-block
+        }, 400); // Deve corresponder ao tempo da transição no CSS
+    }
+
+    // Event listener para o botão de fechar
+    closeBtn.addEventListener('click', closeDetailsPanel);
+
+    // Event listeners para os botões "Selecionar"
+    for (let i = 0; i < selecionarButtons.length; i++) {
+        const button = selecionarButtons[i];
+        
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const productName = button.getAttribute('data-product-name');
+            const product = listaDeProdutos.find(p => p.nome === productName);
+            
+            if (product) {
+                // Preenche o painel lateral
+                detalheImg.src = product.image;
+                detalheNome.textContent = product.nome;
+                detalheAvaliacao.textContent = `Avaliação: ${product.rating.toFixed(1)}/5 (${product.numRatings} avaliações)`;
+                detalhePorque.textContent = `Este é um item muito popular entre os jogadores que buscam performance e estilo.`;
+                detalheDescricao.textContent = `Descrição técnica detalhada para ${product.nome} estaria disponível aqui, incluindo especificações.`;
+
+                // ATUALIZADO: Animação de entrada
+                // 1. Esconde o chatbot
+                if (chatbot) {
+                    chatbot.style.opacity = '0';
+                    chatbot.style.transform = 'scale(0.9)';
+                    chatbot.style.pointerEvents = 'none';
+                }
+                
+                // 2. Mostra o painel (em todas as telas)
+                sidebar.classList.remove('d-none');
+                sidebar.classList.add('d-block'); // ATUALIZADO de d-lg-block para d-block
+                
+                // 3. Ativa a classe 'show' para iniciar a transição de entrada
+                setTimeout(() => { 
+                    sidebar.classList.add('show');
+                }, 10); // Pequeno delay para garantir que a transição CSS ocorra
+
+                // 4. NOVO: Scroll automático para o painel em telas móveis
+                if (window.innerWidth < 992) { // 992px é o breakpoint 'lg' do Bootstrap
+                    setTimeout(() => { // Espera a animação de fade-in estar visível
+                        sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 50); // Delay curto para o DOM atualizar
+                }
+            }
+        });
     }
 }
 
@@ -347,7 +403,7 @@ function handleContactForm() {
  */
 function init() {
     handleChatbotLogic();
-    handlePurchaseButtons();
+    handleProductSelection(); // ATUALIZADO 
     handleAccordion();
     handleContactForm();
 }

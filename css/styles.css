@@ -7,6 +7,7 @@
    4. Estilos do Formulário de Contato
    5. Estilos da Página de Informações
    6. Estilos do Chatbot
+   6.1 Estilos da Barra Lateral de Produto
    7. Estilos do Rodapé (Footer)
    8. Regras de Responsividade (Media Queries)
 
@@ -20,6 +21,7 @@
     --cor-branca: #ffffff;
     --cor-detalhe: #d1f7ff;
     --cor-fundo: #1c1c1c;
+    --cor-texto: #1A1A1A; /* ATUALIZADO: Cor padrão de texto (equivalente a rgba(0,0,0,0.898)) */
 }
 
 html,
@@ -34,7 +36,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--cor-branca);
-    color: #333;
+    color: var(--cor-texto); /* ATUALIZADO: Usa a nova cor de texto como padrão */
 }
 
 main {
@@ -43,8 +45,12 @@ main {
 
 /* --- 2. BARRA DE NAVEGAÇÃO (NAVBAR) --- */
 nav.custom-navbar {
-    background-color: var(--cor-rosa);
+    /* ATUALIZADO: Gradiente vertical e altura aumentada */
+    background: linear-gradient(to bottom, var(--cor-rosa), var(--cor-branca));
     color: var(--cor-branca);
+    /* ATUALIZADO: Padding aumentado para 20px */
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .navbar-brand {
@@ -66,6 +72,23 @@ nav.custom-navbar {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+/* ATUALIZADO: Regras para cor do texto do menu */
+nav.custom-navbar .nav-link {
+    color: var(--cor-texto); 
+    font-weight: 500;
+}
+
+
+nav.custom-navbar .nav-link.active {
+    color: var(--cor-texto); 
+    font-weight: 700; 
+}
+
+nav.custom-navbar .nav-link:hover {
+    color: var(--cor-azul); 
+}
+
 
 /* --- 3. ESTILOS DA PÁGINA PRINCIPAL (PRODUTOS) --- */
 .titulo-categoria {
@@ -185,7 +208,6 @@ nav.custom-navbar {
 /* Colocando a checkbox do FORM - solução mais robusta */
 .form-check-input.checkbox-pequeno,
 .checkbox-pequeno {
-    /* Ajustando a check do bootstrap*/
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
     appearance: none !important;
@@ -217,7 +239,6 @@ nav.custom-navbar {
 
 .form-check-input.checkbox-pequeno:checked::after,
 .checkbox-pequeno:checked::after {
-    /* Removendo o "check" dentro da box */
     content: none;
 }
 
@@ -243,7 +264,6 @@ nav.custom-navbar {
     line-height: 1.1;
 }
 
-/* Validação do formulário */
 .error-message {
     color: var(--cor-rosa);
     font-size: 0.8rem;
@@ -292,7 +312,7 @@ nav.custom-navbar {
 
 .body-info .card-body {
     background-color: var(--cor-branca);
-    color: var(--cor-fundo);
+    color: var(--cor-texto); 
     text-align: justify;
     line-height: 1.8;
 }
@@ -312,6 +332,8 @@ nav.custom-navbar {
     flex-direction: column;
     overflow: hidden;
     z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: bottom right;
 }
 
 .chatbot-titulo {
@@ -401,7 +423,6 @@ nav.custom-navbar {
     color: white;
 }
 
-/* Área de input do chat */
 .chatbot-input-area {
     display: flex;
     padding: 8px;
@@ -430,7 +451,6 @@ nav.custom-navbar {
     background-color: #04c0cc;
 }
 
-/* Chat minimizado */
 .chatbot.minimized {
     height: auto;
 }
@@ -445,15 +465,90 @@ nav.custom-navbar {
     padding: 2px 6px;
 }
 
+/* --- 6.1 ESTILOS DA BARRA LATERAL DE PRODUTO --- */
+
+#detalhe-produto-sidebar.col-lg-4 {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 999;
+}
+
+#detalhe-produto-sidebar.col-lg-4.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+#detalhe-produto-sidebar .produto-detalhe-card {
+    border: 1px solid var(--cor-detalhe);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(5, 217, 232, 0.4);
+    padding: 10px;
+}
+
+#detalhe-produto-sidebar .card-header {
+    background-color: var(--cor-azul);
+    color: var(--cor-branca);
+    padding: 10px 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none;
+}
+
+#detalhe-produto-sidebar .card-header .btn-close {
+    filter: invert(1) grayscale(100) brightness(200%);
+}
+
+
+#detalhe-produto-sidebar .bi-heart {
+    font-size: 1.2rem;
+    color: var(--cor-rosa);
+    cursor: pointer;
+}
+
+#detalhe-produto-sidebar #detalhe-img {
+    max-height: 250px;
+    object-fit: contain;
+}
+
+#detalhe-produto-sidebar .btn-comprar-agora {
+    background-color: var(--cor-azul);
+    border-color: var(--cor-azul);
+    color: var(--cor-fundo);
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+#detalhe-produto-sidebar .btn-comprar-agora:hover {
+    background-color: #04c0cc;
+    border-color: #04c0cc;
+    color: var(--cor-fundo);
+}
+
+
 /* --- 7. ESTILOS DO RODAPÉ (FOOTER) --- */
 .rodape {
     background-color: var(--cor-rosa);
     color: var(--cor-branca);
     padding: 20px 0;
     margin-top: auto;
-    font-size: 0.75rem; /* Tamanho da fonte base reduzido */
+    font-size: 0.75rem;
     text-align: center;
+    position: relative;
 }
+
+.rodape::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; 
+    background: linear-gradient(to right, var(--cor-rosa), var(--cor-branca));
+}
+
 
 .rodape p {
     margin: 0;
@@ -461,7 +556,7 @@ nav.custom-navbar {
 }
 
 .sitemap-title {
-    font-size: 0.8rem; /* Tamanho reduzido */
+    font-size: 0.8rem;
     text-transform: uppercase;
     margin-bottom: 5px;
     font-weight: bold;
@@ -496,11 +591,10 @@ nav.custom-navbar {
     }
 
     .navbar-brand .logo-text {
-        display: none; /* Oculta o texto do logo em telas menores */
+        display: none;
     }
 }
 
-/* Ajustes no rodapé para telas maiores, garantindo centralização e espaçamento */
 @media (min-width: 768px) {
     .rodape .text-md-start,
     .rodape .text-md-end {
@@ -512,9 +606,7 @@ nav.custom-navbar {
     }
 }
 .checkbox-pequeno {
-    /* Define a largura e altura do checkbox */
     width: 1em; 
     height: 1em;
-    /* Adiciona uma margem à direita para separar do texto */
     margin-right: 0.5rem !important;
 }
