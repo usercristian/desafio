@@ -489,7 +489,7 @@ nav.custom-navbar .nav-link:hover {
 
 #detalhe-produto-sidebar .card-header {
     background-color: var(--cor-azul);
-    color: var(--cor-branca);
+    color: var(--cor-texto);
     padding: 10px 15px;
     font-weight: bold;
     display: flex;
