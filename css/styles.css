@@ -319,11 +319,6 @@ nav.custom-navbar .nav-link:hover {
 
 /* 6. ESTILOS DA PÁGINA DE CONFIRMAÇÃO DE COMPRA */
 
-.main {
-  flex: 1 0 50%; /* Define a largura mínima como 50% da viewport */
-  margin: 0 auto; /* Centraliza horizontalmente */
-}
-
 /* --- 7. ESTILOS DO CHATBOT --- */
 .chatbot {
     position: fixed;
