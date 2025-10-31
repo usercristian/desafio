@@ -16,7 +16,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="d-flex flex-column">
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
             <div class="container">
@@ -33,71 +33,74 @@
             </div>
         </nav>
     </header>
-    <div class="container d-flex justify-content-between align-items: center" style="max-width: 60%;">
-        <main>
-            <!-- Resumo da compra -->
-            <div>
-                <h2 style="margin-bottom: 20px;">Revise e confirme</h2>
-                <div style="display: flex; justify-content: space-between; padding: 0px 20px;">
-                    <div>
-                        <p>Produtos:</p>
-                        <p>Frete:</p>
-                    </div>
-                    <div>
-                        <p>R$ 845,00</p>
-                        <p>Grátis</p>
-                    </div>
+    <main class="container d-flex justify-content-between flex-column flex-grow-1"
+        style="max-width: 60%; margin: 40px auto;">
+        <!-- Resumo da compra -->
+        <div>
+            <h2 style="margin-bottom: 20px;">Revise e confirme</h2>
+            <div style="display: flex; justify-content: space-between; padding: 0px 80px;">
+                <div>
+                    <p><strong>Produtos:</strong></p>
+                    <p><strong>Frete:</strong></p>
+                </div>
+                <div>
+                    <p><strong>R$ 845,00</strong></p>
+                    <p><strong>Grátis</strong></p>
                 </div>
             </div>
-            <hr style="margin: 30px 0px;">
-            <!-- Confirmação de compra -->
-            <div style="display: flex; flex-direction: column; justify-content: space-between;">
-                <!-- Exibe o valor total -->
-                <div style="display: flex; justify-content: space-between; padding: 0px 20px;">
-                    <h4>Valor total</h4>
-                    <p>R$ 845,00</p>
+        </div>
+        <hr style="margin: 30px 0px;">
+        <!-- Confirmação de compra -->
+        <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <!-- Exibe o valor total -->
+            <div style="display: flex; justify-content: space-between; padding: 0px 50px;">
+                <h4>Valor total</h4>
+                <p>R$ 845,00</p>
+            </div>
+            <!-- Exbibe o botão -->
+            <div style="display:flex; justify-content: center;">
+                <button style="margin: 20px auto;">Confirmar compra</button>
+            </div>
+        </div>
+        <hr style="margin: 30px 0px;">
+        <!-- Detalhes da entrega -->
+        <div style="font-size: small;">
+            <h5 style="margin-bottom: 20px;">Detalhes da entrega</h5>
+            <div style="display:flex; flex-direction: row; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Rua Conselheiro Saraiva, 281</p>
+            </div>
+            <p>Alterar ou escolher outro endereço</p>
+        </div>
+        <hr style="margin: 30px 0px;">
+        <!-- Produtos -->
+        <div style="padding: 0px 20px;">
+            <h5 style="margin-bottom: 20px;">Produtos</h5>
+            <div style="display: flex; justify-content:flex-start; align-items: center;">
+                <div class="produto-item h-100;" style="margin-right: 30px;">
+                    <img src="/images/Teclado.3.png" class="img-prod" alt="Teclado gamer mecânico RAZER">
                 </div>
-                <!-- Exbibe o botão -->
-                <div style="display:flex; justify-content: center;">
-                    <button>Confirmar compra</button>
+                <div>
+                    <p>Teclado gamer mecânico RAZER</p>
+                    <p>R$ 105,00</p>
+                    <p>1 produto</p>
                 </div>
             </div>
-            <hr style="margin: 30px 0px;">
-            <!-- Detalhes da entrega -->
-            <div style="font-size: small;">
-                <h5>Detalhes da entrega</h5>
-                <div style="display:flex; flex-direction: row; align-items: center; gap: 10px;">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <p>Rua Conselheiro Saraiva, 281</p>
+        </div>
+        <hr style="margin: 30px 0px;">
+        <div style="padding: 0px 20px;">
+            <div style="display: flex; justify-content:flex-start; align-items: center;">
+                <div class="produto-item h-100;" style="margin-right: 30px;">
+                    <img src="/images/Cadeira.3.png" class="img-prod" alt="Cadeira ergonômica para Home Office">
                 </div>
-                <p>Alterar ou escolher outro endereço</p>
-            </div>
-            <hr style="margin: 30px 0px;">
-            <!-- Produtos -->
-            <div style="padding: 0px 20px;">
-                <h5>Produtos</h5>
-                <div style="display: flex; justify-content: space-evenly; align-items: center;">
-                    <div class="card produto-item h-100">
-                        <img src="/images/Teclado.3.png" alt="Teclado gamer mecânico RAZER" class="img-prod">
-                    </div>
-                    <div>
-                        <p>Teclado gamer mecânico RAZER</p>
-                        <p>R$ 105,00</p>
-                        <p>1 produto</p>
-                    </div>
-                </div>
-                <hr style="margin: 30px 0px;">
-                <div style="display: flex; justify-content: space-evenly; align-items: center;">
-                    <img src="/images/Cadeira.3.png" alt="Cadeira ergonômica para Home Office">
-                    <div>
-                        <p>Cadeira ergonômica para Home Office</p>
-                        <p>R$ 740,00</p>
-                        <p>1 produto</p>
-                    </div>
+                <div>
+                    <p>Cadeira ergonômica para Home Office</p>
+                    <p>R$ 740,00</p>
+                    <p>1 produto</p>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 
 </body>
 
