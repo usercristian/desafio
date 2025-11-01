@@ -100,7 +100,7 @@ function handleChatbotLogic() {
     }
 
     function initializeChatbot() {
-        if (window.innerWidth <= 768 && !chatbot.classList.contains('minimized')) {
+        if (window.innerWidth <= 992 && !chatbot.classList.contains('minimized')) {
             toggleChatState();
         }
     }

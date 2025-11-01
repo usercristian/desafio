@@ -534,7 +534,7 @@ nav.custom-navbar .nav-link:hover {
 .rodape {
     background-color: var(--cor-rosa);
     color: var(--cor-branca);
-    padding: 20px 0;
+    padding: 20px 0px 20px;
     margin-top: auto;
     font-size: 0.75rem;
     text-align: center;
@@ -586,7 +586,7 @@ nav.custom-navbar .nav-link:hover {
 }
 
 /* --- 8. REGRAS DE RESPONSIVIDADE (MEDIA QUERIES) --- */
-@media (max-width: 768px) {
+@media (max-width: 1510px) {
     .chatbot {
         width: 90%;
         height: 300px;
@@ -594,6 +594,10 @@ nav.custom-navbar .nav-link:hover {
 
     .navbar-brand .logo-text {
         display: none;
+    }
+
+    .rodape {
+        padding-bottom: 75px; 
     }
 }
 
