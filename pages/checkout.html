@@ -28,7 +28,8 @@
                     aria-controls="menuNav" aria-expanded="false" aria-label="Abrir navegação">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-title text-white fw-bold" style="text-align: center;">Confirmação de compra
+                <div class="navbar-title text-white fw-bold" style="margin: auto;">
+                    <h1 style="font-weight: 500; font-size: 24px;">Confirmação de compra</h1>
                 </div>
             </div>
         </nav>
@@ -37,7 +38,7 @@
 
         <!-- Resumo da compra -->
         <div>
-            <h2 style="margin-bottom: 20px;">Revise e confirme</h2>
+            <h2 style="margin-bottom: 20px; font-weight: 400; font-size: 24px;">Revise e confirme</h2>
             <div style="display: flex; justify-content: space-between; padding: 0px 70px;">
                 <div>
                     <p><strong>Produtos:</strong></p>
@@ -49,40 +50,47 @@
                 </div>
             </div>
         </div>
+
         <hr style="margin: 20px 0px;">
 
         <!-- Confirmação de compra -->
         <div style="display: flex; flex-direction: column; justify-content: space-between;">
             <!-- Exibe o valor total -->
             <div style="display: flex; justify-content: space-between; padding: 0px 70px;">
-                <h4>Valor total</h4>
+                <h5 style="font-weight: 500;">Valor total</h5>
                 <p><b>R$ 845,00</b></p>
             </div>
 
             <!-- Exbibe o botão -->
             <div style="display:flex; justify-content:end;">
                 <button type="button" class="btn btn-primary active btn-large .text-nowrap"
-                    style="min-width: 40%; margin: 20px auto 5px; background-color: #ff2a6d; border-color: #ff2a6d; border-radius: 12px; color: white;font-size: large; font-weight: 500;">Confirmar compra</button>
+                    style="min-width: 40%; margin: 20px auto 5px; background-color: #ff2a6d; border-color: #ff2a6d; border-radius: 12px; color: white;font-size: large; font-weight: 500;">Confirmar
+                    compra</button>
             </div>
         </div>
+
         <hr style="margin: 20px 0px;">
 
         <!-- Detalhes da entrega -->
-        <div style="font-size: small;">
-            <h5 style="margin-bottom: 20px;">Detalhes da entrega</h5>
-            <div style="display:flex; flex-direction: row; align-items: center; gap: 10px;">
-                <i class="fa-solid fa-location-dot"></i>
-                <p>Rua Conselheiro Saraiva, 281</p>
+        <div style="font-size: small; display: flex; flex-direction: column; gap: 10px;">
+            <h5 style="margin-bottom: 20px; font-weight: 500;">Detalhes da entrega</h5>
+            <div style="display:flex; flex-direction: row; justify-content: start; padding-left: 15px; gap: 10px;">
+                <i class="fa-solid fa-location-dot" style="color: #ff2a6d; font-size: large;"></i>
+                <p style="margin-bottom: auto;">Rua Conselheiro Saraiva, 281</p>
             </div>
-            <p>Alterar ou escolher outro endereço</p>
+            <a href="https://www.google.com/" target="_blank"
+                style="text-decoration: none; margin-bottom: auto; padding-left: 15px; color: #ff2a6d; font-weight: 300;">Alterar
+                ou escolher
+                outro endereço</a>
         </div>
+
         <hr style="margin: 20px 0px;">
 
         <!-- Produtos -->
         <div>
-            <h5 style="margin-bottom: 20px;">Produtos</h5>
+            <h5 style="margin-bottom: 20px; font-weight: 500;">Produtos</h5>
             <div
-                style="display: flex; justify-content:flex-start; align-items: center; margin: 15px 0px; padding: 0px 20px;">
+                style="display: flex; justify-content:flex-start; align-items: center; margin: 15px 0px; padding-left: 15px;">
                 <div class="produto-item h-100;" style="margin-right: 30px;">
                     <img src="/images/Teclado.3.png" class="img-prod" alt="Teclado gamer mecânico RAZER">
                 </div>
@@ -94,7 +102,7 @@
             </div>
             <hr style="margin: 15px 15px;">
             <div
-                style="display: flex; justify-content:flex-start; align-items: center; margin: 15px 0px; padding: 0px 20px;">
+                style="display: flex; justify-content:flex-start; align-items: center; margin: 15px 0px; padding-left: 15px;">
                 <div class="produto-item h-100;" style="margin-right: 30px;">
                     <img src="/images/Cadeira.3.png" class="img-prod" alt="Cadeira ergonômica para Home Office">
                 </div>
