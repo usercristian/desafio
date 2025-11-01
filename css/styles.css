@@ -21,7 +21,7 @@
     --cor-branca: #ffffff;
     --cor-detalhe: #d1f7ff;
     --cor-fundo: #1c1c1c;
-    --cor-texto: #1A1A1A; /* ATUALIZADO: Cor padrão de texto (equivalente a rgba(0,0,0,0.898)) */
+    --cor-texto: #1A1A1A; 
 }
 
 html,
@@ -36,7 +36,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--cor-branca);
-    color: var(--cor-texto); /* ATUALIZADO: Usa a nova cor de texto como padrão */
+    color: var(--cor-texto); 
 }
 
 main {
@@ -45,12 +45,11 @@ main {
 
 /* --- 2. BARRA DE NAVEGAÇÃO (NAVBAR) --- */
 nav.custom-navbar {
-    /* ATUALIZADO: Gradiente vertical e altura aumentada */
-    background: linear-gradient(to bottom, var(--cor-rosa), var(--cor-branca));
-    color: var(--cor-branca);
-    /* ATUALIZADO: Padding aumentado para 20px */
-    padding-top: 20px;
-    padding-bottom: 20px;
+    background-color: var(--cor-rosa); 
+    
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 4px solid var(--cor-azul);
 }
 
 .navbar-brand {
@@ -73,22 +72,20 @@ nav.custom-navbar {
     margin-right: 10px;
 }
 
-/* ATUALIZADO: Regras para cor do texto do menu */
 nav.custom-navbar .nav-link {
-    color: var(--cor-texto); 
-    font-weight: 500;
+    color: var(--cor-branca); 
+    font-weight: 400;
+    transition: color 0.2s;
 }
 
-
 nav.custom-navbar .nav-link.active {
-    color: var(--cor-texto); 
-    font-weight: 700; 
+    color: var(--cor-azul); 
+    font-weight: 400; 
 }
 
 nav.custom-navbar .nav-link:hover {
-    color: var(--cor-azul); 
+    color: var(--cor-rosa); 
 }
-
 
 /* --- 3. ESTILOS DA PÁGINA PRINCIPAL (PRODUTOS) --- */
 .titulo-categoria {
@@ -157,6 +154,67 @@ nav.custom-navbar .nav-link:hover {
 .comprar-btn:hover {
     background-color: #04c0cc !important;
     border-color: #04c0cc !important;
+}
+
+/* --- 3.1 ESTILOS DO CARROSSEL DE PRODUTOS --- */
+
+.carousel.slide {
+    margin-bottom: 30px;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+   
+    width: 40px;
+    height: 40px;
+
+    top: 50%;
+    transform: translateY(-50%);
+    
+    
+    bottom: auto; 
+    opacity: 0.7; 
+
+    background-color: var(--cor-azul);
+    border-radius: 8px;
+}
+
+.carousel-control-prev {
+    left: 10px; 
+}
+.carousel-control-next {
+    right: 10px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+
+.carousel-indicators [data-bs-target] {
+    background-color: #aaa;
+}
+
+.carousel-indicators .active {
+    background-color: var(--cor-rosa);
+}
+
+
+.carousel-indicators {
+    bottom: -30px;
+}
+
+.carousel-item .row.mb-4 {
+    margin-bottom: 0 !important;
 }
 
 /* --- 4. ESTILOS DO FORMULÁRIO DE CONTATO --- */

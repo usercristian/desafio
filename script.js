@@ -33,6 +33,37 @@ const listaDeProdutos = [
     { nome: 'Kit Mousepad Extenso', categoria: 'Acessórios', image: 'images/conjunto.webp', keywords: ['acessorio', 'acessorios', 'mousepad'], rating: 4.7, numRatings: 130 },
     { nome: 'Suporte Monitor USB', categoria: 'Acessórios', image: 'images/suporte.jpg', keywords: ['acessorio', 'acessorios', 'suporte'], rating: 4.2, numRatings: 65 },
     { nome: 'Mousepad Ergonômico', categoria: 'Acessórios', image: 'images/mousepad.jpg', keywords: ['acessorio', 'acessorios', 'mousepad'], rating: 3.5, numRatings: 25 },
+
+    // ==========================================================
+    // NOVOS PRODUTOS PARA SIMULAR O CARROSEL PENDENTE PREENCHER COM IMAGENS E NOMES
+    // ==========================================================
+
+    { nome: 'Novo Teclado 1', categoria: 'Teclados', image: 'images/pendente.jpg', keywords: ['teclado', 'teclados'], rating: 4.1, numRatings: 15 },
+    { nome: 'Novo Teclado 2', categoria: 'Teclados', image: 'images/pendente.jpg', keywords: ['teclado', 'teclados'], rating: 4.3, numRatings: 25 },
+    { nome: 'Novo Teclado 3', categoria: 'Teclados', image: 'images/pendente.jpg', keywords: ['teclado', 'teclados'], rating: 3.9, numRatings: 10 },
+
+    { nome: 'Nova Cadeira 1', categoria: 'Cadeiras', image: 'images/pendente.jpg', keywords: ['cadeira', 'cadeiras'], rating: 4.0, numRatings: 30 },
+    { nome: 'Nova Cadeira 2', categoria: 'Cadeiras', image: 'images/pendente.jpg', keywords: ['cadeira', 'cadeiras'], rating: 4.2, numRatings: 12 },
+    { nome: 'Nova Cadeira 3', categoria: 'Cadeiras', image: 'images/pendente.jpg', keywords: ['cadeira', 'cadeiras'], rating: 4.4, numRatings: 20 },
+
+    { nome: 'Nova Mesa 1', categoria: 'Mesas', image: 'images/pendente.jpg', keywords: ['mesa', 'mesas'], rating: 4.5, numRatings: 18 },
+    { nome: 'Nova Mesa 2', categoria: 'Mesas', image: 'images/pendente.jpg', keywords: ['mesa', 'mesas'], rating: 4.1, numRatings: 22 },
+    { nome: 'Nova Mesa 3', categoria: 'Mesas', image: 'images/pendente.jpg', keywords: ['mesa', 'mesas'], rating: 3.8, numRatings: 40 },
+    { nome: 'Novo Mouse 1', categoria: 'Mouses', image: 'images/pendente.jpg', keywords: ['mouse', 'mouses'], rating: 4.6, numRatings: 35 },
+    { nome: 'Novo Mouse 2', categoria: 'Mouses', image: 'images/pendente.jpg', keywords: ['mouse', 'mouses'], rating: 4.3, numRatings: 28 },
+    { nome: 'Novo Mouse 3', categoria: 'Mouses', image: 'images/pendente.jpg', keywords: ['mouse', 'mouses'], rating: 4.0, numRatings: 15 },
+
+    { nome: 'Novo Fone 1', categoria: 'Fones (Headsets)', image: 'images/pendente.jpg', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 3.9, numRatings: 45 },
+    { nome: 'Novo Fone 2', categoria: 'Fones (Headsets)', image: 'images/pendente.jpg', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 4.1, numRatings: 33 },
+    { nome: 'Novo Fone 3', categoria: 'Fones (Headsets)', image: 'images/pendente.jpg', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 4.2, numRatings: 24 },
+
+    { nome: 'Novo Monitor 1', categoria: 'Monitores', image: 'images/pendente.jpg', keywords: ['monitor', 'monitores'], rating: 4.1, numRatings: 17 },
+    { nome: 'Novo Monitor 2', categoria: 'Monitores', image: 'images/pendente.jpg', keywords: ['monitor', 'monitores'], rating: 4.4, numRatings: 29 },
+    { nome: 'Novo Monitor 3', categoria: 'Monitores', image: 'images/pendente.jpg', keywords: ['monitor', 'monitores'], rating: 3.8, numRatings: 11 },
+
+    { nome: 'Novo Acessório 1', categoria: 'Acessórios', image: 'images/pendente.jpg', keywords: ['acessorio', 'acessorios'], rating: 4.0, numRatings: 19 },
+    { nome: 'Novo Acessório 2', categoria: 'Acessórios', image: 'images/pendente.jpg', keywords: ['acessorio', 'acessorios'], rating: 4.3, numRatings: 27 },
+    { nome: 'Novo Acessório 3', categoria: 'Acessórios', image: 'images/pendente.jpg', keywords: ['acessorio', 'acessorios'], rating: 3.8, numRatings: 50 },
 ];
 
 
@@ -403,10 +434,9 @@ function handleContactForm() {
  */
 function init() {
     handleChatbotLogic();
-    handleProductSelection(); // ATUALIZADO 
+    handleProductSelection();
     handleAccordion();
     handleContactForm();
 }
 
-// Inicia a aplicação após o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', init);
