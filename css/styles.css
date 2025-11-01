@@ -143,17 +143,18 @@ nav.custom-navbar .nav-link:hover {
 }
 
 .comprar-btn {
-    background-color: var(--cor-azul) !important;
-    border-color: var(--cor-azul) !important;
-    color: var(--cor-fundo) !important;
+    background-color: var(--cor-rosa) !important;
+    border-color: var(--cor-rosa) !important;
+    color: var(--cor-branca) !important;
     font-weight: bold;
     border-radius: 5px;
     transition: background-color 0.2s ease;
 }
 
 .comprar-btn:hover {
-    background-color: #04c0cc !important;
-    border-color: #04c0cc !important;
+    background-color: #e02460 !important;
+    border-color: #e02460 !important;
+    color: var(--cor-branca) !important;
 }
 
 /* --- 3.1 ESTILOS DO CARROSSEL DE PRODUTOS --- */
@@ -183,7 +184,7 @@ nav.custom-navbar .nav-link:hover {
     bottom: auto; 
     opacity: 0.7; 
 
-    background-color: var(--cor-azul);
+    background-color: var(--cor-rosa);
     border-radius: 8px;
 }
 
@@ -205,7 +206,7 @@ nav.custom-navbar .nav-link:hover {
 }
 
 .carousel-indicators .active {
-    background-color: var(--cor-rosa);
+    background-color: var(--cor-azul);
 }
 
 
@@ -397,7 +398,7 @@ nav.custom-navbar .nav-link:hover {
 }
 
 .chatbot-titulo {
-    background-color: var(--cor-azul);
+    background-color: var(--cor-rosa);
     color: var(--cor-branca);
     padding: 10px;
     font-weight: bold;
@@ -437,8 +438,9 @@ nav.custom-navbar .nav-link:hover {
 }
 
 .user-message {
-    background-color: var(--cor-detalhe);
-    border: 1px solid var(--cor-azul);
+    background-color: var(--cor-rosa);
+    border: 1px solid var(--cor-rosa);
+    color: var(--cor-branca);
     align-self: flex-end;
     border-top-right-radius: 0;
 }
@@ -500,7 +502,7 @@ nav.custom-navbar .nav-link:hover {
 
 .chatbot-input-area button {
     padding: 6px 12px;
-    background-color: var(--cor-azul);
+    background-color: var(--cor-rosa);
     color: var(--cor-branca);
     border: none;
     border-radius: 4px;
@@ -508,7 +510,7 @@ nav.custom-navbar .nav-link:hover {
 }
 
 .chatbot-input-area button:hover {
-    background-color: #04c0cc;
+    background-color: #e02460;
 }
 
 .chatbot.minimized {
@@ -548,8 +550,8 @@ nav.custom-navbar .nav-link:hover {
 }
 
 #detalhe-produto-sidebar .card-header {
-    background-color: var(--cor-azul);
-    color: var(--cor-texto);
+    background-color: var(--cor-rosa);
+    color: var(--cor-branca);
     padding: 10px 15px;
     font-weight: bold;
     display: flex;
@@ -575,16 +577,16 @@ nav.custom-navbar .nav-link:hover {
 }
 
 #detalhe-produto-sidebar .btn-comprar-agora {
-    background-color: var(--cor-azul);
-    border-color: var(--cor-azul);
-    color: var(--cor-fundo);
+    background-color: var(--cor-rosa);
+    border-color: var(--cor-rosa);
+    color: var(--cor-branca);
     font-weight: bold;
     transition: background-color 0.2s ease;
 }
 #detalhe-produto-sidebar .btn-comprar-agora:hover {
-    background-color: #04c0cc;
-    border-color: #04c0cc;
-    color: var(--cor-fundo);
+    background-color: #e02460;
+    border-color: #e02460;
+    color: var(--cor-branca);
 }
 
 
