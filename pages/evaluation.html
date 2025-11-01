@@ -11,6 +11,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <style>
+        .rating {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        /* escondemos os radios, mas mantemos acessibilidade */
+        .star {
+            font-size: 36px;
+            cursor: pointer;
+            color: #ccc;
+            transition: color .12s;
+            user-select: none;
+        }
+
+        .star.hover,
+        .star.selected {
+            color: #ffb400;
+        }
+
+        /* estrela amarela */
+        .sr-only {
+            position: absolute;
+            left: -9999px;
+        }
+
+        /* Estilizando botão enviar */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #ff2f6d;
+            color: white;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .message {
+            margin-top: 12px;
+            color: green;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -20,24 +74,55 @@
         <div>
             <p>Teclado gamer mecânico RAZER</p>
             <p>Qual sua avaliação desta compra?</p>
-            <i></i>
-        </div>
+            <div role="radiogroup" aria-labelledby="rating-label">
+                <div id="rating-label" class="sr-only">Avaliação em estrelas</div>
+                <form id="ratingForm" class="rating" aria-describedby="rating-desc">
+                    <!-- cada input radio representa uma avaliação -->
+                    <label>
+                        <input type="radio" name="rating" value="1" />
+                        <span class="star" data-value="1" aria-hidden="true">☆</span>
+                        <span class="sr-only">1 estrela</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="2" />
+                        <span class="star" data-value="2" aria-hidden="true">☆</span>
+                        <span class="sr-only">2 estrelas</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="3" checked />
+                        <span class="star selected" data-value="3" aria-hidden="true">☆</span>
+                        <span class="sr-only">3 estrelas</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="4" />
+                        <span class="star" data-value="4" aria-hidden="true">☆</span>
+                        <span class="sr-only">4 estrelas</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="5" />
+                        <span class="star" data-value="5" aria-hidden="true">☆</span>
+                        <span class="sr-only">5 estrelas</span>
+                    </label>
+                </form>
+            </div>
 
-    </div>
-    <hr>
-    <div>
-        <div>
-            <p><strong>Envie fotos do produto</strong></p>
-            <input type="file" id="file-input" multiple>
         </div>
+        <hr>
         <div>
-            Escreva sua opinião sobre o produto
             <div>
-                <textarea></textarea>
+                <p><strong>Envie fotos do produto</strong></p>
+                <input type="file" id="file-input" multiple>
+            </div>
+            <div>
+                Escreva sua opinião sobre o produto
+                <div>
+                    <textarea></textarea>
+                </div>
             </div>
         </div>
-    </div>
-    <button>Publicar opinião</button>
+        <button type="submit" id="submitBtn" class="btn btn-primary active btn-large .text-nowrap"
+            style="min-width: 40%; margin: 20px auto 5px; background-color: #ff2a6d; border-color: #ff2a6d; border-radius: 12px; color: white;font-size: large; font-weight: 500;">Publicar
+            opinião</button>
 </body>
 
 </html>
