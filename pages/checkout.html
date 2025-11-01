@@ -16,7 +16,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column" style="overflow-y: scroll;">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
             <div class="container">
@@ -33,36 +33,40 @@
             </div>
         </nav>
     </header>
-    <main class="container d-flex justify-content-between flex-column flex-grow-1"
-        style="max-width: 60%; margin: 40px auto;">
+    <main class="container d-flex justify-content-between flex-column" style="max-width: 60%; margin: 40px auto;">
+
         <!-- Resumo da compra -->
         <div>
             <h2 style="margin-bottom: 20px;">Revise e confirme</h2>
-            <div style="display: flex; justify-content: space-between; padding: 0px 80px;">
+            <div style="display: flex; justify-content: space-between; padding: 0px 70px;">
                 <div>
                     <p><strong>Produtos:</strong></p>
                     <p><strong>Frete:</strong></p>
                 </div>
                 <div>
-                    <p><strong>R$ 845,00</strong></p>
-                    <p><strong>Grátis</strong></p>
+                    <p>R$ 845,00</p>
+                    <p>Grátis</p>
                 </div>
             </div>
         </div>
-        <hr style="margin: 30px 0px;">
+        <hr style="margin: 20px 0px;">
+
         <!-- Confirmação de compra -->
         <div style="display: flex; flex-direction: column; justify-content: space-between;">
             <!-- Exibe o valor total -->
-            <div style="display: flex; justify-content: space-between; padding: 0px 50px;">
+            <div style="display: flex; justify-content: space-between; padding: 0px 70px;">
                 <h4>Valor total</h4>
-                <p>R$ 845,00</p>
+                <p><b>R$ 845,00</b></p>
             </div>
+
             <!-- Exbibe o botão -->
-            <div style="display:flex; justify-content: center;">
-                <button style="margin: 20px auto;">Confirmar compra</button>
+            <div style="display:flex; justify-content:end;">
+                <button type="button" class="btn btn-primary active btn-large .text-nowrap"
+                    style="min-width: 40%; margin: 20px auto 5px; background-color: #ff2a6d; border-color: #ff2a6d; border-radius: 12px; color: white;font-size: large; font-weight: 500;">Confirmar compra</button>
             </div>
         </div>
-        <hr style="margin: 30px 0px;">
+        <hr style="margin: 20px 0px;">
+
         <!-- Detalhes da entrega -->
         <div style="font-size: small;">
             <h5 style="margin-bottom: 20px;">Detalhes da entrega</h5>
@@ -72,11 +76,13 @@
             </div>
             <p>Alterar ou escolher outro endereço</p>
         </div>
-        <hr style="margin: 30px 0px;">
+        <hr style="margin: 20px 0px;">
+
         <!-- Produtos -->
-        <div style="padding: 0px 20px;">
+        <div>
             <h5 style="margin-bottom: 20px;">Produtos</h5>
-            <div style="display: flex; justify-content:flex-start; align-items: center;">
+            <div
+                style="display: flex; justify-content:flex-start; align-items: center; margin: 15px 0px; padding: 0px 20px;">
                 <div class="produto-item h-100;" style="margin-right: 30px;">
                     <img src="/images/Teclado.3.png" class="img-prod" alt="Teclado gamer mecânico RAZER">
                 </div>
@@ -86,10 +92,9 @@
                     <p>1 produto</p>
                 </div>
             </div>
-        </div>
-        <hr style="margin: 30px 0px;">
-        <div style="padding: 0px 20px;">
-            <div style="display: flex; justify-content:flex-start; align-items: center;">
+            <hr style="margin: 15px 15px;">
+            <div
+                style="display: flex; justify-content:flex-start; align-items: center; margin: 15px 0px; padding: 0px 20px;">
                 <div class="produto-item h-100;" style="margin-right: 30px;">
                     <img src="/images/Cadeira.3.png" class="img-prod" alt="Cadeira ergonômica para Home Office">
                 </div>
