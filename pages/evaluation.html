@@ -12,117 +12,215 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <style>
-        .rating {
+        body {
+            margin: 0;
+            height: 100vh;
             display: flex;
-            gap: 8px;
+            justify-content: center;
             align-items: center;
+            background: #f9f9f9;
+            font-family: Arial, sans-serif;
         }
 
-        .rating input {
+        .container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            grid-template-areas:
+                "imagem avaliacao"
+                "imagem divisor"
+                "imagem formulario"
+                "imagem botao";
+            gap: 12px 40px;
+            align-items: center;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+        }
+
+        .produto-img {
+            grid-area: imagem;
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .avaliacao {
+            grid-area: avaliacao;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .titulo {
+            margin-bottom: 20px;
+        }
+
+        .pergunta {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .estrelas {
+            font-size: 24px;
+            color: #00bcd4;
+        }
+
+        .formulario {
+            grid-area: formulario;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .form-label {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-label label {
+            font-weight: bold;
+            margin-bottom: 0px;
+            color: #000;
+            text-align: left;
+        }
+
+        .input-file-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 2px solid #00bcd4;
+            border-radius: 10px;
+            color: #00bcd4;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px 0;
+            transition: 0.3s;
+        }
+
+        .input-file-label:hover {
+            background-color: #e0f7fa;
+        }
+
+        .input-foto {
             display: none;
         }
 
-        /* escondemos os radios, mas mantemos acessibilidade */
-        .star {
-            font-size: 36px;
-            cursor: pointer;
-            color: #ccc;
-            transition: color .12s;
-            user-select: none;
+        textarea {
+            width: 100%;
+            border: 2px solid #00bcd4;
+            border-radius: 10px;
+            padding: 10px;
+            resize: none;
+            height: 80px;
+            outline: none;
+            font-family: inherit;
         }
 
-        .star.hover,
-        .star.selected {
-            color: #ffb400;
+        .icon-camera {
+            width: 18px;
+            height: 18px;
+            color: #00bcd4;
         }
 
-        /* estrela amarela */
-        .sr-only {
-            position: absolute;
-            left: -9999px;
-        }
-
-        /* Estilizando botão enviar */
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: #ff2f6d;
-            color: white;
-            border-radius: 999px;
+        .botao {
+            grid-area: botao;
+            padding: 12px;
+            background: #ff2a6d;
+            color: #fff;
             border: none;
+            border-radius: 12px;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 18px;
+            transition: 0.3s;
         }
 
-        .btn:disabled {
-            opacity: .5;
-            cursor: not-allowed;
+        .botao:hover {
+            background: #e02460;
         }
 
-        .message {
-            margin-top: 12px;
-            color: green;
+        .divisor {
+            border: 1px 1000 #ccc;
+        }
+
+
+        /* 📱 Responsivo */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "imagem"
+                    "avaliacao"
+                    "divisor"
+                    "formulario"
+                    "botao";
+            }
+
+            .produto-img {
+                width: 70%;
+                justify-self: center;
+                margin-bottom: 10px;
+            }
+
+            .botao {
+                justify-self: center;
+                width: 80%;
+            }
         }
     </style>
 
 </head>
 
 <body>
-    <div>
-        <img></img>
+    <!-- Menu -->
 
-        <div>
-            <p>Teclado gamer mecânico RAZER</p>
-            <p>Qual sua avaliação desta compra?</p>
-            <div role="radiogroup" aria-labelledby="rating-label">
-                <div id="rating-label" class="sr-only">Avaliação em estrelas</div>
-                <form id="ratingForm" class="rating" aria-describedby="rating-desc">
-                    <!-- cada input radio representa uma avaliação -->
-                    <label>
-                        <input type="radio" name="rating" value="1" />
-                        <span class="star" data-value="1" aria-hidden="true">☆</span>
-                        <span class="sr-only">1 estrela</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="rating" value="2" />
-                        <span class="star" data-value="2" aria-hidden="true">☆</span>
-                        <span class="sr-only">2 estrelas</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="rating" value="3" checked />
-                        <span class="star selected" data-value="3" aria-hidden="true">☆</span>
-                        <span class="sr-only">3 estrelas</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="rating" value="4" />
-                        <span class="star" data-value="4" aria-hidden="true">☆</span>
-                        <span class="sr-only">4 estrelas</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="rating" value="5" />
-                        <span class="star" data-value="5" aria-hidden="true">☆</span>
-                        <span class="sr-only">5 estrelas</span>
-                    </label>
-                </form>
-            </div>
+    <main class="container">
+        <img class="produto-img" src="/images/Teclado.3.png" alt="Teclado gamer mecânico RAZER">
 
-        </div>
-        <hr>
-        <div>
-            <div>
-                <p><strong>Envie fotos do produto</strong></p>
-                <input type="file" id="file-input" multiple>
-            </div>
-            <div>
-                Escreva sua opinião sobre o produto
-                <div>
-                    <textarea></textarea>
-                </div>
+        <!-- Avaliação -->
+        <div class="avaliacao">
+            <h2 class="titulo">Teclado gamer mecânico RAZER</h2>
+            <p class="pergunta"><strong>Qual sua avaliação desta compra?</strong></p>
+
+            <div class="estrelas">
+                <input type="radio" name="estrela" /> ☆
+                <input type="radio" name="estrela" /> ☆
+                <input type="radio" name="estrela" checked /> ☆
+                <input type="radio" name="estrela" /> ☆
+                <input type="radio" name="estrela" /> ☆
             </div>
         </div>
-        <button type="submit" id="submitBtn" class="btn btn-primary active btn-large .text-nowrap"
-            style="min-width: 40%; margin: 20px auto 5px; background-color: #ff2a6d; border-color: #ff2a6d; border-radius: 12px; color: white;font-size: large; font-weight: 500;">Publicar
-            opinião</button>
+
+        <hr class="divisor">
+
+        <!-- Formulários: Fotos e opinião-->
+        <div class="formulario">
+            <div class="form-label">
+                <label for="foto">Envie fotos do produto</label>
+                <label for="foto" class="input-file-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 24 24" class="icon-camera">
+                        <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm8-3h-2.586l-1.707-1.707A1 1 0 0 0 15 4h-6a1 1 0 0 0-.707.293L6.586 6H4a2 2 0 0 0-2 2v10
+        a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
+                    </svg>
+                    Enviar fotos
+                    <input type="file" id="foto" class="input-foto" hidden>
+                </label>
+            </div>
+            <div class="form-label">
+                <label for="opiniao">Escreva sua opinião sobre o produto</label>
+                <textarea id="opiniao" placeholder="O produto me..."></textarea>
+            </div>
+        </div>
+        <button class="botao">Publicar opinião</button>
+
+    </main>
 </body>
 
 </html>
