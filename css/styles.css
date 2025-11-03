@@ -18,6 +18,7 @@
 :root {
     --cor-azul: #05d9e8;
     --cor-rosa: #ff2a6d;
+    --cor-rose-hover: #e02460;
     --cor-branca: #ffffff;
     --cor-detalhe: #d1f7ff;
     --cor-fundo: #1c1c1c;
@@ -30,6 +31,7 @@ body {
     max-height: 100%;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -152,8 +154,8 @@ nav.custom-navbar .nav-link:hover {
 }
 
 .comprar-btn:hover {
-    background-color: #e02460 !important;
-    border-color: #e02460 !important;
+    background-color: var(--cor-rose-hover) !important;
+    border-color: var(--cor-rose-hover) !important;
     color: var(--cor-branca) !important;
 }
 
