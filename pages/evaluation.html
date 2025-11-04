@@ -19,19 +19,23 @@
     <style>
         body {
             margin: 0;
+            width: 100%;
             height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
             background: #f9f9f9;
-            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            max-width: 100%;
         }
 
         .container-main {
             display: flex;
             flex-direction: column;
-            justify-content: start;
+            justify-self: center;
+            justify-content: center;
             align-items: center;
+            align-self: center;
             background: #fff;
             padding: 60px;
             border-radius: 12px;
@@ -39,6 +43,7 @@
             max-width: 900px;
             width: 100%;
             gap: 30px;
+            flex-grow: 1;
         }
 
         .form-avaliacao {
@@ -103,13 +108,14 @@
             grid-area: formulario;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 10px;
             width: 100%;
         }
 
         .form-label {
             display: flex;
             flex-direction: column;
+            width: 100%;
             gap: 6px;
         }
 
@@ -121,6 +127,7 @@
 
         .input-file-label {
             display: flex;
+            ;
             align-items: center;
             justify-content: center;
             gap: 8px;
@@ -137,16 +144,12 @@
             background-color: #e0f7fa;
         }
 
-        .input-foto {
-            display: none;
-        }
-
         textarea {
             border: 2px solid #00bcd4;
             border-radius: 10px;
             padding: 10px;
-            resize: none;
-            height: 80px;
+            resize: both;
+            min-height: 100px;
             outline: none;
             font-family: inherit;
         }
@@ -185,6 +188,20 @@
         }
 
 
+        .file-info {
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 0.3rem;
+        }
+
+
         /* 📱 Responsivo */
         @media (max-width: 768px) {
             .bloco-avaliacao {
@@ -214,21 +231,18 @@
 
 <body class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-dark custom-navbar">
-            <div class="d-flex align-items-center justify-content-between">
-                <a class="navbar-brand d-flex align-items-center" href="../index.html">
-                    <img src="../images/logo.png" alt="Happy Game Logo" style="height: 40px;">
-                    <span class="logo-text ms-2 text-white fw-bold">Happy Game</span>
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+            <div class="container d-flex align-items-center">
+                <a class="navbar-brand" href="/index.html">
+                    <img src="/images/logo.png" alt="Happy Game Logo">
+                    <span class="logo-text">Happy Game</span>
                 </a>
-
-                <div class="navbar-title text-white fw-bold mx-auto">
-                    <h1 class="m-0" style="font-weight: 500; font-size: 24px;">Avaliação</h1>
+                <div class="text-center w-100">
+                    <h2 style="color: #d1f7ff; margin: 0;">Avaliação</h2>
                 </div>
             </div>
         </nav>
     </header>
-
-    <!-- Menu -->
 
     <main class="container-main">
         <form class="form-avaliacao" id="form-avaliacao">
@@ -254,7 +268,7 @@
             <hr class="divisor">
 
             <div class="formulario">
-                <div class="form-label">
+                <form id="uploadForm" class="form-label">
                     <label for="foto">Envie fotos do produto</label>
                     <label for="foto" class="input-file-label">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -263,19 +277,20 @@
         a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
                         </svg>
                         Enviar fotos
-                        <input type="file" id="foto" class="input-foto" hidden>
+                        <input type="file" accept="image/*" id="foto" class="input-foto" multiple hidden>
                     </label>
-                </div>
+                    <div id="fileName" class="file-info"></div>
+                </form>
+                <p id="message" style="margin: 0;"></p>
 
                 <div class="form-label">
                     <label for="opiniao">Escreva sua opinião sobre o produto</label>
-                    <textarea id="opiniao" name="opiniao" placeholder="O produto me..."></textarea>
+                    <textarea id="opiniao" maxlength="1000" name="opiniao" placeholder="O produto me..."></textarea>
+                    <div id="charCount" class="char-counter">0/1000</div>
                 </div>
 
                 <button id="botao" class="botao" disabled>Publicar opinião</button>
-
             </div>
-
         </form>
 
     </main>
@@ -314,8 +329,64 @@
                 nota: notaInput.value,
                 opiniao: document.getElementById('opiniao').value
             };
-
         });
+
+        const foto = document.getElementById('foto');
+        const uploadForm = document.getElementById("uploadForm");
+        const message = document.getElementById("message");
+
+        const MAX_FILES = 3;
+
+        foto.addEventListener("change", () => {
+            if (foto.files.length > MAX_FILES) {
+                message.textContent = `Você só pode selecionar até ${MAX_FILES} arquivos.`;
+                foto.value = ""; // limpa a seleção
+            } else {
+                message.textContent = `${foto.files.length} arquivo(s) selecionado(s).`;
+            }
+        });
+
+        form.addEventListener("submit", (e) => {
+            if (foto.files.length > MAX_FILES) {
+                e.preventDefault();
+                alert(`Limite de ${MAX_FILES} arquivos excedido!`);
+            }
+        });
+
+        // Exibir nome do arquivo selecionado
+        const fileName = document.getElementById('fileName');
+
+        foto.addEventListener('change', () => {
+            if (foto.files.length > 0) {
+                const validFiles = Array.from(foto.files).filter(file => file.type.startsWith('image/'));
+                if (validFiles.length === 0) {
+                    alert("Apenas arquivos de imagem são permitidos (jpg, png, gif, etc).");
+                }
+
+                const names = validFiles.map(file => file.name).join(", ");
+                fileName.textContent = validFiles.length
+                    ? `Imagens selecionadas: ${names}`
+                    : "";
+            } else {
+                fileName.textContent = "";
+            }
+        }
+        );
+
+
+
+
+
+        // Atualizar contador de caracteres
+        const opiniao = document.getElementById('opiniao');
+        const charCount = document.getElementById('charCount');
+
+        opiniao.addEventListener('input', () => {
+            const length = opiniao.value.length;
+            const maxLength = opiniao.getAttribute('maxlength');
+            charCount.textContent = `${length}/${maxLength}`;
+        });
+
     </script>
 
 </body>
