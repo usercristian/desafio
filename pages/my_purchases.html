@@ -62,8 +62,29 @@
 
         .compra-info p {
             margin: 0px;
+            font-size: 125%;
         }
 
+        .botao-comprar-novamente {
+            background-color: #ff2a6d;
+            border-color: #ff2a6d;
+            border-radius: 12px;
+            color: #d1f7ff;
+            font-size: medium;
+            font-weight: 500;
+        }
+
+        .botao-comprar-novamente:hover,
+        .botao-comprar-novamente:active:active,
+        .botao-comprar-novamente:focus {
+            background-color: #e0225e;
+            border-color: #e0225e;
+        }
+
+        .botao-comprar-novamente:active {
+            background-color: #e0225e;
+            border-color: #e0225e;
+        }
     </style>
 </head>
 
@@ -84,21 +105,25 @@
     </header>
 
     <main class="container-main">
+
+        <!-- Compra -->
         <div style="width: 100%; padding: 10px;">
             <!-- Data da última atualização e comprar novamente -->
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <p style="font-weight: 500; margin: 0px;">{Data}</p>
-                <button class="btn btn-primary btn-comprar-novamente">Comprar novamente</button>
+                <button class="btn btn-primary botao-comprar-novamente">Comprar novamente</button>
             </div>
 
             <hr class="divisor">
-
 
             <!-- Imagem e Infos do produto -->
             <div style="display: flex; justify-content: flex-start;">
                 <img class="produto-img" src="/images/Teclado.3.png" alt="Teclado gamer mecânico RAZER">
                 <div class="compra-info">
-                    <div style="display: flex; flex-direction: row;"><p>Entrega: </p> <p style="color: greenyellow;">Entregue</p></div>
+                    <div style="display: flex; flex-direction: row;">
+                        <p>Entrega: </p>
+                        <p style="color: greenyellow;">Entregue</p>
+                    </div>
                     <p>Teclado gamer mecânico RAZER</p>
                     <p>Quantidade: {1} Produto</p>
                 </div>
@@ -107,8 +132,28 @@
 
         <hr class="divisor">
 
-        <div style="width: 100%;">
+        <div style="width: 100%; padding: 10px;">
+            <!-- Data da última atualização e comprar novamente -->
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <p style="font-weight: 500; margin: 0px;">{Data}</p>
+                <button class="btn btn-primary botao-comprar-novamente">Comprar novamente</button>
             </div>
+
+            <hr class="divisor">
+
+            <!-- Imagem e Infos do produto -->
+            <div style="display: flex; justify-content: flex-start;">
+                <img class="produto-img" src="/images/Cadeira.3.png" alt="Cadeira ergonômica para Home Office">
+                <div class="compra-info">
+                    <div style="display: flex; flex-direction: row;">
+                        <p>Entrega:</p>
+                        <p style="color: yellow;">Pendente</p>
+                    </div>
+                    <p>Cadeira ergonômica para Home Office</p>
+                    <p>Quantidade: {1} Produto</p>
+                </div>
+            </div>
+        </div>
     </main>
 
 </body>
