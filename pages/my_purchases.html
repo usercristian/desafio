@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,108 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <style>
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            background: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        .container-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: center;
+            background: #fff;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+            flex-grow: 1;
+            gap: 50px;
+        }
+
+        .produto-img {
+            width: 200px;
+            border-radius: 15px;
+            margin: 0px 50px;
+            object-fit: cover;
+            border: 1px solid #d1f7ff;
+            box-shadow: 0 4px 12px rgba(5, 217, 232, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .divisor {
+            width: 100%;
+            border: 1px 1000 #ccc;
+            margin: 15px 0px 30px;
+        }
+
+        .compra-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .compra-info p {
+            margin: 0px;
+        }
+
+    </style>
 </head>
-<body>
-    
+
+<body class="body">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+            <div class="container d-flex align-items-center">
+                <a class="navbar-brand" href="/index.html">
+                    <img src="/images/logo.png" alt="Happy Game Logo">
+                    <span class="logo-text">Happy Game</span>
+                </a>
+                <div class="text-center w-100">
+                    <h2 style="color: #d1f7ff; margin: 0;">Minhas compras</h2>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container-main">
+        <div style="width: 100%; padding: 10px;">
+            <!-- Data da última atualização e comprar novamente -->
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <p style="font-weight: 500; margin: 0px;">{Data}</p>
+                <button class="btn btn-primary btn-comprar-novamente">Comprar novamente</button>
+            </div>
+
+            <hr class="divisor">
+
+
+            <!-- Imagem e Infos do produto -->
+            <div style="display: flex; justify-content: flex-start;">
+                <img class="produto-img" src="/images/Teclado.3.png" alt="Teclado gamer mecânico RAZER">
+                <div class="compra-info">
+                    <div style="display: flex; flex-direction: row;"><p>Entrega: </p> <p style="color: greenyellow;">Entregue</p></div>
+                    <p>Teclado gamer mecânico RAZER</p>
+                    <p>Quantidade: {1} Produto</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divisor">
+
+        <div style="width: 100%;">
+            </div>
+    </main>
+
 </body>
+
+
+
 </html>
