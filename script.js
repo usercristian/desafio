@@ -35,35 +35,36 @@ const listaDeProdutos = [
     { nome: 'Mousepad Ergonômico', categoria: 'Acessórios', image: 'images/mousepad.jpg', keywords: ['acessorio', 'acessorios', 'mousepad'], rating: 3.5, numRatings: 25 },
 
     // ==========================================================
-    // NOVOS PRODUTOS PARA SIMULAR O CARROSEL PENDENTE PREENCHER COM IMAGENS E NOMES
+    // PRODUTOS ATUALIZADOS (ANTES 'PENDENTE')
     // ==========================================================
 
-    { nome: 'Novo Teclado 1', categoria: 'Teclados', image: 'images/pendente.jpg', keywords: ['teclado', 'teclados'], rating: 4.1, numRatings: 15 },
-    { nome: 'Novo Teclado 2', categoria: 'Teclados', image: 'images/pendente.jpg', keywords: ['teclado', 'teclados'], rating: 4.3, numRatings: 25 },
-    { nome: 'Novo Teclado 3', categoria: 'Teclados', image: 'images/pendente.jpg', keywords: ['teclado', 'teclados'], rating: 3.9, numRatings: 10 },
+    { nome: 'Teclado Logi', categoria: 'Teclados', image: 'images/teclado4.webp', keywords: ['teclado', 'teclados'], rating: 4.1, numRatings: 15 },
+    { nome: 'Teclado Rosa', categoria: 'Teclados', image: 'images/teclado5.webp', keywords: ['teclado', 'teclados'], rating: 4.3, numRatings: 25 },
+    { nome: 'Teclado Branco', categoria: 'Teclados', image: 'images/teclado6.webp', keywords: ['teclado', 'teclados'], rating: 3.9, numRatings: 10 },
 
-    { nome: 'Nova Cadeira 1', categoria: 'Cadeiras', image: 'images/pendente.jpg', keywords: ['cadeira', 'cadeiras'], rating: 4.0, numRatings: 30 },
-    { nome: 'Nova Cadeira 2', categoria: 'Cadeiras', image: 'images/pendente.jpg', keywords: ['cadeira', 'cadeiras'], rating: 4.2, numRatings: 12 },
-    { nome: 'Nova Cadeira 3', categoria: 'Cadeiras', image: 'images/pendente.jpg', keywords: ['cadeira', 'cadeiras'], rating: 4.4, numRatings: 20 },
+    { nome: 'Cadeira Ergo', categoria: 'Cadeiras', image: 'images/cadeira4.webp', keywords: ['cadeira', 'cadeiras'], rating: 4.0, numRatings: 30 },
+    { nome: 'Cadeira Office', categoria: 'Cadeiras', image: 'images/cadeira5.webp', keywords: ['cadeira', 'cadeiras'], rating: 4.2, numRatings: 12 },
+    { nome: 'Cadeira Azul', categoria: 'Cadeiras', image: 'images/cadeira6.webp', keywords: ['cadeira', 'cadeiras'], rating: 4.4, numRatings: 20 },
 
-    { nome: 'Nova Mesa 1', categoria: 'Mesas', image: 'images/pendente.jpg', keywords: ['mesa', 'mesas'], rating: 4.5, numRatings: 18 },
-    { nome: 'Nova Mesa 2', categoria: 'Mesas', image: 'images/pendente.jpg', keywords: ['mesa', 'mesas'], rating: 4.1, numRatings: 22 },
-    { nome: 'Nova Mesa 3', categoria: 'Mesas', image: 'images/pendente.jpg', keywords: ['mesa', 'mesas'], rating: 3.8, numRatings: 40 },
-    { nome: 'Novo Mouse 1', categoria: 'Mouses', image: 'images/pendente.jpg', keywords: ['mouse', 'mouses'], rating: 4.6, numRatings: 35 },
-    { nome: 'Novo Mouse 2', categoria: 'Mouses', image: 'images/pendente.jpg', keywords: ['mouse', 'mouses'], rating: 4.3, numRatings: 28 },
-    { nome: 'Novo Mouse 3', categoria: 'Mouses', image: 'images/pendente.jpg', keywords: ['mouse', 'mouses'], rating: 4.0, numRatings: 15 },
+    { nome: 'Mesa Gamer Z', categoria: 'Mesas', image: 'images/mesa4.webp', keywords: ['mesa', 'mesas'], rating: 4.5, numRatings: 18 },
+    { nome: 'Mesa Gamer L', categoria: 'Mesas', image: 'images/mesa5.webp', keywords: ['mesa', 'mesas'], rating: 4.1, numRatings: 22 },
+    { nome: 'Mesa Simples', categoria: 'Mesas', image: 'images/mesa6.webp', keywords: ['mesa', 'mesas'], rating: 3.8, numRatings: 40 },
+    
+    { nome: 'Mouse Ergo', categoria: 'Mouses', image: 'images/mouse4.webp', keywords: ['mouse', 'mouses'], rating: 4.6, numRatings: 35 },
+    { nome: 'Mouse Básico', categoria: 'Mouses', image: 'images/mouse5.webp', keywords: ['mouse', 'mouses'], rating: 4.3, numRatings: 28 },
+    { nome: 'Mouse Logi', categoria: 'Mouses', image: 'images/mouse6.webp', keywords: ['mouse', 'mouses'], rating: 4.0, numRatings: 15 },
 
-    { nome: 'Novo Fone 1', categoria: 'Fones (Headsets)', image: 'images/pendente.jpg', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 3.9, numRatings: 45 },
-    { nome: 'Novo Fone 2', categoria: 'Fones (Headsets)', image: 'images/pendente.jpg', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 4.1, numRatings: 33 },
-    { nome: 'Novo Fone 3', categoria: 'Fones (Headsets)', image: 'images/pendente.jpg', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 4.2, numRatings: 24 },
+    { nome: 'Headset Branco', categoria: 'Fones (Headsets)', image: 'images/fone4.webp', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 3.9, numRatings: 45 },
+    { nome: 'Headset Logi', categoria: 'Fones (Headsets)', image: 'images/fone5.webp', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 4.1, numRatings: 33 },
+    { nome: 'Headset Rosa', categoria: 'Fones (Headsets)', image: 'images/fone6.webp', keywords: ['fone', 'fones', 'headset', 'headsets'], rating: 4.2, numRatings: 24 },
 
-    { nome: 'Novo Monitor 1', categoria: 'Monitores', image: 'images/pendente.jpg', keywords: ['monitor', 'monitores'], rating: 4.1, numRatings: 17 },
-    { nome: 'Novo Monitor 2', categoria: 'Monitores', image: 'images/pendente.jpg', keywords: ['monitor', 'monitores'], rating: 4.4, numRatings: 29 },
-    { nome: 'Novo Monitor 3', categoria: 'Monitores', image: 'images/pendente.jpg', keywords: ['monitor', 'monitores'], rating: 3.8, numRatings: 11 },
+    { nome: 'Monitor Acer', categoria: 'Monitores', image: 'images/monitor4.webp', keywords: ['monitor', 'monitores'], rating: 4.1, numRatings: 17 },
+    { nome: 'Monitor AOC', categoria: 'Monitores', image: 'images/monitor5.webp', keywords: ['monitor', 'monitores'], rating: 4.4, numRatings: 29 },
+    { nome: 'Monitor Ultrawide', categoria: 'Monitores', image: 'images/monitor6.webp', keywords: ['monitor', 'monitores'], rating: 3.8, numRatings: 11 },
 
-    { nome: 'Novo Acessório 1', categoria: 'Acessórios', image: 'images/pendente.jpg', keywords: ['acessorio', 'acessorios'], rating: 4.0, numRatings: 19 },
-    { nome: 'Novo Acessório 2', categoria: 'Acessórios', image: 'images/pendente.jpg', keywords: ['acessorio', 'acessorios'], rating: 4.3, numRatings: 27 },
-    { nome: 'Novo Acessório 3', categoria: 'Acessórios', image: 'images/pendente.jpg', keywords: ['acessorio', 'acessorios'], rating: 3.8, numRatings: 50 },
+    { nome: 'Braço Mic', categoria: 'Acessórios', image: 'images/acessorios4.webp', keywords: ['acessorio', 'acessorios'], rating: 4.0, numRatings: 19 },
+    { nome: 'Mousepad RGB', categoria: 'Acessórios', image: 'images/acessorios5.webp', keywords: ['acessorio', 'acessorios'], rating: 4.3, numRatings: 27 },
+    { nome: 'Base Cooler', categoria: 'Acessórios', image: 'images/acessorios6.webp', keywords: ['acessorio', 'acessorios'], rating: 3.8, numRatings: 50 },
 ];
 
 
@@ -131,7 +132,8 @@ function handleChatbotLogic() {
     }
 
     function initializeChatbot() {
-        if (window.innerWidth <= 992 && !chatbot.classList.contains('minimized')) {
+        // ===== MUDANÇA AQUI (DE 992 para 768) =====
+        if (window.innerWidth <= 768 && !chatbot.classList.contains('minimized')) {
             toggleChatState();
         }
     }
@@ -317,11 +319,14 @@ function handleProductSelection() {
                 }, 10); // Pequeno delay para garantir que a transição CSS ocorra
 
                 // 4. NOVO: Scroll automático para o painel em telas móveis
-                if (window.innerWidth < 992) { // 992px é o breakpoint 'lg' do Bootstrap
+                // ===== MUDANÇA AQUI (DE 992 para 768) =====
+                if (window.innerWidth < 768) { // 768px é o breakpoint 'md' do Bootstrap
                     setTimeout(() => { // Espera a animação de fade-in estar visível
                         sidebar.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 50); // Delay curto para o DOM atualizar
                 }
+            } else {
+                console.error("Produto não encontrado no script.js:", productName);
             }
         });
     }

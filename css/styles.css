@@ -441,6 +441,16 @@ nav.custom-navbar .nav-link:hover {
     border: 1px solid var(--cor-detalhe);
     box-shadow: 0 4px 12px rgba(5, 217, 232, 0.25);
 }
+/* 6.2 CORREÇÃO SIDEBAR STICKY SCROLL */
+#detalhe-produto-sidebar .sticky-top {
+    /* Define a altura máxima da sidebar. 
+      calc(100vh - 40px) = 100% da altura da tela - 20px (do 'top: 20px') - 20px (uma margem inferior)
+    */
+    max-height: calc(100vh - 40px);
+    
+    /* Adiciona a rolagem vertical APENAS se o conteúdo for maior que a altura máxima */
+    overflow-y: auto;
+}
 
 /* ---- Botão principal do produto/ações ---- */
 .btn-principal,
