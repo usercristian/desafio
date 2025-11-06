@@ -443,12 +443,7 @@ nav.custom-navbar .nav-link:hover {
 }
 /* 6.2 CORREÇÃO SIDEBAR STICKY SCROLL */
 #detalhe-produto-sidebar .sticky-top {
-    /* Define a altura máxima da sidebar. 
-      calc(100vh - 40px) = 100% da altura da tela - 20px (do 'top: 20px') - 20px (uma margem inferior)
-    */
     max-height: calc(100vh - 40px);
-    
-    /* Adiciona a rolagem vertical APENAS se o conteúdo for maior que a altura máxima */
     overflow-y: auto;
 }
 
@@ -1044,4 +1039,91 @@ h3+p {
     width: 1em;
     height: 1em;
     margin-right: 0.5rem !important;
+}
+
+/* --- 9. ESTILOS DA PÁGINA DE LOGIN --- */
+
+.login-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(5, 217, 232, 0.1);
+    background-color: var(--cor-branca);
+}
+
+.login-container .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--cor-rosa);
+    border-radius: 10px;
+}
+
+.login-container .logo-container img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.login-container .logo-text {
+    color: var(--cor-branca);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.login-container .form-floating {
+    margin-bottom: 1rem;
+}
+
+.login-container .form-control {
+    border-color: var(--cor-azul);
+}
+
+.login-container .form-control:focus {
+    border-color: var(--cor-rosa);
+    box-shadow: 0 0 0 0.25rem rgba(255, 42, 109, 0.25);
+}
+
+.btn-login {
+    background-color: var(--cor-rosa);
+    color: var(--cor-branca);
+    border: none;
+    padding: 0.8rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+    background-color: #e02460;
+    color: var(--cor-branca);
+}
+
+.login-container .btn-cadastro {
+    color: var(--cor-rosa);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-container .btn-cadastro:hover {
+    color: #e02460;
+}
+
+.login-container .link-senha {
+    color: var(--cor-azul);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.login-container .link-senha:hover {
+    color: #04c0cc;
+}
+
+.login-container .error-message {
+    color: var(--cor-rosa);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
 }

@@ -433,6 +433,20 @@ function handleContactForm() {
     });
 }
 
+/**
+ * Adiciona o listener de clique ao botão "Comprar agora" no painel de detalhes (index.html).
+ */
+function handleCheckoutButton() {
+    const botaoComprar = document.querySelector('.btn-comprar-agora');
+    
+    // Verifica se o botão existe na página atual (só existe no index.html)
+    if (botaoComprar) {
+        botaoComprar.addEventListener('click', () => {
+            window.location.href = 'pages/checkout.html';
+        });
+    }
+}
+
 
 /**
  * Função principal que inicializa todas as lógicas da aplicação.
@@ -442,6 +456,7 @@ function init() {
     handleProductSelection();
     handleAccordion();
     handleContactForm();
+    handleCheckoutButton(); // Lógica movida do index.html
 }
 
 document.addEventListener('DOMContentLoaded', init);
