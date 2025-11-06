@@ -648,7 +648,6 @@ h3+p {
     border-radius: 6px;
 }
 
-/* Mensagem de sucesso após envio da avaliação */
 .mensagem-sucesso {
     margin-top: 2rem;
     background-color: #e7faff;
@@ -670,12 +669,58 @@ h3+p {
     font-size: 1rem;
 }
 
+.mensagem-conteudo p {
+    margin: 0px;
+}
+
 .mensagem-conteudo i {
     color: #0096c7;
     font-size: 1.4rem;
 }
 
 /* Efeito de aparição suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mensagem de sucesso após confirmar compra */
+.mensagem-sucesso-checkout {
+    margin-top: 1.5rem;
+    background-color: #e7faff;
+    border: 2px solid var(--cor-azul);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.mensagem-conteudo-checkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    color: #0077b6;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.mensagem-conteudo-checkout p {
+    margin: 0px;
+}
+
+.mensagem-conteudo-checkout i {
+    color: #0096c7;
+    font-size: 1.3rem;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

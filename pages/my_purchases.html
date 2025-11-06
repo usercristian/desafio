@@ -22,7 +22,6 @@
                     <span class="logo-text ms-2">Happy Game</span>
                 </a>
 
-                <!-- Substituir o div antigo por este h2 com classe -->
                 <h2 class="page-title">Minhas compras</h2>
             </div>
         </nav>
@@ -84,6 +83,17 @@
             </div>
         </div>
     </footer>
+    <script>
+        const imagensProdutos = document.querySelectorAll('.produto-img');
+
+        imagensProdutos.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                window.location.href = '../pages/evaluation.html';
+            });
+        });
+    </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
