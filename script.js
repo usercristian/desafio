@@ -434,17 +434,125 @@ function handleContactForm() {
 }
 
 /**
- * Adiciona o listener de clique ao botão "Comprar agora" no painel de detalhes (index.html).
+ * Lógica para validação e submissão do formulário de login (login.html).
  */
-function handleCheckoutButton() {
-    const botaoComprar = document.querySelector('.btn-comprar-agora');
-    
-    // Verifica se o botão existe na página atual (só existe no index.html)
-    if (botaoComprar) {
-        botaoComprar.addEventListener('click', () => {
-            window.location.href = 'pages/checkout.html';
-        });
+function handleLoginForm() {
+    const loginForm = document.getElementById('loginForm');
+    if (!loginForm) return;
+
+    // Anexa a função de recuperação ao objeto window para ser acessível pelo 'onclick'
+    window.enviarRecuperacao = function() {
+        const emailRecuperacao = document.getElementById('emailRecuperacao');
+        if (!emailRecuperacao.value || !emailRecuperacao.value.includes('@')) {
+            emailRecuperacao.classList.add('is-invalid');
+            return;
+        }
+       
+        alert('Um link de recuperação foi enviado para seu e-mail.');
+        const modal = bootstrap.Modal.getInstance(document.getElementById('recuperarSenhaModal'));
+        modal.hide();
+        emailRecuperacao.value = '';
+        emailRecuperacao.classList.remove('is-invalid');
     }
+
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+       
+        document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.form-control').forEach(el => el.classList.remove('is-invalid'));
+       
+        let isValid = true;
+        const email = document.getElementById('email');
+        const senha = document.getElementById('senha');
+       
+        if (!email.value.trim()) {
+            document.getElementById('emailError').textContent = 'Por favor, insira seu e-mail ou telefone';
+            document.getElementById('emailError').style.display = 'block';
+            email.classList.add('is-invalid');
+            isValid = false;
+        }
+       
+        if (!senha.value) {
+            document.getElementById('senhaError').textContent = 'Por favor, insira sua senha';
+            document.getElementById('senhaError').style.display = 'block';
+            senha.classList.add('is-invalid');
+            isValid = false;
+        }
+       
+        if (isValid) {
+            window.location.href = '../index.html';
+        }
+    });
+}
+
+/**
+ * Lógica para validação e submissão do formulário de registro (register.html).
+ */
+function handleRegisterForm() {
+    const registerForm = document.getElementById('registerForm');
+    if (!registerForm) return;
+
+    // Formatação de Telefone
+    document.getElementById('phone').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
+        
+        if (value.length > 2) {
+            value = `(${value.slice(0,2)}) ${value.slice(2)}`;
+        }
+        if (value.length > 10) {
+            value = `${value.slice(0,10)}-${value.slice(10)}`;
+        }
+        e.target.value = value;
+    });
+
+    // Validação do formulário
+    registerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.form-control').forEach(el => el.classList.remove('is-invalid'));
+        
+        let isValid = true;
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const nome = document.getElementById('nome');
+        const senha = document.getElementById('senha');
+        
+       
+        if (!email.value.trim() || !email.value.includes('@')) {
+            document.getElementById('emailError').textContent = 'Por favor, insira um e-mail válido';
+            document.getElementById('emailError').style.display = 'block';
+            email.classList.add('is-invalid');
+            isValid = false;
+        }
+        
+        if (!phone.value.trim() || phone.value.replace(/\D/g, '').length < 10) {
+            document.getElementById('phoneError').textContent = 'Por favor, insira um telefone válido';
+            document.getElementById('phoneError').style.display = 'block';
+            phone.classList.add('is-invalid');
+            isValid = false;
+        }
+        
+        if (!nome.value.trim()) {
+            document.getElementById('nomeError').textContent = 'Por favor, insira seu nome';
+            document.getElementById('nomeError').style.display = 'block';
+            nome.classList.add('is-invalid');
+            isValid = false;
+        }
+        
+        if (!senha.value || senha.value.length < 6) {
+            document.getElementById('senhaError').textContent = 'A senha deve ter pelo menos 6 caracteres';
+            document.getElementById('senhaError').style.display = 'block';
+            senha.classList.add('is-invalid');
+            isValid = false;
+        }
+        
+        if (isValid) {
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = '../index.html';
+        }
+    });
 }
 
 
@@ -456,7 +564,8 @@ function init() {
     handleProductSelection();
     handleAccordion();
     handleContactForm();
-    handleCheckoutButton(); // Lógica movida do index.html
+    handleLoginForm();      
+    handleRegisterForm(); 
 }
 
 document.addEventListener('DOMContentLoaded', init);

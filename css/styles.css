@@ -10,6 +10,8 @@
    6.1 Estilos da Barra Lateral de Produto
    7. Estilos do Rodapé (Footer)
    8. Regras de Responsividade (Media Queries)
+   9. Estilos da Página de Login
+  10. Estilos da Página de Registro
 
 
 
@@ -443,7 +445,12 @@ nav.custom-navbar .nav-link:hover {
 }
 /* 6.2 CORREÇÃO SIDEBAR STICKY SCROLL */
 #detalhe-produto-sidebar .sticky-top {
+    /* Define a altura máxima da sidebar. 
+      calc(100vh - 40px) = 100% da altura da tela - 20px (do 'top: 20px') - 20px (uma margem inferior)
+    */
     max-height: calc(100vh - 40px);
+    
+    /* Adiciona a rolagem vertical APENAS se o conteúdo for maior que a altura máxima */
     overflow-y: auto;
 }
 
@@ -1126,4 +1133,85 @@ h3+p {
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: none;
+}
+
+/* --- 10. ESTILOS DA PÁGINA DE REGISTRO --- */
+
+.register-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(5, 217, 232, 0.1);
+    background-color: var(--cor-branca);
+}
+
+.register-container .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.register-container .form-control {
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+
+.register-container .form-control:focus {
+    border-color: var(--cor-rosa);
+    box-shadow: 0 0 0 0.25rem rgba(255, 42, 109, 0.25);
+}
+
+.register-container .form-label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.btn-continuar {
+    background-color: var(--cor-rosa);
+    color: var(--cor-branca);
+    border: none;
+    padding: 0.8rem;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+.btn-continuar:hover {
+    background-color: #e02460;
+}
+
+.register-container .terms-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
+.register-container .terms-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-container .terms-text a:hover {
+    text-decoration: underline;
+}
+
+.register-container .error-message {
+    color: var(--cor-rosa);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.register-container .checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.register-container .checkbox-wrapper input[type="checkbox"] {
+    margin-top: 0.25rem;
 }
