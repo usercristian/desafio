@@ -1,393 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Avaliação do produto</title>
 
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            margin: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            background: #f9f9f9;
-            box-sizing: border-box;
-        }
-
-        .header {
-            max-width: 100%;
-        }
-
-        .container-main {
-            display: flex;
-            flex-direction: column;
-            justify-self: center;
-            justify-content: center;
-            align-items: center;
-            align-self: center;
-            background: #fff;
-            padding: 60px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 900px;
-            width: 100%;
-            gap: 30px;
-            flex-grow: 1;
-        }
-
-        .form-avaliacao {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-
-        }
-
-        .bloco-avaliacao {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 20px;
-        }
-
-        .produto-img {
-            width: 220px;
-            border-radius: 15px;
-            object-fit: cover;
-            border: 1px solid #d1f7ff;
-            box-shadow: 0 4px 12px rgba(5, 217, 232, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .avaliacao {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left;
-            gap: 10px;
-        }
-
-        .titulo {
-            margin-bottom: 20px;
-        }
-
-        .pergunta {
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .estrelas {
-            display: flex;
-            gap: 10px;
-            font-size: 40px;
-            color: #00bcd4;
-            cursor: pointer;
-        }
-
-        .estrela {
-            transition: color 0.2s ease;
-        }
-
-        .estrela.preenchida {
-            color: #00bcd4;
-        }
-
-        .formulario {
-            grid-area: formulario;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-        }
-
-        .form-label {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            gap: 6px;
-        }
-
-        .form-label label {
-            font-weight: bold;
-            margin-bottom: 0px;
-            color: #000;
-        }
-
-        .input-file-label {
-            display: flex;
-            ;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: 2px solid #00bcd4;
-            border-radius: 10px;
-            color: #00bcd4;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 10px 0;
-            transition: 0.3s;
-        }
-
-        .input-file-label:hover {
-            background-color: #e0f7fa;
-        }
-
-        textarea {
-            border: 2px solid #00bcd4;
-            border-radius: 10px;
-            padding: 10px;
-            resize: both;
-            min-height: 100px;
-            outline: none;
-            font-family: inherit;
-        }
-
-        .icon-camera {
-            width: 18px;
-            height: 18px;
-            color: #00bcd4;
-        }
-
-        .botao {
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: rgba(255, 42, 109, 0.5);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: not-allowed;
-            transition: background 0.3s, cursor 0.3s;
-        }
-
-        .botao.ativo {
-            cursor: pointer;
-            background: #ff2a6d;
-        }
-
-        .botao.ativo:hover {
-            background: #e02460;
-        }
-
-        .divisor {
-            width: 100%;
-            border: 1px 1000 #ccc;
-            margin: 40px 0px;
-        }
-
-
-        .file-info {
-            margin-top: 0.3rem;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .char-counter {
-            text-align: right;
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 0.3rem;
-        }
-
-        @media (max-width: 768px) {
-            .bloco-avaliacao {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px
-            }
-
-            .produto-img {
-                width: 100%;
-                justify-self: center;
-                margin-bottom: 10px;
-            }
-
-            .formulario {
-                width: 100%;
-            }
-
-            .botao {
-                justify-self: center;
-                width: 100%;
-            }
-        }
-    </style>
-
+        crossorigin="anonymous" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-            <div class="container d-flex align-items-center">
-                <a class="navbar-brand" href="/index.html">
-                    <img src="/images/logo.png" alt="Happy Game Logo">
-                    <span class="logo-text">Happy Game</span>
+        <nav class="navbar navbar-expand-lg custom-navbar position-relative">
+            <div class="container position-relative">
+                <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                    <img src="../images/logo.png" alt="Happy Game" height="40" />
+                    <span class="logo-text ms-2">Happy Game</span>
                 </a>
-                <div class="text-center w-100">
-                    <h2 style="color: #d1f7ff; margin: 0;">Avaliação</h2>
-                </div>
+
+                <h2 class="page-title">Avaliação</h2>
             </div>
         </nav>
     </header>
 
-    <main class="container-main">
-        <form class="form-avaliacao" id="form-avaliacao">
-            <div class="bloco-avaliacao">
-                <img class="produto-img" src="/images/Teclado.3.png" alt="Teclado gamer mecânico RAZER">
+    <main class="container my-5" style="max-width: 920px;">
+        <form id="form-avaliacao" class="card-surface form-section">
 
-                <div class="avaliacao">
-                    <h3 class="titulo">Teclado gamer mecânico RAZER</h3>
-                    <p class="pergunta"><strong>Qual sua avaliação desta compra?</strong></p>
+            <div class="d-flex flex-column flex-md-row gap-4 align-items-start">
+                <img src="../images/Teclado.3.png" alt="Teclado" class="produto-img" />
 
-                    <div class="estrelas" id="estrelas">
-                        <i class="fa-regular fa-star estrela" data-valor="1"></i>
-                        <i class="fa-regular fa-star estrela" data-valor="2"></i>
-                        <i class="fa-regular fa-star estrela" data-valor="3"></i>
-                        <i class="fa-regular fa-star estrela" data-valor="4"></i>
-                        <i class="fa-regular fa-star estrela" data-valor="5"></i>
+                <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+                    <h5 class="mb-2">Teclado gamer mecânico RAZER</h5>
+                    <h4 class="mb-2"><strong>Qual sua avaliação desta compra?</strong></h4>
+
+                    <div id="estrelas" class="avaliacao-stars" role="radiogroup" aria-label="Avaliação do produto">
+                        <i class="fa-regular fa-star estrela" data-valor="1" role="radio" aria-checked="false"
+                            tabindex="0"></i>
+                        <i class="fa-regular fa-star estrela" data-valor="2" role="radio" aria-checked="false"
+                            tabindex="0"></i>
+                        <i class="fa-regular fa-star estrela" data-valor="3" role="radio" aria-checked="false"
+                            tabindex="0"></i>
+                        <i class="fa-regular fa-star estrela" data-valor="4" role="radio" aria-checked="false"
+                            tabindex="0"></i>
+                        <i class="fa-regular fa-star estrela" data-valor="5" role="radio" aria-checked="false"
+                            tabindex="0"></i>
                     </div>
 
-                    <input type="hidden" id="nota" name="nota">
+                    <input type="hidden" id="nota" name="nota" />
                 </div>
             </div>
 
-            <hr class="divisor">
+            <div class="form-section">
+                <label class="fw-bold">Envie fotos do produto</label>
+                <label for="foto" class="input-file-label d-inline-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path d="M20 5h-3.17l-1.41-1.41A2 2 0 0 0 14.17 3H9.83a2 2 0 0 0-1.41.59L7 5H4a2 2 0 0 0-2 2v12
+             a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm-8 13a5 5 0 1 1 0-10
+             5 5 0 0 1 0 10Zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+                    </svg>
+                    Enviar fotos
+                    <input type="file" id="foto" accept="image/*" multiple hidden />
+                </label>
 
-            <div class="formulario">
-                <form id="uploadForm" class="form-label">
-                    <label for="foto">Envie fotos do produto</label>
-                    <label for="foto" class="input-file-label">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            viewBox="0 0 24 24" class="icon-camera">
-                            <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm8-3h-2.586l-1.707-1.707A1 1 0 0 0 15 4h-6a1 1 0 0 0-.707.293L6.586 6H4a2 2 0 0 0-2 2v10
-        a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
-                        </svg>
-                        Enviar fotos
-                        <input type="file" accept="image/*" id="foto" class="input-foto" multiple hidden>
-                    </label>
-                    <div id="fileName" class="file-info"></div>
-                </form>
-                <p id="message" style="margin: 0;"></p>
+                <div id="fileName" class="file-info"></div>
+            </div>
 
-                <div class="form-label">
-                    <label for="opiniao">Escreva sua opinião sobre o produto</label>
-                    <textarea id="opiniao" maxlength="1000" name="opiniao" placeholder="O produto me..."></textarea>
-                    <div id="charCount" class="char-counter">0/1000</div>
-                </div>
+            <div class="form-section">
+                <label for="opiniao" class="fw-bold">Escreva sua opinião</label>
+                <textarea id="opiniao" name="opiniao" maxlength="1000" class="form-control"
+                    placeholder="O produto me..."></textarea>
+                <div id="charCount" class="char-counter text-end">0/1000</div>
+            </div>
 
-                <button id="botao" class="botao" disabled>Publicar opinião</button>
+            <div class="text-center">
+                <button id="botao" class="btn-principal" disabled>Publicar opinião</button>
             </div>
         </form>
+        <div id="mensagem-sucesso" class="mensagem-sucesso" hidden>
+            <div class="mensagem-conteudo">
+                <i class="fa-solid fa-circle-check"></i>
+                <p>Obrigado! Sua avaliação foi enviada com sucesso.</p>
+            </div>
+        </div>
 
     </main>
+
+    <footer class="rodape mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p class="mb-0">&copy; 2025 Cristian Gadelha, João Beraldo, Pedro Henrique</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <h5 class="sitemap-title mb-1">Mapa do Site</h5>
+                    <ul class="sitemap-list mb-0">
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../pages/info.html">Informações</a></li>
+                        <li><a href="../pages/form.html">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const estrelas = document.querySelectorAll('.estrela');
         const botao = document.getElementById('botao');
         const notaInput = document.getElementById('nota');
         const form = document.getElementById('form-avaliacao');
-
-        let nota = 0; // valor inicial
+        let nota = 0;
 
         estrelas.forEach((estrela, index) => {
             estrela.addEventListener('click', () => {
                 nota = index + 1;
                 notaInput.value = nota;
-
-                estrelas.forEach((e, i) => {
-                    if (i <= index) {
-                        e.classList.replace('fa-regular', 'fa-solid');
-                    } else {
-                        e.classList.replace('fa-solid', 'fa-regular');
-                    }
-                });
-
-                // Ativa o botão
-                botao.disabled = false;
-                botao.classList.add('ativo');
+                atualizarEstrelas(index);
+                habilitarBotao();
+            });
+            estrela.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    estrela.click();
+                }
             });
         });
 
-        // captura do envio do formulário
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); // impede o envio real por enquanto
+        function atualizarEstrelas(index) {
+            estrelas.forEach((e, i) => {
+                if (i <= index) {
+                    e.classList.replace('fa-regular', 'fa-solid');
+                    e.setAttribute('aria-checked', 'true');
+                } else {
+                    e.classList.replace('fa-solid', 'fa-regular');
+                    e.setAttribute('aria-checked', 'false');
+                }
+            });
+        }
 
-            const dados = {
+        function habilitarBotao() {
+            botao.disabled = false;
+            botao.classList.add('ativo');
+        }
+
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+
+            console.log({
                 nota: notaInput.value,
                 opiniao: document.getElementById('opiniao').value
-            };
+            });
+
+            const msg = document.getElementById('mensagem-sucesso');
+            msg.hidden = false;
+            msg.scrollIntoView({ behavior: 'smooth' });
+
+            form.reset();
+            nota = 0;
+            atualizarEstrelas(-1);
+            botao.disabled = true;
         });
 
         const foto = document.getElementById('foto');
-        const uploadForm = document.getElementById("uploadForm");
-        const message = document.getElementById("message");
-
+        const fileName = document.getElementById('fileName');
         const MAX_FILES = 3;
 
-        foto.addEventListener("change", () => {
-            if (foto.files.length > MAX_FILES) {
-                message.textContent = `Você só pode selecionar até ${MAX_FILES} arquivos.`;
-                foto.value = ""; // limpa a seleção
-            } else {
-                message.textContent = `${foto.files.length} arquivo(s) selecionado(s).`;
-            }
-        });
-
-        form.addEventListener("submit", (e) => {
-            if (foto.files.length > MAX_FILES) {
-                e.preventDefault();
-                alert(`Limite de ${MAX_FILES} arquivos excedido!`);
-            }
-        });
-
-        // Exibir nome do arquivo selecionado
-        const fileName = document.getElementById('fileName');
-
         foto.addEventListener('change', () => {
-            if (foto.files.length > 0) {
-                const validFiles = Array.from(foto.files).filter(file => file.type.startsWith('image/'));
-                if (validFiles.length === 0) {
-                    alert("Apenas arquivos de imagem são permitidos (jpg, png, gif, etc).");
-                }
-
-                const names = validFiles.map(file => file.name).join(", ");
-                fileName.textContent = validFiles.length
-                    ? `Imagens selecionadas: ${names}`
-                    : "";
-            } else {
-                fileName.textContent = "";
+            if (foto.files.length > MAX_FILES) {
+                alert(`Você só pode selecionar até ${MAX_FILES} arquivos.`);
+                foto.value = '';
+                fileName.textContent = '';
+                return;
             }
-        }
-        );
+            const names = Array.from(foto.files).map(f => f.name).join(', ');
+            fileName.textContent = names ? `Imagens selecionadas: ${names}` : '';
+        });
 
-
-
-
-
-        // Atualizar contador de caracteres
         const opiniao = document.getElementById('opiniao');
         const charCount = document.getElementById('charCount');
-
         opiniao.addEventListener('input', () => {
-            const length = opiniao.value.length;
-            const maxLength = opiniao.getAttribute('maxlength');
-            charCount.textContent = `${length}/${maxLength}`;
+            charCount.textContent = `${opiniao.value.length}/${opiniao.getAttribute('maxlength')}`;
         });
-
     </script>
-
 </body>
 
 </html>

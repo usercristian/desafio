@@ -1,163 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Minhas compras</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-    <style>
-        body {
-            margin: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            background: #f9f9f9;
-            box-sizing: border-box;
-        }
-
-        .container-main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            align-self: center;
-            background: #fff;
-            padding: 60px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
-            width: 100%;
-            flex-grow: 1;
-            gap: 50px;
-        }
-
-        .produto-img {
-            width: 200px;
-            border-radius: 15px;
-            margin: 0px 50px;
-            object-fit: cover;
-            border: 1px solid #d1f7ff;
-            box-shadow: 0 4px 12px rgba(5, 217, 232, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .divisor {
-            width: 100%;
-            border: 1px 1000 #ccc;
-            margin: 15px 0px 30px;
-        }
-
-        .compra-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .compra-info p {
-            margin: 0px;
-            font-size: 125%;
-        }
-
-        .botao-comprar-novamente {
-            background-color: #ff2a6d;
-            border-color: #ff2a6d;
-            border-radius: 12px;
-            color: #d1f7ff;
-            font-size: medium;
-            font-weight: 500;
-        }
-
-        .botao-comprar-novamente:hover,
-        .botao-comprar-novamente:active:active,
-        .botao-comprar-novamente:focus {
-            background-color: #e0225e;
-            border-color: #e0225e;
-        }
-
-        .botao-comprar-novamente:active {
-            background-color: #e0225e;
-            border-color: #e0225e;
-        }
-    </style>
 </head>
 
-<body class="body">
+<body class="d-flex flex-column min-vh-100">
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-            <div class="container d-flex align-items-center">
-                <a class="navbar-brand" href="/index.html">
-                    <img src="/images/logo.png" alt="Happy Game Logo">
-                    <span class="logo-text">Happy Game</span>
+        <nav class="navbar navbar-expand-lg custom-navbar position-relative">
+            <div class="container position-relative">
+                <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                    <img src="../images/logo.png" alt="Happy Game" height="40" />
+                    <span class="logo-text ms-2">Happy Game</span>
                 </a>
-                <div class="text-center w-100">
-                    <h2 style="color: #d1f7ff; margin: 0;">Minhas compras</h2>
-                </div>
+
+                <!-- Substituir o div antigo por este h2 com classe -->
+                <h2 class="page-title">Minhas compras</h2>
             </div>
         </nav>
     </header>
-
-    <main class="container-main">
-
-        <!-- Compra -->
-        <div style="width: 100%; padding: 10px;">
-            <!-- Data da última atualização e comprar novamente -->
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <p style="font-weight: 500; margin: 0px;">{Data}</p>
-                <button class="btn btn-primary botao-comprar-novamente">Comprar novamente</button>
+    <main class="container my-5" style="max-width: 920px;">
+        <article class="card-surface section-block">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="mb-0 fw-semibold">10/10/2025</p>
+                <button class="btn-recomprar">Comprar novamente</button>
             </div>
 
-            <hr class="divisor">
-
-            <!-- Imagem e Infos do produto -->
-            <div style="display: flex; justify-content: flex-start;">
-                <img class="produto-img" src="/images/Teclado.3.png" alt="Teclado gamer mecânico RAZER">
-                <div class="compra-info">
-                    <div style="display: flex; flex-direction: row;">
-                        <p>Entrega: </p>
-                        <p style="color: greenyellow;">Entregue</p>
+            <div class="produto-card">
+                <img src="../images/Teclado.3.png" alt="Teclado" class="produto-img" />
+                <div>
+                    <div class="d-flex gap-2 align-items-center mb-2">
+                        <p class="mb-0">Entrega:</p>
+                        <span class="entrega-estado entregue">Entregue</span>
                     </div>
-                    <p>Teclado gamer mecânico RAZER</p>
-                    <p>Quantidade: {1} Produto</p>
+                    <p class="mb-1">Teclado gamer mecânico RAZER</p>
+                    <p class="mb-0">Quantidade: 1</p>
                 </div>
             </div>
-        </div>
+        </article>
 
-        <hr class="divisor">
-
-        <div style="width: 100%; padding: 10px;">
-            <!-- Data da última atualização e comprar novamente -->
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <p style="font-weight: 500; margin: 0px;">{Data}</p>
-                <button class="btn btn-primary botao-comprar-novamente">Comprar novamente</button>
+        <article class="card-surface section-block">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="mb-0 fw-semibold">04/09/2025</p>
+                <button class="btn-recomprar">Comprar novamente</button>
             </div>
 
-            <hr class="divisor">
-
-            <!-- Imagem e Infos do produto -->
-            <div style="display: flex; justify-content: flex-start;">
-                <img class="produto-img" src="/images/Cadeira.3.png" alt="Cadeira ergonômica para Home Office">
-                <div class="compra-info">
-                    <div style="display: flex; flex-direction: row;">
-                        <p>Entrega:</p>
-                        <p style="color: yellow;">Pendente</p>
+            <div class="produto-card">
+                <img src="../images/Cadeira.3.png" alt="Cadeira" class="produto-img" />
+                <div>
+                    <div class="d-flex gap-2 align-items-center mb-2">
+                        <p class="mb-0">Entrega:</p>
+                        <span class="entrega-estado pendente">Pendente</span>
                     </div>
-                    <p>Cadeira ergonômica para Home Office</p>
-                    <p>Quantidade: {1} Produto</p>
+                    <p class="mb-1">Cadeira ergonômica para Home Office</p>
+                    <p class="mb-0">Quantidade: 1</p>
                 </div>
             </div>
-        </div>
+        </article>
     </main>
 
+    <footer class="rodape mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                    <p class="mb-0">&copy; 2025 Cristian Gadelha, João Beraldo, Pedro Henrique</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <h5 class="sitemap-title mb-1">Mapa do Site</h5>
+                    <ul class="sitemap-list mb-0">
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../pages/info.html">Informações</a></li>
+                        <li><a href="../pages/form.html">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-
 
 </html>
