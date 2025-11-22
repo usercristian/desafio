@@ -1,91 +1,97 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaHeart, FaTimes } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const ProductSidebar = ({ product, isOpen, onClose }) => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (isOpen) {
+      window.dispatchEvent(new Event('sidebarOpen'));
+    } else {
+      window.dispatchEvent(new Event('sidebarClose'));
+    }
+  }, [isOpen]);
+
   if (!product) return null;
 
-  // Classes para animação de entrada/saída
-  const sidebarClasses = `fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-[60] overflow-y-auto ${
-    isOpen ? 'translate-x-0' : 'translate-x-full'
-  }`;
-
   return (
-    <>
-      {/* Overlay escuro para focar na sidebar (opcional, melhora contraste) */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity"
-          onClick={onClose}
-        />
-      )}
+    <aside 
+      className={`
+        fixed bottom-4 right-4 w-full max-w-sm md:max-w-md 
+        bg-white border border-happy-detail rounded-2xl shadow-2xl 
+        z-[60] transform transition-all duration-300 ease-in-out
+        flex flex-col max-h-[90vh]
+        ${isOpen ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95 pointer-events-none'}
+      `}
+    >
+      {/* Cabeçalho do Card (Estilo Chatbot) */}
+      <div className="flex justify-between items-center bg-happy-pink text-white p-3 rounded-t-2xl">
+        <h5 className="font-bold text-lg">Assistente Happy</h5>
+        <button 
+          onClick={onClose} 
+          className="text-white hover:bg-white/20 rounded-full p-1 transition-colors"
+        >
+          <FaTimes size={18} />
+        </button>
+      </div>
 
-      <aside className={sidebarClasses}>
-        <div className="p-4">
-          {/* Cabeçalho da Sidebar */}
-          <div className="flex justify-between items-center bg-happy-pink text-white p-3 rounded-t-lg -mx-4 -mt-4 mb-4">
-            <h5 className="font-bold text-lg">Assistente Happy</h5>
-            <button onClick={onClose} className="text-white hover:text-gray-200">
-              <FaTimes size={20} />
-            </button>
+      {/* Conteúdo com Scroll se necessário */}
+      <div className="p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-happy-blue scrollbar-track-gray-100 rounded-b-2xl">
+        <div className="relative">
+          {/* Botão de Favorito */}
+          <button className="absolute top-0 right-0 text-happy-pink hover:scale-110 transition-transform p-2">
+             <FaHeart size={22} />
+          </button>
+
+          {/* Imagem do Produto */}
+          <img 
+            src={product.image} 
+            alt={product.nome} 
+            className="w-full h-48 object-contain mb-4 p-2 bg-white rounded-lg"
+          />
+          
+          <h4 className="text-xl font-bold text-center text-happy-text mb-1">
+            {product.nome}
+          </h4>
+          
+          <p className="text-center font-bold text-happy-blue text-sm mb-3">
+            Avaliação: {product.rating}/5 ({product.numRatings} avaliações)
+          </p>
+          <p className="text-center font-bold text-happy-pink text-2xl mb-4">
+            R$ {product.price.toFixed(2).replace('.', ',')}
+          </p>
+
+          <hr className="border-happy-detail my-3" />
+
+          <div className="space-y-3 text-sm text-gray-600 text-justify">
+            <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
+              <h6 className="font-bold text-black mb-1 text-xs uppercase">Por que as pessoas compram</h6>
+              <p className="leading-relaxed">Este é um item muito popular entre os jogadores que buscam performance e estilo. Ideal para quem quer melhorar o setup.</p>
+            </div>
+            
+            <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
+              <h6 className="font-bold text-black mb-1 text-xs uppercase">Descrição técnica</h6>
+              <p className="leading-relaxed">Produto de alta durabilidade, conexão rápida e design ergonômico. Garantia de 1 ano pelo fabricante.</p>
+            </div>
           </div>
 
-          {/* Corpo do Produto */}
-          <div className="border border-happy-detail rounded-lg p-4 shadow-card relative">
-            <button className="absolute top-4 right-4 text-happy-pink hover:scale-110 transition-transform">
-               <FaHeart size={20} />
+          <div className="mt-5 space-y-2">
+            <button 
+              onClick={() => navigate('/checkout')}
+              className="btn-primary w-full py-3 shadow-lg shadow-happy-pink/30"
+            >
+              Comprar agora
             </button>
-
-            <img 
-              src={product.image} 
-              alt={product.nome} 
-              className="w-full h-64 object-contain mb-4 rounded-md"
-            />
-            
-            <h4 className="text-xl font-bold text-center text-happy-text mb-2">
-              {product.nome}
-            </h4>
-            
-            <p className="text-center font-bold text-happy-blue mb-4">
-              Avaliação: {product.rating}/5 ({product.numRatings} avaliações)
-            </p>
-            <p className="text-center font-bold text-happy-pink text-xl mb-4">
-              R$ {product.price.toFixed(2).replace('.', ',')}
-            </p>
-
-            <hr className="border-gray-200 my-4" />
-
-            <div className="space-y-4 text-sm text-gray-600 text-justify">
-              <div>
-                <h6 className="font-bold text-black mb-1">Por que as pessoas compram</h6>
-                <p>Este é um item muito popular entre os jogadores que buscam performance e estilo. Ideal para quem quer melhorar o setup.</p>
-              </div>
-              
-              <div>
-                <h6 className="font-bold text-black mb-1">Descrição técnica</h6>
-                <p>Produto de alta durabilidade, conexão rápida e design ergonômico. Garantia de 1 ano pelo fabricante.</p>
-              </div>
-            </div>
-
-            <div className="mt-6 space-y-2">
-              <button 
-                onClick={() => navigate('/checkout')}
-                className="w-full bg-happy-pink text-white font-bold py-3 rounded-lg hover:bg-happy-pink-dark transition-colors"
-              >
-                Comprar agora
-              </button>
-              <button 
-                className="w-full bg-transparent border-2 border-gray-400 text-gray-600 font-bold py-2 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                Salvar no carrinho
-              </button>
-            </div>
+            <button 
+              className="w-full bg-white border-2 border-gray-300 text-gray-600 font-bold py-2 rounded-lg hover:border-happy-blue hover:text-happy-blue transition-colors"
+            >
+              Salvar no carrinho
+            </button>
           </div>
         </div>
-      </aside>
-    </>
+      </div>
+    </aside>
   );
 };
 

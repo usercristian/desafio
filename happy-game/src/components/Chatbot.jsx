@@ -2,17 +2,25 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FaMinus, FaPlus, FaPaperPlane } from 'react-icons/fa';
 import { products } from '../data/productsData';
 
-// Função auxiliar para calcular a nota ponderada (Ranking)
+/**
+ * Função auxiliar para calcular a nota ponderada (Weighted Rating).
+ * Evita que produtos com poucas avaliações fiquem artificialmente no topo.
+ */
 const calculateWeightedRating = (product, minNumRatings, avgRatingAll) => {
   const v = product.numRatings;
   const m = minNumRatings;
   const R = product.rating;
   const C = avgRatingAll;
+  // Fórmula Bayesiana para média ponderada
   return (v / (v + m)) * R + (m / (v + m)) * C;
 };
 
 const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(true); // Estado minimizado/maximizado
+  // Estados de UI
+  const [isOpen, setIsOpen] = useState(true); // Controla se o chat está maximizado ou minimizado
+  const [isHidden, setIsHidden] = useState(false); // Controla se o chat está invisível (atrás da Sidebar)
+  
+  // Estados de Dados e Fluxo
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([
     { 
@@ -22,47 +30,70 @@ const Chatbot = () => {
     }
   ]);
   
-  // Estados para controlar o fluxo da conversa (Lógica migrada do script.js)
+  // Máquina de estados simples para o fluxo de conversa (INITIAL -> CHOICE -> CONFIRMATION)
   const [chatState, setChatState] = useState('INITIAL');
   const [listedProducts, setListedProducts] = useState([]);
   const [productInConfirmation, setProductInConfirmation] = useState(null);
 
-  // Ref para scrollar automaticamente para o final
+  // Ref para scroll automático
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Efeito para scrollar sempre que chegar nova mensagem
   useEffect(() => {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  // Função principal de processamento (o "Cérebro" do bot)
+  /**
+   * Efeito para gerenciar conflito visual com a Sidebar de Produtos.
+   * Quando a Sidebar abre, o Chatbot se esconde para não poluir a tela.
+   */
+  useEffect(() => {
+    const handleHide = () => setIsHidden(true);
+    const handleShow = () => setIsHidden(false);
+
+    window.addEventListener('sidebarOpen', handleHide);
+    window.addEventListener('sidebarClose', handleShow);
+
+    // Cleanup: remove os listeners ao desmontar o componente
+    return () => {
+      window.removeEventListener('sidebarOpen', handleHide);
+      window.removeEventListener('sidebarClose', handleShow);
+    };
+  }, []);
+
+  /**
+   * Lógica principal de resposta do Bot.
+   * Processa a entrada do usuário baseada no estado atual da conversa.
+   */
   const handleBotResponse = (userMessage) => {
     const lowerMsg = userMessage.toLowerCase();
     let botResponse = [];
 
     switch (chatState) {
       case 'INITIAL':
-        // Procura produtos por palavra-chave
+        // Busca produtos que contenham a palavra-chave digitada
         const productsInCategory = products.filter(p => 
           p.keywords.some(k => lowerMsg.includes(k))
         );
 
         if (productsInCategory.length > 0) {
-          // Lógica de Ordenação Matemática (Weighted Rating)
-          const m = 50; 
+          // Configuração para o cálculo de ranking
+          const m = 50; // Mínimo de votos para relevância
           const totalRating = products.reduce((acc, p) => acc + p.rating, 0);
-          const C = totalRating / products.length;
+          const C = totalRating / products.length; // Média global
 
+          // Ordena do melhor para o pior
           const sortedProducts = [...productsInCategory].sort((a, b) => 
             calculateWeightedRating(b, m, C) - calculateWeightedRating(a, m, C)
           );
 
           setListedProducts(sortedProducts);
           
-          // Constrói a mensagem de lista
+          // Monta a mensagem de lista
           let listText = `Encontrei estes itens em "${sortedProducts[0].categoria}". Qual deles te interessa?\n(Ordenado pelos mais bem avaliados)\n\n`;
           sortedProducts.forEach((p, index) => {
             listText += `${index + 1}. ${p.nome} (Nota: ${p.rating.toFixed(1)})\n`;
@@ -78,11 +109,11 @@ const Chatbot = () => {
 
       case 'AWAITING_PRODUCT_CHOICE':
         const index = parseInt(lowerMsg) - 1;
+        // Valida se o número digitado é válido
         if (!isNaN(index) && index >= 0 && index < listedProducts.length) {
           const selected = listedProducts[index];
           setProductInConfirmation(selected);
           
-          // Mensagem especial com Card de Produto
           botResponse.push({ 
             text: `Você escolheu: ${selected.nome}`, 
             sender: 'bot',
@@ -99,7 +130,7 @@ const Chatbot = () => {
       case 'AWAITING_PURCHASE_CONFIRMATION':
         if (['sim', 's', 'yes'].includes(lowerMsg)) {
           botResponse.push({ text: `GG! Seu ${productInConfirmation.nome} foi adicionado ao carrinho virtual! (Simulação)`, sender: 'bot' });
-          // Reseta o fluxo
+          // Reseta para o estado inicial
           setChatState('INITIAL');
           setListedProducts([]);
           setProductInConfirmation(null);
@@ -116,7 +147,6 @@ const Chatbot = () => {
         setChatState('INITIAL');
     }
 
-    // Adiciona as respostas do bot ao chat
     if (botResponse.length > 0) {
       setMessages(prev => [...prev, ...botResponse]);
     }
@@ -125,12 +155,11 @@ const Chatbot = () => {
   const handleSend = () => {
     if (!input.trim()) return;
 
-    // Adiciona mensagem do usuário
     const userMsg = { id: Date.now(), text: input, sender: 'user' };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
 
-    // Simula delay de "digitando..."
+    // Simula um pequeno delay de pensamento do bot
     setTimeout(() => {
       handleBotResponse(userMsg.text);
     }, 600);
@@ -141,9 +170,19 @@ const Chatbot = () => {
   };
 
   return (
-    <div className={`fixed bottom-5 right-5 w-80 bg-white rounded-xl shadow-2xl z-40 transition-all duration-300 flex flex-col overflow-hidden border border-gray-200 ${isOpen ? 'h-[400px]' : 'h-12'}`}>
+    // Container Principal:
+    // - 'fixed bottom-5 right-5': Posicionamento fixo
+    // - Lógica 'isHidden': Move o chat para baixo e tira opacidade quando a Sidebar abre
+    <div 
+      className={`
+        fixed bottom-5 right-5 w-80 bg-white rounded-xl shadow-2xl z-40 
+        transition-all duration-500 ease-in-out flex flex-col overflow-hidden border border-gray-200
+        ${isOpen ? 'h-[400px]' : 'h-12'}
+        ${isHidden ? 'translate-y-[150%] opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}
+      `}
+    >
       
-      {/* Header do Chat */}
+      {/* Cabeçalho do Chat (Toggle Minimizar/Maximizar) */}
       <div 
         className="bg-happy-pink text-white p-3 font-bold flex justify-between items-center cursor-pointer hover:bg-happy-pink-dark transition-colors"
         onClick={() => setIsOpen(!isOpen)}
@@ -154,7 +193,7 @@ const Chatbot = () => {
         </button>
       </div>
 
-      {/* Área de Mensagens */}
+      {/* Corpo das Mensagens */}
       {isOpen && (
         <>
           <div className="flex-1 bg-gray-50 p-3 overflow-y-auto space-y-3">
@@ -163,7 +202,7 @@ const Chatbot = () => {
                 key={idx} 
                 className={`flex flex-col max-w-[85%] ${msg.sender === 'user' ? 'self-end ml-auto items-end' : 'self-start items-start'}`}
               >
-                {/* Balão de Mensagem */}
+                {/* Balão de texto */}
                 <div 
                   className={`p-3 rounded-2xl text-sm shadow-sm whitespace-pre-wrap ${
                     msg.sender === 'user' 
@@ -174,7 +213,7 @@ const Chatbot = () => {
                   {msg.text}
                 </div>
 
-                {/* Card Especial de Produto (se houver) */}
+                {/* Card de Produto Rico (dentro do chat) */}
                 {msg.isProductCard && msg.product && (
                   <div className="mt-2 p-2 bg-white border border-happy-detail rounded-lg shadow-card w-full text-center">
                     <img src={msg.product.image} alt={msg.product.nome} className="w-16 h-16 object-contain mx-auto mb-2"/>
@@ -198,10 +237,11 @@ const Chatbot = () => {
                 )}
               </div>
             ))}
+            {/* Elemento invisível para forçar scroll para o fim */}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input Area */}
+          {/* Área de Input */}
           <div className="p-2 border-t border-gray-200 bg-white flex gap-2">
             <input 
               type="text"
