@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  /* Definindo a fonte do projeto */
+  --font-roboto-slab: "Roboto Slab", serif;
+
+  /* Definindo as cores da identidade visual (Happy Game) */
+  --color-happy-blue: #05d9e8;      /* Antiga --cor-azul */
+  --color-happy-pink: #ff2a6d;      /* Antiga --cor-rosa */
+  --color-happy-pink-dark: #e02460; /* Antiga --cor-rose-hover */
+  --color-happy-detail: #d1f7ff;    /* Antiga --cor-detalhe */
+  --color-happy-dark: #1c1c1c;      /* Antiga --cor-fundo */
+  --color-happy-text: #1A1A1A;      /* Antiga --cor-texto */
+  --color-happy-bg: #ffffff;        /* Antiga --cor-branca */
+
+  /* Sombras personalizadas */
+  --shadow-neon-blue: 0 0 15px rgba(5, 217, 232, 0.5);
+  --shadow-card: 0 4px 12px rgba(5, 217, 232, 0.4);
+}
+
+/* Estilos Globais */
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: var(--font-roboto-slab);
+    background-color: var(--color-happy-bg);
+    color: var(--color-happy-text);
+  }
+}
+
+/* Classes de Componentes Reutilizáveis */
+@layer components {
+  .btn-primary {
+    @apply bg-happy-pink text-white font-bold py-2 px-4 rounded-lg border-none cursor-pointer transition-colors duration-200 hover:bg-happy-pink-dark;
+  }
+  
+  .input-field {
+    @apply w-full p-2 mt-1 mb-2 border border-happy-blue rounded-md focus:outline-none focus:ring-2 focus:ring-happy-pink focus:border-transparent;
+  }
+}
