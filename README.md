@@ -7,3 +7,8 @@ Terminal 2 (Servidor do React): npm start
 
 
 Tem que ter esses 2 terminais rodando ao mesmo tempo para funcionar.
+
+
+caso necessário instalar 
+
+npm install tailwindcss @tailwindcss/cli
