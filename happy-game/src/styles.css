@@ -40,3 +40,16 @@
     @apply w-full p-2 mt-1 mb-2 border border-happy-blue rounded-md focus:outline-none focus:ring-2 focus:ring-happy-pink focus:border-transparent;
   }
 }
+
+/* Utilitários Personalizados */
+@layer utilities {
+  /* Esconde a barra de rolagem no Chrome, Safari e Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Esconde a barra de rolagem no IE, Edge e Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
