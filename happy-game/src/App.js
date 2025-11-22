@@ -19,7 +19,7 @@ import Evaluation from './pages/Evaluation';
 function App() {
   return (
     <Router>
-      {/* Container Principal com Flexbox para o Footer ficar sempre embaixo */}
+      {}
       <div className="flex flex-col min-h-screen bg-happy-bg text-happy-text font-roboto-slab">
         
         <Navbar />
@@ -44,7 +44,7 @@ function App() {
           </Routes>
         </main>
 
-        {/* Chatbot Global (Fora do main para flutuar sobre tudo) */}
+        {}
         <Chatbot />
 
         <Footer />
