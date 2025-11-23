@@ -73,13 +73,13 @@ const Register = () => {
       // Tenta ler mensagem retornada pelo backend
       const errorData = await response.json().catch(() => null);
 
-      if (response.status === 400) {
+      if (response.status === 400 || response.status === 409) {
         alert(errorData?.message || "Este e-mail já está cadastrado.");
       } else {
         alert("Erro ao cadastrar: " + response.status);
       }
       return;
-    }
+      }
 
     // Se deu sucesso
     alert("Cadastro realizado com sucesso!");

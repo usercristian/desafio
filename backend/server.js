@@ -6,6 +6,7 @@ const cors = require("cors");
 const app = jsonServer.create();
 const router = jsonServer.router("db.json");
 
+// Vincular o banco de dados ao app
 app.db = router.db;
 
 // Permitir requisições do React
