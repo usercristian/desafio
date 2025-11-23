@@ -22,7 +22,7 @@
   "scripts": {
     "start": "concurrently \"npm run start-react\" \"npm run start-backend\" \"npm run start-tailwind\"",
     "start-react": "react-scripts start",
-    "start-backend": "node cd backend && node server.js",
+    "start-backend": "cd backend && node server.js",
     "start-tailwind": "npx @tailwindcss/cli -i ./src/styles.css -o ./src/output.css --watch",
     "build": "react-scripts build",
     "test": "react-scripts test",
