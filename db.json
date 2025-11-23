@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "email": "joao@example.com",
+            "password": "123456",
+            "nome": "João Silva",
+            "phone": 31991932035,
+            "acceptTerms": true
+        }
+    ]
+}
