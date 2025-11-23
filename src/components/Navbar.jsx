@@ -30,7 +30,7 @@ const Navbar = () => {
               <NavLink to="/info">Informações</NavLink>
               <NavLink to="/contact">Contato</NavLink>
               <NavLink to="/my-purchases">Minhas Compras</NavLink>
-              <NavLink to="/login" isButton>Login</NavLink>
+              <NavLink to="/login" isButton>Entrar</NavLink>
             </div>
 
             {/* BOTÃO HAMBURGUER (Visível apenas no Mobile) */}
@@ -50,7 +50,7 @@ const Navbar = () => {
               <MobileNavLink to="/info" onClick={toggleMenu}>Informações</MobileNavLink>
               <MobileNavLink to="/contact" onClick={toggleMenu}>Contato</MobileNavLink>
               <MobileNavLink to="/my-purchases" onClick={toggleMenu}>Minhas Compras</MobileNavLink>
-              <MobileNavLink to="/login" onClick={toggleMenu} isButton>Login</MobileNavLink>
+              <MobileNavLink to="/login" onClick={toggleMenu} isButton>Entrar</MobileNavLink>
             </div>
           )}
         </div>
