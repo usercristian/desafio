@@ -35,6 +35,13 @@ const Register = () => {
     }));
   };
 
+  const isFormFilled =
+    formData.email.trim() !== '' &&
+    formData.phone.trim() !== '' &&
+    formData.nome.trim() !== '' &&
+    formData.senha.trim() !== '' &&
+    formData.acceptTerms === true;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,28 +75,28 @@ const Register = () => {
         })
       });
 
-    // Se deu erro no cadastro
-    if (!response.ok) {
-      // Tenta ler mensagem retornada pelo backend
-      const errorData = await response.json().catch(() => null);
+      // Se deu erro no cadastro
+      if (!response.ok) {
+        // Tenta ler mensagem retornada pelo backend
+        const errorData = await response.json().catch(() => null);
 
-      if (response.status === 400 || response.status === 409) {
-        alert(errorData?.message || "Este e-mail já está cadastrado.");
-      } else {
-        alert("Erro ao cadastrar: " + response.status);
+        if (response.status === 400 || response.status === 409) {
+          alert(errorData?.message || "Este e-mail já está cadastrado.");
+        } else {
+          alert("Erro ao cadastrar: " + response.status);
+        }
+        return;
       }
-      return;
-      }
 
-    // Se deu sucesso
-    alert("Cadastro realizado com sucesso!");
-    navigate("/login");
+      // Se deu sucesso
+      alert("Cadastro realizado com sucesso!");
+      navigate("/login");
 
-  } catch (error) {
-    alert("Falha ao conectar ao servidor.");
-    console.error(error);
-  }
-};
+    } catch (error) {
+      alert("Falha ao conectar ao servidor.");
+      console.error(error);
+    }
+  };
 
   return (
     <div className="flex items-center justify-center flex-grow py-10 px-4">
@@ -163,16 +170,21 @@ const Register = () => {
               className="mt-1 cursor-pointer accent-happy-pink"
             />
             <label htmlFor="acceptTerms" className="text-sm text-gray-600 cursor-pointer select-none">
-              Aceito termos de de Uso.
+              Aceito termos de Uso.
             </label>
           </div>
 
           <button
             type="submit"
-            className="btn-primary w-full py-3 text-lg shadow-md"
+            disabled={!isFormFilled}
+            className={`btn-primary w-full py-3 text-lg shadow-md ${!isFormFilled
+                ? 'opacity-50 cursor-not-allowed'
+                : 'hover:bg-happy-blue hover:text-white'
+              }`}
           >
             Cadastrar
           </button>
+
         </form>
       </div>
     </div>

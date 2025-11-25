@@ -92,7 +92,7 @@ const Evaluation = () => {
             <button 
               type="submit" 
               disabled={rating === 0}
-              className={`btn-primary w-full py-3 text-lg shadow-md ${rating === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`btn-primary w-full py-3 text-lg shadow-md ${rating === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-happy-blue hover:text-white'}`}
             >
               Publicar opinião
             </button>
