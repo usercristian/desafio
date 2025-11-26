@@ -121,7 +121,7 @@ const Register = () => {
 
           {/* Campo Telefone */}
           <div className="mb-4">
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Celular</label>
             <input
               type="tel"
               id="phone"

@@ -14,6 +14,20 @@
       "nome": "João Beraldo",
       "phone": "(31) 9919-32035",
       "id": 2
+    },
+    {
+      "email": "teste@teste.com",
+      "password": "$2a$10$FXwieBIka1Xh3xv11KJnw.r2nhj9iz4AqPMYM3ebMuZQnDLOplCw.",
+      "nome": "João teste",
+      "phone": "(11) 1111-11111",
+      "id": 3
+    },
+    {
+      "email": "pedro@happygame.com",
+      "password": "$2a$10$tebYtoE4mu3txoDSb/zFN.UhggtBgpSdDgoYLxrNjhjFC0z77zmOC",
+      "nome": "Pedro Henrique",
+      "phone": "(11) 1111-11111",
+      "id": 4
     }
   ]
 }
