@@ -4,6 +4,8 @@ import { FaBars, FaTimes } from 'react-icons/fa'; // Ícones de menu
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const isLoggedIn = !!localStorage.getItem("token");
+
 
   // Função para alternar o menu no mobile
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -13,7 +15,7 @@ const Navbar = () => {
       <nav className="bg-happy-pink border-b-4 border-happy-blue py-3 fixed w-full top-0 z-50 shadow-lg">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            
+
             {/* LOGO */}
             <Link to="/" className="flex items-center gap-3 bg-white py-1 px-3 rounded-full shadow-md transition-transform hover:scale-105">
               {/* Certifique-se de que a imagem existe em public/images/logo.png */}
@@ -29,13 +31,20 @@ const Navbar = () => {
               <NavLink to="/">Início</NavLink>
               <NavLink to="/info">Informações</NavLink>
               <NavLink to="/contact">Contato</NavLink>
-              <NavLink to="/my-purchases">Minhas Compras</NavLink>
-              <NavLink to="/login" isButton>Entrar</NavLink>
+
+              {isLoggedIn && (
+                <NavLink to="/my-purchases">Minhas Compras</NavLink>
+              )}
+
+              {!isLoggedIn && (
+                <NavLink to="/login" isButton>Entrar</NavLink>
+              )}
+
             </div>
 
             {/* BOTÃO HAMBURGUER (Visível apenas no Mobile) */}
-            <button 
-              onClick={toggleMenu} 
+            <button
+              onClick={toggleMenu}
               className="md:hidden text-white text-2xl focus:outline-none"
               aria-label="Abrir navegação"
             >
@@ -49,13 +58,24 @@ const Navbar = () => {
               <MobileNavLink to="/" onClick={toggleMenu}>Início</MobileNavLink>
               <MobileNavLink to="/info" onClick={toggleMenu}>Informações</MobileNavLink>
               <MobileNavLink to="/contact" onClick={toggleMenu}>Contato</MobileNavLink>
-              <MobileNavLink to="/my-purchases" onClick={toggleMenu}>Minhas Compras</MobileNavLink>
-              <MobileNavLink to="/login" onClick={toggleMenu} isButton>Entrar</MobileNavLink>
+
+              {isLoggedIn && (
+                <MobileNavLink to="/my-purchases" onClick={toggleMenu}>
+                  Minhas Compras
+                </MobileNavLink>
+              )}
+
+              {!isLoggedIn && (
+                <MobileNavLink to="/login" onClick={toggleMenu} isButton>
+                  Entrar
+                </MobileNavLink>
+              )}
+              
             </div>
           )}
         </div>
       </nav>
-      {}
+      { }
       <div className="h-[70px]"></div>
     </header>
   );
@@ -84,9 +104,9 @@ const MobileNavLink = ({ to, children, onClick, isButton }) => {
   const buttonClasses = "bg-white text-happy-pink font-bold mx-4";
 
   return (
-    <Link 
-      to={to} 
-      onClick={onClick} 
+    <Link
+      to={to}
+      onClick={onClick}
       className={`${baseClasses} ${isButton ? buttonClasses : hoverClasses}`}
     >
       {children}
