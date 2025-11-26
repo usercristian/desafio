@@ -6,9 +6,11 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [recoverEmail, setRecoverEmail] = useState('');
   const [showRecoverModal, setShowRecoverModal] = useState(false);
 
   const isFormFilled = email.trim() !== '' && password.trim() !== '';
+  const isFormrecoverFilled = recoverEmail.trim() !== '';
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -60,6 +62,12 @@ const Login = () => {
 
   const handleRecoverSubmit = (e) => {
     e.preventDefault();
+
+    if (!recoverEmail.includes('@')) {
+      alert('E-mail inválido');
+      return;
+    }
+
     alert('Um link de recuperação foi enviado para seu e-mail.');
     setShowRecoverModal(false);
   };
@@ -159,6 +167,8 @@ const Login = () => {
             <form onSubmit={handleRecoverSubmit}>
               <input
                 type="email"
+                value={recoverEmail}
+                onChange={(e) => setRecoverEmail(e.target.value)}
                 className="input-field mb-4"
                 placeholder="seu@email.com"
                 required
@@ -173,7 +183,11 @@ const Login = () => {
                 </button>
                 <button
                   type="submit"
-                  className="btn-primary py-2 px-4 text-sm"
+                  disabled={!isFormrecoverFilled}
+                  className={`btn-primary py-2 px-4 text-sm" ${!isFormrecoverFilled
+                    ? 'opacity-50 cursor-not-allowed'
+                    : 'hover:bg-happy-blue hover:text-white'
+                    }`}
                 >
                   Enviar Link
                 </button>
