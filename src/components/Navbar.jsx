@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Substitui o <a href> para não recarregar a página
 import { FaBars, FaTimes } from 'react-icons/fa'; // Ícones de menu
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isLoggedIn = !!localStorage.getItem("token");
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
+  useEffect(() => {
+    const handleStorage = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+
+    window.addEventListener("storage", handleStorage);
+
+    return () => {
+      window.removeEventListener("storage", handleStorage);
+    };
+  }, []);
 
   // Função para alternar o menu no mobile
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -70,7 +81,7 @@ const Navbar = () => {
                   Entrar
                 </MobileNavLink>
               )}
-              
+
             </div>
           )}
         </div>

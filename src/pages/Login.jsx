@@ -50,6 +50,9 @@ const Login = () => {
 
       // 4) Armazenamento do token / usuário para manter sessão
       localStorage.setItem('token', data.accessToken);
+
+      window.dispatchEvent(new Event("storage"));
+
       localStorage.setItem('user', JSON.stringify(data.user));
 
       // 5) Redireciona para a página inicial ou protegida
