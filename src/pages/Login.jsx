@@ -63,7 +63,7 @@ const Login = () => {
     }
   };
 
-  const handleRecoverSubmit = (e) => {
+  const handleRecoverSubmit = async (e) => {
     e.preventDefault();
 
     if (!recoverEmail.includes('@')) {
@@ -71,8 +71,22 @@ const Login = () => {
       return;
     }
 
-    alert('Um link de recuperação foi enviado para seu e-mail.');
-    setShowRecoverModal(false);
+    try {
+      const response = await fetch(`http://localhost:3001/check-email?email=${recoverEmail}`);
+      const data = await response.json();
+
+      if (!data.exists) {
+        alert('E-mail não cadastrado.');
+        return;
+      }
+
+      alert('Um link de recuperação foi enviado para seu e-mail.');
+      setShowRecoverModal(false);
+
+    } catch (error) {
+      console.error('Erro na recuperação de senha:', error);
+      alert('Erro de conexão. Tente novamente.');
+    }
   };
 
   return (

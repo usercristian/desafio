@@ -18,8 +18,17 @@ const rules = auth.rewriter({
   users: 600,
 });
 
-// Middleware de auth
 app.use(rules);
+
+// Endpoint customizado para checar existência de e-mail
+app.get("/check-email", (req, res) => {
+  const email = req.query.email;
+  const users = router.db.get("users").value();
+  const exists = users.some(u => u.email === email);
+  res.json({ exists });
+});
+
+// Middleware de auth
 app.use(auth);
 
 // Rotas do JSON Server
