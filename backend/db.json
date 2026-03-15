@@ -28,6 +28,27 @@
       "nome": "Pedro Henrique",
       "phone": "(11) 1111-11111",
       "id": 4
+    },
+    {
+      "email": "joao@gmail.com",
+      "password": "$2a$10$TRYJP.EYPkODLz/z/xHYS.jhiHQrjU7ZFCPvSV7FXQBQskFB1CWAW",
+      "nome": "João Beraldo",
+      "phone": "(31) 9919-32035",
+      "id": 5
+    },
+    {
+      "email": "teste@gmail.com",
+      "password": "$2a$10$SK66BplAUTIaBIh6wo1EiOgogBex8VZdCj9MLJNlJJ48AWKqvsMDi",
+      "nome": "João Beraldo",
+      "phone": "(31) 9999-99999",
+      "id": 6
+    },
+    {
+      "email": "beraldo@gmail.com",
+      "password": "$2a$10$laDaYD6eCaGWjhFVSD2IAuE10/itrnaQc5IS/a0yPBYlRy/5nSAH.",
+      "nome": "João Beraldo",
+      "phone": "(11) 1111-11111",
+      "id": 7
     }
   ]
 }
