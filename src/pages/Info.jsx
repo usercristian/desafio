@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
+import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend,
+  Filler // Importante: importamos o Filler para preencher a área abaixo da linha
+} from 'chart.js';
 
-// Componente interno de Item do Acordeão
+// Registramos o Filler aqui também
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend, Filler);
+
 const AccordionItem = ({ title, isOpen, onClick, children }) => {
   return (
-    <div className="mb-3 border border-happy-detail rounded-lg overflow-hidden bg-white">
+    <div className="mb-3 border border-happy-detail rounded-lg overflow-hidden bg-white shadow-sm">
       <button
         className="w-full flex justify-between items-center p-4 text-left bg-white hover:bg-gray-50 transition-colors font-bold text-happy-dark"
         onClick={onClick}
@@ -13,11 +26,10 @@ const AccordionItem = ({ title, isOpen, onClick, children }) => {
           ▼
         </span>
       </button>
-      
-      {/* Conteúdo do Acordeão com animação de altura */}
+
       <div 
         className={`transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-[500px] opacity-100 border-t border-gray-100' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-[1200px] opacity-100 border-t border-gray-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="p-4 text-gray-600 text-sm leading-relaxed text-justify">
@@ -29,16 +41,81 @@ const AccordionItem = ({ title, isOpen, onClick, children }) => {
 };
 
 const Info = () => {
-  // Estado para controlar qual item está aberto (0, 1 ou 2)
   const [openIndex, setOpenIndex] = useState(0);
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
 
+  const rendimentoInicial = 50; 
+  const taxaCrescimento = 0.15; 
+  const marcosUsuarios = [0, 10, 20, 30, 40, 50, 60]; 
+
+  const rendimentos = marcosUsuarios.map((_, index) => Math.round(rendimentoInicial * Math.pow(1 + taxaCrescimento, index)));
+
+  const lineChartData = {
+    labels: marcosUsuarios.map(u => `${u}k Usuários`),
+    datasets: [
+      {
+        label: 'Projeção de Rendimento (R$ mil)',
+        data: rendimentos,
+        borderColor: '#00eaff', // Azul Neon na linha principal
+        backgroundColor: 'rgba(0, 234, 255, 0.2)', // Azul Neon translúcido para o fundo
+        fill: true, // Isso cria o preenchimento charmoso abaixo da linha
+        pointBackgroundColor: '#ff2bd6', // Rosa Vibrante nas bolinhas
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2, // Bordinha branca nas bolinhas para destacar
+        pointRadius: 5, // Tamanho normal da bolinha
+        pointHoverRadius: 7, // Fica um pouco maior quando passa o mouse
+        borderWidth: 3,
+        tension: 0.4, // Mantém a curva suave
+      }
+    ]
+  };
+
+  const chartOptions = {
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          usePointStyle: true,
+          padding: 20,
+          font: { size: 14, weight: 'bold' },
+          color: '#374151'
+        }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Tooltip escura pra contrastar
+        padding: 10,
+        callbacks: {
+          label: function(context) {
+            return ` R$ ${context.parsed.y} mil`;
+          }
+        }
+      }
+    },
+    maintainAspectRatio: false,
+    scales: {
+      // Configuração do eixo X (embaixo)
+      x: {
+        grid: {
+          display: false, // Esconde as linhas verticais para ficar mais "clean"
+        }
+      },
+      // Configuração do eixo Y (lateral)
+      y: {
+        grid: {
+          color: '#e5e7eb', // Cor bem clarinha
+          borderDash: [5, 5] // Deixa as linhas horizontais tracejadas
+        },
+        beginAtZero: true
+      }
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-10 max-w-3xl">
-      {/* Logo Centralizada */}
+
       <div className="text-center mb-8">
         <img 
           src="/images/logo.png" 
@@ -48,9 +125,8 @@ const Info = () => {
         <h2 className="text-2xl font-bold text-happy-pink">Informações do Projeto</h2>
       </div>
 
-      {/* Lista de Acordeões */}
       <div className="space-y-2">
-        
+
         <AccordionItem 
           title="Assistente de IA para E-commerce Gamer" 
           isOpen={openIndex === 0} 
@@ -62,36 +138,40 @@ const Info = () => {
             generativa para transformar a experiência de compra.
           </p>
           <ul className="list-disc pl-5 space-y-1">
-            <li><strong>Chatbot Inteligente:</strong> Recomendações personalizadas.</li>
-            <li><strong>Visualização Limpa:</strong> Interface clara e responsiva.</li>
-            <li><strong>Navegação Fluida:</strong> Menus organizados por categorias.</li>
+            <li><strong>Chatbot Inteligente:</strong> Recomendações personalizadas e assistência em tempo real.</li>
+            <li><strong>Visualização Limpa:</strong> Interface moderna, focada no usuário final.</li>
+            <li><strong>Navegação Fluida:</strong> Menus otimizados e organizados para facilitar a conversão.</li>
           </ul>
         </AccordionItem>
 
         <AccordionItem 
-          title="Receita do Mercado" 
+          title="Projeção de Rendimento por Usuários" 
           isOpen={openIndex === 1} 
           onClick={() => handleToggle(1)}
         >
-          <p className="mb-3">
-            O mercado movimenta mais de R$ 200 milhões ao ano. De <strong>2022 a 2025</strong>, 
-            o setor de acessórios gamer cresceu significativamente.
+          <p className="mb-4">
+            Em negócios digitais com forte apelo à comunidade (como o mercado gamer), o crescimento raramente é linear. 
+            Aplicamos uma <strong>modelagem matemática exponencial</strong> para prever como o rendimento da plataforma 
+            se comporta à medida que a base de clientes ativos aumenta.
           </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="p-2 border border-gray-200">Ano</th>
-                  <th className="p-2 border border-gray-200">Vendas (R$ Milhões)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td className="p-2 border border-gray-200">2022</td><td className="p-2 border border-gray-200">R$ 175 mi</td></tr>
-                <tr><td className="p-2 border border-gray-200">2023</td><td className="p-2 border border-gray-200">R$ 188 mi</td></tr>
-                <tr><td className="p-2 border border-gray-200">2024</td><td className="p-2 border border-gray-200">R$ 215 mi</td></tr>
-                <tr><td className="p-2 border border-gray-200">2025</td><td className="p-2 border border-gray-200">R$ 262 mi</td></tr>
-              </tbody>
-            </table>
+
+          <p className="mb-4">
+            Utilizamos a seguinte função para refletir o <em>efeito de rede</em> e a recorrência de compras impulsionada pelas recomendações da IA:
+          </p>
+
+          <p className="bg-gray-100 p-3 rounded text-center font-mono text-lg mb-4 text-happy-dark shadow-inner">
+            R(t) = 50 × (1.15)^t
+          </p>
+
+          <ul className="list-disc pl-5 mb-8 space-y-2">
+            <li><strong>R(t):</strong> Representa a projeção do rendimento em milhares de reais.</li>
+            <li><strong>50:</strong> É o nosso faturamento base estimado (R$ 50 mil).</li>
+            <li><strong>1.15:</strong> Representa uma taxa de crescimento acelerada de <strong>15%</strong>.</li>
+            <li><strong>t:</strong> É a variável de tempo/escala, onde cada unidade representa um marco de <strong>10 mil novos usuários</strong> cadastrados.</li>
+          </ul>
+
+          <div className="w-full max-w-lg mx-auto h-80 pb-6">
+            <Line data={lineChartData} options={chartOptions} />
           </div>
         </AccordionItem>
 
@@ -103,12 +183,12 @@ const Info = () => {
           <h5 className="font-bold mb-1">Identidade Visual</h5>
           <p className="mb-3">
             A paleta utiliza <span className="text-happy-blue font-bold">Azul Neon</span> e 
-            <span className="text-happy-pink font-bold"> Rosa Vibrante</span> para refletir o universo gamer moderno.
+            <span className="text-happy-pink font-bold"> Rosa Vibrante</span> para refletir a estética contemporânea do universo gamer.
           </p>
           <h5 className="font-bold mb-1">Stack Tecnológica</h5>
           <p>
-            O site foi reconstruído utilizando <strong>React</strong> para componentização e 
-            <strong> Tailwind CSS v4</strong> para estilização rápida e responsiva.
+            O site foi desenvolvido utilizando <strong>React</strong> para a estruturação modular dos componentes e 
+            <strong> Tailwind CSS v4</strong> para garantir uma estilização ágil, moderna e totalmente responsiva.
           </p>
         </AccordionItem>
 
