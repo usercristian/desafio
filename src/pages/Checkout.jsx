@@ -25,7 +25,7 @@ const Checkout = () => {
           <span className="text-gray-600">Frete</span>
           <span className="text-green-600 font-bold">Grátis</span>
         </div>
-        <hr className="border-gray-100 my-3"/>
+        <hr className="border-gray-100 my-3" />
         <div className="flex justify-between items-center text-xl font-bold">
           <span>Total</span>
           <span className="text-happy-pink">R$ 845,00</span>
@@ -34,7 +34,7 @@ const Checkout = () => {
         {/* Botão de Ação ou Mensagem de Sucesso */}
         <div className="mt-6 text-center">
           {!isConfirmed ? (
-            <button 
+            <button
               onClick={handleConfirm}
               className="btn-primary w-full py-3 text-lg shadow-md"
             >
@@ -46,7 +46,7 @@ const Checkout = () => {
                 <FaCheckCircle size={40} />
                 <p className="font-bold">Obrigado! Sua compra foi confirmada.</p>
               </div>
-              <button 
+              <button
                 onClick={() => navigate('/')}
                 className="text-gray-600 font-bold hover:underline text-sm"
               >
@@ -64,28 +64,31 @@ const Checkout = () => {
           <FaMapMarkerAlt className="text-happy-pink" />
           <p>Rua Conselheiro Saraiva, 281</p>
         </div>
-        <a href="#" className="text-happy-pink text-sm hover:underline">Alterar endereço</a>
+        <button type="button" className="text-happy-pink text-sm hover:underline bg-transparent border-none cursor-pointer">
+          Alterar endereço
+        </button>
+
       </section>
 
       {/* Lista de Produtos */}
       <section className="bg-white p-6 rounded-xl shadow-card border border-gray-100">
         <h4 className="font-bold text-lg mb-4">Produtos</h4>
-        
+
         <div className="flex gap-4 mb-4">
-          <img src="/images/Teclado.3.png" alt="Produto" className="w-20 h-20 object-contain border rounded-md" />
+          <img src="/images/Teclado.3.png" alt="Teclado gamer mecânico RAZER com teclas pretas" className="w-20 h-20 object-contain border rounded-md" />
           <div>
             <p className="font-bold text-sm">Teclado gamer mecânico RAZER</p>
             <p className="text-happy-pink font-bold">R$ 320,00</p>
             <p className="text-xs text-gray-500">Qtd: 1</p>
           </div>
         </div>
-        
-        <hr className="border-gray-100 my-4"/>
+
+        <hr className="border-gray-100 my-4" />
 
         <div className="flex gap-4">
-          <img src="/images/Cadeira.3.png" alt="Produto" className="w-20 h-20 object-contain border rounded-md" />
+          <img src="/images/Cadeira.3.png" alt="Cadeira ergonômica Home Office Preta com encosto de pescoço" className="w-20 h-20 object-contain border rounded-md" />
           <div>
-            <p className="font-bold text-sm">Cadeira ergonômica Home Office</p>
+            <p className="font-bold text-sm">Cadeira ergonômica Home Office Preta com encosto de pescoço</p>
             <p className="text-happy-pink font-bold">R$ 390,00</p>
             <p className="text-xs text-gray-500">Qtd: 1</p>
           </div>
