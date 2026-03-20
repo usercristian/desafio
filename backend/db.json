@@ -49,6 +49,13 @@
       "nome": "João Beraldo",
       "phone": "(11) 1111-11111",
       "id": 7
+    },
+    {
+      "email": "pedrohnunes111105@gmail.com",
+      "password": "$2a$10$WHzWAjjAekjV5IeBtHmI1OahGD7lzXyM.Bo1anoWPE79SGewyPHvC",
+      "nome": "Pedro Nunes",
+      "phone": "(31) 9931-88631",
+      "id": 8
     }
   ]
 }

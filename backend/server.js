@@ -1,41 +1,67 @@
-// server.js
 const jsonServer = require("json-server");
 const auth = require("json-server-auth");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 
 const app = jsonServer.create();
 const router = jsonServer.router("db.json");
 
-// Vincular o banco de dados ao app
-app.db = router.db;
-
-// Permitir requisições do React
+// Middlewares básicos
 app.use(cors());
 app.use(jsonServer.bodyParser);
 
-// Regras de permissão (opcional)
-const rules = auth.rewriter({
-  users: 600,
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 100, // 100 requisições por IP
+  message: "Muitas requisições, tente novamente depois."
 });
 
-app.use(rules);
+app.use(limiter);
 
-// Endpoint customizado para checar existência de e-mail
-app.get("/check-email", (req, res) => {
-  const email = req.query.email;
-  const users = router.db.get("users").value();
-  const exists = users.some(u => u.email === email);
-  res.json({ exists });
+const loginLimiter = rateLimit({
+  windowMs: 5 * 60 * 1000, // 5 minutos
+  max: 5, // 5 tentativas
+  message: "Muitas tentativas de login. Tente novamente mais tarde."
 });
 
-// Middleware de auth
+
+app.use("/login", loginLimiter);
+
+const requests = {};
+
+const detectorDeAtaque = (req, res, next) => {
+  const ip = req.ip;
+
+  if (!requests[ip]) {
+    requests[ip] = {
+      count: 1,
+      startTime: Date.now()
+    };
+  } else {
+    requests[ip].count++;
+  }
+
+  const elapsed = Date.now() - requests[ip].startTime;
+
+  
+  if (requests[ip].count > 200 && elapsed < 60000) {
+    console.log("🚨 POSSÍVEL ATAQUE DETECTADO:", ip);
+
+    return res.status(429).json({
+      error: "Comportamento suspeito detectado"
+    });
+  }
+
+  next();
+};
+
+app.use(detectorDeAtaque);
+
 app.use(auth);
 
-// Rotas do JSON Server
 app.use(router);
 
-// Rodar na porta 3001
-const PORT = process.env.PORT || 3001;
+const PORT = 3000;
 app.listen(PORT, () => {
-  console.log("Fake API rodando em http://localhost:" + PORT);
+  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
 });
