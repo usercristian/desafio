@@ -56,6 +56,11 @@
       "nome": "Pedro Nunes",
       "phone": "(31) 9931-88631",
       "id": 8
+    },
+    {
+      "email": "test2@example.com",
+      "password": "$2a$10$6vNcOJzp15LbSU6/J/VypuGChxQOWljFZQkWNmbN19iN7m.luQx3K",
+      "id": 9
     }
   ]
 }
