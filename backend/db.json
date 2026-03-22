@@ -3,64 +3,109 @@
     {
       "id": 1,
       "email": "joao@example.com",
-      "password": "123456",
+      "password": "$2a$10$0E4RBqTH6mE.U7UIdSGQW..P6mbHQZ15pN5OYCS0Q9iURo/oeXF/6",
       "nome": "João Silva",
       "phone": 31991932035,
-      "acceptTerms": true
+      "acceptTerms": true,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     },
     {
       "email": "joaovic0503@gmail.com",
       "password": "$2a$10$vf.NDohZq44DFR1KTPJ2SOb8Y2H71Q/dbvPTxnlsahKpVUsLJHBlq",
       "nome": "João Beraldo",
       "phone": "(31) 9919-32035",
-      "id": 2
+      "id": 2,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     },
     {
       "email": "teste@teste.com",
       "password": "$2a$10$FXwieBIka1Xh3xv11KJnw.r2nhj9iz4AqPMYM3ebMuZQnDLOplCw.",
       "nome": "João teste",
       "phone": "(11) 1111-11111",
-      "id": 3
+      "id": 3,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     },
     {
       "email": "pedro@happygame.com",
       "password": "$2a$10$tebYtoE4mu3txoDSb/zFN.UhggtBgpSdDgoYLxrNjhjFC0z77zmOC",
       "nome": "Pedro Henrique",
       "phone": "(11) 1111-11111",
-      "id": 4
+      "id": 4,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     },
     {
       "email": "joao@gmail.com",
       "password": "$2a$10$TRYJP.EYPkODLz/z/xHYS.jhiHQrjU7ZFCPvSV7FXQBQskFB1CWAW",
       "nome": "João Beraldo",
       "phone": "(31) 9919-32035",
-      "id": 5
+      "id": 5,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     },
     {
       "email": "teste@gmail.com",
       "password": "$2a$10$SK66BplAUTIaBIh6wo1EiOgogBex8VZdCj9MLJNlJJ48AWKqvsMDi",
       "nome": "João Beraldo",
       "phone": "(31) 9999-99999",
-      "id": 6
+      "id": 6,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     },
     {
       "email": "beraldo@gmail.com",
       "password": "$2a$10$laDaYD6eCaGWjhFVSD2IAuE10/itrnaQc5IS/a0yPBYlRy/5nSAH.",
       "nome": "João Beraldo",
       "phone": "(11) 1111-11111",
-      "id": 7
+      "id": 7,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     },
     {
       "email": "pedrohnunes111105@gmail.com",
       "password": "$2a$10$WHzWAjjAekjV5IeBtHmI1OahGD7lzXyM.Bo1anoWPE79SGewyPHvC",
       "nome": "Pedro Nunes",
       "phone": "(31) 9931-88631",
-      "id": 8
+      "id": 8,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     },
     {
       "email": "test2@example.com",
       "password": "$2a$10$6vNcOJzp15LbSU6/J/VypuGChxQOWljFZQkWNmbN19iN7m.luQx3K",
-      "id": 9
+      "id": 9,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     }
   ]
 }
