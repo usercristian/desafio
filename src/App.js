@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import MfaVerify from './pages/MfaVerify';
 import Register from './pages/Register';
+import Security from './pages/Security';
 import Info from './pages/Info';
 import Contact from './pages/Contact';
 import MyPurchases from './pages/MyPurchases';
@@ -34,6 +35,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/mfa" element={<MfaVerify />} />
+            <Route path="/security" element={<Security />} />
 
             {/* Institucional e Contato */}
             <Route path="/info" element={<Info />} />

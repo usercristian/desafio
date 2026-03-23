@@ -40,6 +40,7 @@ const Navbar = () => {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       sessionStorage.removeItem("mfaToken");
+      sessionStorage.removeItem("pendingMfaUser");
       window.dispatchEvent(new Event("storage"));
       navigate("/login");
     }
@@ -70,6 +71,10 @@ const Navbar = () => {
 
               {isLoggedIn && (
                 <NavLink to="/my-purchases">Minhas Compras</NavLink>
+              )}
+
+              {isLoggedIn && (
+                <NavLink to="/security">Segurança</NavLink>
               )}
 
               {!isLoggedIn && (
@@ -106,6 +111,12 @@ const Navbar = () => {
               {isLoggedIn && (
                 <MobileNavLink to="/my-purchases" onClick={toggleMenu}>
                   Minhas Compras
+                </MobileNavLink>
+              )}
+
+              {isLoggedIn && (
+                <MobileNavLink to="/security" onClick={toggleMenu}>
+                  Segurança
                 </MobileNavLink>
               )}
 

@@ -112,7 +112,21 @@
       "password": "$2a$10$HNrbRCijMrjmfsmGIKbVweL3Jtx5uvZI7qbh2oncr5nXLElmYGvA2",
       "nome": "João Beraldo",
       "phone": "(31) 9919-32035",
-      "id": 10
+      "id": 10,
+      "mfaTempSecret": null,
+      "mfaEnabled": true,
+      "mfaSecret": "B4QEUNYLCUMVO7SF",
+      "mfaRecoveryCodes": [
+        "6874a77d3eeceb78b886525d0b1927889e59b09da3eddd2f62bd43c7c9d12023",
+        "89d4734a3784af73f238026920d6ca8e0c5728e2d1f2d7400336cc536e3af028",
+        "7001c51b2300275ee68f59feda043566e055c49484544a2f0d5fe9f3e33091d9",
+        "3a9eb259e91edb75ecaf9d57877dd37e82d2e2112e9a80d73e4feb78dd721a67",
+        "013eb95f668d8874d15d2721aaa39e9e55fa8087e3609b6bda5a57f4df93ce91",
+        "c452e87e650e482c9cfcdcedb554c2f675937633194564f1dfa827a6e68de4a2",
+        "5a0686bb1dfaa96fbd4bc6c5a2dd8b670881c42cf59353fe64ce57d0ed667998",
+        "45a245e821294e1c8b35ad7904265a49cf72db2c8cea16495235c9b11d1d90b5"
+      ],
+      "mfaEnabledAt": "2026-03-23T23:37:22.199Z"
     },
     {
       "email": "123@gmail.com",
