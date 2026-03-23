@@ -24,8 +24,8 @@ app.use(jsonServer.bodyParser);
 // =========================
 const limiter = rateLimit({
   windowMs: 60 * 1000, // 1 minuto
-  max: 2,
-  message: "Muitas requisições, tente novamente depois."
+  max: 5,
+  message: { message: "Muitas tentativas de login. Tente novamente mais tarde." }
 });
 
 app.use(limiter);
@@ -36,19 +36,19 @@ app.use(limiter);
 const loginLimiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutos
   max: 5,
-  message: "Muitas tentativas de login. Tente novamente mais tarde."
+  message: { message: "Muitas tentativas de login. Tente novamente mais tarde." }
 });
 
 const mfaVerifyLimiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutos
   max: 10,
-  message: "Muitas tentativas de validação MFA. Tente novamente mais tarde."
+  message: { message: "Muitas tentativas de validação MFA. Tente novamente mais tarde." }
 });
 
 const recoveryCodeLimiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutos
   max: 5,
-  message: "Muitas tentativas com código de recuperação. Tente novamente mais tarde."
+  message: { message: "Muitas tentativas com código de recuperação. Tente novamente mais tarde." }
 });
 
 // ✅ aplicado corretamente só nos endpoints de autenticação
