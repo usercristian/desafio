@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Substitui o <a href> para não recarregar a página
+import { Link, useNavigate } from 'react-router-dom'; // Substitui o <a href> para não recarregar a página
 import { FaBars, FaTimes } from 'react-icons/fa'; // Ícones de menu
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
@@ -20,6 +21,30 @@ const Navbar = () => {
 
   // Função para alternar o menu no mobile
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      if (token) {
+        await fetch("http://localhost:3001/auth/logout", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+      }
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    } finally {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      sessionStorage.removeItem("mfaToken");
+      window.dispatchEvent(new Event("storage"));
+      navigate("/login");
+    }
+  };
+
 
   return (
     <header>
@@ -49,6 +74,14 @@ const Navbar = () => {
 
               {!isLoggedIn && (
                 <NavLink to="/login" isButton>Entrar</NavLink>
+              )}
+              {isLoggedIn && (
+                <button
+                  onClick={handleLogout}
+                  className="bg-white text-happy-pink font-bold py-1 px-4 rounded-full hover:bg-happy-blue hover:text-white transition-colors duration-300 shadow-sm"
+                >
+                  Sair
+                </button>
               )}
 
             </div>
@@ -81,7 +114,14 @@ const Navbar = () => {
                   Entrar
                 </MobileNavLink>
               )}
-
+              {isLoggedIn && (
+                <button
+                  onClick={handleLogout}
+                  className="bg-white text-happy-pink font-bold py-1 px-4 rounded-full hover:bg-happy-blue hover:text-white transition-colors duration-300 shadow-sm"
+                >
+                  Sair
+                </button>
+              )}
             </div>
           )}
         </div>

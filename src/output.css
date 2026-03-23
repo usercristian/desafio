@@ -496,6 +496,9 @@
   .max-w-\[400px\] {
     max-width: 400px;
   }
+  .max-w-\[420px\] {
+    max-width: 420px;
+  }
   .max-w-\[500px\] {
     max-width: 500px;
   }
@@ -970,6 +973,10 @@
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
+  }
+  .tracking-\[0\.4em\] {
+    --tw-tracking: 0.4em;
+    letter-spacing: 0.4em;
   }
   .whitespace-pre-wrap {
     white-space: pre-wrap;
@@ -1578,6 +1585,10 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-shadow {
   syntax: "*";
   inherits: false;
@@ -1725,6 +1736,7 @@
       --tw-gradient-to-position: 100%;
       --tw-leading: initial;
       --tw-font-weight: initial;
+      --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;

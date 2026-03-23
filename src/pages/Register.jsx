@@ -62,7 +62,7 @@ const Register = () => {
 
     try {
       // Chamada real para a API Fake do json-server-auth
-      const response = await fetch('http://localhost:3001/register', {
+      const response = await fetch('http://localhost:3001/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -71,7 +71,8 @@ const Register = () => {
           email: formData.email,
           password: formData.senha,
           nome: formData.nome,
-          phone: formData.phone
+          phone: formData.phone,
+          acceptTerms: formData.acceptTerms
         })
       });
 
@@ -178,8 +179,8 @@ const Register = () => {
             type="submit"
             disabled={!isFormFilled}
             className={`btn-primary w-full py-3 text-lg shadow-md ${!isFormFilled
-                ? 'opacity-50 cursor-not-allowed'
-                : 'hover:bg-happy-blue hover:text-white'
+              ? 'opacity-50 cursor-not-allowed'
+              : 'hover:bg-happy-blue hover:text-white'
               }`}
           >
             Cadastrar

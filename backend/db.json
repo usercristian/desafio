@@ -106,6 +106,50 @@
       "mfaTempSecret": null,
       "mfaRecoveryCodes": [],
       "mfaEnabledAt": null
+    },
+    {
+      "email": "tst@gmail.com",
+      "password": "$2a$10$HNrbRCijMrjmfsmGIKbVweL3Jtx5uvZI7qbh2oncr5nXLElmYGvA2",
+      "nome": "João Beraldo",
+      "phone": "(31) 9919-32035",
+      "id": 10
+    },
+    {
+      "email": "123@gmail.com",
+      "password": "$2a$10$Ti/d2/hXO9izsdKaFZlQj.WEHUDAArlqiALgD/b0TAMD42U.HZyEC",
+      "nome": "Beraldo",
+      "phone": "(11) 1111-11111",
+      "acceptTerms": true,
+      "id": 11
+    },
+    {
+      "email": "321@gmail.com",
+      "password": "$2a$10$j.xrdE4G2rputkfTVZ//CugBoLUOnqORCO4GKmSEsJ3UJ1B9m0qSS",
+      "nome": "Beraldo",
+      "phone": "(11) 1111-11111",
+      "acceptTerms": true,
+      "id": 12
+    },
+    {
+      "email": "456@gmail.com",
+      "password": "$2a$10$4yMA.we/cWyo.YzJheFfduz5Ng4XEhhR5Z5holQM6BAf..eXnKY7q",
+      "nome": "João Victor Silva Beraldo",
+      "phone": "(31) 9919-32035",
+      "acceptTerms": true,
+      "id": 13
+    },
+    {
+      "id": 14,
+      "email": "test@gmail.com",
+      "password": "$2a$10$dpDCIkCbAdz5bDPYKwjvH.H/i3NVco8u0E9uT.k5RLLkWwcI1/92i",
+      "nome": "João",
+      "phone": "(31) 9919-32035",
+      "acceptTerms": true,
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "mfaTempSecret": null,
+      "mfaRecoveryCodes": [],
+      "mfaEnabledAt": null
     }
   ]
 }

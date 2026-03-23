@@ -27,7 +27,7 @@ const Login = () => {
 
     // 1) Envia os dados para o endpoint /login do backend      
     try {
-      const response = await fetch('http://localhost:3001/login', {
+      const response = await fetch('http://localhost:3001/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -45,15 +45,23 @@ const Login = () => {
         return;
       }
 
-      // 3) Em caso de sucesso, obtemos o token e o usuário retornados
+      // 3) Em caso de sucesso, verifica se autenticação é por MFA
       const data = await response.json();
 
-      // 4) Armazenamento do token / usuário para manter sessão
+      if (data.requiresMfa === true) {
+        sessionStorage.setItem('mfaToken', data.mfaToken);
+
+        if (data.user) {
+          sessionStorage.setItem('pendingMfaUser', JSON.stringify(data.user));
+        }
+        navigate('/mfa');
+        return;
+      }
+
+      // 4) Se não precisar de MFA, armazena o token e o usuário para manter sessão
       localStorage.setItem('token', data.accessToken);
-
-      window.dispatchEvent(new Event("storage"));
-
       localStorage.setItem('user', JSON.stringify(data.user));
+      window.dispatchEvent(new Event('storage'));
 
       // 5) Redireciona para a página inicial ou protegida
       navigate('/my-purchases');

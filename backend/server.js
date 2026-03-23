@@ -203,6 +203,66 @@ function authenticateAccessToken(req, res, next) {
 }
 
 // ROTAS
+
+app.post("/auth/register", async (req, res) => {
+  const { email, password, nome, phone, acceptTerms } = req.body;
+
+  if (!email || !password || !nome || !phone || acceptTerms === false) {
+    return res.status(400).json({ message: "Todos os campos são obrigatórios" })
+  }
+
+  if (!email.includes("@")) {
+    return res.status(400).json({ message: "E-mail inválido" })
+  }
+
+  if (password.length < 6) {
+    return res.status(400).json({ message: "Senha deve ter ao menos 6 caracteres" })
+  }
+
+  // if (!phone.match(/^\(\d{2}\)\s\d{4}-\d{5}$/)) {
+  //   return res.status(400).json({ message: "Telefone inválido" });
+  // }
+
+
+  if (acceptTerms === false) {
+    return res.status(400).json({ message: "Você deve aceitar os termos" })
+  }
+
+  const existingUser = findUserByEmail(email);
+
+  if (existingUser) {
+    return res.status(400).json({ message: "E-mail já cadastrado" });
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const users = app.db.get("users");
+  const lastUser = users.sortBy("id").last().value();
+  const nextId = lastUser ? lastUser.id + 1 : 1;
+
+  const newUser = {
+    id: nextId,
+    email,
+    password: hashedPassword,
+    nome,
+    phone,
+    acceptTerms: true,
+    mfaEnabled: false,
+    mfaSecret: null,
+    mfaTempSecret: null,
+    mfaRecoveryCodes: [],
+    mfaEnabledAt: null
+  };
+
+  users.push(newUser).write();
+
+  return res.status(201).json({
+    message: "Usuário cadastrado com sucesso",
+    user: sanitizeUser(newUser)
+  });
+
+})
+
 // Validar senha e decidir se precisa de MFA
 app.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
