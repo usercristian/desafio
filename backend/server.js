@@ -24,7 +24,7 @@ app.use(jsonServer.bodyParser);
 // =========================
 const limiter = rateLimit({
   windowMs: 60 * 1000, // 1 minuto
-  max: 100,
+  max: 2,
   message: "Muitas requisições, tente novamente depois."
 });
 
