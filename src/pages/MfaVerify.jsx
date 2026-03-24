@@ -9,14 +9,21 @@ const MfaVerify = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const mfaToken = sessionStorage.getItem('mfaToken');
+  const accessToken = localStorage.getItem('token');
   const pendingUser = sessionStorage.getItem('pendingMfaUser');
-  const parsedUser = pendingUser ? JSON.parse(pendingUser) : null;
+  let parsedUser = null;
+
+  try {
+    parsedUser = pendingUser ? JSON.parse(pendingUser) : null;
+  } catch (error) {
+    parsedUser = null;
+  }
 
   useEffect(() => {
-    if (!mfaToken) {
+    if (!mfaToken && !accessToken) {
       navigate('/login');
     }
-  }, [mfaToken, navigate]);
+  }, [mfaToken, accessToken, navigate]);
 
   const handleSuccess = (data) => {
     sessionStorage.removeItem('mfaToken');
