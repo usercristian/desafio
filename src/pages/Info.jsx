@@ -247,7 +247,7 @@ const Info = () => {
           {/* Seção 1 ─ Sobre */}
           <AccordionItem
             title="Assistente de IA para E-commerce Gamer"
-            icon="🤖"
+            icon=""
             isOpen={openIndex === 0}
             onClick={() => handleToggle(0)}
           >
@@ -259,15 +259,15 @@ const Info = () => {
 
             <div className="grid sm:grid-cols-3 gap-3">
               {[
-                { icon: '💬', title: 'Chatbot Inteligente', desc: 'Recomendações personalizadas e assistência em tempo real.' },
-                { icon: '🎨', title: 'Visualização Limpa', desc: 'Interface moderna, focada no usuário final.' },
-                { icon: '🧭', title: 'Navegação Fluida', desc: 'Menus otimizados para facilitar a conversão.' },
+                { title: 'Chatbot Inteligente', desc: 'Recomendações personalizadas e assistência em tempo real.' },
+                { title: 'Visualização Limpa', desc: 'Interface moderna, focada no usuário final.' },
+                { title: 'Navegação Fluida', desc: 'Menus otimizados para facilitar a conversão.' },
               ].map((item, i) => (
                 <div
                   key={i}
                   className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center hover:border-happy-blue/40 hover:shadow-sm transition-all duration-200"
                 >
-                  <span className="text-2xl mb-2 block">{item.icon}</span>
+
                   <h4 className="font-bold text-happy-text text-sm mb-1">{item.title}</h4>
                   <p className="text-xs text-gray-500">{item.desc}</p>
                 </div>
@@ -278,7 +278,7 @@ const Info = () => {
           {/* Seção 2 ─ Projeções */}
           <AccordionItem
             title="Projeções de Rendimento e Engajamento"
-            icon="📈"
+            icon=""
             isOpen={openIndex === 1}
             onClick={() => handleToggle(1)}
           >
@@ -388,7 +388,7 @@ const Info = () => {
           {/* Seção 3 ─ Design e Tecnologia */}
           <AccordionItem
             title="Design e Tecnologia"
-            icon="⚡"
+            icon=""
             isOpen={openIndex === 2}
             onClick={() => handleToggle(2)}
           >
@@ -396,7 +396,7 @@ const Info = () => {
               {/* Identidade Visual */}
               <div className="bg-gray-50 border border-gray-100 rounded-xl p-5">
                 <h4 className="font-bold text-happy-text mb-3 flex items-center gap-2">
-                  <span className="text-lg">🎨</span> Identidade Visual
+                  Identidade Visual
                 </h4>
                 <p className="text-sm text-gray-600 mb-4">
                   A paleta utiliza cores vibrantes para refletir a estética contemporânea do universo gamer.
@@ -424,7 +424,7 @@ const Info = () => {
               {/* Stack Tecnológica */}
               <div className="bg-gray-50 border border-gray-100 rounded-xl p-5">
                 <h4 className="font-bold text-happy-text mb-3 flex items-center gap-2">
-                  <span className="text-lg">🛠️</span> Stack Tecnológica
+                  Stack Tecnológica
                 </h4>
                 <div className="space-y-2">
                   {[
