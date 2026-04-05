@@ -132,36 +132,46 @@ const Info = () => {
     }
   };
 
-  /* ── Dados do gráfico 2: Crescimento logístico ── */
-  const meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const maxUsuarios = 100;
-  const taxaK = 0.8;
-  const pontoInflexao = 6;
-  const crescimentoUsuarios = meses.map(m =>
-    Math.round(maxUsuarios / (1 + Math.exp(-taxaK * (m - pontoInflexao))))
-  );
+  /* ── Dados do gráfico 2: Função Racional com descontinuidade removível ── */
+  /* N(t) = (-250t³ + 750t² + 1000t) / (-t² + 4t)
+     Fatoração:
+       Numerador: -250t(t² - 3t - 4) = -250t(t + 1)(t - 4)
+       Denominador: -t(t - 4)
+     Simplificação (cancela t e (t - 4)):
+       N(t) = 250(t + 1)
+     Limite: lim t→4 N(t) = 250(4 + 1) = 250 × 5 = 1250
+     N(4) não existe (denominador = 0), mas o limite é R$ 1.250 */
+  const horas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const calcN = (t) => {
+    const numerador = -250 * Math.pow(t, 3) + 750 * Math.pow(t, 2) + 1000 * t;
+    const denominador = -Math.pow(t, 2) + 4 * t;
+    if (denominador === 0) return null; // descontinuidade em t = 0 e t = 4
+    return Math.round(numerador / denominador);
+  };
+  const valoresN = horas.map(t => calcN(t));
 
   const growthChartData = {
-    labels: meses.map(m => `Mês ${m}`),
+    labels: horas.map(t => `${t}`),
     datasets: [
       {
-        label: 'Usuários Ativos e Retidos (milhares)',
-        data: crescimentoUsuarios,
-        borderColor: '#ff2a6d',
+        label: 'N(t) — Rendimento (R$)',
+        data: valoresN,
+        borderColor: '#9b59b6',
         backgroundColor: (ctx) => {
           const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 0, ctx.chart.height);
-          gradient.addColorStop(0, 'rgba(255, 42, 109, 0.2)');
-          gradient.addColorStop(1, 'rgba(255, 42, 109, 0.02)');
+          gradient.addColorStop(0, 'rgba(155, 89, 182, 0.2)');
+          gradient.addColorStop(1, 'rgba(155, 89, 182, 0.02)');
           return gradient;
         },
         fill: true,
-        pointBackgroundColor: '#05d9e8',
-        pointBorderColor: '#ffffff',
-        pointBorderWidth: 2,
-        pointRadius: 5,
-        pointHoverRadius: 8,
+        pointBackgroundColor: horas.map(t => t === 4 ? '#ffffff' : '#9b59b6'),
+        pointBorderColor: horas.map(t => t === 4 ? '#ff2a6d' : '#ffffff'),
+        pointBorderWidth: horas.map(t => t === 4 ? 3 : 2),
+        pointRadius: horas.map(t => t === 4 ? 8 : 5),
+        pointHoverRadius: 9,
         borderWidth: 3,
         tension: 0.4,
+        spanGaps: true,
       }
     ]
   };
@@ -176,24 +186,38 @@ const Info = () => {
       tooltip: {
         backgroundColor: '#1c1c1c',
         titleColor: '#fff',
-        bodyColor: '#fcd5e3',
-        borderColor: '#ff2a6d',
+        bodyColor: '#e8d5f5',
+        borderColor: '#9b59b6',
         borderWidth: 1,
         cornerRadius: 12,
         padding: 12,
         callbacks: {
-          label: (ctx) => ` ${ctx.parsed.y} mil usuários`,
+          title: (items) => `t = ${items[0].label} horas`,
+          label: (ctx) => {
+            if (ctx.parsed.y === null) return ' N(t) não existe (descontinuidade)';
+            return ` N(t) = R$ ${ctx.parsed.y.toLocaleString('pt-BR')}`;
+          },
+          afterLabel: (ctx) => {
+            if (Number(ctx.label) === 4) return ' ⚠ Limite lateral → R$ 1.250';
+            return '';
+          }
         }
       }
     },
     scales: {
       x: {
+        title: { display: true, text: 't (horas)', color: '#6b7280', font: { size: 12, weight: 'bold' } },
         grid: { display: false },
         ticks: { color: '#9ca3af', font: { size: 11 } },
       },
       y: {
+        title: { display: true, text: 'R$', color: '#6b7280', font: { size: 12, weight: 'bold' } },
         grid: { color: '#f3f4f6', borderDash: [4, 4] },
-        ticks: { color: '#9ca3af', font: { size: 11 } },
+        ticks: {
+          color: '#9ca3af',
+          font: { size: 11 },
+          callback: (val) => `R$ ${val.toLocaleString('pt-BR')}`,
+        },
         beginAtZero: true,
       }
     }
@@ -332,54 +356,137 @@ const Info = () => {
             {/* Divider */}
             <div className="flex items-center gap-3 my-8">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-              <span className="text-xs text-gray-400 uppercase tracking-widest">Tendência</span>
+              <span className="text-xs text-gray-400 uppercase tracking-widest">Análise de Limites</span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
             </div>
 
-            {/* Retenção */}
+            {/* Gráfico 2 ─ N(t) função racional com descontinuidade */}
             <div>
               <h3 className="text-lg font-bold text-happy-text mb-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-happy-pink inline-block"></span>
-                Tendência e Retenção de Usuários
+                Projeção de Rendimento — Função Racional N(t)
               </h3>
               <p className="mb-4 text-[15px]">
-                Para prever o <strong>crescimento de usuários</strong> e os níveis de engajamento ao longo de um ano,
-                aplicamos uma modelagem baseada no <strong>Crescimento Logístico (Curva S)</strong>. Esta função interpreta
-                o ciclo natural de adoção em três fases: tração inicial lenta, aumento de engajamento acelerado e a
-                consequente suavização de adoção.
+                Para modelar o <strong>rendimento projetado</strong> ao longo do tempo, utilizamos uma função racional
+                que apresenta uma <strong>descontinuidade removível</strong> em t = 4. Embora N(4) não exista
+                (denominador zero), podemos verificar por meio dos <strong>limites laterais</strong> que
+                N(t) <strong>tende a R$ 1.250</strong> à medida que t se aproxima de 4.
               </p>
 
-              <div className="bg-gradient-to-r from-happy-pink/5 to-happy-blue/5 border border-gray-100 rounded-xl p-4 mb-5">
-                <p className="text-center font-mono text-lg text-happy-dark font-bold tracking-wide">
-                  U(t) = L / (1 + e<sup className="-top-1 text-sm relative">-k(t - t₀)</sup>)
+              {/* ── Fórmula original ── */}
+              <div className="bg-gradient-to-r from-happy-pink/5 to-happy-blue/5 border border-gray-100 rounded-xl p-4 mb-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 text-center">Função Original</p>
+                <p className="text-center font-mono text-base md:text-lg text-happy-dark font-bold tracking-wide leading-relaxed">
+                  N(t) = (-250t³ + 750t² + 1000t) / (-t² + 4t)
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
                   {[
-                    { var: 'U(t)', desc: 'Usuários retidos (mil)' },
-                    { var: 'L = 100', desc: 'Limite projetado' },
-                    { var: 'k = 0.8', desc: 'Agressividade' },
-                    { var: 't₀ = 6', desc: 'Ponto de inflexão' },
+                    { var: 'N(t)', desc: 'Rendimento (R$)' },
+                    { var: 't', desc: 'Tempo (horas)' },
+                    { var: 't = 4', desc: 'Descontinuidade' },
+                    { var: 'N(1) = 500', desc: 'Valor inicial' },
                   ].map((item, i) => (
                     <div key={i} className="text-center bg-white/60 rounded-lg py-2 px-1">
-                      <span className="font-mono font-bold text-happy-blue text-sm">{item.var}</span>
+                      <span className="font-mono font-bold text-happy-pink text-sm">{item.var}</span>
                       <p className="text-[11px] text-gray-500 mt-0.5">{item.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
+              {/* ── Passo a passo: Fatoração → Simplificação → Limite ── */}
+              <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-5 space-y-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 text-center">Desenvolvimento Completo</p>
+
+                {/* Passo 1 – Fatoração */}
+                <div>
+                  <p className="text-sm font-bold text-happy-text mb-1 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-happy-pink text-white text-[11px] flex items-center justify-center font-bold">1</span>
+                    Fatoração
+                  </p>
+                  <div className="bg-white rounded-lg p-3 border border-gray-100 space-y-1">
+                    <p className="font-mono text-sm text-gray-700">
+                      Numerador: -250t³ + 750t² + 1000t
+                    </p>
+                    <p className="font-mono text-sm text-gray-700 pl-4">
+                      = -250t(t² - 3t - 4)
+                    </p>
+                    <p className="font-mono text-sm text-happy-pink font-bold pl-4">
+                      = -250t(t + 1)<span className="text-happy-blue">(t - 4)</span>
+                    </p>
+                    <hr className="my-2 border-gray-100" />
+                    <p className="font-mono text-sm text-gray-700">
+                      Denominador: -t² + 4t
+                    </p>
+                    <p className="font-mono text-sm text-happy-pink font-bold pl-4">
+                      = -t<span className="text-happy-blue">(t - 4)</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Passo 2 – Cancelamento */}
+                <div>
+                  <p className="text-sm font-bold text-happy-text mb-1 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-happy-blue text-white text-[11px] flex items-center justify-center font-bold">2</span>
+                    Simplificação
+                  </p>
+                  <div className="bg-white rounded-lg p-3 border border-gray-100 space-y-1">
+                    <p className="font-mono text-sm text-gray-700">
+                      N(t) = <span className="line-through text-gray-400">-250t</span> · 250(t + 1) · <span className="line-through text-gray-400">(t - 4)</span> / <span className="line-through text-gray-400">-t</span> · <span className="line-through text-gray-400">(t - 4)</span>
+                    </p>
+                    <p className="font-mono text-sm text-happy-blue font-bold pl-4">
+                      N(t) = 250(t + 1), para t ≠ 0 e t ≠ 4
+                    </p>
+                  </div>
+                </div>
+
+                {/* Passo 3 – Cálculo do Limite */}
+                <div>
+                  <p className="text-sm font-bold text-happy-text mb-1 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-happy-pink text-white text-[11px] flex items-center justify-center font-bold">3</span>
+                    Cálculo do Limite
+                  </p>
+                  <div className="bg-white rounded-lg p-3 border border-gray-100">
+                    <p className="font-mono text-sm text-gray-700 text-center">
+                      lim<sub>t→4</sub> <span className="text-happy-pink font-bold">250(t + 1)</span> = 250(4 + 1) = 250 × 5 = <span className="text-happy-blue font-bold text-base">R$ 1.250</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Passo 4 – Interpretação */}
+                <div>
+                  <p className="text-sm font-bold text-happy-text mb-1 flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-happy-blue text-white text-[11px] flex items-center justify-center font-bold">4</span>
+                    Interpretação
+                  </p>
+                  <div className="bg-white rounded-lg p-3 border border-gray-100">
+                    <p className="text-sm text-gray-600">
+                      O ponto <strong>(4, 1250)</strong> é uma <strong>descontinuidade removível</strong>.
+                      A função N(t) não possui imagem em t = 4 (denominador zero), porém o limite lateral
+                      confirma que o rendimento <strong>tende a R$ 1.250</strong>. No gráfico, representamos
+                      esse ponto com uma <strong>bolinha aberta</strong> (⚬).
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Gráfico ── */}
               <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-happy-pink">Retenção × Tempo</span>
-                  <span className="text-[11px] text-gray-400">Curva logística (S)</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-happy-pink">Rendimento N(t) × t (horas)</span>
+                  <span className="text-[11px] text-gray-400">Descontinuidade removível em t = 4</span>
                 </div>
                 <div className="w-full h-72">
                   <Line
                     data={growthChartData}
                     options={growthChartOptions}
                     role="img"
-                    aria-label="Gráfico ilustrando a curva em S de adoção e retenção ao longo do tempo."
+                    aria-label="Gráfico da função racional N(t) com descontinuidade removível em t = 4, onde o limite tende a R$ 1.250."
                   />
+                </div>
+                <div className="mt-3 flex items-center gap-2 text-xs text-gray-500 bg-gray-50 rounded-lg p-3">
+                  <span className="inline-block w-3 h-3 rounded-full border-2 border-red-400 bg-white flex-shrink-0"></span>
+                  <span>Bolinha aberta em t = 4 indica que N(4) não existe, mas lim<sub>t→4</sub> N(t) = R$ 1.250</span>
                 </div>
               </div>
             </div>
