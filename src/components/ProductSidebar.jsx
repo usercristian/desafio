@@ -34,6 +34,7 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
         <h5 className="font-bold text-lg">Assistente Happy</h5>
         <button 
           onClick={onClose} 
+          aria-label="Fechar painel de produto"
           className="text-white hover:bg-white/20 rounded-full p-1 transition-colors"
         >
           <FaTimes size={18} />
@@ -44,7 +45,7 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
       <div className="p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-happy-blue scrollbar-track-gray-100 rounded-b-2xl">
         <div className="relative">
           {/* Botão de Favorito */}
-          <button className="absolute top-0 right-0 text-happy-pink hover:scale-110 transition-transform p-2">
+          <button aria-label="Adicionar aos favoritos" className="absolute top-0 right-0 text-happy-pink hover:scale-110 transition-transform p-2 bg-transparent border-none cursor-pointer">
              <FaHeart size={22} />
           </button>
 
@@ -59,7 +60,7 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
             {product.nome}
           </h4>
           
-          <p className="text-center font-bold text-happy-blue text-sm mb-3">
+          <p className="text-center font-bold text-happy-blue-text text-sm mb-3">
             Avaliação: {product.rating}/5 ({product.numRatings} avaliações)
           </p>
           <p className="text-center font-bold text-happy-pink text-2xl mb-4">

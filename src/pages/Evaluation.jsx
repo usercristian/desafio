@@ -44,21 +44,26 @@ const Evaluation = () => {
         <div className="flex flex-col md:flex-row items-center gap-6 mb-8">
           <img src="/images/Teclado.3.png" alt="Produto" className="w-32 h-32 object-contain border rounded-lg shadow-sm" />
           <div className="text-center md:text-left">
-            <h3 className="font-bold text-gray-800 text-lg">Teclado gamer mecânico RAZER</h3>
-            <h2 className="text-xl font-bold text-happy-text mt-1">Qual sua avaliação desta compra?</h2>
+            <h3 className="font-bold text-gray-800 text-lg">{"Teclado gamer mecânico RAZER"}</h3>
+            <h1 className="text-xl font-bold text-happy-text mt-1">Qual sua avaliação desta compra?</h1>
             
             {/* Estrelas Interativas */}
-            <div className="flex justify-center md:justify-start gap-2 mt-3 text-3xl text-gray-300 cursor-pointer">
+            <div className="flex justify-center md:justify-start gap-2 mt-3 text-3xl text-gray-300" role="radiogroup" aria-label="Avaliação em estrelas">
               {[1, 2, 3, 4, 5].map((star) => (
-                <FaStar 
+                <button
                   key={star}
-                  className={`transition-colors duration-200 ${
-                    (hoverRating || rating) >= star ? 'text-yellow-400' : ''
+                  type="button"
+                  aria-label={`${star} estrela${star > 1 ? 's' : ''}`}
+                  aria-pressed={rating >= star}
+                  className={`transition-colors duration-200 cursor-pointer bg-transparent border-none p-0 text-3xl focus-visible:ring-2 focus-visible:ring-happy-pink focus-visible:ring-offset-2 rounded ${
+                    (hoverRating || rating) >= star ? 'text-yellow-400' : 'text-gray-300'
                   }`}
                   onClick={() => setRating(star)}
                   onMouseEnter={() => setHoverRating(star)}
                   onMouseLeave={() => setHoverRating(0)}
-                />
+                >
+                  <FaStar />
+                </button>
               ))}
             </div>
           </div>
@@ -67,18 +72,19 @@ const Evaluation = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Upload de Foto */}
           <div>
-            <label className="block font-bold text-gray-700 mb-2">Envie fotos do produto</label>
-            <label className="flex items-center justify-center w-full p-4 border-2 border-dashed border-happy-blue rounded-xl cursor-pointer hover:bg-blue-50 transition-colors text-happy-blue font-bold gap-2">
+            <label htmlFor="eval-photo" className="block font-bold text-gray-700 mb-2">Envie fotos do produto</label>
+            <label className="flex items-center justify-center w-full p-4 border-2 border-dashed border-happy-blue rounded-xl cursor-pointer hover:bg-blue-50 transition-colors text-happy-blue-text font-bold gap-2">
               <FaCamera />
               <span>{files.length > 0 ? `${files.length} arquivo(s) selecionado(s)` : 'Adicionar fotos'}</span>
-              <input type="file" multiple accept="image/*" onChange={handleFileChange} className="hidden" />
+              <input type="file" id="eval-photo" multiple accept="image/*" onChange={handleFileChange} className="hidden" />
             </label>
           </div>
 
           {/* Comentário */}
           <div>
-            <label className="block font-bold text-gray-700 mb-2">Escreva sua opinião</label>
+            <label htmlFor="eval-comment" className="block font-bold text-gray-700 mb-2">Escreva sua opinião</label>
             <textarea 
+              id="eval-comment"
               className="input-field h-32 resize-none"
               placeholder="O que você achou do produto?"
               value={comment}

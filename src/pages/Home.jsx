@@ -60,16 +60,17 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
   return (
     <section className="mb-10 group">
       {/* Título da Categoria */}
-      <h3 className="text-xl font-bold text-happy-pink bg-gray-50 py-2 px-4 rounded-lg border-l-4 border-happy-pink mb-4 inline-block shadow-sm ml-2">
+      <h2 className="text-xl font-bold text-happy-pink bg-gray-50 py-2 px-4 rounded-lg border-l-4 border-happy-pink mb-4 inline-block shadow-sm ml-2">
         {title}
-      </h3>
+      </h2>
 
       <div className="relative bg-[#fafafa] rounded-[25px] p-4 shadow-neon-blue border border-gray-100">
         
         {/* Botão Esquerdo */}
         <button 
           onClick={() => scroll('left')}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-happy-pink text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-happy-pink-dark focus:outline-none hidden md:block"
+          aria-label={`Rolar ${title} para a esquerda`}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-happy-pink text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity duration-300 hover:bg-happy-pink-dark focus-visible:ring-2 focus-visible:ring-happy-pink focus-visible:ring-offset-2 hidden md:block"
         >
           <FaChevronLeft />
         </button>
@@ -142,7 +143,8 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
         {/* Botão Direito */}
         <button 
           onClick={() => scroll('right')}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-happy-pink text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-happy-pink-dark focus:outline-none hidden md:block"
+          aria-label={`Rolar ${title} para a direita`}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-happy-pink text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity duration-300 hover:bg-happy-pink-dark focus-visible:ring-2 focus-visible:ring-happy-pink focus-visible:ring-offset-2 hidden md:block"
         >
           <FaChevronRight />
         </button>
@@ -168,7 +170,12 @@ const Home = () => {
   return (
     <div className="relative min-h-screen">
       <main className="container mx-auto px-4 py-8 pb-20">
+<<<<<<< HEAD
         {categories.map((category, index) => {
+=======
+        <h1 className="sr-only">Happy Game — Loja de Produtos Gamer</h1>
+        {categories.map((category) => {
+>>>>>>> a442061ea29f1f3e180a9e32fee6d20aa27e7899
           const categoryProducts = products.filter(p => p.categoria === category);
           if (categoryProducts.length === 0) return null;
 

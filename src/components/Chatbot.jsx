@@ -31,7 +31,7 @@ const getSustainableListLabel = (product) => {
 
 const Chatbot = () => {
   // Estados de UI
-  const [isOpen, setIsOpen] = useState(true); // Controla se o chat está maximizado ou minimizado
+  const [isOpen, setIsOpen] = useState(window.innerWidth >= 768); // Minimizado em mobile
   const [isHidden, setIsHidden] = useState(false); // Controla se o chat está invisível (atrás da Sidebar)
 
   // Estados de Dados e Fluxo
@@ -202,7 +202,7 @@ const Chatbot = () => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>Assistente Happy</span>
-        <button className="text-sm focus:outline-none">
+        <button aria-label={isOpen ? 'Minimizar chat' : 'Expandir chat'} className="text-sm focus-visible:ring-2 focus-visible:ring-white rounded">
           {isOpen ? <FaMinus /> : <FaPlus />}
         </button>
       </div>
@@ -278,11 +278,13 @@ const Chatbot = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Digite aqui..."
-              className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-happy-pink focus:ring-1 focus:ring-happy-pink"
+              aria-label="Mensagem para o assistente"
+              className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:border-happy-pink focus-visible:ring-1 focus-visible:ring-happy-pink"
             />
             <button
               onClick={handleSend}
-              className="bg-happy-pink text-white p-2 rounded-lg hover:bg-happy-pink-dark transition-colors"
+              aria-label="Enviar mensagem"
+              className="bg-happy-pink text-white p-2 rounded-lg hover:bg-happy-pink-dark transition-colors focus-visible:ring-2 focus-visible:ring-happy-pink focus-visible:ring-offset-2"
             >
               <FaPaperPlane size={14} />
             </button>

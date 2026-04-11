@@ -89,7 +89,7 @@ const MfaVerify = () => {
         </div>
 
         <div className="text-center mb-6">
-          <h3 className="text-xl font-bold text-happy-text mb-1">Verificação em duas etapas</h3>
+          <h1 className="text-xl font-bold text-happy-text mb-1">Verificação em duas etapas</h1>
           <p className="text-gray-500 text-sm">
             {parsedUser?.email ? `Confirme o acesso de ${parsedUser.email}` : 'Confirme seu acesso para entrar na conta.'}
           </p>
@@ -160,7 +160,7 @@ const MfaVerify = () => {
               sessionStorage.removeItem('mfaToken');
               sessionStorage.removeItem('pendingMfaUser');
             }}
-            className="text-happy-blue hover:underline"
+            className="text-happy-blue-text hover:underline"
           >
             Voltar para o login
           </Link>

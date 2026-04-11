@@ -122,52 +122,52 @@ const Info = () => {
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: '#9ca3af', font: { size: 11 } },
+        ticks: { color: '#6b7280', font: { size: 12 } },
       },
       y: {
         grid: { color: '#f3f4f6', borderDash: [4, 4] },
-        ticks: { color: '#9ca3af', font: { size: 11 } },
+        ticks: { color: '#6b7280', font: { size: 12 } },
         beginAtZero: true,
       }
     }
   };
 
-  /* ── Dados do gráfico 2: Função Racional com descontinuidade removível ── */
-  /* N(t) = (-250t³ + 750t² + 1000t) / (-t² + 4t)
+  /* ── Dados do gráfico 2: Cliente x Receita — Função Racional ── */
+  /* R(c) = (-250c³ + 750c² + 1000c) / (-c² + 4c)
      Fatoração:
-       Numerador: -250t(t² - 3t - 4) = -250t(t + 1)(t - 4)
-       Denominador: -t(t - 4)
-     Simplificação (cancela t e (t - 4)):
-       N(t) = 250(t + 1)
-     Limite: lim t→4 N(t) = 250(4 + 1) = 250 × 5 = 1250
-     N(4) não existe (denominador = 0), mas o limite é R$ 1.250 */
-  const horas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const calcN = (t) => {
-    const numerador = -250 * Math.pow(t, 3) + 750 * Math.pow(t, 2) + 1000 * t;
-    const denominador = -Math.pow(t, 2) + 4 * t;
-    if (denominador === 0) return null; // descontinuidade em t = 0 e t = 4
+       Numerador: -250c(c² - 3c - 4) = -250c(c + 1)(c - 4)
+       Denominador: -c(c - 4)
+     Simplificação (cancela c e (c - 4)):
+       R(c) = 250(c + 1)
+     Limite: lim c→4 R(c) = 250(4 + 1) = 250 × 5 = 1250
+     R(4) não existe (denominador = 0), mas o limite é R$ 1.250/h */
+  const clientes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const calcReceita = (c) => {
+    const numerador = -250 * Math.pow(c, 3) + 750 * Math.pow(c, 2) + 1000 * c;
+    const denominador = -Math.pow(c, 2) + 4 * c;
+    if (denominador === 0) return null; // descontinuidade em c = 0 e c = 4
     return Math.round(numerador / denominador);
   };
-  const valoresN = horas.map(t => calcN(t));
+  const valoresReceita = clientes.map(c => calcReceita(c));
 
   const growthChartData = {
-    labels: horas.map(t => `${t}`),
+    labels: clientes.map(c => `${c}`),
     datasets: [
       {
-        label: 'N(t) — Rendimento (R$)',
-        data: valoresN,
-        borderColor: '#9b59b6',
+        label: 'Receita/h por Cliente (R$)',
+        data: valoresReceita,
+        borderColor: '#05d9e8',
         backgroundColor: (ctx) => {
           const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 0, ctx.chart.height);
-          gradient.addColorStop(0, 'rgba(155, 89, 182, 0.2)');
-          gradient.addColorStop(1, 'rgba(155, 89, 182, 0.02)');
+          gradient.addColorStop(0, 'rgba(5, 217, 232, 0.25)');
+          gradient.addColorStop(1, 'rgba(5, 217, 232, 0.02)');
           return gradient;
         },
         fill: true,
-        pointBackgroundColor: horas.map(t => t === 4 ? '#ffffff' : '#9b59b6'),
-        pointBorderColor: horas.map(t => t === 4 ? '#ff2a6d' : '#ffffff'),
-        pointBorderWidth: horas.map(t => t === 4 ? 3 : 2),
-        pointRadius: horas.map(t => t === 4 ? 8 : 5),
+        pointBackgroundColor: clientes.map(c => c === 4 ? '#ffffff' : '#ff2a6d'),
+        pointBorderColor: clientes.map(c => c === 4 ? '#ff2a6d' : '#ffffff'),
+        pointBorderWidth: clientes.map(c => c === 4 ? 3 : 2),
+        pointRadius: clientes.map(c => c === 4 ? 8 : 5),
         pointHoverRadius: 9,
         borderWidth: 3,
         tension: 0.4,
@@ -186,19 +186,19 @@ const Info = () => {
       tooltip: {
         backgroundColor: '#1c1c1c',
         titleColor: '#fff',
-        bodyColor: '#e8d5f5',
-        borderColor: '#9b59b6',
+        bodyColor: '#d1f7ff',
+        borderColor: '#05d9e8',
         borderWidth: 1,
         cornerRadius: 12,
         padding: 12,
         callbacks: {
-          title: (items) => `t = ${items[0].label} horas`,
+          title: (items) => `${items[0].label} clientes`,
           label: (ctx) => {
-            if (ctx.parsed.y === null) return ' N(t) não existe (descontinuidade)';
-            return ` N(t) = R$ ${ctx.parsed.y.toLocaleString('pt-BR')}`;
+            if (ctx.parsed.y === null) return ' R(c) não existe (descontinuidade)';
+            return ` Receita/h = R$ ${ctx.parsed.y.toLocaleString('pt-BR')}`;
           },
           afterLabel: (ctx) => {
-            if (Number(ctx.label) === 4) return ' ⚠ Limite lateral → R$ 1.250';
+            if (Number(ctx.label) === 4) return ' ⚠ Limite lateral → R$ 1.250/h';
             return '';
           }
         }
@@ -206,17 +206,17 @@ const Info = () => {
     },
     scales: {
       x: {
-        title: { display: true, text: 't (horas)', color: '#6b7280', font: { size: 12, weight: 'bold' } },
+        title: { display: true, text: 'Clientes', color: '#6b7280', font: { size: 12, weight: 'bold' } },
         grid: { display: false },
-        ticks: { color: '#9ca3af', font: { size: 11 } },
+        ticks: { color: '#6b7280', font: { size: 12 } },
       },
       y: {
-        title: { display: true, text: 'R$', color: '#6b7280', font: { size: 12, weight: 'bold' } },
+        title: { display: true, text: 'R$/hora', color: '#6b7280', font: { size: 12, weight: 'bold' } },
         grid: { color: '#f3f4f6', borderDash: [4, 4] },
         ticks: {
-          color: '#9ca3af',
-          font: { size: 11 },
-          callback: (val) => `R$ ${val.toLocaleString('pt-BR')}`,
+          color: '#6b7280',
+          font: { size: 12 },
+          callback: (val) => `R$ ${val.toLocaleString('pt-BR')}/h`,
         },
         beginAtZero: true,
       }
@@ -241,7 +241,7 @@ const Info = () => {
               className="w-20 h-20 p-2 bg-white/15 rounded-2xl backdrop-blur-sm border border-white/20 shadow-lg"
             />
             <div>
-              <p className="text-sm uppercase tracking-[0.25em] opacity-80 mb-1">Sobre o projeto</p>
+              <p className="text-sm uppercase tracking-[0.25em] opacity-90 mb-1">Sobre o projeto</p>
               <h1 className="text-3xl font-bold mb-1">Informações do Projeto</h1>
               <p className="text-sm md:text-base opacity-90 max-w-xl">
                 Conheça a visão, as projeções, a tecnologia e as práticas socioambientais da plataforma Happy Game.
@@ -259,7 +259,7 @@ const Info = () => {
             ].map((badge, i) => (
               <div key={i} className="flex flex-col items-center justify-center rounded-xl px-5 py-2.5 min-w-[100px] bg-white/15 backdrop-blur-sm border border-white/20">
                 <span className="text-lg font-bold text-white">{badge.value}</span>
-                <span className="text-[11px] text-white/70 mt-0.5">{badge.label}</span>
+                <span className="text-[12px] text-white/90 mt-0.5">{badge.label}</span>
               </div>
             ))}
           </div>
@@ -331,7 +331,7 @@ const Info = () => {
                   ].map((item, i) => (
                     <div key={i} className="text-center bg-white/60 rounded-lg py-2 px-1">
                       <span className="font-mono font-bold text-happy-pink text-sm">{item.var}</span>
-                      <p className="text-[11px] text-gray-500 mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -339,8 +339,8 @@ const Info = () => {
 
               <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-happy-blue">Rendimento × Usuários</span>
-                  <span className="text-[11px] text-gray-400">Projeção exponencial</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-happy-blue-text">Rendimento × Usuários</span>
+                  <span className="text-xs text-gray-500">Projeção exponencial</span>
                 </div>
                 <div className="w-full h-72">
                   <Line
@@ -356,7 +356,7 @@ const Info = () => {
             {/* Divider */}
             <div className="flex items-center gap-3 my-8">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-              <span className="text-xs text-gray-400 uppercase tracking-widest">Análise de Limites</span>
+              <span className="text-xs text-gray-500 uppercase tracking-widest">Análise de Limites</span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
             </div>
 
@@ -364,31 +364,31 @@ const Info = () => {
             <div>
               <h3 className="text-lg font-bold text-happy-text mb-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-happy-pink inline-block"></span>
-                Projeção de Rendimento — Função Racional N(t)
+                Cliente x Receita — Função Racional R(c)
               </h3>
               <p className="mb-4 text-[15px]">
-                Para modelar o <strong>rendimento projetado</strong> ao longo do tempo, utilizamos uma função racional
-                que apresenta uma <strong>descontinuidade removível</strong> em t = 4. Embora N(4) não exista
+                Para modelar a <strong>receita por hora</strong> em função do número de clientes, utilizamos uma função racional
+                que apresenta uma <strong>descontinuidade removível</strong> em c = 4. Embora R(4) não exista
                 (denominador zero), podemos verificar por meio dos <strong>limites laterais</strong> que
-                N(t) <strong>tende a R$ 1.250</strong> à medida que t se aproxima de 4.
+                R(c) <strong>tende a R$ 1.250/h</strong> à medida que c se aproxima de 4.
               </p>
 
               {/* ── Fórmula original ── */}
               <div className="bg-gradient-to-r from-happy-pink/5 to-happy-blue/5 border border-gray-100 rounded-xl p-4 mb-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 text-center">Função Original</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 text-center">Função Original</p>
                 <p className="text-center font-mono text-base md:text-lg text-happy-dark font-bold tracking-wide leading-relaxed">
-                  N(t) = (-250t³ + 750t² + 1000t) / (-t² + 4t)
+                  R(c) = (-250c³ + 750c² + 1000c) / (-c² + 4c)
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
                   {[
-                    { var: 'N(t)', desc: 'Rendimento (R$)' },
-                    { var: 't', desc: 'Tempo (horas)' },
-                    { var: 't = 4', desc: 'Descontinuidade' },
-                    { var: 'N(1) = 500', desc: 'Valor inicial' },
+                    { var: 'R(c)', desc: 'Receita/hora (R$)' },
+                    { var: 'c', desc: 'Nº de Clientes' },
+                    { var: 'c = 4', desc: 'Descontinuidade' },
+                    { var: 'R(1) = 500', desc: 'Valor inicial' },
                   ].map((item, i) => (
                     <div key={i} className="text-center bg-white/60 rounded-lg py-2 px-1">
                       <span className="font-mono font-bold text-happy-pink text-sm">{item.var}</span>
-                      <p className="text-[11px] text-gray-500 mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -396,7 +396,7 @@ const Info = () => {
 
               {/* ── Passo a passo: Fatoração → Simplificação → Limite ── */}
               <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-5 space-y-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 text-center">Desenvolvimento Completo</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-500 text-center">Desenvolvimento Completo</p>
 
                 {/* Passo 1 – Fatoração */}
                 <div>
@@ -406,20 +406,20 @@ const Info = () => {
                   </p>
                   <div className="bg-white rounded-lg p-3 border border-gray-100 space-y-1">
                     <p className="font-mono text-sm text-gray-700">
-                      Numerador: -250t³ + 750t² + 1000t
+                      Numerador: -250c³ + 750c² + 1000c
                     </p>
                     <p className="font-mono text-sm text-gray-700 pl-4">
-                      = -250t(t² - 3t - 4)
+                      = -250c(c² - 3c - 4)
                     </p>
                     <p className="font-mono text-sm text-happy-pink font-bold pl-4">
-                      = -250t(t + 1)<span className="text-happy-blue">(t - 4)</span>
+                      = -250c(c + 1)<span className="text-happy-blue">(c - 4)</span>
                     </p>
                     <hr className="my-2 border-gray-100" />
                     <p className="font-mono text-sm text-gray-700">
-                      Denominador: -t² + 4t
+                      Denominador: -c² + 4c
                     </p>
                     <p className="font-mono text-sm text-happy-pink font-bold pl-4">
-                      = -t<span className="text-happy-blue">(t - 4)</span>
+                      = -c<span className="text-happy-blue">(c - 4)</span>
                     </p>
                   </div>
                 </div>
@@ -432,10 +432,10 @@ const Info = () => {
                   </p>
                   <div className="bg-white rounded-lg p-3 border border-gray-100 space-y-1">
                     <p className="font-mono text-sm text-gray-700">
-                      N(t) = <span className="line-through text-gray-400">-250t</span> · 250(t + 1) · <span className="line-through text-gray-400">(t - 4)</span> / <span className="line-through text-gray-400">-t</span> · <span className="line-through text-gray-400">(t - 4)</span>
+                      R(c) = <span className="line-through text-gray-400">-250c</span> · 250(c + 1) · <span className="line-through text-gray-400">(c - 4)</span> / <span className="line-through text-gray-400">-c</span> · <span className="line-through text-gray-400">(c - 4)</span>
                     </p>
                     <p className="font-mono text-sm text-happy-blue font-bold pl-4">
-                      N(t) = 250(t + 1), para t ≠ 0 e t ≠ 4
+                      R(c) = 250(c + 1), para c ≠ 0 e c ≠ 4
                     </p>
                   </div>
                 </div>
@@ -448,7 +448,7 @@ const Info = () => {
                   </p>
                   <div className="bg-white rounded-lg p-3 border border-gray-100">
                     <p className="font-mono text-sm text-gray-700 text-center">
-                      lim<sub>t→4</sub> <span className="text-happy-pink font-bold">250(t + 1)</span> = 250(4 + 1) = 250 × 5 = <span className="text-happy-blue font-bold text-base">R$ 1.250</span>
+                      lim<sub>c→4</sub> <span className="text-happy-pink font-bold">250(c + 1)</span> = 250(4 + 1) = 250 × 5 = <span className="text-happy-blue font-bold text-base">R$ 1.250/h</span>
                     </p>
                   </div>
                 </div>
@@ -462,8 +462,8 @@ const Info = () => {
                   <div className="bg-white rounded-lg p-3 border border-gray-100">
                     <p className="text-sm text-gray-600">
                       O ponto <strong>(4, 1250)</strong> é uma <strong>descontinuidade removível</strong>.
-                      A função N(t) não possui imagem em t = 4 (denominador zero), porém o limite lateral
-                      confirma que o rendimento <strong>tende a R$ 1.250</strong>. No gráfico, representamos
+                      A função R(c) não possui imagem em c = 4 (denominador zero), porém o limite lateral
+                      confirma que a receita por hora <strong>tende a R$ 1.250/h</strong>. No gráfico, representamos
                       esse ponto com uma <strong>bolinha aberta</strong> (⚬).
                     </p>
                   </div>
@@ -473,20 +473,20 @@ const Info = () => {
               {/* ── Gráfico ── */}
               <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-happy-pink">Rendimento N(t) × t (horas)</span>
-                  <span className="text-[11px] text-gray-400">Descontinuidade removível em t = 4</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-happy-pink">Cliente x Receita</span>
+                  <span className="text-xs text-gray-500">Descontinuidade removível em c = 4</span>
                 </div>
                 <div className="w-full h-72">
                   <Line
                     data={growthChartData}
                     options={growthChartOptions}
                     role="img"
-                    aria-label="Gráfico da função racional N(t) com descontinuidade removível em t = 4, onde o limite tende a R$ 1.250."
+                    aria-label="Gráfico Cliente x Receita com função racional R(c) e descontinuidade removível em c = 4, onde o limite tende a R$ 1.250/h."
                   />
                 </div>
                 <div className="mt-3 flex items-center gap-2 text-xs text-gray-500 bg-gray-50 rounded-lg p-3">
                   <span className="inline-block w-3 h-3 rounded-full border-2 border-red-400 bg-white flex-shrink-0"></span>
-                  <span>Bolinha aberta em t = 4 indica que N(4) não existe, mas lim<sub>t→4</sub> N(t) = R$ 1.250</span>
+                  <span>Bolinha aberta em c = 4 indica que R(4) não existe, mas lim<sub>c→4</sub> R(c) = R$ 1.250/h</span>
                 </div>
               </div>
             </div>
@@ -511,19 +511,19 @@ const Info = () => {
                 <div className="flex gap-2">
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-blue shadow-sm"></div>
-                    <span className="text-[10px] text-gray-400 mt-1">Azul Neon</span>
+                    <span className="text-xs text-gray-500 mt-1">Azul Neon</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-pink shadow-sm"></div>
-                    <span className="text-[10px] text-gray-400 mt-1">Rosa Vibrante</span>
+                    <span className="text-xs text-gray-500 mt-1">Rosa Vibrante</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-dark shadow-sm"></div>
-                    <span className="text-[10px] text-gray-400 mt-1">Dark</span>
+                    <span className="text-xs text-gray-500 mt-1">Dark</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-detail border border-gray-100 shadow-sm"></div>
-                    <span className="text-[10px] text-gray-400 mt-1">Detalhe</span>
+                    <span className="text-xs text-gray-500 mt-1">Detalhe</span>
                   </div>
                 </div>
               </div>
