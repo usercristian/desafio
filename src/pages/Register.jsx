@@ -132,7 +132,7 @@ const Register = () => {
               placeholder="(XX) XXXXX-XXXX"
               required
             />
-            <div className="text-gray-400 text-xs mt-1">DDD + número</div>
+            <div className="text-gray-600 text-xs mt-1">DDD + número</div>
           </div>
 
           {/* Campo Nome */}

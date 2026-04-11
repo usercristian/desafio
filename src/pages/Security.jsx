@@ -244,9 +244,10 @@ const Security = () => {
 
                 <form onSubmit={handleActivateMfa} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1 ml-1">Código de verificação</label>
+                    <label htmlFor="mfa-activation-code" className="block text-sm font-bold text-gray-700 mb-1 ml-1">Código de verificação</label>
                     <input
                       type="text"
+                      id="mfa-activation-code"
                       value={activationCode}
                       onChange={(e) => setActivationCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                       className="input-field py-3 text-center tracking-[0.4em]"
@@ -293,9 +294,10 @@ const Security = () => {
 
               <form onSubmit={handleRegenerateCodes} className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1 ml-1">Senha atual</label>
+                  <label htmlFor="mfa-regen-password" className="block text-sm font-bold text-gray-700 mb-1 ml-1">Senha atual</label>
                   <input
                     type="password"
+                    id="mfa-regen-password"
                     value={regenPassword}
                     onChange={(e) => setRegenPassword(e.target.value)}
                     className="input-field py-3"
@@ -305,9 +307,10 @@ const Security = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1 ml-1">Código do app autenticador</label>
+                  <label htmlFor="mfa-regen-code" className="block text-sm font-bold text-gray-700 mb-1 ml-1">Código do app autenticador</label>
                   <input
                     type="text"
+                    id="mfa-regen-code"
                     value={regenCode}
                     onChange={(e) => setRegenCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                     className="input-field py-3 text-center tracking-[0.4em]"
@@ -338,7 +341,7 @@ const Security = () => {
                     Guarde estes códigos em um local seguro. Cada código pode ser usado uma única vez.
                   </p>
                 </div>
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-happy-blue">
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-happy-blue-text">
                   Visualização única
                 </span>
               </div>

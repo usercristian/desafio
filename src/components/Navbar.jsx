@@ -94,7 +94,7 @@ const Navbar = () => {
             {/* BOTÃO HAMBURGUER (Visível apenas no Mobile) */}
             <button
               onClick={toggleMenu}
-              className="md:hidden text-white text-2xl focus:outline-none"
+              className="md:hidden text-white text-2xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-happy-pink rounded-md"
               aria-label="Abrir navegação"
             >
               {isOpen ? <FaTimes /> : <FaBars />}

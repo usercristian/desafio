@@ -41,12 +41,18 @@ const MyPurchases = () => {
 
             {/* Corpo do Card */}
             <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-              <img 
-                src={item.image} 
-                alt={item.product} 
-                className="w-32 h-32 object-contain border border-gray-100 rounded-lg p-2 cursor-pointer hover:opacity-80 transition-opacity"
-                onClick={() => navigate('/evaluation')} // Clicar na imagem leva à avaliação
-              />
+              <button
+                type="button"
+                aria-label={`Avaliar ${item.product}`}
+                onClick={() => navigate('/evaluation')}
+                className="border border-gray-100 rounded-lg p-2 cursor-pointer hover:opacity-80 transition-opacity focus-visible:ring-2 focus-visible:ring-happy-pink focus-visible:ring-offset-2 bg-transparent"
+              >
+                <img 
+                  src={item.image} 
+                  alt={item.product} 
+                  className="w-32 h-32 object-contain"
+                />
+              </button>
               
               <div className="flex-grow text-center sm:text-left">
                 <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">

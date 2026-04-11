@@ -122,11 +122,11 @@ const Info = () => {
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: '#9ca3af', font: { size: 11 } },
+        ticks: { color: '#6b7280', font: { size: 12 } },
       },
       y: {
         grid: { color: '#f3f4f6', borderDash: [4, 4] },
-        ticks: { color: '#9ca3af', font: { size: 11 } },
+        ticks: { color: '#6b7280', font: { size: 12 } },
         beginAtZero: true,
       }
     }
@@ -208,14 +208,14 @@ const Info = () => {
       x: {
         title: { display: true, text: 'Clientes', color: '#6b7280', font: { size: 12, weight: 'bold' } },
         grid: { display: false },
-        ticks: { color: '#9ca3af', font: { size: 11 } },
+        ticks: { color: '#6b7280', font: { size: 12 } },
       },
       y: {
         title: { display: true, text: 'R$/hora', color: '#6b7280', font: { size: 12, weight: 'bold' } },
         grid: { color: '#f3f4f6', borderDash: [4, 4] },
         ticks: {
-          color: '#9ca3af',
-          font: { size: 11 },
+          color: '#6b7280',
+          font: { size: 12 },
           callback: (val) => `R$ ${val.toLocaleString('pt-BR')}/h`,
         },
         beginAtZero: true,
@@ -241,7 +241,7 @@ const Info = () => {
               className="w-20 h-20 p-2 bg-white/15 rounded-2xl backdrop-blur-sm border border-white/20 shadow-lg"
             />
             <div>
-              <p className="text-sm uppercase tracking-[0.25em] opacity-80 mb-1">Sobre o projeto</p>
+              <p className="text-sm uppercase tracking-[0.25em] opacity-90 mb-1">Sobre o projeto</p>
               <h1 className="text-3xl font-bold mb-1">Informações do Projeto</h1>
               <p className="text-sm md:text-base opacity-90 max-w-xl">
                 Conheça a visão, as projeções e a tecnologia por trás da plataforma Happy Game.
@@ -259,7 +259,7 @@ const Info = () => {
             ].map((badge, i) => (
               <div key={i} className="flex flex-col items-center justify-center rounded-xl px-5 py-2.5 min-w-[100px] bg-white/15 backdrop-blur-sm border border-white/20">
                 <span className="text-lg font-bold text-white">{badge.value}</span>
-                <span className="text-[11px] text-white/70 mt-0.5">{badge.label}</span>
+                <span className="text-[12px] text-white/90 mt-0.5">{badge.label}</span>
               </div>
             ))}
           </div>
@@ -331,7 +331,7 @@ const Info = () => {
                   ].map((item, i) => (
                     <div key={i} className="text-center bg-white/60 rounded-lg py-2 px-1">
                       <span className="font-mono font-bold text-happy-pink text-sm">{item.var}</span>
-                      <p className="text-[11px] text-gray-500 mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -339,8 +339,8 @@ const Info = () => {
 
               <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-happy-blue">Rendimento × Usuários</span>
-                  <span className="text-[11px] text-gray-400">Projeção exponencial</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-happy-blue-text">Rendimento × Usuários</span>
+                  <span className="text-xs text-gray-500">Projeção exponencial</span>
                 </div>
                 <div className="w-full h-72">
                   <Line
@@ -356,7 +356,7 @@ const Info = () => {
             {/* Divider */}
             <div className="flex items-center gap-3 my-8">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-              <span className="text-xs text-gray-400 uppercase tracking-widest">Análise de Limites</span>
+              <span className="text-xs text-gray-500 uppercase tracking-widest">Análise de Limites</span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
             </div>
 
@@ -375,7 +375,7 @@ const Info = () => {
 
               {/* ── Fórmula original ── */}
               <div className="bg-gradient-to-r from-happy-pink/5 to-happy-blue/5 border border-gray-100 rounded-xl p-4 mb-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 text-center">Função Original</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 text-center">Função Original</p>
                 <p className="text-center font-mono text-base md:text-lg text-happy-dark font-bold tracking-wide leading-relaxed">
                   R(c) = (-250c³ + 750c² + 1000c) / (-c² + 4c)
                 </p>
@@ -388,7 +388,7 @@ const Info = () => {
                   ].map((item, i) => (
                     <div key={i} className="text-center bg-white/60 rounded-lg py-2 px-1">
                       <span className="font-mono font-bold text-happy-pink text-sm">{item.var}</span>
-                      <p className="text-[11px] text-gray-500 mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -396,7 +396,7 @@ const Info = () => {
 
               {/* ── Passo a passo: Fatoração → Simplificação → Limite ── */}
               <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-5 space-y-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 text-center">Desenvolvimento Completo</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-500 text-center">Desenvolvimento Completo</p>
 
                 {/* Passo 1 – Fatoração */}
                 <div>
@@ -474,7 +474,7 @@ const Info = () => {
               <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-bold uppercase tracking-wider text-happy-pink">Cliente x Receita</span>
-                  <span className="text-[11px] text-gray-400">Descontinuidade removível em c = 4</span>
+                  <span className="text-xs text-gray-500">Descontinuidade removível em c = 4</span>
                 </div>
                 <div className="w-full h-72">
                   <Line
@@ -511,19 +511,19 @@ const Info = () => {
                 <div className="flex gap-2">
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-blue shadow-sm"></div>
-                    <span className="text-[10px] text-gray-400 mt-1">Azul Neon</span>
+                    <span className="text-xs text-gray-500 mt-1">Azul Neon</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-pink shadow-sm"></div>
-                    <span className="text-[10px] text-gray-400 mt-1">Rosa Vibrante</span>
+                    <span className="text-xs text-gray-500 mt-1">Rosa Vibrante</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-dark shadow-sm"></div>
-                    <span className="text-[10px] text-gray-400 mt-1">Dark</span>
+                    <span className="text-xs text-gray-500 mt-1">Dark</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-detail border border-gray-100 shadow-sm"></div>
-                    <span className="text-[10px] text-gray-400 mt-1">Detalhe</span>
+                    <span className="text-xs text-gray-500 mt-1">Detalhe</span>
                   </div>
                 </div>
               </div>
