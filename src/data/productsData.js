@@ -1,7 +1,72 @@
 // Dados dos produtos extraídos do script.js original
 // Adicionei uma barra "/" no início dos caminhos das imagens para garantir que carreguem de qualquer lugar
 
-export const products = [
+const sustainableProductIds = new Set([3, 5, 11, 15, 18, 22, 23, 27, 30, 35, 37, 39, 42]);
+
+const sustainableProductByCategory = {
+  'Teclados': 3,
+  'Cadeiras': 11,
+  'Mesas': 15,
+  'Mouses': 22,
+  'Fones (Headsets)': 27,
+  'Monitores': 35,
+  'Acessórios': 37
+};
+
+const esgByCategory = {
+  'Teclados': {
+    embalagem: 'Caixa de papelao reciclado com protecao interna reutilizavel',
+    descarte: 'Separe cabos e componentes eletronicos e procure um ponto de coleta de e-lixo.',
+    fornecedor: 'Fornecedor com declaracao simulada de reducao de plastico em embalagens.'
+  },
+  'Cadeiras': {
+    embalagem: 'Papelao reciclavel e reducao de plastico bolha na protecao',
+    descarte: 'Doe ou encaminhe partes metalicas e plasticas para cooperativas locais.',
+    fornecedor: 'Fornecedor com politica simulada de ergonomia e aproveitamento de materiais.'
+  },
+  'Mesas': {
+    embalagem: 'Papelao certificado e manual digital para reduzir impressos',
+    descarte: 'Reutilize madeira ou envie ferragens para reciclagem quando o produto chegar ao fim da vida util.',
+    fornecedor: 'Fornecedor com origem simulada de madeira controlada.'
+  },
+  'Mouses': {
+    embalagem: 'Embalagem compacta 100% reciclavel',
+    descarte: 'Nao descarte no lixo comum; use coleta de perifericos eletronicos.',
+    fornecedor: 'Fornecedor com politica simulada de eficiencia energetica e reducao de plastico.'
+  },
+  'Fones (Headsets)': {
+    embalagem: 'Papelao reciclavel com suporte interno sem isopor',
+    descarte: 'Cabos, espumas e alto-falantes devem ir para descarte eletronico especializado.',
+    fornecedor: 'Fornecedor com compromisso simulado de reparabilidade e pecas de reposicao.'
+  },
+  'Monitores': {
+    embalagem: 'Caixa reciclavel com protecao reaproveitavel',
+    descarte: 'Telas e placas devem ser destinadas a pontos certificados de e-lixo.',
+    fornecedor: 'Fornecedor com politica simulada de eficiencia energetica.'
+  },
+  'Acessórios': {
+    embalagem: 'Embalagem menor com papel reciclado',
+    descarte: 'Priorize reuso; quando nao for possivel, descarte em coleta seletiva ou e-lixo.',
+    fornecedor: 'Fornecedor com criterio simulado de reducao de residuos.'
+  }
+};
+
+const getEsgData = (product) => {
+  const profile = esgByCategory[product.categoria];
+  const sustentavel = sustainableProductIds.has(product.id);
+  const alternativeId = sustainableProductByCategory[product.categoria];
+
+  return {
+    impactoAmbiental: sustentavel ? 'baixo' : 'moderado',
+    embalagem: sustentavel ? profile.embalagem : 'Embalagem reciclavel com materiais mistos',
+    descarte: profile.descarte,
+    fornecedor: profile.fornecedor,
+    sustentavel,
+    alternativaSustentavelId: sustentavel || alternativeId === product.id ? null : alternativeId
+  };
+};
+
+const baseProducts = [
     // Teclados
     {
       id: 1,
@@ -436,3 +501,8 @@ export const products = [
       price: 85.00
     }
   ];
+
+export const products = baseProducts.map((product) => ({
+  ...product,
+  ...getEsgData(product)
+}));

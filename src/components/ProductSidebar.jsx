@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
-import { FaHeart, FaTimes } from 'react-icons/fa';
+import { FaHeart, FaLeaf, FaRecycle, FaTimes, FaTruck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { products } from '../data/productsData';
 
 const ProductSidebar = ({ product, isOpen, onClose }) => {
   const navigate = useNavigate();
+  const sustainableAlternative = product?.alternativaSustentavelId
+    ? products.find((item) => item.id === product.alternativaSustentavelId)
+    : null;
 
   useEffect(() => {
     if (isOpen) {
@@ -62,9 +66,37 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
             R$ {product.price.toFixed(2).replace('.', ',')}
           </p>
 
+          <div className="flex justify-center mb-4">
+            <span className={`inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold border ${
+              product.sustentavel
+                ? 'bg-green-50 text-green-700 border-green-200'
+                : 'bg-cyan-50 text-happy-blue border-happy-detail'
+            }`}>
+              {product.sustentavel ? <FaLeaf /> : <FaRecycle />}
+              {product.sustentavel ? 'Baixo impacto ambiental' : 'Embalagem reciclavel'}
+            </span>
+          </div>
+
           <hr className="border-happy-detail my-3" />
 
           <div className="space-y-3 text-sm text-gray-600 text-justify">
+            <div className="bg-green-50 p-3 rounded-lg border border-green-100 text-left">
+              <h6 className="font-bold text-green-800 mb-2 text-xs uppercase flex items-center gap-2">
+                <FaLeaf /> Impacto socioambiental
+              </h6>
+              <div className="space-y-2 text-xs text-green-900">
+                <p><strong>Impacto:</strong> {product.impactoAmbiental === 'baixo' ? 'baixo impacto ambiental' : 'impacto moderado'}</p>
+                <p><strong>Embalagem:</strong> {product.embalagem}</p>
+                <p><strong>Fornecedor:</strong> {product.fornecedor}</p>
+                <p><strong>Descarte:</strong> {product.descarte}</p>
+              </div>
+              {sustainableAlternative && (
+                <p className="mt-3 bg-white border border-green-100 rounded-lg p-2 text-xs text-green-800">
+                  Produto similar com menor impacto: <strong>{sustainableAlternative.nome}</strong>.
+                </p>
+              )}
+            </div>
+
             <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
               <h6 className="font-bold text-black mb-1 text-xs uppercase">Por que as pessoas compram</h6>
               <p className="leading-relaxed">Este é um item muito popular entre os jogadores que buscam performance e estilo. Ideal para quem quer melhorar o setup.</p>
@@ -74,6 +106,13 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
               <h6 className="font-bold text-black mb-1 text-xs uppercase">Descrição técnica</h6>
               <p className="leading-relaxed">Produto de alta durabilidade, conexão rápida e design ergonômico. Garantia de 1 ano pelo fabricante.</p>
             </div>
+          </div>
+
+          <div className="mt-4 bg-cyan-50 border border-happy-detail rounded-lg p-3 text-xs text-gray-700">
+            <p className="font-bold text-happy-text flex items-center gap-2 mb-1">
+              <FaTruck className="text-happy-blue" /> Entrega sustentavel simulada
+            </p>
+            <p>Menos emissoes, prazo maior. Esta opcao educativa mostra como o frete pode entrar na decisao de compra.</p>
           </div>
 
           <div className="mt-5 space-y-2">
