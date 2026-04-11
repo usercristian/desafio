@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaLeaf, FaRecycle } from 'react-icons/fa';
 import { products } from '../data/productsData';
 import ProductSidebar from '../components/ProductSidebar';
 
@@ -12,6 +12,35 @@ const categories = [
   "Monitores",
   "Acessórios"
 ];
+
+const EcoEducationPanel = () => (
+  <section className="mb-10 bg-gray-50 border border-gray-100 rounded-xl p-4">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-wider text-happy-blue mb-1">
+          Dica rapida
+        </p>
+        <h2 className="text-lg font-bold text-happy-text">Como comprar melhor sem complicar</h2>
+      </div>
+      <span className="inline-flex items-center gap-2 bg-white text-green-700 border border-green-100 rounded-lg px-3 py-2 text-xs font-bold">
+        <FaLeaf /> Opcional
+      </span>
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-3 mt-4">
+      {[
+        'Confira se a embalagem e reciclavel.',
+        'Compare itens similares antes de escolher.',
+        'Descarte cabos e perifericos em pontos de e-lixo.'
+      ].map((tip, index) => (
+        <div key={index} className="bg-white border border-gray-100 rounded-lg p-3">
+          <span className="text-happy-pink font-bold text-sm">Dica {index + 1}</span>
+          <p className="text-sm text-gray-600 mt-1">{tip}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
 const CategoryCarousel = ({ title, products, onSelect }) => {
   const scrollRef = useRef(null);
@@ -52,10 +81,27 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
           className="flex overflow-x-auto gap-5 pb-4 pt-2 no-scrollbar snap-x scroll-smooth"
         >
           {products.map((product) => (
+            (() => {
+              const sustainableAlternative = product.alternativaSustentavelId
+                ? products.find((item) => item.id === product.alternativaSustentavelId)
+                : null;
+
+              return (
             <div 
               key={product.id} 
               className="flex-none w-[70%] sm:w-[40%] md:w-[30%] lg:w-[23%] bg-white border border-happy-detail rounded-[15px] p-4 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col snap-start"
             >
+              <div className="min-h-7 flex justify-center mb-2">
+                <span className={`inline-flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-bold border ${
+                  product.sustentavel
+                    ? 'bg-green-50 text-green-700 border-green-200'
+                    : 'bg-cyan-50 text-happy-blue border-happy-detail'
+                }`}>
+                  {product.sustentavel ? <FaLeaf /> : <FaRecycle />}
+                  {product.sustentavel ? 'Baixo impacto' : 'Embalagem reciclavel'}
+                </span>
+              </div>
+
               <img 
                 src={product.image} 
                 alt={product.nome} 
@@ -71,6 +117,14 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
                   <p className="text-happy-pink font-bold text-base mb-3">
                     R$ {product.price.toFixed(2).replace('.', ',')}
                   </p>
+
+                  <p className="text-[11px] text-gray-500 min-h-8 mb-2 leading-snug">
+                    {product.sustentavel
+                      ? product.embalagem
+                      : sustainableAlternative
+                        ? `Opcao de menor impacto: ${sustainableAlternative.nome}`
+                        : product.embalagem}
+                  </p>
                   
                   <button 
                     onClick={() => onSelect(product)}
@@ -81,6 +135,8 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
                 </div>
               </div>
             </div>
+              );
+            })()
           ))}
         </div>
 
@@ -114,18 +170,24 @@ const Home = () => {
   return (
     <div className="relative min-h-screen">
       <main className="container mx-auto px-4 py-8 pb-20">
+<<<<<<< HEAD
+        {categories.map((category, index) => {
+=======
         <h1 className="sr-only">Happy Game — Loja de Produtos Gamer</h1>
         {categories.map((category) => {
+>>>>>>> a442061ea29f1f3e180a9e32fee6d20aa27e7899
           const categoryProducts = products.filter(p => p.categoria === category);
           if (categoryProducts.length === 0) return null;
 
           return (
-            <CategoryCarousel 
-              key={category} 
-              title={category} 
-              products={categoryProducts} 
-              onSelect={handleSelectProduct} 
-            />
+            <React.Fragment key={category}>
+              <CategoryCarousel
+                title={category}
+                products={categoryProducts}
+                onSelect={handleSelectProduct}
+              />
+              {index === 2 && <EcoEducationPanel />}
+            </React.Fragment>
           );
         })}
       </main>

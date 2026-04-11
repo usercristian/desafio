@@ -244,18 +244,18 @@ const Info = () => {
               <p className="text-sm uppercase tracking-[0.25em] opacity-90 mb-1">Sobre o projeto</p>
               <h1 className="text-3xl font-bold mb-1">Informações do Projeto</h1>
               <p className="text-sm md:text-base opacity-90 max-w-xl">
-                Conheça a visão, as projeções e a tecnologia por trás da plataforma Happy Game.
+                Conheça a visão, as projeções, a tecnologia e as práticas socioambientais da plataforma Happy Game.
               </p>
             </div>
           </div>
 
           {/* ── Badges de destaque (dentro do header) ── */}
           <div className="relative flex flex-wrap gap-3 justify-center md:justify-start">
-            {[
+              {[
               { label: 'Stack', value: 'React' },
               { label: 'Estilo', value: 'Tailwind' },
               { label: 'IA Integrada', value: 'ChatBot' },
-              { label: 'Crescimento', value: '+15%' },
+              { label: 'Impacto', value: 'ESG' },
             ].map((badge, i) => (
               <div key={i} className="flex flex-col items-center justify-center rounded-xl px-5 py-2.5 min-w-[100px] bg-white/15 backdrop-blur-sm border border-white/20">
                 <span className="text-lg font-bold text-white">{badge.value}</span>
@@ -549,6 +549,67 @@ const Info = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+          </AccordionItem>
+
+          {/* Seção 4 ─ Impacto ESG */}
+          <AccordionItem
+            title="Impacto ESG e Transparência"
+            icon=""
+            isOpen={openIndex === 3}
+            onClick={() => handleToggle(3)}
+          >
+            <p className="mb-4 text-[15px]">
+              A Happy Game usa dados simulados para demonstrar como um e-commerce gamer pode comunicar
+              impacto socioambiental com transparência e influenciar escolhas melhores durante a jornada de compra.
+            </p>
+
+            <div className="flex flex-wrap gap-3 mb-5">
+              <StatBadge label="opções de baixo impacto" value="13" />
+              <StatBadge label="categorias com alternativa" value="7" accent />
+              <StatBadge label="dados simulados ESG" value="100%" />
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4 mb-5">
+              {[
+                {
+                  title: 'Embalagens',
+                  desc: 'Priorização simulada de papelão reciclado, embalagens compactas e redução de plástico descartável.'
+                },
+                {
+                  title: 'Fornecedores',
+                  desc: 'Critérios simulados para origem de materiais, eficiência energética, reparabilidade e menor geração de resíduos.'
+                },
+                {
+                  title: 'Descarte responsável',
+                  desc: 'Orientações para separar periféricos, cabos, telas e componentes eletrônicos em pontos de coleta adequados.'
+                },
+                {
+                  title: 'Educação na compra',
+                  desc: 'Selos, microconteúdos e chatbot ajudam o usuário a comparar impacto sem interromper a experiência gamer.'
+                }
+              ].map((item, i) => (
+                <div key={i} className="bg-green-50 border border-green-100 rounded-xl p-4">
+                  <h4 className="font-bold text-green-800 text-sm mb-1">{item.title}</h4>
+                  <p className="text-xs text-green-900 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-gradient-to-r from-happy-blue/5 to-happy-pink/5 border border-gray-100 rounded-xl p-5">
+              <h4 className="font-bold text-happy-text mb-3">Como isso aparece na aplicação</h4>
+              <div className="grid md:grid-cols-3 gap-3">
+                {[
+                  { label: 'Home', text: 'Cards exibem selos como baixo impacto e embalagem reciclável.' },
+                  { label: 'Produto', text: 'A sidebar mostra embalagem, descarte, política de fornecedor e entrega sustentável simulada.' },
+                  { label: 'Chatbot', text: 'O assistente indica opções sustentáveis mantendo respostas simples de categoria, número e sim/não.' },
+                ].map((item, i) => (
+                  <div key={i} className="bg-white border border-gray-100 rounded-lg p-3">
+                    <span className="text-xs font-bold uppercase text-happy-pink">{item.label}</span>
+                    <p className="text-xs text-gray-600 mt-1">{item.text}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </AccordionItem>
