@@ -170,12 +170,8 @@ const Home = () => {
   return (
     <div className="relative min-h-screen">
       <main className="container mx-auto px-4 py-8 pb-20">
-<<<<<<< HEAD
-        {categories.map((category, index) => {
-=======
         <h1 className="sr-only">Happy Game — Loja de Produtos Gamer</h1>
-        {categories.map((category) => {
->>>>>>> a442061ea29f1f3e180a9e32fee6d20aa27e7899
+        {categories.map((category, index) => {
           const categoryProducts = products.filter(p => p.categoria === category);
           if (categoryProducts.length === 0) return null;
 
