@@ -189,8 +189,8 @@ const Chatbot = () => {
     // - Lógica 'isHidden': Move o chat para baixo e tira opacidade quando a Sidebar abre
     <div
       className={`
-        fixed bottom-5 right-5 w-80 bg-white rounded-xl shadow-2xl z-40 
-        transition-all duration-500 ease-in-out flex flex-col overflow-hidden border border-gray-200
+        fixed bottom-5 right-5 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-2xl z-40 
+        transition-all duration-500 ease-in-out flex flex-col overflow-hidden border border-gray-200 dark:border-gray-700
         ${isOpen ? 'h-[400px]' : 'h-12'}
         ${isHidden ? 'translate-y-[150%] opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}
       `}
@@ -210,7 +210,7 @@ const Chatbot = () => {
       {/* Corpo das Mensagens */}
       {isOpen && (
         <>
-          <div className="flex-1 bg-gray-50 p-3 overflow-y-auto space-y-3">
+          <div className="flex-1 bg-gray-50 dark:bg-gray-900 p-3 overflow-y-auto space-y-3">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
@@ -220,7 +220,7 @@ const Chatbot = () => {
                 <div
                   className={`p-3 rounded-2xl text-sm shadow-sm whitespace-pre-wrap ${msg.sender === 'user'
                     ? 'bg-happy-pink text-white rounded-tr-none'
-                    : 'bg-gray-200 text-gray-800 rounded-tl-none'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-tl-none'
                     }`}
                 >
                   {msg.text}
@@ -228,26 +228,26 @@ const Chatbot = () => {
 
                 {/* Card de Produto Rico (dentro do chat) */}
                 {msg.isProductCard && msg.product && (
-                  <div className="mt-2 p-2 bg-white border border-happy-detail rounded-lg shadow-card w-full text-center">
+                  <div className="mt-2 p-2 bg-white dark:bg-gray-800 border border-happy-detail dark:border-gray-600 rounded-lg shadow-card w-full text-center">
                     <img src={msg.product.image} alt={msg.product.nome} className="w-16 h-16 object-contain mx-auto mb-2" />
                     <p className="text-xs font-bold text-happy-pink mb-1">Nota: {msg.product.rating}</p>
-                    <div className="bg-green-50 border border-green-100 rounded-md p-2 mb-2 text-left">
-                      <p className="text-[11px] font-bold text-green-800 mb-1">
+                    <div className="bg-green-50 dark:bg-green-900/30 border border-green-100 dark:border-green-800 rounded-md p-2 mb-2 text-left">
+                      <p className="text-[11px] font-bold text-green-800 dark:text-green-300 mb-1">
                         {msg.product.sustentavel ? 'Baixo impacto ambiental' : 'Impacto ambiental moderado'}
                       </p>
-                      <p className="text-[11px] text-green-900 leading-snug">
+                      <p className="text-[11px] text-green-900 dark:text-green-200 leading-snug">
                         Embalagem: {msg.product.embalagem}
                       </p>
-                      <p className="text-[11px] text-green-900 leading-snug mt-1">
+                      <p className="text-[11px] text-green-900 dark:text-green-200 leading-snug mt-1">
                         Descarte: {msg.product.descarte}
                       </p>
                       {getSustainableAlternative(msg.product) && (
-                        <p className="text-[11px] text-green-800 leading-snug mt-1">
+                        <p className="text-[11px] text-green-800 dark:text-green-300 leading-snug mt-1">
                           Sugestao sustentavel: <strong>{getSustainableAlternative(msg.product).nome}</strong>
                         </p>
                       )}
                     </div>
-                    <p className="text-xs mb-2">Adicionar ao carrinho?</p>
+                    <p className="text-xs dark:text-gray-300 mb-2">Adicionar ao carrinho?</p>
                     <div className="flex justify-center gap-2">
                       <button
                         onClick={() => handleBotResponse('sim')}
@@ -271,7 +271,7 @@ const Chatbot = () => {
           </div>
 
           {/* Área de Input */}
-          <div className="p-2 border-t border-gray-200 bg-white flex gap-2">
+          <div className="p-2 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex gap-2">
             <input
               type="text"
               value={input}
@@ -279,7 +279,7 @@ const Chatbot = () => {
               onKeyDown={handleKeyDown}
               placeholder="Digite aqui..."
               aria-label="Mensagem para o assistente"
-              className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:border-happy-pink focus-visible:ring-1 focus-visible:ring-happy-pink"
+              className="flex-1 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 focus-visible:outline-none focus-visible:border-happy-pink focus-visible:ring-1 focus-visible:ring-happy-pink"
             />
             <button
               onClick={handleSend}

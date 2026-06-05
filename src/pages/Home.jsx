@@ -14,15 +14,15 @@ const categories = [
 ];
 
 const EcoEducationPanel = () => (
-  <section className="mb-10 bg-gray-50 border border-gray-100 rounded-xl p-4">
+  <section className="mb-10 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-4">
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
       <div>
         <p className="text-xs font-bold uppercase tracking-wider text-happy-blue mb-1">
           Dica rapida
         </p>
-        <h2 className="text-lg font-bold text-happy-text">Como comprar melhor sem complicar</h2>
+        <h2 className="text-lg font-bold text-happy-text dark:text-gray-100">Como comprar melhor sem complicar</h2>
       </div>
-      <span className="inline-flex items-center gap-2 bg-white text-green-700 border border-green-100 rounded-lg px-3 py-2 text-xs font-bold">
+      <span className="inline-flex items-center gap-2 bg-white dark:bg-gray-700 text-green-700 dark:text-green-300 border border-green-100 dark:border-green-800 rounded-lg px-3 py-2 text-xs font-bold">
         <FaLeaf /> Opcional
       </span>
     </div>
@@ -33,9 +33,9 @@ const EcoEducationPanel = () => (
         'Compare itens similares antes de escolher.',
         'Descarte cabos e perifericos em pontos de e-lixo.'
       ].map((tip, index) => (
-        <div key={index} className="bg-white border border-gray-100 rounded-lg p-3">
+        <div key={index} className="bg-white dark:bg-gray-700 border border-gray-100 dark:border-gray-600 rounded-lg p-3">
           <span className="text-happy-pink font-bold text-sm">Dica {index + 1}</span>
-          <p className="text-sm text-gray-600 mt-1">{tip}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{tip}</p>
         </div>
       ))}
     </div>
@@ -60,11 +60,11 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
   return (
     <section className="mb-10 group">
       {/* Título da Categoria */}
-      <h2 className="text-xl font-bold text-happy-pink bg-gray-50 py-2 px-4 rounded-lg border-l-4 border-happy-pink mb-4 inline-block shadow-sm ml-2">
+      <h2 className="text-xl font-bold text-happy-pink bg-gray-50 dark:bg-gray-800 py-2 px-4 rounded-lg border-l-4 border-happy-pink mb-4 inline-block shadow-sm ml-2">
         {title}
       </h2>
 
-      <div className="relative bg-[#fafafa] rounded-[25px] p-4 shadow-neon-blue border border-gray-100">
+      <div className="relative bg-[#fafafa] dark:bg-gray-800 rounded-[25px] p-4 shadow-neon-blue border border-gray-100 dark:border-gray-700">
         
         {/* Botão Esquerdo */}
         <button 
@@ -89,13 +89,13 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
               return (
             <div 
               key={product.id} 
-              className="flex-none w-[70%] sm:w-[40%] md:w-[30%] lg:w-[23%] bg-white border border-happy-detail rounded-[15px] p-4 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col snap-start"
+              className="flex-none w-[70%] sm:w-[40%] md:w-[30%] lg:w-[23%] bg-white dark:bg-gray-800 border border-happy-detail dark:border-gray-700 rounded-[15px] p-4 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col snap-start"
             >
               <div className="min-h-7 flex justify-center mb-2">
                 <span className={`inline-flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-bold border ${
                   product.sustentavel
-                    ? 'bg-green-50 text-green-700 border-green-200'
-                    : 'bg-cyan-50 text-happy-blue border-happy-detail'
+                    ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800'
+                    : 'bg-cyan-50 dark:bg-cyan-900/30 text-happy-blue border-happy-detail dark:border-cyan-800'
                 }`}>
                   {product.sustentavel ? <FaLeaf /> : <FaRecycle />}
                   {product.sustentavel ? 'Baixo impacto' : 'Embalagem reciclavel'}
@@ -109,7 +109,7 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
               />
               
               <div className="flex flex-col flex-grow text-center">
-                <h5 className="text-sm font-bold text-gray-800 mb-2 h-10 flex items-center justify-center leading-tight line-clamp-2">
+                <h5 className="text-sm font-bold text-gray-800 dark:text-gray-100 mb-2 h-10 flex items-center justify-center leading-tight line-clamp-2">
                   {product.nome}
                 </h5>
                 
@@ -118,7 +118,7 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
                     R$ {product.price.toFixed(2).replace('.', ',')}
                   </p>
 
-                  <p className="text-[11px] text-gray-500 min-h-8 mb-2 leading-snug">
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 min-h-8 mb-2 leading-snug">
                     {product.sustentavel
                       ? product.embalagem
                       : sustainableAlternative

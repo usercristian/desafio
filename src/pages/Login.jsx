@@ -38,7 +38,7 @@ const Login = () => {
         })
       });
 
-      // 2) Se a resposta não for “ok”, significa e-mail/senha errados ou outro erro
+      // 2) Se a resposta não for "ok", significa e-mail/senha errados ou outro erro
       if (!response.ok) {
         const errorData = await response.json().catch(() => null);
         alert(errorData?.message || 'E-mail ou senha incorretos.');
@@ -100,7 +100,7 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center flex-grow py-10 px-4">
       {/* Container de Login (Estilo Original .login-container) */}
-      <div className="w-full max-w-[400px] bg-white rounded-[15px] p-8 shadow-[0_0_20px_rgba(5,217,232,0.1)] border border-gray-50">
+      <div className="w-full max-w-[400px] bg-white dark:bg-gray-800 rounded-[15px] p-8 shadow-[0_0_20px_rgba(5,217,232,0.1)] border border-gray-50 dark:border-gray-700">
 
         {/* Cabeçalho com Logo (Estilo .logo-container) */}
         <div className="bg-happy-pink rounded-[10px] p-4 mb-8 flex items-center justify-center shadow-md">
@@ -109,14 +109,14 @@ const Login = () => {
         </div>
 
         <div className="text-center mb-6">
-          <h1 className="text-xl font-bold text-happy-text mb-1">Entre</h1>
-          <p className="text-gray-500 text-sm">Insira seu e-mail cadastrado</p>
+          <h1 className="text-xl font-bold text-happy-text dark:text-gray-100 mb-1">Entre</h1>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Insira seu e-mail cadastrado</p>
         </div>
 
         <form onSubmit={handleLogin}>
           {/* Campo E-mail */}
           <div className="mb-4">
-            <label htmlFor="login-email" className="block text-sm font-bold text-gray-700 mb-1 ml-1">E-mail</label>
+            <label htmlFor="login-email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1 ml-1">E-mail</label>
             <input
               type="email"
               id="login-email"
@@ -130,7 +130,7 @@ const Login = () => {
 
           {/* Campo Senha */}
           <div className="mb-4">
-            <label htmlFor="login-password" className="block text-sm font-bold text-gray-700 mb-1 ml-1">Senha</label>
+            <label htmlFor="login-password" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1 ml-1">Senha</label>
             <input
               type="password"
               id="login-password"
@@ -153,7 +153,7 @@ const Login = () => {
             <button
               type="button"
               onClick={() => setShowRecoverModal(true)}
-              className="text-happy-blue-text hover:text-cyan-700 hover:underline bg-transparent border-none p-0 cursor-pointer"
+              className="text-happy-blue-text dark:text-happy-blue hover:text-cyan-700 dark:hover:text-cyan-300 hover:underline bg-transparent border-none p-0 cursor-pointer"
             >
               Esqueceu a senha?
             </button>
@@ -227,20 +227,20 @@ const RecoverModal = ({ recoverEmail, setRecoverEmail, isFormrecoverFilled, onCl
         role="dialog"
         aria-modal="true"
         aria-labelledby="recover-modal-title"
-        className="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 animate-[fadeIn_0.3s_ease-out]"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-sm p-6 animate-[fadeIn_0.3s_ease-out]"
       >
         <div className="flex justify-between items-center mb-4">
-          <h2 id="recover-modal-title" className="text-lg font-bold text-happy-text">Recuperar Senha</h2>
+          <h2 id="recover-modal-title" className="text-lg font-bold text-happy-text dark:text-gray-100">Recuperar Senha</h2>
           <button
             onClick={onClose}
             aria-label="Fechar modal"
-            className="text-gray-400 hover:text-gray-600 text-xl leading-none"
+            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-xl leading-none"
           >
             &times;
           </button>
         </div>
 
-        <p className="text-gray-600 text-sm mb-4">
+        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
           Digite seu e-mail abaixo e enviaremos um link para você redefinir sua senha.
         </p>
 
@@ -260,7 +260,7 @@ const RecoverModal = ({ recoverEmail, setRecoverEmail, isFormrecoverFilled, onCl
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-sm font-bold text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
+              className="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
             >
               Cancelar
             </button>

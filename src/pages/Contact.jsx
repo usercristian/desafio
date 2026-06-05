@@ -30,15 +30,15 @@ const Contact = () => {
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-lg flex-grow">
-      <div className="bg-white p-6 rounded-xl shadow-card border border-gray-100">
-        <h2 className="text-center text-2xl font-bold text-happy-text mb-2">Fale Conosco</h2>
-        <p className="text-center text-gray-500 text-sm mb-6">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-card border border-gray-100 dark:border-gray-700">
+        <h2 className="text-center text-2xl font-bold text-happy-text dark:text-gray-100 mb-2">Fale Conosco</h2>
+        <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-6">
           Dúvidas ou sugestões? Preencha o formulário abaixo.
         </p>
 
         <form onSubmit={handleSubmit} noValidate>
           <div className="mb-4">
-            <label htmlFor="contact-nome" className="block text-sm font-bold text-gray-700 mb-1">Seu Nome</label>
+            <label htmlFor="contact-nome" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Seu Nome</label>
             <input 
               type="text" 
               id="contact-nome"
@@ -51,7 +51,7 @@ const Contact = () => {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="contact-email" className="block text-sm font-bold text-gray-700 mb-1">Seu E-mail</label>
+            <label htmlFor="contact-email" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Seu E-mail</label>
             <input 
               type="email" 
               id="contact-email"
@@ -64,7 +64,7 @@ const Contact = () => {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="contact-mensagem" className="block text-sm font-bold text-gray-700 mb-1">Mensagem</label>
+            <label htmlFor="contact-mensagem" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Mensagem</label>
             <textarea 
               id="contact-mensagem"
               rows="4"
@@ -84,7 +84,7 @@ const Contact = () => {
               checked={formData.optin}
               onChange={(e) => setFormData({...formData, optin: e.target.checked})}
             />
-            <label htmlFor="optin" className="text-sm text-gray-600">Deseja receber novidades?</label>
+            <label htmlFor="optin" className="text-sm text-gray-600 dark:text-gray-300">Deseja receber novidades?</label>
           </div>
 
           <button type="submit" className="btn-primary w-full py-3 shadow-md">
@@ -134,10 +134,10 @@ const ContactSuccessModal = ({ onContinue }) => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="contact-success-title"
-        className="bg-white rounded-xl shadow-2xl p-6 max-w-sm w-full animate-[fadeIn_0.3s]"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 max-w-sm w-full animate-[fadeIn_0.3s]"
       >
-        <h2 id="contact-success-title" className="text-xl font-bold text-happy-blue-text mb-2">Mensagem Recebida!</h2>
-        <p className="text-gray-600 mb-6">Obrigado por entrar em contato! Responderemos em breve.</p>
+        <h2 id="contact-success-title" className="text-xl font-bold text-happy-blue-text dark:text-happy-blue mb-2">Mensagem Recebida!</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">Obrigado por entrar em contato! Responderemos em breve.</p>
         <button
           ref={btnRef}
           onClick={onContinue}

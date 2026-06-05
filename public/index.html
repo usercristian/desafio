@@ -14,6 +14,15 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
  
     <title>React App</title>
+    <!-- Anti-flash: aplica dark mode antes do primeiro paint -->
+    <script>
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

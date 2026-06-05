@@ -101,14 +101,14 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center flex-grow py-10 px-4">
-      <div className="w-full max-w-[500px] bg-white rounded-[15px] p-8 shadow-[0_0_20px_rgba(5,217,232,0.1)] border border-gray-50">
+      <div className="w-full max-w-[500px] bg-white dark:bg-gray-800 rounded-[15px] p-8 shadow-[0_0_20px_rgba(5,217,232,0.1)] border border-gray-50 dark:border-gray-700">
 
-        <h2 className="text-center text-2xl font-bold text-happy-text mb-6">Cadastre-se</h2>
+        <h2 className="text-center text-2xl font-bold text-happy-text dark:text-gray-100 mb-6">Cadastre-se</h2>
 
         <form onSubmit={handleSubmit} noValidate>
           {/* Campo E-mail */}
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">E-mail</label>
             <input
               type="email"
               id="email"
@@ -122,7 +122,7 @@ const Register = () => {
 
           {/* Campo Telefone */}
           <div className="mb-4">
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Celular</label>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Celular</label>
             <input
               type="tel"
               id="phone"
@@ -132,12 +132,12 @@ const Register = () => {
               placeholder="(XX) XXXXX-XXXX"
               required
             />
-            <div className="text-gray-600 text-xs mt-1">DDD + número</div>
+            <div className="text-gray-600 dark:text-gray-400 text-xs mt-1">DDD + número</div>
           </div>
 
           {/* Campo Nome */}
           <div className="mb-4">
-            <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+            <label htmlFor="nome" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nome</label>
             <input
               type="text"
               id="nome"
@@ -150,7 +150,7 @@ const Register = () => {
 
           {/* Campo Senha */}
           <div className="mb-4">
-            <label htmlFor="senha" className="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+            <label htmlFor="senha" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Senha</label>
             <input
               type="password"
               id="senha"
@@ -170,7 +170,7 @@ const Register = () => {
               onChange={handleChange}
               className="mt-1 cursor-pointer accent-happy-pink"
             />
-            <label htmlFor="acceptTerms" className="text-sm text-gray-600 cursor-pointer select-none">
+            <label htmlFor="acceptTerms" className="text-sm text-gray-600 dark:text-gray-300 cursor-pointer select-none">
               Aceito termos de Uso.
             </label>
           </div>

@@ -22,7 +22,7 @@ function App() {
   return (
     <Router>
       { }
-      <div className="flex flex-col min-h-screen bg-happy-bg text-happy-text font-roboto-slab">
+      <div className="flex flex-col min-h-screen bg-happy-bg dark:bg-gray-900 text-happy-text dark:text-gray-100 font-roboto-slab transition-colors duration-200">
 
         <Navbar />
 

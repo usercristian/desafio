@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Substitui o <a href> para não recarregar a página
-import { FaBars, FaTimes } from 'react-icons/fa'; // Ícones de menu
+import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa'; // Ícones de menu
+import useTheme from '../hooks/useTheme';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleStorage = () => {
@@ -54,7 +56,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
 
             {/* LOGO */}
-            <Link to="/" className="flex items-center gap-3 bg-white py-1 px-3 rounded-full shadow-md transition-transform hover:scale-105">
+            <Link to="/" className="flex items-center gap-3 bg-white dark:bg-gray-800 py-1 px-3 rounded-full shadow-md transition-transform hover:scale-105">
               {/* Certifique-se de que a imagem existe em public/images/logo.png */}
               <img src="/images/logo.png" alt="Happy Game Logo" className="h-8 w-auto" />
               {/* Oculta o texto em telas muito pequenas, mostra em md (tablet) pra cima */}
@@ -77,13 +79,23 @@ const Navbar = () => {
                 <NavLink to="/security">Segurança</NavLink>
               )}
 
+              {/* Botão Dark Mode Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="text-white p-2 rounded-full hover:bg-white/20 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-happy-pink"
+                aria-label={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
+                title={isDark ? 'Modo claro' : 'Modo escuro'}
+              >
+                {isDark ? <FaSun size={18} /> : <FaMoon size={18} />}
+              </button>
+
               {!isLoggedIn && (
                 <NavLink to="/login" isButton>Entrar</NavLink>
               )}
               {isLoggedIn && (
                 <button
                   onClick={handleLogout}
-                  className="bg-white text-happy-pink font-bold py-1 px-4 rounded-full hover:bg-happy-blue hover:text-white transition-colors duration-300 shadow-sm"
+                  className="bg-white dark:bg-gray-800 text-happy-pink font-bold py-1 px-4 rounded-full hover:bg-happy-blue hover:text-white transition-colors duration-300 shadow-sm"
                 >
                   Sair
                 </button>
@@ -92,13 +104,24 @@ const Navbar = () => {
             </div>
 
             {/* BOTÃO HAMBURGUER (Visível apenas no Mobile) */}
-            <button
-              onClick={toggleMenu}
-              className="md:hidden text-white text-2xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-happy-pink rounded-md"
-              aria-label="Abrir navegação"
-            >
-              {isOpen ? <FaTimes /> : <FaBars />}
-            </button>
+            <div className="flex items-center gap-3 md:hidden">
+              {/* Botão Dark Mode Toggle (Mobile) */}
+              <button
+                onClick={toggleTheme}
+                className="text-white p-2 rounded-full hover:bg-white/20 transition-colors duration-200"
+                aria-label={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
+              >
+                {isDark ? <FaSun size={16} /> : <FaMoon size={16} />}
+              </button>
+
+              <button
+                onClick={toggleMenu}
+                className="md:hidden text-white text-2xl focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-happy-pink rounded-md"
+                aria-label="Abrir navegação"
+              >
+                {isOpen ? <FaTimes /> : <FaBars />}
+              </button>
+            </div>
           </div>
 
           {/* MENU MOBILE (Expandível) */}
@@ -128,7 +151,7 @@ const Navbar = () => {
               {isLoggedIn && (
                 <button
                   onClick={handleLogout}
-                  className="bg-white text-happy-pink font-bold py-1 px-4 rounded-full hover:bg-happy-blue hover:text-white transition-colors duration-300 shadow-sm"
+                  className="bg-white dark:bg-gray-800 text-happy-pink font-bold py-1 px-4 rounded-full hover:bg-happy-blue hover:text-white transition-colors duration-300 shadow-sm"
                 >
                   Sair
                 </button>
@@ -147,7 +170,7 @@ const Navbar = () => {
 const NavLink = ({ to, children, isButton }) => {
   if (isButton) {
     return (
-      <Link to={to} className="bg-white text-happy-pink font-bold py-1 px-4 rounded-full hover:bg-happy-blue hover:text-white transition-colors duration-300 shadow-sm">
+      <Link to={to} className="bg-white dark:bg-gray-800 text-happy-pink font-bold py-1 px-4 rounded-full hover:bg-happy-blue hover:text-white transition-colors duration-300 shadow-sm">
         {children}
       </Link>
     );
@@ -163,7 +186,7 @@ const NavLink = ({ to, children, isButton }) => {
 const MobileNavLink = ({ to, children, onClick, isButton }) => {
   const baseClasses = "block text-white text-center py-2 rounded-md transition-colors";
   const hoverClasses = "hover:bg-happy-pink hover:text-white";
-  const buttonClasses = "bg-white text-happy-pink font-bold mx-4";
+  const buttonClasses = "bg-white dark:bg-gray-800 text-happy-pink font-bold mx-4";
 
   return (
     <Link

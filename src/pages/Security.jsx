@@ -175,7 +175,7 @@ const Security = () => {
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-4xl">
-      <div className="bg-white rounded-[20px] shadow-[0_0_30px_rgba(5,217,232,0.08)] border border-gray-100 overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-[20px] shadow-[0_0_30px_rgba(5,217,232,0.08)] border border-gray-100 dark:border-gray-700 overflow-hidden">
         <div className="bg-gradient-to-r from-happy-pink to-happy-blue text-white p-8">
           <p className="text-sm uppercase tracking-[0.25em] opacity-80 mb-2">Segurança da conta</p>
           <h1 className="text-3xl font-bold mb-2">Autenticação em duas etapas</h1>
@@ -185,34 +185,34 @@ const Security = () => {
         </div>
 
         <div className="p-6 md:p-8 space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-gray-50 border border-gray-100 rounded-2xl p-5">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 rounded-2xl p-5">
             <div>
-              <h2 className="text-lg font-bold text-happy-text mb-1">Status atual</h2>
-              <p className="text-gray-500 text-sm">
+              <h2 className="text-lg font-bold text-happy-text dark:text-gray-100 mb-1">Status atual</h2>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">
                 {user?.email ? `Conta: ${user.email}` : 'Conta autenticada'}
               </p>
             </div>
-            <span className={`px-4 py-2 rounded-full text-sm font-bold ${isMfaEnabled ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+            <span className={`px-4 py-2 rounded-full text-sm font-bold ${isMfaEnabled ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300' : 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300'}`}>
               {isMfaEnabled ? 'MFA ativo' : 'MFA desativado'}
             </span>
           </div>
 
           {errorMessage && (
-            <div className="bg-red-50 border border-red-100 text-red-700 rounded-xl px-4 py-3 text-sm">
+            <div className="bg-red-50 dark:bg-red-900/30 border border-red-100 dark:border-red-800 text-red-700 dark:text-red-300 rounded-xl px-4 py-3 text-sm">
               {errorMessage}
             </div>
           )}
 
           {successMessage && (
-            <div className="bg-green-50 border border-green-100 text-green-700 rounded-xl px-4 py-3 text-sm">
+            <div className="bg-green-50 dark:bg-green-900/30 border border-green-100 dark:border-green-800 text-green-700 dark:text-green-300 rounded-xl px-4 py-3 text-sm">
               {successMessage}
             </div>
           )}
 
           {!isMfaEnabled && !setupData && (
-            <section className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-              <h2 className="text-xl font-bold text-happy-text mb-2">Ativar MFA</h2>
-              <p className="text-gray-600 text-sm mb-5">
+            <section className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
+              <h2 className="text-xl font-bold text-happy-text dark:text-gray-100 mb-2">Ativar MFA</h2>
+              <p className="text-gray-600 dark:text-gray-300 text-sm mb-5">
                 Você vai precisar de um app autenticador no celular. Ao ativar, também receberá recovery codes para acessar a conta caso perca o dispositivo.
               </p>
               <button
@@ -227,14 +227,14 @@ const Security = () => {
           )}
 
           {!isMfaEnabled && setupData && (
-            <section className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-              <h2 className="text-xl font-bold text-happy-text mb-2">Configure seu app autenticador</h2>
-              <p className="text-gray-600 text-sm mb-6">
+            <section className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 shadow-sm">
+              <h2 className="text-xl font-bold text-happy-text dark:text-gray-100 mb-2">Configure seu app autenticador</h2>
+              <p className="text-gray-600 dark:text-gray-300 text-sm mb-6">
                 1. Escaneie o QR Code abaixo. 2. Digite o código de 6 dígitos gerado no app para concluir a ativação.
               </p>
 
               <div className="grid md:grid-cols-[240px_1fr] gap-6 items-start">
-                <div className="bg-gray-50 border border-gray-100 rounded-2xl p-4 flex items-center justify-center">
+                <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 rounded-2xl p-4 flex items-center justify-center">
                   <img
                     src={setupData.qrCodeDataUrl}
                     alt="QR Code para ativar MFA"
@@ -244,7 +244,7 @@ const Security = () => {
 
                 <form onSubmit={handleActivateMfa} className="space-y-4">
                   <div>
-                    <label htmlFor="mfa-activation-code" className="block text-sm font-bold text-gray-700 mb-1 ml-1">Código de verificação</label>
+                    <label htmlFor="mfa-activation-code" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1 ml-1">Código de verificação</label>
                     <input
                       type="text"
                       id="mfa-activation-code"
@@ -273,7 +273,7 @@ const Security = () => {
                         setErrorMessage('');
                         setSuccessMessage('');
                       }}
-                      className="px-5 py-3 text-sm font-bold text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
+                      className="px-5 py-3 text-sm font-bold text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                     >
                       Cancelar
                     </button>
@@ -284,17 +284,17 @@ const Security = () => {
           )}
 
           {isMfaEnabled && (
-            <section className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-6">
+            <section className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-6 shadow-sm space-y-6">
               <div>
-                <h2 className="text-xl font-bold text-happy-text mb-2">MFA ativo</h2>
-                <p className="text-gray-600 text-sm">
+                <h2 className="text-xl font-bold text-happy-text dark:text-gray-100 mb-2">MFA ativo</h2>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
                   Sua conta já exige o código do app autenticador no login. Se precisar, gere uma nova lista de recovery codes abaixo.
                 </p>
               </div>
 
               <form onSubmit={handleRegenerateCodes} className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="mfa-regen-password" className="block text-sm font-bold text-gray-700 mb-1 ml-1">Senha atual</label>
+                  <label htmlFor="mfa-regen-password" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1 ml-1">Senha atual</label>
                   <input
                     type="password"
                     id="mfa-regen-password"
@@ -307,7 +307,7 @@ const Security = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="mfa-regen-code" className="block text-sm font-bold text-gray-700 mb-1 ml-1">Código do app autenticador</label>
+                  <label htmlFor="mfa-regen-code" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1 ml-1">Código do app autenticador</label>
                   <input
                     type="text"
                     id="mfa-regen-code"
@@ -333,15 +333,15 @@ const Security = () => {
           )}
 
           {recoveryCodes.length > 0 && (
-            <section className="bg-happy-bg border border-happy-blue/20 rounded-2xl p-6">
+            <section className="bg-happy-bg dark:bg-gray-800 border border-happy-blue/20 dark:border-happy-blue/30 rounded-2xl p-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
                 <div>
-                  <h2 className="text-xl font-bold text-happy-text">Recovery codes</h2>
-                  <p className="text-gray-600 text-sm">
+                  <h2 className="text-xl font-bold text-happy-text dark:text-gray-100">Recovery codes</h2>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
                     Guarde estes códigos em um local seguro. Cada código pode ser usado uma única vez.
                   </p>
                 </div>
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-happy-blue-text">
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-happy-blue-text dark:text-happy-blue">
                   Visualização única
                 </span>
               </div>
@@ -350,7 +350,7 @@ const Security = () => {
                 {recoveryCodes.map((item) => (
                   <div
                     key={item}
-                    className="bg-white border border-gray-100 rounded-xl px-4 py-3 font-mono text-center tracking-[0.2em] text-happy-text"
+                    className="bg-white dark:bg-gray-700 border border-gray-100 dark:border-gray-600 rounded-xl px-4 py-3 font-mono text-center tracking-[0.2em] text-happy-text dark:text-gray-100"
                   >
                     {item}
                   </div>

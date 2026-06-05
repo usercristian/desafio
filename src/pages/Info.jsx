@@ -16,7 +16,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip,
 /* ───────────────── Accordion refatorado ───────────────── */
 const AccordionItem = ({ title, icon, isOpen, onClick, children }) => {
   return (
-    <section className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden transition-shadow duration-300 hover:shadow-md">
+    <section className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm overflow-hidden transition-shadow duration-300 hover:shadow-md">
       <button
         className="w-full flex items-center justify-between gap-3 p-5 text-left group"
         onClick={onClick}
@@ -24,7 +24,7 @@ const AccordionItem = ({ title, icon, isOpen, onClick, children }) => {
       >
         <div className="flex items-center gap-3">
           <span className="text-xl">{icon}</span>
-          <span className="text-lg font-bold text-happy-text group-hover:text-happy-pink transition-colors">
+          <span className="text-lg font-bold text-happy-text dark:text-gray-100 group-hover:text-happy-pink transition-colors">
             {title}
           </span>
         </div>
@@ -32,7 +32,7 @@ const AccordionItem = ({ title, icon, isOpen, onClick, children }) => {
           className={`w-7 h-7 flex items-center justify-center rounded-full transition-all duration-300 text-xs
             ${isOpen
               ? 'bg-happy-pink text-white rotate-180'
-              : 'bg-gray-100 text-gray-500 group-hover:bg-happy-pink/10 group-hover:text-happy-pink'
+              : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 group-hover:bg-happy-pink/10 group-hover:text-happy-pink'
             }`}
         >
           ▼
@@ -42,7 +42,7 @@ const AccordionItem = ({ title, icon, isOpen, onClick, children }) => {
       <div
         className={`transition-all duration-400 ease-in-out overflow-hidden ${isOpen ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'}`}
       >
-        <div className="px-5 pb-6 pt-0 text-gray-600 text-sm leading-relaxed">
+        <div className="px-5 pb-6 pt-0 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
           {children}
         </div>
       </div>
@@ -52,9 +52,9 @@ const AccordionItem = ({ title, icon, isOpen, onClick, children }) => {
 
 /* ───────────────── Stat badge ───────────────── */
 const StatBadge = ({ label, value, accent = false }) => (
-  <div className={`flex flex-col items-center justify-center rounded-2xl p-4 min-w-[120px] border ${accent ? 'bg-happy-pink/5 border-happy-pink/20' : 'bg-happy-blue/5 border-happy-blue/20'}`}>
+  <div className={`flex flex-col items-center justify-center rounded-2xl p-4 min-w-[120px] border ${accent ? 'bg-happy-pink/5 dark:bg-happy-pink/10 border-happy-pink/20' : 'bg-happy-blue/5 dark:bg-happy-blue/10 border-happy-blue/20'}`}>
     <span className={`text-2xl font-bold ${accent ? 'text-happy-pink' : 'text-happy-blue'}`}>{value}</span>
-    <span className="text-xs text-gray-500 mt-1 text-center">{label}</span>
+    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 text-center">{label}</span>
   </div>
 );
 
@@ -226,7 +226,7 @@ const Info = () => {
   return (
     <div className="container mx-auto px-4 py-10 max-w-4xl">
       {/* ── Card principal ── */}
-      <div className="bg-white rounded-[20px] shadow-[0_0_30px_rgba(5,217,232,0.08)] border border-gray-100 overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-[20px] shadow-[0_0_30px_rgba(5,217,232,0.08)] border border-gray-100 dark:border-gray-700 overflow-hidden">
 
         {/* ── Header com gradiente (igual Security) ── */}
         <div className="bg-gradient-to-r from-happy-pink to-happy-blue text-white p-8 pb-10 relative overflow-hidden">
@@ -289,11 +289,11 @@ const Info = () => {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center hover:border-happy-blue/40 hover:shadow-sm transition-all duration-200"
+                  className="bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 rounded-xl p-4 text-center hover:border-happy-blue/40 hover:shadow-sm transition-all duration-200"
                 >
 
-                  <h4 className="font-bold text-happy-text text-sm mb-1">{item.title}</h4>
-                  <p className="text-xs text-gray-500">{item.desc}</p>
+                  <h4 className="font-bold text-happy-text dark:text-gray-100 text-sm mb-1">{item.title}</h4>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -308,7 +308,7 @@ const Info = () => {
           >
             {/* Rendimento */}
             <div className="mb-8">
-              <h3 className="text-lg font-bold text-happy-text mb-3 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-happy-text dark:text-gray-100 mb-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-happy-blue inline-block"></span>
                 Crescimento Exponencial de Rendimento
               </h3>
@@ -318,8 +318,8 @@ const Info = () => {
                 se comporta à medida que a base de clientes ativos aumenta.
               </p>
 
-              <div className="bg-gradient-to-r from-happy-blue/5 to-happy-pink/5 border border-gray-100 rounded-xl p-4 mb-5">
-                <p className="text-center font-mono text-lg text-happy-dark font-bold tracking-wide">
+              <div className="bg-gradient-to-r from-happy-blue/5 to-happy-pink/5 dark:from-happy-blue/10 dark:to-happy-pink/10 border border-gray-100 dark:border-gray-600 rounded-xl p-4 mb-5">
+                <p className="text-center font-mono text-lg text-happy-dark dark:text-gray-100 font-bold tracking-wide">
                   R(t) = 50 × (1.15)<sup>t</sup>
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
@@ -329,18 +329,18 @@ const Info = () => {
                     { var: '1.15', desc: 'Taxa de +15%' },
                     { var: 't', desc: 'Marco de 10k users' },
                   ].map((item, i) => (
-                    <div key={i} className="text-center bg-white/60 rounded-lg py-2 px-1">
+                    <div key={i} className="text-center bg-white/60 dark:bg-gray-700/60 rounded-lg py-2 px-1">
                       <span className="font-mono font-bold text-happy-pink text-sm">{item.var}</span>
-                      <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{item.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
+              <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-happy-blue-text">Rendimento × Usuários</span>
-                  <span className="text-xs text-gray-500">Projeção exponencial</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-happy-blue-text dark:text-happy-blue">Rendimento × Usuários</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">Projeção exponencial</span>
                 </div>
                 <div className="w-full h-72">
                   <Line
@@ -355,14 +355,14 @@ const Info = () => {
 
             {/* Divider */}
             <div className="flex items-center gap-3 my-8">
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
-              <span className="text-xs text-gray-500 uppercase tracking-widest">Análise de Limites</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-600 to-transparent"></div>
+              <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest">Análise de Limites</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-600 to-transparent"></div>
             </div>
 
             {/* Gráfico 2 ─ N(t) função racional com descontinuidade */}
             <div>
-              <h3 className="text-lg font-bold text-happy-text mb-3 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-happy-text dark:text-gray-100 mb-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-happy-pink inline-block"></span>
                 Cliente x Receita — Função Racional R(c)
               </h3>
@@ -374,9 +374,9 @@ const Info = () => {
               </p>
 
               {/* ── Fórmula original ── */}
-              <div className="bg-gradient-to-r from-happy-pink/5 to-happy-blue/5 border border-gray-100 rounded-xl p-4 mb-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 text-center">Função Original</p>
-                <p className="text-center font-mono text-base md:text-lg text-happy-dark font-bold tracking-wide leading-relaxed">
+              <div className="bg-gradient-to-r from-happy-pink/5 to-happy-blue/5 dark:from-happy-pink/10 dark:to-happy-blue/10 border border-gray-100 dark:border-gray-600 rounded-xl p-4 mb-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 text-center">Função Original</p>
+                <p className="text-center font-mono text-base md:text-lg text-happy-dark dark:text-gray-100 font-bold tracking-wide leading-relaxed">
                   R(c) = (-250c³ + 750c² + 1000c) / (-c² + 4c)
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
@@ -386,36 +386,36 @@ const Info = () => {
                     { var: 'c = 4', desc: 'Descontinuidade' },
                     { var: 'R(1) = 500', desc: 'Valor inicial' },
                   ].map((item, i) => (
-                    <div key={i} className="text-center bg-white/60 rounded-lg py-2 px-1">
+                    <div key={i} className="text-center bg-white/60 dark:bg-gray-700/60 rounded-lg py-2 px-1">
                       <span className="font-mono font-bold text-happy-pink text-sm">{item.var}</span>
-                      <p className="text-xs text-gray-500 mt-0.5">{item.desc}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{item.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* ── Passo a passo: Fatoração → Simplificação → Limite ── */}
-              <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-5 space-y-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-500 text-center">Desenvolvimento Completo</p>
+              <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 rounded-xl p-5 mb-5 space-y-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 text-center">Desenvolvimento Completo</p>
 
                 {/* Passo 1 – Fatoração */}
                 <div>
-                  <p className="text-sm font-bold text-happy-text mb-1 flex items-center gap-2">
+                  <p className="text-sm font-bold text-happy-text dark:text-gray-100 mb-1 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-happy-pink text-white text-[11px] flex items-center justify-center font-bold">1</span>
                     Fatoração
                   </p>
-                  <div className="bg-white rounded-lg p-3 border border-gray-100 space-y-1">
-                    <p className="font-mono text-sm text-gray-700">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-600 space-y-1">
+                    <p className="font-mono text-sm text-gray-700 dark:text-gray-300">
                       Numerador: -250c³ + 750c² + 1000c
                     </p>
-                    <p className="font-mono text-sm text-gray-700 pl-4">
+                    <p className="font-mono text-sm text-gray-700 dark:text-gray-300 pl-4">
                       = -250c(c² - 3c - 4)
                     </p>
                     <p className="font-mono text-sm text-happy-pink font-bold pl-4">
                       = -250c(c + 1)<span className="text-happy-blue">(c - 4)</span>
                     </p>
-                    <hr className="my-2 border-gray-100" />
-                    <p className="font-mono text-sm text-gray-700">
+                    <hr className="my-2 border-gray-100 dark:border-gray-600" />
+                    <p className="font-mono text-sm text-gray-700 dark:text-gray-300">
                       Denominador: -c² + 4c
                     </p>
                     <p className="font-mono text-sm text-happy-pink font-bold pl-4">
@@ -426,12 +426,12 @@ const Info = () => {
 
                 {/* Passo 2 – Cancelamento */}
                 <div>
-                  <p className="text-sm font-bold text-happy-text mb-1 flex items-center gap-2">
+                  <p className="text-sm font-bold text-happy-text dark:text-gray-100 mb-1 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-happy-blue text-white text-[11px] flex items-center justify-center font-bold">2</span>
                     Simplificação
                   </p>
-                  <div className="bg-white rounded-lg p-3 border border-gray-100 space-y-1">
-                    <p className="font-mono text-sm text-gray-700">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-600 space-y-1">
+                    <p className="font-mono text-sm text-gray-700 dark:text-gray-300">
                       R(c) = <span className="line-through text-gray-400">-250c</span> · 250(c + 1) · <span className="line-through text-gray-400">(c - 4)</span> / <span className="line-through text-gray-400">-c</span> · <span className="line-through text-gray-400">(c - 4)</span>
                     </p>
                     <p className="font-mono text-sm text-happy-blue font-bold pl-4">
@@ -442,12 +442,12 @@ const Info = () => {
 
                 {/* Passo 3 – Cálculo do Limite */}
                 <div>
-                  <p className="text-sm font-bold text-happy-text mb-1 flex items-center gap-2">
+                  <p className="text-sm font-bold text-happy-text dark:text-gray-100 mb-1 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-happy-pink text-white text-[11px] flex items-center justify-center font-bold">3</span>
                     Cálculo do Limite
                   </p>
-                  <div className="bg-white rounded-lg p-3 border border-gray-100">
-                    <p className="font-mono text-sm text-gray-700 text-center">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-600">
+                    <p className="font-mono text-sm text-gray-700 dark:text-gray-300 text-center">
                       lim<sub>c→4</sub> <span className="text-happy-pink font-bold">250(c + 1)</span> = 250(4 + 1) = 250 × 5 = <span className="text-happy-blue font-bold text-base">R$ 1.250/h</span>
                     </p>
                   </div>
@@ -455,12 +455,12 @@ const Info = () => {
 
                 {/* Passo 4 – Interpretação */}
                 <div>
-                  <p className="text-sm font-bold text-happy-text mb-1 flex items-center gap-2">
+                  <p className="text-sm font-bold text-happy-text dark:text-gray-100 mb-1 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-happy-blue text-white text-[11px] flex items-center justify-center font-bold">4</span>
                     Interpretação
                   </p>
-                  <div className="bg-white rounded-lg p-3 border border-gray-100">
-                    <p className="text-sm text-gray-600">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-600">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
                       O ponto <strong>(4, 1250)</strong> é uma <strong>descontinuidade removível</strong>.
                       A função R(c) não possui imagem em c = 4 (denominador zero), porém o limite lateral
                       confirma que a receita por hora <strong>tende a R$ 1.250/h</strong>. No gráfico, representamos
@@ -471,10 +471,10 @@ const Info = () => {
               </div>
 
               {/* ── Gráfico ── */}
-              <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
+              <div className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl p-4 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-bold uppercase tracking-wider text-happy-pink">Cliente x Receita</span>
-                  <span className="text-xs text-gray-500">Descontinuidade removível em c = 4</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">Descontinuidade removível em c = 4</span>
                 </div>
                 <div className="w-full h-72">
                   <Line
@@ -484,8 +484,8 @@ const Info = () => {
                     aria-label="Gráfico Cliente x Receita com função racional R(c) e descontinuidade removível em c = 4, onde o limite tende a R$ 1.250/h."
                   />
                 </div>
-                <div className="mt-3 flex items-center gap-2 text-xs text-gray-500 bg-gray-50 rounded-lg p-3">
-                  <span className="inline-block w-3 h-3 rounded-full border-2 border-red-400 bg-white flex-shrink-0"></span>
+                <div className="mt-3 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3">
+                  <span className="inline-block w-3 h-3 rounded-full border-2 border-red-400 bg-white dark:bg-gray-800 flex-shrink-0"></span>
                   <span>Bolinha aberta em c = 4 indica que R(4) não existe, mas lim<sub>c→4</sub> R(c) = R$ 1.250/h</span>
                 </div>
               </div>
@@ -501,36 +501,36 @@ const Info = () => {
           >
             <div className="grid sm:grid-cols-2 gap-4">
               {/* Identidade Visual */}
-              <div className="bg-gray-50 border border-gray-100 rounded-xl p-5">
-                <h4 className="font-bold text-happy-text mb-3 flex items-center gap-2">
+              <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 rounded-xl p-5">
+                <h4 className="font-bold text-happy-text dark:text-gray-100 mb-3 flex items-center gap-2">
                   Identidade Visual
                 </h4>
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                   A paleta utiliza cores vibrantes para refletir a estética contemporânea do universo gamer.
                 </p>
                 <div className="flex gap-2">
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-blue shadow-sm"></div>
-                    <span className="text-xs text-gray-500 mt-1">Azul Neon</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">Azul Neon</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-pink shadow-sm"></div>
-                    <span className="text-xs text-gray-500 mt-1">Rosa Vibrante</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">Rosa Vibrante</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
                     <div className="w-full h-10 rounded-lg bg-happy-dark shadow-sm"></div>
-                    <span className="text-xs text-gray-500 mt-1">Dark</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">Dark</span>
                   </div>
                   <div className="flex-1 flex flex-col items-center">
-                    <div className="w-full h-10 rounded-lg bg-happy-detail border border-gray-100 shadow-sm"></div>
-                    <span className="text-xs text-gray-500 mt-1">Detalhe</span>
+                    <div className="w-full h-10 rounded-lg bg-happy-detail border border-gray-100 dark:border-gray-600 shadow-sm"></div>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">Detalhe</span>
                   </div>
                 </div>
               </div>
 
               {/* Stack Tecnológica */}
-              <div className="bg-gray-50 border border-gray-100 rounded-xl p-5">
-                <h4 className="font-bold text-happy-text mb-3 flex items-center gap-2">
+              <div className="bg-gray-50 dark:bg-gray-700/50 border border-gray-100 dark:border-gray-600 rounded-xl p-5">
+                <h4 className="font-bold text-happy-text dark:text-gray-100 mb-3 flex items-center gap-2">
                   Stack Tecnológica
                 </h4>
                 <div className="space-y-2">
@@ -540,11 +540,11 @@ const Info = () => {
                     { name: 'Chart.js', desc: 'Visualizações de dados', color: 'bg-happy-blue' },
                     { name: 'Node.js', desc: 'Backend e APIs', color: 'bg-happy-pink' },
                   ].map((tech, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-white rounded-lg px-3 py-2 border border-gray-50">
+                    <div key={i} className="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-lg px-3 py-2 border border-gray-50 dark:border-gray-600">
                       <span className={`w-2 h-2 rounded-full ${tech.color}`}></span>
                       <div>
-                        <span className="font-bold text-sm text-happy-text">{tech.name}</span>
-                        <span className="text-xs text-gray-400 ml-2">{tech.desc}</span>
+                        <span className="font-bold text-sm text-happy-text dark:text-gray-100">{tech.name}</span>
+                        <span className="text-xs text-gray-400 dark:text-gray-500 ml-2">{tech.desc}</span>
                       </div>
                     </div>
                   ))}
@@ -590,24 +590,24 @@ const Info = () => {
                   desc: 'Selos, microconteúdos e chatbot ajudam o usuário a comparar impacto sem interromper a experiência gamer.'
                 }
               ].map((item, i) => (
-                <div key={i} className="bg-green-50 border border-green-100 rounded-xl p-4">
-                  <h4 className="font-bold text-green-800 text-sm mb-1">{item.title}</h4>
-                  <p className="text-xs text-green-900 leading-relaxed">{item.desc}</p>
+                <div key={i} className="bg-green-50 dark:bg-green-900/30 border border-green-100 dark:border-green-800 rounded-xl p-4">
+                  <h4 className="font-bold text-green-800 dark:text-green-300 text-sm mb-1">{item.title}</h4>
+                  <p className="text-xs text-green-900 dark:text-green-200 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-happy-blue/5 to-happy-pink/5 border border-gray-100 rounded-xl p-5">
-              <h4 className="font-bold text-happy-text mb-3">Como isso aparece na aplicação</h4>
+            <div className="bg-gradient-to-r from-happy-blue/5 to-happy-pink/5 dark:from-happy-blue/10 dark:to-happy-pink/10 border border-gray-100 dark:border-gray-600 rounded-xl p-5">
+              <h4 className="font-bold text-happy-text dark:text-gray-100 mb-3">Como isso aparece na aplicação</h4>
               <div className="grid md:grid-cols-3 gap-3">
                 {[
                   { label: 'Home', text: 'Cards exibem selos como baixo impacto e embalagem reciclável.' },
                   { label: 'Produto', text: 'A sidebar mostra embalagem, descarte, política de fornecedor e entrega sustentável simulada.' },
                   { label: 'Chatbot', text: 'O assistente indica opções sustentáveis mantendo respostas simples de categoria, número e sim/não.' },
                 ].map((item, i) => (
-                  <div key={i} className="bg-white border border-gray-100 rounded-lg p-3">
+                  <div key={i} className="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-600 rounded-lg p-3">
                     <span className="text-xs font-bold uppercase text-happy-pink">{item.label}</span>
-                    <p className="text-xs text-gray-600 mt-1">{item.text}</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">{item.text}</p>
                   </div>
                 ))}
               </div>
