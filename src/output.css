@@ -1,4 +1,4 @@
-/*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.3.0 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -266,9 +266,6 @@
   }
   .inset-0 {
     inset: calc(var(--spacing) * 0);
-  }
-  .start {
-    inset-inline-start: var(--spacing);
   }
   .-top-10 {
     top: calc(var(--spacing) * -10);
@@ -678,6 +675,17 @@
   }
   .snap-start {
     scroll-snap-align: start;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .scrollbar-thumb-happy-blue {
+    --tw-scrollbar-thumb: var(--color-happy-blue);
+    scrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);
+  }
+  .scrollbar-track-gray-100 {
+    --tw-scrollbar-track: var(--color-gray-100);
+    scrollbar-color: var(--tw-scrollbar-thumb) var(--tw-scrollbar-track);
   }
   .list-none {
     list-style-type: none;
@@ -1981,6 +1989,16 @@
   inherits: false;
   initial-value: proximity;
 }
+@property --tw-scrollbar-thumb {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-scrollbar-track {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -2179,6 +2197,8 @@
       --tw-skew-x: initial;
       --tw-skew-y: initial;
       --tw-scroll-snap-strictness: proximity;
+      --tw-scrollbar-thumb: #0000;
+      --tw-scrollbar-track: #0000;
       --tw-space-y-reverse: 0;
       --tw-border-style: solid;
       --tw-gradient-position: initial;
