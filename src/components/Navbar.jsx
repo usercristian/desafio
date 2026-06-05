@@ -68,8 +68,6 @@ const Navbar = () => {
             {/* MENU DESKTOP (Escondido em telas pequenas 'hidden', visível em 'md:flex') */}
             <div className="hidden md:flex items-center gap-6">
               <NavLink to="/">Início</NavLink>
-              <NavLink to="/info">Informações</NavLink>
-              <NavLink to="/contact">Contato</NavLink>
 
               {isLoggedIn && (
                 <NavLink to="/my-purchases">Minhas Compras</NavLink>
@@ -128,8 +126,6 @@ const Navbar = () => {
           {isOpen && (
             <div className="md:hidden mt-4 pb-4 flex flex-col gap-3 bg-happy-pink-dark rounded-lg p-4 shadow-inner animate-fade-in">
               <MobileNavLink to="/" onClick={toggleMenu}>Início</MobileNavLink>
-              <MobileNavLink to="/info" onClick={toggleMenu}>Informações</MobileNavLink>
-              <MobileNavLink to="/contact" onClick={toggleMenu}>Contato</MobileNavLink>
 
               {isLoggedIn && (
                 <MobileNavLink to="/my-purchases" onClick={toggleMenu}>
