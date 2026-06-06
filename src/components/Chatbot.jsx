@@ -31,7 +31,7 @@ const getSustainableListLabel = (product) => {
 
 const Chatbot = () => {
   // Estados de UI
-  const [isOpen, setIsOpen] = useState(window.innerWidth >= 768); // Minimizado em mobile
+  const [isOpen, setIsOpen] = useState(false); // Inicia minimizado para não obstruir conteúdo
   const [isHidden, setIsHidden] = useState(false); // Controla se o chat está invisível (atrás da Sidebar)
 
   // Estados de Dados e Fluxo
