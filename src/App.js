@@ -44,7 +44,7 @@ function App() {
             {/* Área do Cliente e Compra */}
             <Route path="/my-purchases" element={<MyPurchases />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/evaluation" element={<Evaluation />} />
+            <Route path="/evaluation/:productId" element={<Evaluation />} />
           </Routes>
         </main>
 
