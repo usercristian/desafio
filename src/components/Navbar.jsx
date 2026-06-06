@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Substitui o <a href> para não recarregar a página
-import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa'; // Ícones de menu
+import { FaBars, FaTimes, FaSun, FaMoon, FaShoppingCart } from 'react-icons/fa'; // Ícones de menu
 import useTheme from '../hooks/useTheme';
+import { useCart } from '../contexts/CartContext';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
   const { isDark, toggleTheme } = useTheme();
+  const { items } = useCart();
+  const cartItemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
     const handleStorage = () => {
@@ -77,6 +80,16 @@ const Navbar = () => {
                 <NavLink to="/security">Segurança</NavLink>
               )}
 
+              {/* Ícone de Carrinho */}
+              <Link to="/checkout" className="relative text-white hover:text-happy-blue transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white rounded-full p-2 flex items-center justify-center" aria-label="Carrinho de compras">
+                <FaShoppingCart size={20} />
+                {cartItemCount > 0 && (
+                  <span className="absolute top-0 right-0 inline-flex items-center justify-center min-w-[1.25rem] h-5 text-xs font-bold text-white transform translate-x-1/4 -translate-y-1/4 bg-happy-pink-dark rounded-full border border-happy-blue">
+                    {cartItemCount}
+                  </span>
+                )}
+              </Link>
+
               {/* Botão Dark Mode Toggle */}
               <button
                 onClick={toggleTheme}
@@ -101,8 +114,18 @@ const Navbar = () => {
 
             </div>
 
-            {/* BOTÃO HAMBURGUER (Visível apenas no Mobile) */}
+            {/* BOTÃO HAMBURGUER E CONTROLES (Visível apenas no Mobile) */}
             <div className="flex items-center gap-3 md:hidden">
+              {/* Ícone de Carrinho (Mobile) */}
+              <Link to="/checkout" className="relative text-white p-2 rounded-full hover:bg-white/20 transition-colors duration-200 flex items-center justify-center" aria-label="Carrinho de compras">
+                <FaShoppingCart size={18} />
+                {cartItemCount > 0 && (
+                  <span className="absolute top-0 right-0 inline-flex items-center justify-center min-w-[1rem] h-4 text-[10px] font-bold text-white transform translate-x-1/4 -translate-y-1/4 bg-happy-pink-dark rounded-full border border-happy-blue">
+                    {cartItemCount}
+                  </span>
+                )}
+              </Link>
+
               {/* Botão Dark Mode Toggle (Mobile) */}
               <button
                 onClick={toggleTheme}

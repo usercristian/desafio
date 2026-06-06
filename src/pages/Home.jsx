@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { FaChevronLeft, FaChevronRight, FaLeaf, FaRecycle } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaLeaf, FaRecycle, FaStar } from 'react-icons/fa';
 import { products } from '../data/productsData';
 import ProductSidebar from '../components/ProductSidebar';
 
@@ -66,6 +66,9 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
 
       <div className="relative bg-[#fafafa] dark:bg-gray-800 rounded-[25px] p-4 shadow-neon-blue border border-gray-100 dark:border-gray-700">
         
+        {/* Indicador de fade para mobile na borda direita */}
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#fafafa] dark:from-gray-800 to-transparent pointer-events-none md:hidden z-10 rounded-r-[25px]"></div>
+        
         {/* Botão Esquerdo */}
         <button 
           onClick={() => scroll('left')}
@@ -89,7 +92,9 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
               return (
             <div 
               key={product.id} 
-              className="flex-none w-[70%] sm:w-[40%] md:w-[30%] lg:w-[23%] bg-white dark:bg-gray-800 border border-happy-detail dark:border-gray-700 rounded-[15px] p-4 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col snap-start"
+              className="flex-none w-[70%] sm:w-[40%] md:w-[30%] lg:w-[23%] bg-white dark:bg-gray-800 border border-happy-detail dark:border-gray-700 rounded-[15px] p-4 shadow-card hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col snap-start focus-within:ring-2 focus-within:ring-happy-pink"
+              role="group"
+              aria-label={`Produto: ${product.nome}`}
             >
               <div className="min-h-7 flex justify-center mb-2">
                 <span className={`inline-flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-bold border ${
@@ -109,9 +114,17 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
               />
               
               <div className="flex flex-col flex-grow text-center">
-                <h5 className="text-sm font-bold text-gray-800 dark:text-gray-100 mb-2 h-10 flex items-center justify-center leading-tight line-clamp-2">
+                <h5 className="text-sm font-bold text-gray-800 dark:text-gray-100 mb-1 h-10 flex items-center justify-center leading-tight line-clamp-2">
                   {product.nome}
                 </h5>
+
+                {/* Avaliação */}
+                <div className="flex items-center justify-center gap-1 text-yellow-500 mb-2">
+                  <FaStar size={12} />
+                  <span className="text-xs font-bold text-gray-600 dark:text-gray-300">
+                    {product.rating} <span className="font-normal text-[10px]">({product.numRatings})</span>
+                  </span>
+                </div>
                 
                 <div className="mt-auto w-full">
                   <p className="text-happy-pink font-bold text-base mb-3">
@@ -129,6 +142,7 @@ const CategoryCarousel = ({ title, products, onSelect }) => {
                   <button 
                     onClick={() => onSelect(product)}
                     className="btn-primary w-full text-xs py-2 px-4 shadow-md"
+                    aria-label={`Selecionar ${product.nome}`}
                   >
                     Selecionar
                   </button>
@@ -169,6 +183,15 @@ const Home = () => {
 
   return (
     <div className="relative min-h-screen">
+      {/* Overlay Escuro para a Sidebar */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-50 transition-opacity animate-fade-in"
+          onClick={handleCloseSidebar}
+          aria-hidden="true"
+        />
+      )}
+
       <main className="container mx-auto px-4 py-8 pb-20">
         <h1 className="sr-only">Happy Game — Loja de Produtos Gamer</h1>
         {categories.map((category, index) => {
@@ -192,6 +215,7 @@ const Home = () => {
         product={selectedProduct} 
         isOpen={isSidebarOpen} 
         onClose={handleCloseSidebar} 
+        onSelect={handleSelectProduct}
       />
     </div>
   );

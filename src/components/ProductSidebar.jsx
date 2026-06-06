@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaHeart, FaLeaf, FaRecycle, FaTimes, FaTruck } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { products } from '../data/productsData';
+import { useCart } from '../contexts/CartContext';
 
-const ProductSidebar = ({ product, isOpen, onClose }) => {
+const ProductSidebar = ({ product, isOpen, onClose, onSelect }) => {
+  const { addItem } = useCart();
+  const [showToast, setShowToast] = useState(false);
   const navigate = useNavigate();
   const sustainableAlternative = product?.alternativaSustentavelId
     ? products.find((item) => item.id === product.alternativaSustentavelId)
@@ -14,8 +17,20 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
       window.dispatchEvent(new Event('sidebarOpen'));
     } else {
       window.dispatchEvent(new Event('sidebarClose'));
+      setShowToast(false);
     }
   }, [isOpen]);
+
+  const handleAddToCart = () => {
+    addItem({
+      productId: product.id,
+      name: product.nome,
+      image: product.image,
+      price: product.price,
+    });
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
 
   if (!product) return null;
 
@@ -30,8 +45,8 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
       `}
     >
       {/* Cabeçalho do Card (Estilo Chatbot) */}
-      <div className="flex justify-between items-center bg-happy-pink text-white p-3 rounded-t-2xl">
-        <h5 className="font-bold text-lg">Assistente Happy</h5>
+      <div className="flex justify-between items-center bg-happy-pink text-white p-3 rounded-t-2xl relative">
+        <h5 className="font-bold text-lg line-clamp-1">{product.nome}</h5>
         <button 
           onClick={onClose} 
           aria-label="Fechar painel de produto"
@@ -40,6 +55,13 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
           <FaTimes size={18} />
         </button>
       </div>
+
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg animate-fade-in z-50 whitespace-nowrap">
+          Adicionado ao carrinho! ✓
+        </div>
+      )}
 
       {/* Conteúdo com Scroll se necessário */}
       <div className="p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-happy-blue scrollbar-track-gray-100 dark:scrollbar-track-gray-800 rounded-b-2xl">
@@ -92,9 +114,12 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
                 <p><strong>Descarte:</strong> {product.descarte}</p>
               </div>
               {sustainableAlternative && (
-                <p className="mt-3 bg-white dark:bg-gray-800 border border-green-100 dark:border-green-800 rounded-lg p-2 text-xs text-green-800 dark:text-green-300">
-                  Produto similar com menor impacto: <strong>{sustainableAlternative.nome}</strong>.
-                </p>
+                <button 
+                  onClick={() => onSelect && onSelect(sustainableAlternative)} 
+                  className="mt-3 w-full text-left bg-white dark:bg-gray-800 border border-green-100 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-900/50 transition-colors rounded-lg p-2 text-xs text-green-800 dark:text-green-300"
+                >
+                  Produto similar com menor impacto: <strong className="underline">{sustainableAlternative.nome}</strong>.
+                </button>
               )}
             </div>
 
@@ -116,14 +141,15 @@ const ProductSidebar = ({ product, isOpen, onClose }) => {
             <p>Menos emissoes, prazo maior. Esta opcao educativa mostra como o frete pode entrar na decisao de compra.</p>
           </div>
 
-          <div className="mt-5 space-y-2">
+          <div className="sticky bottom-0 -mx-4 -mb-4 mt-5 p-4 bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 space-y-2 rounded-b-2xl shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-10">
             <button 
-              onClick={() => navigate('/checkout')}
+              onClick={() => { onClose(); navigate('/checkout'); }}
               className="btn-primary w-full py-3 shadow-lg shadow-happy-pink/30"
             >
               Comprar agora
             </button>
             <button 
+              onClick={handleAddToCart}
               className="w-full bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-bold py-2 rounded-lg hover:border-happy-blue hover:text-happy-blue transition-colors"
             >
               Salvar no carrinho
